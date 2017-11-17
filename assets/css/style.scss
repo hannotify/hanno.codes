@@ -1,0 +1,12 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+@media print, screen and (max-width: 480px) {
+    #banner {
+        display: block;
+        position: relative;
+        top: 0px;
+    }
+}
