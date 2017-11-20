@@ -21,6 +21,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 show_downloads: false
 twitter_username: hannotify
 github_username: hannotify
+google_analytics: UA-109857788-1
 
 # Git settings
 repository: hannotify/hannotify.github.io
