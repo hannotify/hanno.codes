@@ -1,0 +1,65 @@
+- id: building-a-spring-boot-application-ask-the-audience
+  title: "Building a Spring Boot Application: Ask the Audience!"
+  type: regular
+  description: | 
+    Spring Boot makes it easy to create stand-alone Spring-based applications that you can ‘just run’. It uses a ‘convention over configuration’ approach to get you up and running in no-time, while offering all Spring features that you have grown fond of in the past years. In this session this is demonstrated by live-coding a Spring Boot application that will ‘just work’.
+    
+    But audience beware, this is not your standard ‘live-coding session’. Attendees will have a vital say in the session’s content by defining the application’s requirements. Do you want a simple task planner? Or track your favourite movies? It's up to you! Should it use MongoDB or Couchbase? You decide! Do you want an Angular front-end with a RESTful back-end or do you prefer a classic web app with Thymeleaf templates? It's your call! Seriously.
+    
+    During the session you get to make these decisions by participating in an online vote. And you will discover that Spring Boot is up to the task no matter what choices you make.
+    
+    So what are you waiting for? Bring your own device, help shape the application that we're building and learn lots about Spring Boot in the process.
+    
+    This session is intended for Java software engineers with an interest in Spring Boot. Some Spring experience could come in handy, but is not strictly necessary. After this session, you will know enough to start your own Spring Boot project.
+
+- id: qwerty-or-dvorak-debunking-the-keyboard-layout-myths
+  title: QWERTY or DVORAK? Debunking the Keyboard Layout Myths
+  type: regular
+  description: | 
+    If you're reading this summary on a computer, chances are there is a QWERTY keyboard on your desk. This keyboard layout has been around since 1873, and it has been widely adopted ever since. However, its popularity has always remained a mystery to me. Why is everyone using a keyboard layout that doesn't look that efficient on first sight? 
+
+    I'm not the only one asking this question. A lot of myths exist on the QWERTY keyboard layout, including the one that it was specifically designed to slow down typists. In preparation for a switch to the DVORAK layout, I did some research and found out that a lot of these myths are riddled with factual errors. Also, I started learning DVORAK and kept track of my progress and what I thought were the pros and cons. 
+    
+    So was QWERTY designed to slow us down? Is it feasible to adopt an alternative layout like DVORAK? If so, how long will it take you to learn it, and should everyone consider it? Join this session to have your questions answered, and feel free to bring your keyboard layout of choice. :-)
+
+- id: entering-the-fourth-dimension-of-ocr-with-tesseract
+  title: Entering the Fourth Dimension of OCR with Tesseract
+  type: regular
+  description: |
+    Optical Character Recognition has come a long way since the first image-scanning inventions in the early 1900s. Nowadays, accuracy rates of over 90% are easily achievable on high-quality text scans. Many OCR engines capable of reaching these rates exist today; one of which is Tesseract.
+
+    Tesseract has become quite popular amongst software developers because of its accuracy, its open-source status and its active development by Google. By using the Tess4J JNA wrapper it is easily integrated into your Java project.
+
+    During this session, I will introduce Tesseract, its pros and cons and how & when to use it. And I will demonstrate a Java application that uses Tesseract and Tess4J to process some of my favorite books from Google Books, so you'll be able to assess its accuracy for yourself.
+
+    In geometry, a 'tesseract' is the four-dimensional analog of a cube. So will the Tesseract OCR library live up to its name and help your project to 'enter the fourth dimension'? Join me for this session and find out for yourself!
+  
+- id: five-reasons-why-you-should-choose-emberjs-over-angular
+  title: Five Reasons Why You Should Choose Ember.js over Angular
+  type: regular
+  description: |
+    Everyone wants rich web applications nowadays, which require sophisticated frameworks to structure and organize client code. So it’s no surprise the number of available JavaScript frameworks has gone through the roof in the past few years. Two of these frameworks are Angular and Ember.js: both decent JavaScript frameworks that will support you to the fullest in your development process. But how do you decide which one is the best fit for your project?
+
+    In this session, I’ll introduce Ember.js and show its strengths and weaknesses by demonstrating an Ember.js application. During the session, I’ll add some features and I’ll compare the finished application to the Angular equivalent. To conclude, I’ll list five reasons why you should choose Ember.js over Angular for your next project (hint: it depends more on your next project than on the two frameworks).
+
+    Don’t be afraid this will become an Ember.js vs. Angular shoutfest. Keep in mind that I use these frameworks a lot and I love them both - you should too. After attending you will have a basic understanding of Ember.js and it will have become another useful tool in your front end toolbox.
+
+  id: migrating-25k-lines-of-ant-scripting-to-gradle
+  title: Migrating 25K lines of Ant scripting to Gradle
+  type: regular
+  description: |
+    Most developers prefer to spend their time writing code instead of performing build script maintenance. Build scripting may be an essential part of the software development process, but it often lacks maintainability which makes applying and deploying changes a tedious job. So it’s important to make sure your build system encourages simplicity and that changes can be made in a fast and straightforward way. Industry standards Ant and Maven are not quite up to the task; Gradle is a better alternative.
+
+    This presentation introduces Gradle – a modern build system that supports all JVM Languages – and shares the result of the Ant-to-Gradle migration that was performed at ‘Nederlandse Spoorwegen’ (or NS - Dutch Railways). The session will focus on the challenges we faced while trying to replace Ant scripting with the Gradle equivalent and how we handled them.
+
+    After attending this session, you will have a good understanding of Gradle, its possibilities and its pros and cons compared to Ant and Maven. On top of that, you will be able to migrate your own project to Gradle, even if your project has a huge code base or relies on ancient technologies. The lessons we learnt at NS could be very helpful to your own situation.
+
+- id: slide-deck-version-management-the-good-the-bad-and-the-ugly
+  title: "Slide Deck Version Management: The Good, The Bad and the Ugly"
+  type: ignite
+  description: | 
+    After speaking at a few conferences, I’ve noticed that as a conference speaker you need to provide session content that is both challenging and versatile. On top of that, your content should be able to fit into different time slots. Whether you are given 35, 45 or 60 minutes of speaking time, your story should remain clear and appealing to the attendees. To make matters worse, in some occasions you are dealing with multiple speakers and / or different languages. And managing the different versions of your slide deck has officially become a challenge!
+
+    Analogous to the plot of Sergio Leone’s spaghetti western classic, three possible solutions exist: a good one, a bad one and a plain ugly one. I will demonstrate these solutions in reverse order and let you decide for yourself which one you prefer.
+
+    So are you a speaker or are you thinking about starting out? Or are you simply a fan of spaghetti westerns? Join me in this Ignite session to get some tips on slide deck version management! And discover that after attending this session, you can avoid spending your valuable time on version management and instead spend it on coming up with some great new session content!
