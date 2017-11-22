@@ -10,11 +10,26 @@ Hanno is a Java Developer, Scrum Master and Trainer at Info Support (Veenendaal,
 
 # [](#upcoming-events)Upcoming events
 
+{% capture nowUnix %}{{'now' | date: '%s'}}{% endcapture %}
+{% capture eventTime %}{{event.dateStart | date: '%s'}}{% endcapture %}
+
+{% for event in site.data.events %}
+    {% if eventTime > nowunix %}
+        ## [](#{{event.id}})[{{event.name}}]({{event.url}})
+
+        |-------------:|:-------------------|
+        | **Location** | {{event.country}}, {{event.city}} |
+        |     **Date** | {{event.dateStart}} - {{event.dateEnd}}  |
+        |     **Talk** |  |        
+    {% endif %}
+{% endfor %}
+
 ## [](#jvmcon-2018)[JVMCon 2018](https://jvmcon.com)
 
+|-------------:|:-------------------|
 | **Location** | Netherlands, Ede   |
-| **Date**     | 30th January 2018  |
-| **Talk**     | [Building a Spring Boot Application: Ask the Audience!](talks#building-a-spring-boot-application-ask-the-audience) |
+|     **Date** | 30th January 2018  |
+|     **Talk** | [Building a Spring Boot Application: Ask the Audience!](talks#building-a-spring-boot-application-ask-the-audience) |
 
 # [](#past-events)Past events
 

@@ -1,0 +1,17 @@
+- id: jvmcon-2018
+  name: JVMCon
+  year: 2018
+  country: The Netherlands
+  city: Ede
+  venue: 
+    name: CineMec
+    latitude: 52.01577007972178
+    longitude: 5.64583211559008
+  url: https://www.jvmcon.com
+  dateStart: 30-01-2018
+  dateEnd:
+  talks:
+    id: building-a-spring-boot-application-ask-the-audience
+    videoUrl:
+    slidesUrl:
+    photos:
