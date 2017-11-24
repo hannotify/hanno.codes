@@ -7,11 +7,143 @@
     name: CineMec
     latitude: 52.01577007972178
     longitude: 5.64583211559008
-  url: https://www.jvmcon.com
+  url: //www.jvmcon.com
   dateStart: 30-01-2018
-  dateEnd:
-  talks:
-    id: building-a-spring-boot-application-ask-the-audience
-    videoUrl:
-    slidesUrl:
-    photos:
+  dateEnd: 01-02-2018
+  appearances:
+    - id: building-a-spring-boot-application-ask-the-audience
+      videoUrl:
+      slidesUrl:
+      photos:
+
+- id: devoxx-2017
+  name: Devoxx
+  year: 2017
+  country: Belgium
+  city: Antwerp
+  venue: 
+    name: Kinepolis
+    latitude: 52.01577007972178
+    longitude: 5.64583211559008
+  url: //www.devoxx.be
+  dateStart: 06-11-2017
+  dateEnd: 10-11-2017
+  appearances:
+    - id: qwerty-or-dvorak-debunking-the-keyboard-layout-myths
+      sessionPageUrl: //cfp.devoxx.be/2017/talk/MLV-7954/QWERTY_or_DVORAK%3F_Debunking_the_Keyboard_Layout_Myths
+      videoUrl: //youtu.be/blRn9U9Fapg
+      slidesUrl: //www.slideshare.net/HannoEmbregts/qwerty-or-dvorak-debunking-the-keyboard-layout-myths
+      githubUrl: 
+      photos:
+    - id: slide-deck-version-management-the-good-the-bad-and-the-ugly
+      sessionPageUrl: //cfp.devoxx.be/2017/talk/KTK-2683/Slide_Deck_Version_Management:_The_Good,_The_Bad_and_The_Ugly
+      videoUrl: 
+      slidesUrl: //docs.google.com/presentation/d/e/2PACX-1vTxe6reiny3WofqmNVUfZXs6T5U9ordw6o7kgDWURYMK5SJYZ9p45SyYug7vrIqKNRcskKD4IRj-GtA/pub?start=false&loop=false&delayms=3000
+      githubUrl:
+      photos:      
+
+- id: jfall-2017
+  name: J-Fall
+  year: 2017
+  country: The Netherlands
+  city: Ede
+  venue: 
+    name: CineMec
+    latitude: 51.2452257
+    longitude: 4.4156213
+  url: //www.jfall.nl
+  dateStart: 02-11-2017
+  dateEnd: 
+  appearances:
+    - id: building-a-spring-boot-application-ask-the-audience
+      sessionPageUrl: //jfall.nl/sessions/building-spring-boot-application-ask-audience/
+      videoUrl: //youtu.be/UUUG7Do3AAk
+      slidesUrl:
+      githubUrl: 
+      photos:
+    - id: slide-deck-version-management-the-good-the-bad-and-the-ugly
+      sessionPageUrl: //jfall.nl/sessions/slide-deck-version-management-good-bad-ugly/
+      videoUrl: 
+      slidesUrl: //docs.google.com/presentation/d/e/2PACX-1vTxe6reiny3WofqmNVUfZXs6T5U9ordw6o7kgDWURYMK5SJYZ9p45SyYug7vrIqKNRcskKD4IRj-GtA/pub?start=false&loop=false&delayms=3000
+      githubUrl:
+      photos:    
+
+- id: jbcnconf-2017
+  name: JBCNConf
+  year: 2017
+  country: Spain
+  city: Barcelona
+  venue: 
+    name: Cinema Filmax Gran Via 2
+    latitude: 41.3581629
+    longitude: 2.1265076
+  url: //www.jbcnconf.com
+  dateStart: 19-06-2017
+  dateEnd: 21-06-2017
+  appearances:
+    - id: building-a-spring-boot-application-ask-the-audience
+      sessionPageUrl: //www.jbcnconf.com/2017/infoSpeaker.html?ref=hanno-embregts
+      videoUrl: //youtu.be/iywXl48dJI4
+      slidesUrl:
+      githubUrl: //github.com/hannotify/spring-boot-beer-jbcnconf
+      photos:      
+
+- id: javaland-2017
+  name: JavaLand
+  year: 2017
+  country: Germany
+  city: Brühl
+  venue: 
+    name: Phantasialand
+    latitude: 50.7993531
+    longitude: 6.8786675
+  url: //www.javaland.eu
+  dateStart: 28-03-2017
+  dateEnd: 30-03-2017
+  appearances:
+    - id: building-a-spring-boot-application-ask-the-audience
+      sessionPageUrl: //programm.javaland.eu/2017/talk.html#talk?talkId=529558
+      videoUrl: 
+      slidesUrl: //www.slideshare.net/HannoEmbregts/building-a-spring-boot-application-ask-the-audience-from-javaland-2017
+      githubUrl: 
+      photos:   
+
+- id: devoxx-uk-2016
+  name: Devoxx UK
+  year: 2016
+  country: United Kingdom
+  city: London
+  venue: 
+    name: Business Design Centre
+    latitude: 51.5358885
+    longitude: -0.1091954
+  url: //www.devoxx.co.uk
+  dateStart: 08-06-2016
+  dateEnd: 10-06-2016
+  appearances:
+    - id: migrating-25k-lines-of-ant-scripting-to-gradle
+      sessionPageUrl: 
+      videoUrl: //youtu.be/7U1n5Sp0eS4
+      slidesUrl: //www.slideshare.net/HannoEmbregts/migrating-25k-lines-of-ant-scripting-to-gradle-62891474
+      githubUrl: 
+      photos: 
+
+- id: jprime-2016
+  name: jPrime
+  year: 2016
+  country: Bulgaria
+  city: Sofia
+  venue:
+    name: Paradise Center
+    latitude: 42.6627755
+    longitude: 23.3099296
+  url: //www.jprime.io
+  dateStart: 26-05-2016
+  dateEnd: 27-05-2016
+  appearances:
+    - id: migrating-25k-lines-of-ant-scripting-to-gradle
+      sessionPageUrl: //jprime.io/nav/article/61
+      videoUrl: //youtu.be/FEEiuyrAa6Q
+      slidesUrl: //www.slideshare.net/HannoEmbregts/migrating-25k-lines-of-ant-scripting-to-gradle
+      githubUrl: 
+      photos: 
