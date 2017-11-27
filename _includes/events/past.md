@@ -1,11 +1,18 @@
-# [](#upcoming-events)Past events
 
 {% capture nowUnix %}{{'now' | date: '%s'}}{% endcapture %}
+{% assign pastEvents = "" | split: "" %}
 
 {% for event in site.data.events %}
     {% capture eventTime %}{{event.dateStart | date: '%s'}}{% endcapture %}
 
     {% if nowUnix > eventTime %}
+        {% assign pastEvents = pastEvents | push: event %}
+    {% endif %}
+{% endfor %}
+
+# [](#upcoming-events)Past events ({{ pastEvents.size }})
+
+{% for event in pastEvents %}
 ## [](#{{event.id}})[{{event.name}} {{event.year}}]({{event.url}})
 
 <table>
@@ -47,5 +54,4 @@
         {% endif %}  
     {% endfor %}
 </table>
-    {% endif %}
 {% endfor %}
