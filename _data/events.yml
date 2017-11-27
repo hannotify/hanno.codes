@@ -82,7 +82,7 @@
   dateEnd: 21-06-2017
   appearances:
     - id: building-a-spring-boot-application-ask-the-audience
-      sessionPageUrl: //www.jbcnconf.com/2017/infoSpeaker.html?ref=hanno-embregts
+      sessionPageUrl: http://www.jbcnconf.com/2017/infoSpeaker.html?ref=hanno-embregts
       videoUrl: //youtu.be/iywXl48dJI4
       slidesUrl:
       githubUrl: //github.com/hannotify/spring-boot-beer-jbcnconf
