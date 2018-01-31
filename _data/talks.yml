@@ -1,15 +1,15 @@
-- id: building-a-spring-boot-application-ask-the-audience
-  title: Building a Spring Boot Application&#58; Ask the Audience!
+- id: building-a-spring-boot-2-application-ask-the-audience
+  title: Building a Spring Boot 2 Application&#58; Ask the Audience!
   type: regular
   description: | 
-    Spring Boot makes it easy to create stand-alone Spring-based applications that you can ‘just run’. It uses a ‘convention over configuration’ approach to get you up and running in no-time, while offering all Spring features that you have grown fond of in the past years. In this session this is demonstrated by live-coding a Spring Boot application that will ‘just work’.
-    
-    But audience beware, this is not your standard ‘live-coding session’. Attendees will have a vital say in the session’s content by defining the application’s requirements. Do you want a simple task planner? Or track your favourite movies? It's up to you! Should it use MongoDB or Couchbase? You decide! Do you want an Angular front-end with a RESTful back-end or do you prefer a classic web app with Thymeleaf templates? It's your call! Seriously.
-    
+    Spring Boot makes it easy to create stand-alone Spring-based applications that you can ‘just run’. It uses a ‘convention over configuration’ approach to get you up and running in no-time. And with the release of Spring Boot 2 in February 2018 all Spring 5.0 features will be available for Spring Boot users, as well as Kotlin support. In this session I will demonstrate this by live-coding a Spring Boot 2 application that will ‘just work’.
+
+    But audience beware, this is not your standard ‘live-coding session’. Attendees will have a vital say in the session’s content by defining the application’s requirements. Do you want a simple task planner? Or track your favourite movies? It's up to you! Should it use MongoDB or JPA? You decide! Built with Java or Kotlin? I don't care! Do you want an Angular front-end with a RESTful back-end or do you prefer a classic web app with Thymeleaf templates? It's your call! Seriously.
+
     During the session you get to make these decisions by participating in an online vote. And you will discover that Spring Boot is up to the task no matter what choices you make.
-    
+
     So what are you waiting for? Bring your own device, help shape the application that we're building and learn lots about Spring Boot in the process.
-    
+
     This session is intended for Java software engineers with an interest in Spring Boot. Some Spring experience could come in handy, but is not strictly necessary. After this session, you will know enough to start your own Spring Boot project.
 
 - id: qwerty-or-dvorak-debunking-the-keyboard-layout-myths
@@ -33,16 +33,20 @@
     During this session, I will introduce Tesseract, its pros and cons and how & when to use it. And I will demonstrate a Java application that uses Tesseract and Tess4J to process some of my favorite books from Google Books, so you'll be able to assess its accuracy for yourself.
 
     In geometry, a 'tesseract' is the four-dimensional analog of a cube. So will the Tesseract OCR library live up to its name and help your project to 'enter the fourth dimension'? Join me for this session and find out for yourself!
-  
-- id: five-reasons-why-you-should-choose-emberjs-over-angular
-  title: Five Reasons Why You Should Choose Ember.js over Angular
+
+- id: building-a-spring-boot-application-ask-the-audience
+  title: Building a Spring Boot Application&#58; Ask the Audience!
   type: regular
-  description: |
-    Everyone wants rich web applications nowadays, which require sophisticated frameworks to structure and organize client code. So it’s no surprise the number of available JavaScript frameworks has gone through the roof in the past few years. Two of these frameworks are Angular and Ember.js&#58; both decent JavaScript frameworks that will support you to the fullest in your development process. But how do you decide which one is the best fit for your project?
-
-    In this session, I’ll introduce Ember.js and show its strengths and weaknesses by demonstrating an Ember.js application. During the session, I’ll add some features and I’ll compare the finished application to the Angular equivalent. To conclude, I’ll list five reasons why you should choose Ember.js over Angular for your next project (hint&#58; it depends more on your next project than on the two frameworks).
-
-    Don’t be afraid this will become an Ember.js vs. Angular shoutfest. Keep in mind that I use these frameworks a lot and I love them both - you should too. After attending you will have a basic understanding of Ember.js and it will have become another useful tool in your front end toolbox.
+  description: | 
+    Spring Boot makes it easy to create stand-alone Spring-based applications that you can ‘just run’. It uses a ‘convention over configuration’ approach to get you up and running in no-time, while offering all Spring features that you have grown fond of in the past years. In this session this is demonstrated by live-coding a Spring Boot application that will ‘just work’.
+    
+    But audience beware, this is not your standard ‘live-coding session’. Attendees will have a vital say in the session’s content by defining the application’s requirements. Do you want a simple task planner? Or track your favourite movies? It's up to you! Should it use MongoDB or Couchbase? You decide! Do you want an Angular front-end with a RESTful back-end or do you prefer a classic web app with Thymeleaf templates? It's your call! Seriously.
+    
+    During the session you get to make these decisions by participating in an online vote. And you will discover that Spring Boot is up to the task no matter what choices you make.
+    
+    So what are you waiting for? Bring your own device, help shape the application that we're building and learn lots about Spring Boot in the process.
+    
+    This session is intended for Java software engineers with an interest in Spring Boot. Some Spring experience could come in handy, but is not strictly necessary. After this session, you will know enough to start your own Spring Boot project.
 
 - id: migrating-25k-lines-of-ant-scripting-to-gradle
   title: Migrating 25K lines of Ant scripting to Gradle
