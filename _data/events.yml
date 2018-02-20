@@ -7,7 +7,7 @@
     name: Cineplexx Wienerberg
     latitude: 48.168045
     longitude: 16.3428712
-  url: //https://voxxeddays.com/vienna/
+  url: //voxxeddays.com/vienna/
   dateStart: 12-03-2018
   dateEnd: 13-03-2018
   appearances:
@@ -31,10 +31,10 @@
   dateEnd: 
   appearances:
     - id: building-a-spring-boot-application-ask-the-audience
-      sessionPageUrl: https://www.jvmcon.com/#/sessions
+      sessionPageUrl: //www.jvmcon.com/#/sessions
       videoUrl:
-      slidesUrl: https://www.slideshare.net/HannoEmbregts/building-a-spring-boot-application-ask-the-audience-from-jvmcon-2018
-      githubUrl: https://github.com/hannotify/spring-boot-beer-jvmcon-2018
+      slidesUrl: //www.slideshare.net/HannoEmbregts/building-a-spring-boot-application-ask-the-audience-from-jvmcon-2018
+      githubUrl: //github.com/hannotify/spring-boot-beer-jvmcon-2018
       photos:
 
 - id: devoxx-2017
