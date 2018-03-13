@@ -10,7 +10,9 @@
     {% endif %}
 {% endfor %}
 
+{% if !upcomingEvents.isEmpty %}
 # [](#upcoming-events)Upcoming events ({{upcomingEvents.size}})
+{% endif %}
 
 {% for event in upcomingEvents %}
     {% if event.dateEnd %}

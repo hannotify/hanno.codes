@@ -14,8 +14,8 @@
     - id: building-a-spring-boot-2-application-ask-the-audience
       sessionPageUrl: https://voxxeddaysvienna2018.sched.com/event/DkzY/building-a-spring-boot-2-application-ask-the-audience
       videoUrl:
-      slidesUrl: 
-      githubUrl: 
+      slidesUrl: https://www.slideshare.net/HannoEmbregts/building-a-spring-boot-2-application-ask-the-audience-from-voxxed-days-vienna-2018-90505063
+      githubUrl: https://github.com/hannotify/spring-boot-2-beer-voxxed-vienna-2018
       photos:
 
 - id: jvmcon-2018
