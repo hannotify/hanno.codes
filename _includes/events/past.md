@@ -18,7 +18,7 @@
 <table>
     <tr>
         <td><strong>Location</strong></td>
-        <td>{{event.country}}, {{event.city}}</td>
+        <td>{{event.city}}, {{event.country.name}} <img src="images/flags/{{event.country.flag}}.gif"/></td>
     </tr>
     <tr>
         <td><strong>Date</strong></td>

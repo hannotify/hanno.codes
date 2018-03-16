@@ -1,7 +1,31 @@
+- id: geecon-2018
+  name: GeeCON
+  year: 2018
+  country: 
+    flag: pl
+    name: Poland
+  city: Kraków
+  venue: 
+    name: Multikino Kraków
+    latitude: 50.088986
+    longitude: 19.9845599
+  url: //2018.geecon.org/
+  dateStart: 09-05-2018
+  dateEnd: 11-05-2018
+  appearances:
+    - id: qwerty-or-dvorak-debunking-the-keyboard-layout-myths
+      sessionPageUrl: 
+      videoUrl: 
+      slidesUrl: 
+      githubUrl: 
+      photos: 
+
 - id: voxxed-days-vienna-2018
   name: Voxxed Days Vienna
   year: 2018
-  country: Austria
+  country: 
+    flag: at
+    name: Austria
   city: Vienna
   venue: 
     name: Cineplexx Wienerberg
@@ -21,7 +45,9 @@
 - id: jvmcon-2018
   name: JVMCon
   year: 2018
-  country: The Netherlands
+  country: 
+    flag: nl
+    name: The Netherlands
   city: Ede
   venue: 
     name: CineMec
@@ -41,7 +67,9 @@
 - id: devoxx-2017
   name: Devoxx
   year: 2017
-  country: Belgium
+  country: 
+    flag: be
+    name: Belgium
   city: Antwerp
   venue: 
     name: Kinepolis
@@ -67,7 +95,9 @@
 - id: j-fall-2017
   name: J-Fall
   year: 2017
-  country: The Netherlands
+  country: 
+    flag: nl
+    name: The Netherlands
   city: Ede
   venue: 
     name: CineMec
@@ -93,7 +123,9 @@
 - id: jbcnconf-2017
   name: JBCNConf
   year: 2017
-  country: Spain
+  country: 
+    flag: es
+    name: Spain
   city: Barcelona
   venue: 
     name: Cinema Filmax Gran Via 2
@@ -113,7 +145,9 @@
 - id: javaland-2017
   name: JavaLand
   year: 2017
-  country: Germany
+  country: 
+    flag: de
+    name: Germany
   city: Brühl
   venue: 
     name: Phantasialand
@@ -133,7 +167,9 @@
 - id: devoxx-uk-2016
   name: Devoxx UK
   year: 2016
-  country: United Kingdom
+  country: 
+    flag: gb
+    name: United Kingdom
   city: London
   venue: 
     name: Business Design Centre
@@ -153,7 +189,9 @@
 - id: jprime-2016
   name: jPrime
   year: 2016
-  country: Bulgaria
+  country: 
+    flag: bg
+    name: Bulgaria
   city: Sofia
   venue:
     name: Paradise Center
