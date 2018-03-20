@@ -20,6 +20,28 @@
       githubUrl: 
       photos: 
 
+- id: teqnation-2018
+  name: TEQNation
+  year: 2018
+  country: 
+    flag: nl
+    name: Netherlands
+  city: Utrecht
+  venue: 
+    name: Jaarbeurs
+    latitude: 52.0882467
+    longitude: 5.1054394
+  url: //teqnation.nl
+  dateStart: 26-04-2018
+  dateEnd: 
+  appearances:
+    - id: qwerty-or-dvorak-debunking-the-keyboard-layout-myths
+      sessionPageUrl: 
+      videoUrl: 
+      slidesUrl: 
+      githubUrl: 
+      photos: 
+
 - id: voxxed-days-vienna-2018
   name: Voxxed Days Vienna
   year: 2018
