@@ -2,5 +2,6 @@
 layout: default
 ---
 
-{% include talks/regulars.md %}
-{% include talks/ignites.md %}
+{% include talks/regular.md %}
+{% include talks/lightning.md %}
+{% include talks/ignite.md %}

@@ -1,16 +1,16 @@
-# [](#regular)Regular Talks
+# [](#{{ include.anchor }}){{ include.title }}
 
-{% assign regularTalks = site.data.talks | where: "type", "regular" %}
-{% for regularTalk in regularTalks %}
+{% assign talks = include.talks %}
+{% for talk in talks %}
 
-## [](#{{ regularTalk.id }}){{ regularTalk.title}} 
+## [](#{{ talk.id }}){{ talk.title}} 
 
-{{ regularTalk.description }}
+{{ talk.description }}
 
     {% assign events = "" | split: "" %}
     {% for event in site.data.events %}
         {% for appearance in event.appearances %}
-            {% if appearance.id == regularTalk.id %}
+            {% if appearance.id == talk.id %}
                 {% assign events = events | push: event %}
             {% endif %}
         {% endfor %}

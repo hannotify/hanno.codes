@@ -12,16 +12,6 @@
 
     This session is intended for Java software engineers with an interest in Spring Boot. Some Spring experience could come in handy, but is not strictly necessary. After this session, you will know enough to start your own Spring Boot project.
 
-- id: qwerty-or-dvorak-debunking-the-keyboard-layout-myths
-  title: QWERTY or DVORAK? Debunking the Keyboard Layout Myths
-  type: regular
-  description: | 
-    If you're reading this summary on a computer, chances are there is a QWERTY keyboard on your desk. This keyboard layout has been around since 1873, and it has been widely adopted ever since. However, its popularity has always remained a mystery to me. Why is everyone using a keyboard layout that doesn't look that efficient on first sight? 
-
-    I'm not the only one asking this question. A lot of myths exist on the QWERTY keyboard layout, including the one that it was specifically designed to slow down typists. In preparation for a switch to the DVORAK layout, I did some research and found out that a lot of these myths are riddled with factual errors. Also, I started learning DVORAK and kept track of my progress and what I thought were the pros and cons. 
-    
-    So was QWERTY designed to slow us down? Is it feasible to adopt an alternative layout like DVORAK? If so, how long will it take you to learn it, and should everyone consider it? Join this session to have your questions answered, and feel free to bring your keyboard layout of choice. :-)
-
 - id: entering-the-fourth-dimension-of-ocr-with-tesseract
   title: Entering the Fourth Dimension of OCR with Tesseract
   type: regular
@@ -58,6 +48,16 @@
 
     After attending this session, you will have a good understanding of Gradle, its possibilities and its pros and cons compared to Ant and Maven. On top of that, you will be able to migrate your own project to Gradle, even if your project has a huge code base or relies on ancient technologies. The lessons we learnt at NS could be very helpful to your own situation.
 
+- id: qwerty-or-dvorak-debunking-the-keyboard-layout-myths
+  title: QWERTY or DVORAK? Debunking the Keyboard Layout Myths
+  type: lightning
+  description: | 
+    If you're reading this summary on a computer, chances are there is a QWERTY keyboard on your desk. This keyboard layout has been around since 1873, and it has been widely adopted ever since. However, its popularity has always remained a mystery to me. Why is everyone using a keyboard layout that doesn't look that efficient on first sight? 
+
+    I'm not the only one asking this question. A lot of myths exist on the QWERTY keyboard layout, including the one that it was specifically designed to slow down typists. In preparation for a switch to the DVORAK layout, I did some research and found out that a lot of these myths are riddled with factual errors. Also, I started learning DVORAK and kept track of my progress and what I thought were the pros and cons. 
+    
+    So was QWERTY designed to slow us down? Is it feasible to adopt an alternative layout like DVORAK? If so, how long will it take you to learn it, and should everyone consider it? Join this session to have your questions answered, and feel free to bring your keyboard layout of choice. :-)
+
 - id: slide-deck-version-management-the-good-the-bad-and-the-ugly
   title: "Slide Deck Version Management: The Good, The Bad and the Ugly"
   type: ignite
@@ -66,4 +66,4 @@
 
     Analogous to the plot of Sergio Leone's spaghetti western classic, three possible solutions exist&#58; a good one, a bad one and a plain ugly one. I will demonstrate these solutions in reverse order and let you decide for yourself which one you prefer.
 
-    So are you a speaker or are you thinking about starting out? Or are you simply a fan of spaghetti westerns? Join me in this Ignite session to get some tips on slide deck version management! And discover that after attending this session, you can avoid spending your valuable time on version management and instead spend it on coming up with some great new session content!
+    So are you a speaker or are you thinking about starting out? Or are you simply a fan of spaghetti westerns? Join me in this Ignite session to get some tips on slide deck version management! And discover that after attending this session, you can avoid spending your valuable time on version management and instead spend it on coming up with some great new session content!    
