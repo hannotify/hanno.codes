@@ -10,7 +10,7 @@
     {% endif %}
 {% endfor %}
 
-{% if upcomingEvents != null %}
+{% if upcomingEvents != null and upcomingEvents.size > 0 %}
 # [](#upcoming-events)Upcoming events ({{upcomingEvents.size}})
 {% endif %}
 

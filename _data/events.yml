@@ -14,9 +14,9 @@
   dateEnd: 11-05-2018
   appearances:
     - id: qwerty-or-dvorak-debunking-the-keyboard-layout-myths
-      sessionPageUrl: 
+      sessionPageUrl: https://2018.geecon.org/speakers/info.html?id=393
       videoUrl: 
-      slidesUrl: 
+      slidesUrl: https://www.slideshare.net/HannoEmbregts/qwerty-or-dvorak-debunking-the-keyboard-layout-myths-from-geecon-2018
       githubUrl: 
       photos: 
 
@@ -59,7 +59,7 @@
   appearances:
     - id: building-a-spring-boot-2-application-ask-the-audience
       sessionPageUrl: https://voxxeddaysvienna2018.sched.com/event/DkzY/building-a-spring-boot-2-application-ask-the-audience
-      videoUrl:
+      videoUrl: https://youtu.be/GLuOr-5bXG0
       slidesUrl: https://www.slideshare.net/HannoEmbregts/building-a-spring-boot-2-application-ask-the-audience-from-voxxed-days-vienna-2018-90505063
       githubUrl: https://github.com/hannotify/spring-boot-2-beer-voxxed-vienna-2018
       photos:
