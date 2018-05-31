@@ -17,7 +17,7 @@
     {% endfor %}
 
     {% if events.size > 0 %}
-### Appearances ({{events.size}})
+#### Appearances ({{events.size}})
 <ul>
     {% for event in events %}
     <li><a href="/#{{event.id}}">{{event.name}} {{event.year}}</a></li>
