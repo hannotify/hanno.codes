@@ -18,7 +18,11 @@
 <table>
     <tr>
         <td><strong>Location</strong></td>
-        <td>{{event.city}}, {{event.country.name}} <img src="images/flags/{{event.country.flag}}.gif"/></td>
+        {% if event.city %}
+            <td>{{event.city}}, {{event.country.name}} <img src="images/flags/{{event.country.flag}}.gif"/></td>
+        {% else %}
+            <td>Online (webinar)</td>
+        {% endif %}
     </tr>
     <tr>
         <td><strong>Date</strong></td>

@@ -114,6 +114,17 @@
       githubUrl:
       photos:      
 
+- id: luxoft-technology-series-33-2017
+  name: Luxoft Technology Series #33
+  year: 2017
+  url: https://career.luxoft.com/lts-luxoft-technology-series
+  dateStart: 14-11-2017
+  appearances:
+    - id: building-a-spring-boot-application-ask-the-audience
+      sessionPageUrl: https://career.luxoft.com/lts-luxoft-technology-series/building-a-spring-boot-application-ask-the-audience/
+      videoUrl: https://youtu.be/-HAwiXnRdgY
+      githubUrl: https://github.com/hannotify/spring-boot-movie-luxoft-technology-series
+
 - id: j-fall-2017
   name: J-Fall
   year: 2017
@@ -185,6 +196,17 @@
       slidesUrl: //www.slideshare.net/HannoEmbregts/building-a-spring-boot-application-ask-the-audience-from-javaland-2017
       githubUrl: 
       photos:   
+
+- id: luxoft-technology-series-18-2016
+  name: Luxoft Technology Series #18
+  year: 2016
+  url: https://career.luxoft.com/lts-luxoft-technology-series
+  dateStart: 06-10-2016
+  appearances:
+    - id: migrating-25k-lines-of-ant-scripting-to-gradle
+      sessionPageUrl: https://career.luxoft.com/lts-luxoft-technology-series/migrating-25k-lines-of-ant-scripting-to-gradle/
+      videoUrl: https://youtu.be/DojIfbqxUJM
+      githubUrl: 
 
 - id: devoxx-uk-2016
   name: Devoxx UK

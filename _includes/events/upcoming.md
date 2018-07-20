@@ -20,10 +20,17 @@
     {% else %}
         {% assign dateString = event.dateStart | date: "%B %e, %Y" %}
     {% endif %}
+
+    {% if event.city %}
+        {% capture locationString %}{{event.city}}, {{event.country.name}} <img src="images/flags/{{event.country.flag}}.gif"/>{% endcapture %}
+    {% else %}
+        {% assign locationString = "Online (webinar)" %}
+    {% endif %}
+
 ## [](#{{event.id}})[{{event.name}} {{event.year}}]({{event.url}})
 
 |-------------:|:----------------------------------------|
-| **Location** | {{event.city}}, {{event.country.name}} <img src="images/flags/{{event.country.flag}}.gif"/>|
+| **Location** | {{locationString}}                      |
 |     **Date** | {{dateString}}                          |
     {% for appearance in event.appearances %}{% assign talk = site.data.talks | where: "id", appearance.id | first %}|     **Talk** | [{{talk.title}}](talks#{{talk.id}})     |
     {% endfor %}
