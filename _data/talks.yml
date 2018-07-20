@@ -1,3 +1,15 @@
+- id: will-git-be-around-forever-a-list-of-possible-successors
+  title: Will Git Be Around Forever? A List of Possible Successors
+  type: regular
+  description: |
+    What source control software did you use in 2008? Possibly Git, if you were an early adopter or a Linux kernel committer. But chances are you were using Subversion, as this was the product of choice for the majority of the software developers. Ten years later, Git is the most popular product. Which makes me wonder&#58; what will we use another ten years from now?
+
+    In this talk we will think about what features we want from our source control software in 2028. More speed? Better collaboration support? No merge conflicts ever?
+
+    I'll also discuss a few products that have been published after Git emerged, including Fossil, Veracity and Pijul. I'll talk about the extent to which they contain the features we so dearly desire and I'll demonstrate a few typical use cases. To conclude, I'll try to predict which one will be 'the top dog' in 2028 (all information is provided "as is", no guarantees etc. etc.).
+
+    So attend this session if you're excited about the future of version control and if you want to have a shot at beating even (!) the early adopters. Now if it turns out I was right, remember that you heard it here first. 😀
+
 - id: building-a-spring-boot-2-application-ask-the-audience
   title: Building a Spring Boot 2 Application&#58; Ask the Audience!
   type: regular
@@ -58,6 +70,28 @@
     
     So was QWERTY designed to slow us down? Is it feasible to adopt an alternative layout like DVORAK? If so, how long will it take you to learn it, and should everyone consider it? Join this session to have your questions answered, and feel free to bring your keyboard layout of choice. :-)
 
+- id: putting-the-soft-in-software-development
+  title: Putting the 'Soft' in Software Development
+  type: unconference
+  description: | 
+    Great to have you at the conference! By now you've probably heard about a lot of new tools, and chances are you're already looking forward to trying them out at work. Then it's just a simple matter of convincing everyone that the new stuff trumps the old in every way, right?
+
+    Turns out just knowing about the latest technical stuff will only get you *so* far. Your 'soft skills' play a vital part in the process of developing a great product. You need to be able to convince people, motivate them, listen to them and treat them with respect. So how do you learn this stuff?
+
+    After struggling with this question for a long time I discovered two things&#58;
+    1) You can learn from your successes, and even more from your failures; 
+    2) You can learn from the way other people handled their situations. 
+
+    So in this BOF session I'm happy to tell you some of my successes and failures. But I'm also curious about the way you handled your own situations. In fact, just bring your splendid self and a few questions and I'll do my best to make sure we all learn from it.
+
+    Possible topics&#58;
+    * Pitching Ideas
+    * Dealing With Deadlines
+    * Keeping Work/Life Balance
+    * Handling Negativity
+    * Resolving Conflicts
+    * your own
+
 - id: slide-deck-version-management-the-good-the-bad-and-the-ugly
   title: "Slide Deck Version Management: The Good, The Bad and the Ugly"
   type: ignite
@@ -66,4 +100,15 @@
 
     Analogous to the plot of Sergio Leone's spaghetti western classic, three possible solutions exist&#58; a good one, a bad one and a plain ugly one. I will demonstrate these solutions in reverse order and let you decide for yourself which one you prefer.
 
-    So are you a speaker or are you thinking about starting out? Or are you simply a fan of spaghetti westerns? Join me in this Ignite session to get some tips on slide deck version management! And discover that after attending this session, you can avoid spending your valuable time on version management and instead spend it on coming up with some great new session content!    
+    So are you a speaker or are you thinking about starting out? Or are you simply a fan of spaghetti westerns? Join me in this Ignite session to get some tips on slide deck version management! And discover that after attending this session, you can avoid spending your valuable time on version management and instead spend it on coming up with some great new session content!
+
+- id: these-songs-would-make-some-great-code-comments
+  title: These Songs Would Make Some Great Code Comments
+  type: ignite
+  description: | 
+    Besides being useful, comments in source code can also be fun! [This legendary StackOverflow post](https://stackoverflow.com/a/482129) tells me that sometimes a well-chosen joke put into source code can lighten the mood at work and make your developer life just a bit better.
+
+    Now, because I am both a developer and a musician, I tend to use song lyrics to lighten up my code. So in this Ignite talk, I'll demonstrate this by showing a few typical code fragments that could use some musical quality. And of course I'll perform bits of the songs that go with it.
+
+    So are you in for a light-hearted talk on code comments - slash - a mini-concert featuring songs by Coldplay, Oasis, Adam Lambert, Imagine Dragons and many more? Please join in and feel free to sing along!
+    
