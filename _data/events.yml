@@ -20,6 +20,28 @@
       githubUrl: 
       photos: 
 
+- id: j-fall-2018
+  name: J-Fall
+  year: 2018
+  country: 
+    flag: nl
+    name: The Netherlands
+  city: Ede
+  venue: 
+    name: Pathé
+    latitude: 51.2452257
+    longitude: 4.4156213
+  url: //www.jfall.nl
+  dateStart: 08-11-2018
+  dateEnd: 
+  appearances:
+    - id: these-songs-would-make-some-great-code-comments
+      sessionPageUrl: 
+      videoUrl: 
+      slidesUrl: 
+      githubUrl: 
+      photos: 
+
 - id: geecon-2018
   name: GeeCON
   year: 2018
