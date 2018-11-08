@@ -1,3 +1,14 @@
+- id: luxoft-technology-series-2019
+  name: Luxoft Technology Series
+  year: 2019
+  url: https://career.luxoft.com/lts-luxoft-technology-series
+  dateStart: 06-02-2019
+  appearances:
+    - id: putting-the-soft-in-software-development
+      sessionPageUrl: https://jfall.nl/sessions/ignite-sessions/
+      videoUrl: 
+      githubUrl: 
+
 - id: devoxx-2018
   name: Devoxx
   year: 2018
@@ -36,7 +47,7 @@
   dateEnd: 
   appearances:
     - id: these-songs-would-make-some-great-code-comments
-      sessionPageUrl: 
+      sessionPageUrl: https://jfall.nl/sessions/ignite-sessions/
       videoUrl: 
       slidesUrl: 
       githubUrl: 
