@@ -1,3 +1,19 @@
+- id: voxxed-days-bucharest-2019
+  name: Voxxed Days Bucharest
+  year: 2019
+  country: 
+    flag: ro
+    name: Romania
+  city: Bucharest
+  venue: 
+    name: Sheraton
+    latitude: 44.4464349
+    longitude: 26.0967259
+  url: https://romania.voxxeddays.com/bucharest/2019-03-20/
+  dateStart: 20-03-2019
+  dateEnd: 22-03-2019
+  appearances:
+
 - id: luxoft-technology-series-2019
   name: Luxoft Technology Series
   year: 2019

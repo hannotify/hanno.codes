@@ -29,9 +29,28 @@
 
 ## [](#{{event.id}})[{{event.name}} {{event.year}}]({{event.url}})
 
-|-------------:|:----------------------------------------|
-| **Location** | {{locationString}}                      |
-|     **Date** | {{dateString}}                          |
-    {% for appearance in event.appearances %}{% assign talk = site.data.talks | where: "id", appearance.id | first %}|     **Talk** | [{{talk.title}}](talks#{{talk.id}})     |
-    {% endfor %}
+<table>
+    <tr>
+        <td><strong>Location</strong></td>
+        <td>{{locationString}}</td>
+    </tr>
+    <tr>
+        <td><strong>Date</strong></td>
+        <td>{{dateString}}</td>
+    </tr>
+    {% if event.appearances.size > 0 %}
+        {% for appearance in event.appearances %}
+            {% assign talk = site.data.talks | where: "id", appearance.id | first %}
+    <tr>
+        <td><strong>Talk</strong></td>
+        <td><a href="talks#{{talk.id}}">{{talk.title}}</a></td>
+    </tr>
+        {% endfor %}
+    {% else %}
+    <tr>
+        <td><strong>Talk</strong></td>
+        <td>TBD</td>
+    </tr>
+    {% endif %}
+</table>
 {% endfor %}
