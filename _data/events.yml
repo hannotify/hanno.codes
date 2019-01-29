@@ -13,12 +13,18 @@
   dateStart: 20-03-2019
   dateEnd: 22-03-2019
   appearances:
+    - id: entering-the-fourth-dimension-of-ocr-with-tesseract
+      sessionPageUrl: https://dvbe18.confinabox.com/talk/GMA-9130/These_Songs_Would_Make_Some_Great_Code_Comments
+      videoUrl: 
+      slidesUrl: 
+      githubUrl: 
+      photos: 
 
 - id: luxoft-technology-series-2019
   name: Luxoft Technology Series
   year: 2019
   url: https://career.luxoft.com/lts-luxoft-technology-series
-  dateStart: 06-02-2019
+  dateStart: 27-02-2019
   appearances:
     - id: putting-the-soft-in-software-development
       sessionPageUrl: https://jfall.nl/sessions/ignite-sessions/
