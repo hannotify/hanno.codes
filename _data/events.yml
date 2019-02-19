@@ -1,3 +1,25 @@
+- id: voxxed-days-athens-2019
+  name: Voxxed Days Athens
+  year: 2019
+  country: 
+    flag: gr
+    name: Greece
+  city: Athens
+  venue: 
+    name: Technopolis
+    latitude: 37.9777818
+    longitude: 23.7114221
+  url: https://voxxeddays.com/athens/
+  dateStart: 07-06-2019
+  dateEnd: 08-06-2019
+  appearances:
+    - id: will-git-be-around-forever-a-list-of-possible-successors
+      sessionPageUrl: 
+      videoUrl: 
+      slidesUrl: 
+      githubUrl: 
+      photos: 
+
 - id: voxxed-days-bucharest-2019
   name: Voxxed Days Bucharest
   year: 2019
