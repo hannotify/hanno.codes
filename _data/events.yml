@@ -38,8 +38,8 @@
     - id: entering-the-fourth-dimension-of-ocr-with-tesseract
       sessionPageUrl: https://romania.voxxeddays.com/2019/01/27/entering-the-fourth-dimension-of-ocr-with-tesseract/
       videoUrl: 
-      slidesUrl: 
-      githubUrl: 
+      slidesUrl: https://www.slideshare.net/HannoEmbregts/entering-the-fourth-dimension-of-ocr-with-tesseract-talk-from-voxxed-days-bucharest-2019
+      githubUrl: https://github.com/hannotify/tesseract-tess4j-quickstart
       photos: 
 
 - id: luxoft-technology-series-2019
