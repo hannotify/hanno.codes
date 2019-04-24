@@ -38,6 +38,12 @@
         <td><strong>Date</strong></td>
         <td>{{dateString}}</td>
     </tr>
+    {% if event.occasion %}
+    <tr>
+        <td><strong>Occasion</strong></td>
+        <td>{{event.occasion}}</td>
+    </tr>
+    {% endif %}
     {% if event.appearances.size > 0 %}
         {% for appearance in event.appearances %}
             {% assign talk = site.data.talks | where: "id", appearance.id | first %}

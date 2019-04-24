@@ -1,3 +1,26 @@
+- id: 010-dev-2019
+  name: 010DEV Meetup
+  year: 2019
+  occasion: Joy of Coding 2019 pre-party
+  country: 
+    flag: nl
+    name: The Netherlands
+  city: Rotterdam
+  venue: 
+    name: Locus Publicus
+    latitude: 51.9229314
+    longitude: 4.4960851
+  url: https://www.meetup.com/010DEV
+  dateStart: 23-05-2019
+  dateEnd: 
+  appearances:
+    - id: these-songs-would-make-some-great-code-comments
+      sessionPageUrl: https://www.meetup.com/010DEV/events/259440243/
+      videoUrl: 
+      slidesUrl: 
+      githubUrl: 
+      photos: 
+
 - id: voxxed-days-athens-2019
   name: Voxxed Days Athens
   year: 2019
