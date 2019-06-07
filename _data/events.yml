@@ -1,3 +1,25 @@
+- id: voxxed-days-athens-2019
+  name: Voxxed Days Athens
+  year: 2019
+  country: 
+    flag: gr
+    name: Greece
+  city: Athens
+  venue: 
+    name: Technopolis
+    latitude: 37.9777818
+    longitude: 23.7114221
+  url: https://voxxeddays.com/athens/
+  dateStart: 07-06-2019
+  dateEnd: 08-06-2019
+  appearances:
+    - id: will-git-be-around-forever-a-list-of-possible-successors
+      sessionPageUrl: https://voxxeddays.com/athens/will-git-be-around-forever-a-list-of-possible-successors/
+      videoUrl: 
+      slidesUrl: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-a-list-of-possible-successors
+      githubUrl: 
+      photos: 
+
 - id: 010-dev-2019
   name: 010DEV Meetup
   year: 2019
@@ -17,29 +39,7 @@
     - id: these-songs-would-make-some-great-code-comments
       sessionPageUrl: https://www.meetup.com/010DEV/events/259440243/
       videoUrl: 
-      slidesUrl: 
-      githubUrl: 
-      photos: 
-
-- id: voxxed-days-athens-2019
-  name: Voxxed Days Athens
-  year: 2019
-  country: 
-    flag: gr
-    name: Greece
-  city: Athens
-  venue: 
-    name: Technopolis
-    latitude: 37.9777818
-    longitude: 23.7114221
-  url: https://voxxeddays.com/athens/
-  dateStart: 07-06-2019
-  dateEnd: 08-06-2019
-  appearances:
-    - id: will-git-be-around-forever-a-list-of-possible-successors
-      sessionPageUrl: https://voxxeddays.com/athens/will-git-be-around-forever-a-list-of-possible-successors/
-      videoUrl: 
-      slidesUrl: 
+      slidesUrl: https://docs.google.com/presentation/d/e/2PACX-1vQR31q9KQ2XdUg4gV451jZXfVXJa822mPIor25SavdyC1NJm-sA-BrM6a2fi6JQRvN3fefD5_y1h3k7/pub?start=false&loop=false&delayms=30000#slide=id.p
       githubUrl: 
       photos: 
 
