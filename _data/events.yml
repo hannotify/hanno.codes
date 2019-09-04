@@ -1,3 +1,30 @@
+- id: devoxx-2019
+  name: Devoxx
+  year: 2019
+  country: 
+    flag: be
+    name: Belgium
+  city: Antwerp
+  venue: 
+    name: Kinepolis
+    latitude: 52.01577007972178
+    longitude: 5.64583211559008
+  url: //www.devoxx.be
+  dateStart: 04-11-2019
+  dateEnd: 08-11-2019
+  appearances:
+    - id: the-soft-side-of-software-development
+      sessionPageUrl: https://devoxx.be/talk/?id=19709
+      videoUrl: 
+      githubUrl:   
+
+    - id: these-songs-would-make-some-great-code-comments
+      sessionPageUrl: https://devoxx.be/talk/?id=19708
+      videoUrl: 
+      slidesUrl: 
+      githubUrl: 
+      photos: 
+
 - id: voxxed-days-athens-2019
   name: Voxxed Days Athens
   year: 2019

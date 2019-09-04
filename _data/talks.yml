@@ -104,7 +104,7 @@
 
 - id: these-songs-would-make-some-great-code-comments
   title: These Songs Would Make Some Great Code Comments
-  type: ignite
+  type: lightning
   description: | 
     Besides being useful, comments in source code can also be fun! [This legendary StackOverflow post](https://stackoverflow.com/a/482129) tells me that sometimes a well-chosen joke put into source code can lighten the mood at work and make your developer life just a bit better.
 
