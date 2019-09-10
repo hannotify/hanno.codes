@@ -37,6 +37,14 @@
             <td><strong>Talk</strong></td>
             <td><a href="talks#{{talk.id}}">{{talk.title}}</a></td>
         </tr>
+        {% if talk.cospeakers != null and talk.cospeakers.size > 0 %}
+            {% for cospeaker in talk.cospeakers %}
+            <tr>
+                <td><strong>Co-speaker</strong></td>
+                <td><a href="{{cospeaker.twitterUrl}}" target="_blank">{{cospeaker.name}}</a></td>
+            </tr>
+            {% endfor %}
+        {% endif %}
         {% if appearance.sessionPageUrl or appearance.videoUrl or appearance.slidesUrl or appearance.githubUrl %}
             <tr>
                 <td>&nbsp;</td>

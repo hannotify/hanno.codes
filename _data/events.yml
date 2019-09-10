@@ -24,6 +24,28 @@
       githubUrl: 
       photos: 
 
+- id: j-fall-2019
+  name: J-Fall
+  year: 2019
+  country: 
+    flag: nl
+    name: The Netherlands
+  city: Ede
+  venue: 
+    name: Pathé
+    latitude: 52.01577007972178
+    longitude: 5.64583211559008
+  url: //www.jfall.nl
+  dateStart: 31-10-2019
+  dateEnd: 
+  appearances:
+    - id: beware-of-survivorship-bias
+      sessionPageUrl: 
+      videoUrl: 
+      slidesUrl: 
+      githubUrl: 
+      photos: 
+
 - id: devoxx-2019
   name: Devoxx
   year: 2019

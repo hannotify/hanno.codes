@@ -47,9 +47,18 @@
     {% if event.appearances.size > 0 %}
         {% for appearance in event.appearances %}
             {% assign talk = site.data.talks | where: "id", appearance.id | first %}
+
     <tr>
         <td><strong>Talk</strong></td>
         <td><a href="talks#{{talk.id}}">{{talk.title}}</a></td>
+        {% if talk.cospeakers != null and talk.cospeakers.size > 0 %}
+            {% for cospeaker in talk.cospeakers %}
+            </tr>
+            <tr>
+            <td><strong>Co-speaker</strong></td>
+            <td><a href="{{cospeaker.twitterUrl}}" target="_blank">{{cospeaker.name}}</a></td>
+            {% endfor %}
+        {% endif %}
     </tr>
         {% endfor %}
     {% else %}

@@ -112,3 +112,15 @@
 
     So are you in for a light-hearted talk on code comments - slash - a mini-concert featuring songs by Coldplay, Oasis, Adam Lambert, Imagine Dragons and many more? Please join in and feel free to sing along!
     
+- id: beware-of-survivorship-bias
+  title: Beware Of Survivorship Bias!
+  type: regular
+  cospeakers:
+    - name: Maarten Mulders
+      twitterUrl: https://www.twitter.com/mthmulders
+  description: | 
+    Most talks on a typical conference schedule contain success stories of technology. This could lead to [survivorship bias](https://en.wikipedia.org/wiki/Survivorship_bias). Survivorship bias causes you to draw false conclusions because you mostly heard about successes, but hardly ever about failures. Yet failures provide us with lots of valuable knowledge&#58; when *not* to apply a certain technique, pattern or process.
+    
+    So no success stories in this talk! Just some 'silver bullets' we tried to use to solve our problems, but turned out to be Very Bad Ideas™. We'll share how survivorship bias can easily influence your ideas and cloud your judgement.
+
+    After attending this talk you'll be more aware of survivorship bias and what you can do to keep your head cool, no matter how many 'silver bullets' are fired at you.
