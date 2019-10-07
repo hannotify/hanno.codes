@@ -1,29 +1,3 @@
-- id: visug-meetup-2019
-  name: Visug Meetup
-  year: 2019
-  country: 
-    flag: be
-    name: Belgium
-  city: Mechelen
-  venue: 
-    name: Info Support
-    latitude: 51.0541509
-    longitude: 4.4531821
-  url: //www.visug.be
-  dateStart: 15-10-2019
-  dateEnd: 
-  appearances:
-    - id: the-soft-side-of-software-development
-      sessionPageUrl: 
-      videoUrl: 
-      githubUrl:   
-    - id: these-songs-would-make-some-great-code-comments
-      sessionPageUrl: 
-      videoUrl: 
-      slidesUrl: 
-      githubUrl: 
-      photos: 
-
 - id: j-fall-2019
   name: J-Fall
   year: 2019
@@ -40,7 +14,7 @@
   dateEnd: 
   appearances:
     - id: beware-of-survivorship-bias
-      sessionPageUrl: 
+      sessionPageUrl: https://jfall.nl/sessions/beware-of-survivorship-bias/
       videoUrl: 
       slidesUrl: 
       githubUrl: 
