@@ -28,13 +28,13 @@
   title: Entering the Fourth Dimension of OCR with Tesseract
   type: regular
   description: |
-    Optical Character Recognition has come a long way since the first image-scanning inventions in the early 1900s. Nowadays, accuracy rates of over 90% are easily achievable on high-quality text scans. Many OCR engines capable of reaching these rates exist today; one of which is Tesseract.
+    Optical Character Recognition has evolved into a mature computer science field, with applications in financial transfers, book digitisation and passport scanning. Now if you would want to add OCR to your Java application, you have lots of options; one of which is Tesseract.
 
     Tesseract has become quite popular amongst software developers because of its accuracy, its open-source status and its active development by Google. By using the Tess4J JNA wrapper it is easily integrated into your Java project.
 
-    During this session, I will introduce Tesseract, its pros and cons and how & when to use it. And I will demonstrate a Java application that uses Tesseract and Tess4J to process some of my favorite books from Google Books, so you'll be able to assess its accuracy for yourself.
+    During this session, I will introduce Tesseract, its pros and cons and how & when to use it. I will compare it to its competitors and I will explain why and how we used it in a case study. To top it off I will live-code a Java application that uses Tesseract and Tess4J to process some example images, so you'll be able to assess its accuracy for yourself.
 
-    In geometry, a 'tesseract' is the four-dimensional analog of a cube. So will the Tesseract OCR library live up to its name and help your project to 'enter the fourth dimension'? Join me for this session and find out for yourself!
+    Now in geometry, a 'tesseract' is the four-dimensional analog of a cube. So will Tesseract live up to its name and help your project to 'enter the fourth dimension'? Attend this session and find out!
 
 - id: building-a-spring-boot-application-ask-the-audience
   title: Building a Spring Boot Application&#58; Ask the Audience!
