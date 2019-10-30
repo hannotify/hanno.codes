@@ -124,3 +124,14 @@
     So no success stories in this talk! Just some 'silver bullets' we tried to use to solve our problems, but turned out to be Very Bad Ideas™. We'll share how survivorship bias can easily influence your ideas and cloud your judgement.
 
     After attending this talk you'll be more aware of survivorship bias and what you can do to keep your head cool, no matter how many 'silver bullets' are fired at you.
+
+- id: when-music-and-software-come-together
+  title: When Music and Software Come Together
+  type: keynote
+  description: |
+    "Can you perform under pressure?" the interviewer asked. I had to resist the urge to sing "PRESSURE! PUSHING DOWN ON ME!" at the top of my lungs. Instead I absent-mindedly said "Sure" and provided a few dull examples to back the claim up.
+
+    Still, when you love doing what you do, you'll be happier and your performance will benefit. Being both a developer and a musician, I am happiest when I see music and software come together. When I do a 'git push', I hum "push it to the limit". And when I hear a pop song, I believe the lyrics are actually about software development. 
+
+    This talk takes you on a journey throughout a typical software development process, showing you where music and software cross paths. And because I'll perform the songs myself, the talk doubles as a mini-concert - featuring songs by Coldplay, Oasis, Imagine Dragons and many more.
+    
