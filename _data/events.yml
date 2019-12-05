@@ -1,3 +1,25 @@
+- id: javaland-2020
+  name: JavaLand
+  year: 2020
+  country: 
+    flag: de
+    name: Germany
+  city: Brühl
+  venue: 
+    name: Phantasialand
+    latitude: 50.7993531
+    longitude: 6.8786675
+  url: //www.javaland.eu
+  dateStart: 17-03-2020
+  dateEnd: 19-03-2020
+  appearances:
+    - id: entering-the-fourth-dimension-of-ocr-with-tesseract
+      sessionPageUrl: 
+      videoUrl: 
+      slidesUrl: 
+      githubUrl: 
+      photos: 
+
 - id: j-fall-2019
   name: J-Fall
   year: 2019
@@ -37,32 +59,10 @@
   appearances:
     - id: the-soft-side-of-software-development
       sessionPageUrl: https://devoxx.be/talk/?id=19709
-      videoUrl: 
+      videoUrl: https://youtu.be/Clo60O-EfjE
       githubUrl:   
     - id: these-songs-would-make-some-great-code-comments
       sessionPageUrl: https://devoxx.be/talk/?id=19708
-      videoUrl: 
-      slidesUrl: 
-      githubUrl: 
-      photos: 
-
-- id: javaland-2020
-  name: JavaLand
-  year: 2020
-  country: 
-    flag: de
-    name: Germany
-  city: Brühl
-  venue: 
-    name: Phantasialand
-    latitude: 50.7993531
-    longitude: 6.8786675
-  url: //www.javaland.eu
-  dateStart: 17-03-2020
-  dateEnd: 19-03-2020
-  appearances:
-    - id: entering-the-fourth-dimension-of-ocr-with-tesseract
-      sessionPageUrl: 
       videoUrl: 
       slidesUrl: 
       githubUrl: 

@@ -2,11 +2,11 @@
   title: Will Git Be Around Forever? A List of Possible Successors
   type: regular
   description: |
-    What source control software did you use in 2008? Possibly Git, if you were an early adopter or a Linux kernel committer. But chances are you were using Subversion, as this was the product of choice for the majority of the software developers. Ten years later, Git is the most popular product. Which makes me wonder&#58; what will we use another ten years from now?
+    What source control software did you use in 2010? Possibly Git, if you were an early adopter or a Linux kernel committer. But chances are you were using Subversion, as this was the product of choice for the majority of the software developers. Ten years later, Git is the most popular product. Which makes me wonder&#58; what will we use another ten years from now?
 
-    In this talk we will think about what features we want from our source control software in 2028. More speed? Better collaboration support? No merge conflicts ever?
+    In this talk we will think about what features we want from our source control software in 2030. More speed? Better collaboration support? No merge conflicts ever?
 
-    I'll also discuss a few products that have been published after Git emerged, including Fossil, Veracity and Pijul. I'll talk about the extent to which they contain the features we so dearly desire and I'll demonstrate a few typical use cases. To conclude, I'll try to predict which one will be 'the top dog' in 2028 (all information is provided "as is", no guarantees etc. etc.).
+    I'll also discuss a few products that have been published after Git emerged, including Plastic, Fossil and Pijul. I'll talk about the extent to which they contain the features we so dearly desire and I'll demonstrate a few typical use cases. To conclude, I'll try to predict which one will be 'the top dog' in 2030 (all information is provided "as is", no guarantees etc. etc.).
 
     So attend this session if you're excited about the future of version control and if you want to have a shot at beating even (!) the early adopters. Now if it turns out I was right, remember that you heard it here first. 😀
 
