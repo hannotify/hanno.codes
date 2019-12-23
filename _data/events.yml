@@ -1,3 +1,25 @@
+- id: dotnetsaturday-2020
+  name: DotNed Saturday
+  year: 2020
+  country: 
+    flag: nl
+    name: Netherlands
+  city: Veenendaal
+  venue: 
+    name: Info Support
+    latitude: 52.0410694
+    longitude: 5.5327524
+  url: https://dotnedsaturday.nl
+  dateStart: 25-01-2020
+  dateEnd: 
+  appearances:
+    - id: when-music-and-software-come-together
+      sessionPageUrl: https://dotnedsaturday.nl/sessions/keynote-muziek-en-software-zijn-overal-een-muzikale-reis-door-software-ontwikkeling/
+      videoUrl: 
+      slidesUrl: 
+      githubUrl: 
+      photos: 
+
 - id: javaland-2020
   name: JavaLand
   year: 2020
@@ -17,28 +39,6 @@
       sessionPageUrl: 
       videoUrl: 
       slidesUrl: 
-      githubUrl: 
-      photos: 
-
-- id: j-fall-2019
-  name: J-Fall
-  year: 2019
-  country: 
-    flag: nl
-    name: The Netherlands
-  city: Ede
-  venue: 
-    name: Pathé
-    latitude: 52.01577007972178
-    longitude: 5.64583211559008
-  url: //www.jfall.nl
-  dateStart: 31-10-2019
-  dateEnd: 
-  appearances:
-    - id: beware-of-survivorship-bias
-      sessionPageUrl: https://jfall.nl/sessions/beware-of-survivorship-bias/
-      videoUrl: 
-      slidesUrl: https://www.slideshare.net/HannoEmbregts/beware-of-survivorship-bias-conference-talk-at-jfall-2019 
       githubUrl: 
       photos: 
 
@@ -65,6 +65,28 @@
       sessionPageUrl: https://devoxx.be/talk/?id=19708
       videoUrl: 
       slidesUrl: 
+      githubUrl: 
+      photos: 
+
+- id: j-fall-2019
+  name: J-Fall
+  year: 2019
+  country: 
+    flag: nl
+    name: The Netherlands
+  city: Ede
+  venue: 
+    name: Pathé
+    latitude: 52.01577007972178
+    longitude: 5.64583211559008
+  url: //www.jfall.nl
+  dateStart: 31-10-2019
+  dateEnd: 
+  appearances:
+    - id: beware-of-survivorship-bias
+      sessionPageUrl: https://jfall.nl/sessions/beware-of-survivorship-bias/
+      videoUrl: 
+      slidesUrl: https://www.slideshare.net/HannoEmbregts/beware-of-survivorship-bias-conference-talk-at-jfall-2019 
       githubUrl: 
       photos: 
 
