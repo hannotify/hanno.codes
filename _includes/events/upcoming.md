@@ -57,7 +57,16 @@
             <tr>
             <td><strong>Co-speaker</strong></td>
             <td><a href="{{cospeaker.twitterUrl}}" target="_blank">{{cospeaker.name}}</a></td>
+            </tr>
             {% endfor %}
+        {% endif %}
+        {% if appearance.sessionPageUrl%}
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <a target="_blank" href="{{appearance.sessionPageUrl}}"><code>session page</code></a>
+                </td>
+            </tr>
         {% endif %}
     </tr>
         {% endfor %}
