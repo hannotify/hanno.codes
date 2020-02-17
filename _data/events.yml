@@ -42,6 +42,29 @@
       githubUrl: 
       photos: 
 
+- id: riga-devdays-2020
+  name: Riga DevDays
+  year: 2020
+  country: 
+    flag: lv
+    name: Latvia
+  city: Riga
+  venue: 
+    name: Atta Center
+    latitude: 56.9310845
+    longitude: 24.1516076
+  url: https://2020.rigadevdays.lv/
+  dateStart: 26-05-2020
+  dateEnd: 28-05-2020
+  appearances:
+  appearances:
+    - id: entering-the-fourth-dimension-of-ocr-with-tesseract
+      sessionPageUrl: https://2020.rigadevdays.lv/sessions/entering-the-fourth-dimension-of-ocr-with-tesseract/
+      videoUrl: 
+      slidesUrl: 
+      githubUrl: 
+      photos:       
+
 - id: devoxx-2019
   name: Devoxx
   year: 2019
