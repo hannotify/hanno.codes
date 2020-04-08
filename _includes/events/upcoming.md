@@ -24,7 +24,7 @@
     {% if event.city %}
         {% capture locationString %}{{event.city}}, {{event.country.name}} <img src="images/flags/{{event.country.flag}}.gif"/>{% endcapture %}
     {% else %}
-        {% assign locationString = "Online (webinar)" %}
+        {% assign locationString = "Online" %}
     {% endif %}
 
 ## [](#{{event.id}})[{{event.name}} {{event.year}}]({{event.url}})

@@ -21,7 +21,7 @@
         {% if event.city %}
             <td>{{event.city}}, {{event.country.name}} <img src="images/flags/{{event.country.flag}}.gif"/></td>
         {% else %}
-            <td>Online (webinar)</td>
+            <td>Online</td>
         {% endif %}
     </tr>
     <tr>
