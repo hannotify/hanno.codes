@@ -1,3 +1,20 @@
+- id: j-fall-2020
+  name: J-Fall
+  year: 2020
+  country: 
+    flag: nl
+    name: The Netherlands
+  url: //www.jfall.nl
+  dateStart: 03-11-2020
+  dateEnd: 06-11-2010
+  appearances:
+    - id: jepardy
+      sessionPageUrl:
+      videoUrl: 
+      slidesUrl: 
+      githubUrl: 
+      photos: 
+
 - id: all-the-talks-2020
   name: All The Talks
   year: 2020

@@ -1,3 +1,9 @@
+- id: jepardy
+  title: JEPardy!
+  type: ignite
+  description: | 
+    This... is... JEPardy! In this special edition of America's favorite quiz show, the contestants will match various Java Enhancement Proposals (JEPs) to their proper descriptions. Instead of money, something far better can be won here today: improvements on their ready knowledge and understanding of the JEPs that drive the innovation in our favorite programming language.
+
 - id: will-git-be-around-forever-a-list-of-possible-successors
   title: Will Git Be Around Forever? A List of Possible Successors
   type: regular
