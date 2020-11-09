@@ -1,3 +1,17 @@
+- id: jlove-2020
+  name: jLove
+  year: 2020
+  url: https//jlove.konfy.care
+  dateStart: 04-12-2020
+  dateEnd: 05-12-2020
+  appearances:
+    - id: when-music-and-software-come-together
+      sessionPageUrl: 
+      videoUrl: 
+      slidesUrl: 
+      githubUrl: 
+      photos: 
+
 - id: j-fall-2020
   name: J-Fall
   year: 2020
@@ -6,7 +20,7 @@
     name: The Netherlands
   url: //www.jfall.nl
   dateStart: 03-11-2020
-  dateEnd: 06-11-2010
+  dateEnd: 06-11-2020
   appearances:
     - id: jepardy
       sessionPageUrl: https://jfall.nl/sessions/ignite-sessions/
