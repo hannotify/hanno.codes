@@ -6,16 +6,16 @@
   dateEnd: 05-12-2020
   appearances:
     - id: when-music-and-software-come-together
-      sessionPageUrl: 
-      videoUrl: 
-      slidesUrl: 
-      githubUrl: 
-      photos: 
+      sessionPageUrl: https://jlove.konfy.care/schedule-day-1/
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
 
 - id: j-fall-2020
   name: J-Fall
   year: 2020
-  country: 
+  country:
     flag: nl
     name: The Netherlands
   url: //www.jfall.nl
@@ -24,10 +24,10 @@
   appearances:
     - id: jepardy
       sessionPageUrl: https://jfall.nl/sessions/ignite-sessions/
-      videoUrl: 
-      slidesUrl: 
-      githubUrl: 
-      photos: 
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
 
 - id: all-the-talks-2020
   name: All The Talks
@@ -36,40 +36,40 @@
   dateStart: 15-04-2020
   appearances:
     - id: when-music-and-software-come-together
-      sessionPageUrl: 
+      sessionPageUrl:
       videoUrl: https://youtu.be/uKtXbWDfbNA
-      githubUrl: 
+      githubUrl:
 
 - id: dotnetsaturday-2020
   name: DotNed Saturday
   year: 2020
-  country: 
+  country:
     flag: nl
     name: Netherlands
   city: Veenendaal
-  venue: 
+  venue:
     name: Info Support
     latitude: 52.0410694
     longitude: 5.5327524
   url: https://dotnedsaturday.nl
   dateStart: 25-01-2020
-  dateEnd: 
+  dateEnd:
   appearances:
     - id: when-music-and-software-come-together
       sessionPageUrl: https://dotnedsaturday.nl/sessions/keynote-muziek-en-software-zijn-overal-een-muzikale-reis-door-software-ontwikkeling/
-      videoUrl: 
-      slidesUrl: 
-      githubUrl: 
-      photos: 
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
 
 - id: devoxx-2019
   name: Devoxx
   year: 2019
-  country: 
+  country:
     flag: be
     name: Belgium
   city: Antwerp
-  venue: 
+  venue:
     name: Kinepolis
     latitude: 51.2459082
     longitude: 4.4140204
@@ -80,44 +80,44 @@
     - id: the-soft-side-of-software-development
       sessionPageUrl: https://devoxx.be/talk/?id=19709
       videoUrl: https://youtu.be/Clo60O-EfjE
-      githubUrl:   
+      githubUrl:
     - id: these-songs-would-make-some-great-code-comments
       sessionPageUrl: https://devoxx.be/talk/?id=19708
-      videoUrl: 
-      slidesUrl: 
-      githubUrl: 
-      photos: 
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
 
 - id: j-fall-2019
   name: J-Fall
   year: 2019
-  country: 
+  country:
     flag: nl
     name: The Netherlands
   city: Ede
-  venue: 
+  venue:
     name: Pathé
     latitude: 52.01577007972178
     longitude: 5.64583211559008
   url: //www.jfall.nl
   dateStart: 31-10-2019
-  dateEnd: 
+  dateEnd:
   appearances:
     - id: beware-of-survivorship-bias
       sessionPageUrl: https://jfall.nl/sessions/beware-of-survivorship-bias/
-      videoUrl: 
-      slidesUrl: https://www.slideshare.net/HannoEmbregts/beware-of-survivorship-bias-conference-talk-at-jfall-2019 
-      githubUrl: 
-      photos: 
+      videoUrl:
+      slidesUrl: https://www.slideshare.net/HannoEmbregts/beware-of-survivorship-bias-conference-talk-at-jfall-2019
+      githubUrl:
+      photos:
 
 - id: voxxed-days-athens-2019
   name: Voxxed Days Athens
   year: 2019
-  country: 
+  country:
     flag: gr
     name: Greece
   city: Athens
-  venue: 
+  venue:
     name: Technopolis
     latitude: 37.9777818
     longitude: 23.7114221
@@ -129,40 +129,40 @@
       sessionPageUrl: https://voxxeddays.com/athens/will-git-be-around-forever-a-list-of-possible-successors/
       videoUrl: https://youtu.be/yBAWZD-Cxcs
       slidesUrl: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-a-list-of-possible-successors
-      githubUrl: 
-      photos: 
+      githubUrl:
+      photos:
 
 - id: 010-dev-2019
   name: 010DEV Meetup
   year: 2019
   occasion: Joy of Coding 2019 pre-party
-  country: 
+  country:
     flag: nl
     name: The Netherlands
   city: Rotterdam
-  venue: 
+  venue:
     name: Locus Publicus
     latitude: 51.9229314
     longitude: 4.4960851
   url: https://www.meetup.com/010DEV
   dateStart: 23-05-2019
-  dateEnd: 
+  dateEnd:
   appearances:
     - id: these-songs-would-make-some-great-code-comments
       sessionPageUrl: https://www.meetup.com/010DEV/events/259440243/
-      videoUrl: 
+      videoUrl:
       slidesUrl: https://docs.google.com/presentation/d/e/2PACX-1vQR31q9KQ2XdUg4gV451jZXfVXJa822mPIor25SavdyC1NJm-sA-BrM6a2fi6JQRvN3fefD5_y1h3k7/pub?start=false&loop=false&delayms=30000#slide=id.p
-      githubUrl: 
-      photos: 
+      githubUrl:
+      photos:
 
 - id: voxxed-days-bucharest-2019
   name: Voxxed Days Bucharest
   year: 2019
-  country: 
+  country:
     flag: ro
     name: Romania
   city: Bucharest
-  venue: 
+  venue:
     name: Sheraton
     latitude: 44.4464349
     longitude: 26.0967259
@@ -175,7 +175,7 @@
       videoUrl: https://youtu.be/THgFc9pwyJ0
       slidesUrl: https://www.slidgiteshare.net/HannoEmbregts/entering-the-fourth-dimension-of-ocr-with-tesseract-talk-from-voxxed-days-bucharest-2019
       githubUrl: https://github.com/hannotify/tesseract-tess4j-quickstart
-      photos: 
+      photos:
 
 - id: luxoft-technology-series-2019
   name: Luxoft Technology Series
@@ -185,17 +185,17 @@
   appearances:
     - id: the-soft-side-of-software-development
       sessionPageUrl: https://career.luxoft.com/lts-luxoft-technology-series/
-      videoUrl: 
-      githubUrl: 
+      videoUrl:
+      githubUrl:
 
 - id: devoxx-2018
   name: Devoxx
   year: 2018
-  country: 
+  country:
     flag: be
     name: Belgium
   city: Antwerp
-  venue: 
+  venue:
     name: Kinepolis
     latitude: 51.2459082
     longitude: 4.4140204
@@ -205,41 +205,41 @@
   appearances:
     - id: these-songs-would-make-some-great-code-comments
       sessionPageUrl: https://dvbe18.confinabox.com/talk/GMA-9130/These_Songs_Would_Make_Some_Great_Code_Comments
-      videoUrl: 
-      slidesUrl: 
-      githubUrl: 
-      photos: 
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
 
 - id: j-fall-2018
   name: J-Fall
   year: 2018
-  country: 
+  country:
     flag: nl
     name: The Netherlands
   city: Ede
-  venue: 
+  venue:
     name: Pathé
     latitude: 52.01577007972178
     longitude: 5.64583211559008
   url: //www.jfall.nl
   dateStart: 08-11-2018
-  dateEnd: 
+  dateEnd:
   appearances:
     - id: these-songs-would-make-some-great-code-comments
       sessionPageUrl: https://jfall.nl/sessions/ignite-sessions/
       videoUrl: https://youtu.be/eq4v9P6kNOA?t=136
-      slidesUrl: 
-      githubUrl: 
-      photos: 
+      slidesUrl:
+      githubUrl:
+      photos:
 
 - id: geecon-2018
   name: GeeCON
   year: 2018
-  country: 
+  country:
     flag: pl
     name: Poland
   city: Kraków
-  venue: 
+  venue:
     name: Multikino Kraków
     latitude: 50.088986
     longitude: 19.9845599
@@ -251,39 +251,39 @@
       sessionPageUrl: https://2018.geecon.org/speakers/info.html?id=393
       videoUrl: https://youtu.be/7lVVkasTQz4
       slidesUrl: https://www.slideshare.net/HannoEmbregts/qwerty-or-dvorak-debunking-the-keyboard-layout-myths-from-geecon-2018
-      githubUrl: 
-      photos: 
+      githubUrl:
+      photos:
 
 - id: teqnation-2018
   name: TEQNation
   year: 2018
-  country: 
+  country:
     flag: nl
     name: Netherlands
   city: Utrecht
-  venue: 
+  venue:
     name: Jaarbeurs
     latitude: 52.0882467
     longitude: 5.1054394
   url: //teqnation.nl
   dateStart: 26-04-2018
-  dateEnd: 
+  dateEnd:
   appearances:
     - id: qwerty-or-dvorak-debunking-the-keyboard-layout-myths
       sessionPageUrl: https://teqnation.nl/sessions/quickie-qwerty-or-dvorak-debunking-the-keyboard-layout-myths/
-      videoUrl: 
-      slidesUrl: 
-      githubUrl: 
-      photos: 
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
 
 - id: voxxed-days-vienna-2018
   name: Voxxed Days Vienna
   year: 2018
-  country: 
+  country:
     flag: at
     name: Austria
   city: Vienna
-  venue: 
+  venue:
     name: Cineplexx Wienerberg
     latitude: 48.168045
     longitude: 16.3428712
@@ -301,17 +301,17 @@
 - id: jvmcon-2018
   name: JVMCon
   year: 2018
-  country: 
+  country:
     flag: nl
     name: The Netherlands
   city: Ede
-  venue: 
+  venue:
     name: CineMec
     latitude: 52.01577007972178
     longitude: 5.64583211559008
   url: //www.jvmcon.com
   dateStart: 30-01-2018
-  dateEnd: 
+  dateEnd:
   appearances:
     - id: building-a-spring-boot-application-ask-the-audience
       sessionPageUrl: //www.jvmcon.com/#/sessions
@@ -323,11 +323,11 @@
 - id: devoxx-2017
   name: Devoxx
   year: 2017
-  country: 
+  country:
     flag: be
     name: Belgium
   city: Antwerp
-  venue: 
+  venue:
     name: Kinepolis
     latitude: 52.01577007972178
     longitude: 5.64583211559008
@@ -339,14 +339,14 @@
       sessionPageUrl: //cfp.devoxx.be/2017/talk/MLV-7954/QWERTY_or_DVORAK%3F_Debunking_the_Keyboard_Layout_Myths
       videoUrl: //youtu.be/blRn9U9Fapg
       slidesUrl: //www.slideshare.net/HannoEmbregts/qwerty-or-dvorak-debunking-the-keyboard-layout-myths
-      githubUrl: 
+      githubUrl:
       photos:
     - id: slide-deck-version-management-the-good-the-bad-and-the-ugly
       sessionPageUrl: //cfp.devoxx.be/2017/talk/KTK-2683/Slide_Deck_Version_Management:_The_Good,_The_Bad_and_The_Ugly
-      videoUrl: 
+      videoUrl:
       slidesUrl: //docs.google.com/presentation/d/e/2PACX-1vTxe6reiny3WofqmNVUfZXs6T5U9ordw6o7kgDWURYMK5SJYZ9p45SyYug7vrIqKNRcskKD4IRj-GtA/pub?start=false&loop=false&delayms=3000
       githubUrl:
-      photos:      
+      photos:
 
 - id: luxoft-technology-series-2017
   name: Luxoft Technology Series
@@ -362,39 +362,39 @@
 - id: j-fall-2017
   name: J-Fall
   year: 2017
-  country: 
+  country:
     flag: nl
     name: The Netherlands
   city: Ede
-  venue: 
+  venue:
     name: CineMec
     latitude: 51.2452257
     longitude: 4.4156213
   url: //www.jfall.nl
   dateStart: 02-11-2017
-  dateEnd: 
+  dateEnd:
   appearances:
     - id: building-a-spring-boot-application-ask-the-audience
       sessionPageUrl: //jfall.nl/sessions/building-spring-boot-application-ask-audience/
       videoUrl: https://youtu.be/2uqvSlDaLtg
       slidesUrl:
-      githubUrl: 
+      githubUrl:
       photos:
     - id: slide-deck-version-management-the-good-the-bad-and-the-ugly
       sessionPageUrl: //jfall.nl/sessions/slide-deck-version-management-good-bad-ugly/
-      videoUrl: 
+      videoUrl:
       slidesUrl: //docs.google.com/presentation/d/e/2PACX-1vTxe6reiny3WofqmNVUfZXs6T5U9ordw6o7kgDWURYMK5SJYZ9p45SyYug7vrIqKNRcskKD4IRj-GtA/pub?start=false&loop=false&delayms=3000
       githubUrl:
-      photos:    
+      photos:
 
 - id: jbcnconf-2017
   name: JBCNConf
   year: 2017
-  country: 
+  country:
     flag: es
     name: Spain
   city: Barcelona
-  venue: 
+  venue:
     name: Cinema Filmax Gran Via 2
     latitude: 41.3581629
     longitude: 2.1265076
@@ -407,16 +407,16 @@
       videoUrl: //youtu.be/iywXl48dJI4
       slidesUrl:
       githubUrl: //github.com/hannotify/spring-boot-beer-jbcnconf
-      photos:      
+      photos:
 
 - id: javaland-2017
   name: JavaLand
   year: 2017
-  country: 
+  country:
     flag: de
     name: Germany
   city: Brühl
-  venue: 
+  venue:
     name: Phantasialand
     latitude: 50.7993531
     longitude: 6.8786675
@@ -426,10 +426,10 @@
   appearances:
     - id: building-a-spring-boot-application-ask-the-audience
       sessionPageUrl: //programm.javaland.eu/2017/talk.html#talk?talkId=529558
-      videoUrl: 
+      videoUrl:
       slidesUrl: //www.slideshare.net/HannoEmbregts/building-a-spring-boot-application-ask-the-audience-from-javaland-2017
-      githubUrl: 
-      photos:   
+      githubUrl:
+      photos:
 
 - id: luxoft-technology-series-2016
   name: Luxoft Technology Series
@@ -440,16 +440,16 @@
     - id: migrating-25k-lines-of-ant-scripting-to-gradle
       sessionPageUrl: https://career.luxoft.com/lts-luxoft-technology-series/migrating-25k-lines-of-ant-scripting-to-gradle/
       videoUrl: https://youtu.be/DojIfbqxUJM
-      githubUrl: 
+      githubUrl:
 
 - id: devoxx-uk-2016
   name: Devoxx UK
   year: 2016
-  country: 
+  country:
     flag: gb
     name: United Kingdom
   city: London
-  venue: 
+  venue:
     name: Business Design Centre
     latitude: 51.5358885
     longitude: -0.1091954
@@ -458,16 +458,16 @@
   dateEnd: 10-06-2016
   appearances:
     - id: migrating-25k-lines-of-ant-scripting-to-gradle
-      sessionPageUrl: 
+      sessionPageUrl:
       videoUrl: //youtu.be/7U1n5Sp0eS4
       slidesUrl: //www.slideshare.net/HannoEmbregts/migrating-25k-lines-of-ant-scripting-to-gradle-62891474
-      githubUrl: 
-      photos: 
+      githubUrl:
+      photos:
 
 - id: jprime-2016
   name: jPrime
   year: 2016
-  country: 
+  country:
     flag: bg
     name: Bulgaria
   city: Sofia
@@ -483,5 +483,5 @@
       sessionPageUrl: //jprime.io/nav/article/61
       videoUrl: //youtu.be/FEEiuyrAa6Q
       slidesUrl: //www.slideshare.net/HannoEmbregts/migrating-25k-lines-of-ant-scripting-to-gradle
-      githubUrl: 
-      photos: 
+      githubUrl:
+      photos:
