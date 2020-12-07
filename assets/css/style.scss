@@ -3,7 +3,7 @@
 
 @import "{{ site.theme }}";
 
-@media print, screen and (max-height: 920px) {
+@media print, screen and (max-height: 1080px) {
     footer {
         text-align: center;
         margin: 20px auto;
