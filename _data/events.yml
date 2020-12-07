@@ -1,3 +1,31 @@
+- id: javaland-2021
+  name: JavaLand
+  year: 2021
+  country:
+    flag: de
+    name: Germany
+  city: Brühl
+  venue:
+    name: Phantasialand
+    latitude: 50.7993531
+    longitude: 6.8786675
+  url: https://www.javaland.eu
+  dateStart: 16-03-2021
+  dateEnd: 18-03-2021
+  appearances:
+    - id: pattern-matching-from-small-enhancement-to-major-feature
+      sessionPageUrl: 
+      videoUrl:
+      slidesUrl: 
+      githubUrl:
+      photos:
+    - id: beware-of-survivorship-bias
+      sessionPageUrl: 
+      videoUrl:
+      slidesUrl: 
+      githubUrl:
+      photos:
+
 - id: jlove-2020
   name: jLove
   year: 2020
@@ -291,7 +319,7 @@
   dateStart: 12-03-2018
   dateEnd: 13-03-2018
   appearances:
-    - id: building-a-spring-boot-2-application-ask-the-audience
+    - id: building-a-spring-boot-application-ask-the-audience
       sessionPageUrl: https://voxxeddaysvienna2018.sched.com/event/DkzY/building-a-spring-boot-2-application-ask-the-audience
       videoUrl: https://youtu.be/GLuOr-5bXG0
       slidesUrl: https://www.slideshare.net/HannoEmbregts/building-a-spring-boot-2-application-ask-the-audience-from-voxxed-days-vienna-2018-90505063

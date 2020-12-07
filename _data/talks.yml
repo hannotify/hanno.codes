@@ -1,3 +1,13 @@
+- id: pattern-matching-from-small-enhancement-to-major-feature
+  title: Pattern Matching&#58; From Small Enhancement To Major Language Feature
+  type: regular
+  description: | 
+    At first it seemed to be just a small enhancement: the addition of "Pattern Matching for instanceof" (JEP 305) in Java 14. No more unnecessary casting after an `instanceof`, that ought to save us a few seconds a day! However, upon further investigation you'll quickly discover that pattern matching is not just an enhancement, but rather a vital puzzle piece in the grander scheme of things.
+
+    Why were switch expressions added to Java, for example? To make them support pattern matching in a later release! And why did Java 14 bring us records and will Java 15 contain sealed types? Because they could work really well with pattern matching in a later release! These new concepts are the foundation upon which advanced pattern matching features will be built.
+
+    So attend this session to get all caught up! You'll hear about type patterns, deconstruction patterns, nested patterns and even how pattern matching could improve serialization in the future. Live coding included, of course!
+
 - id: jepardy
   title: JEPardy!
   type: ignite
@@ -16,8 +26,8 @@
 
     So attend this session if you're excited about the future of version control and if you want to have a shot at beating even (!) the early adopters. Now if it turns out I was right, remember that you heard it here first. 😀
 
-- id: building-a-spring-boot-2-application-ask-the-audience
-  title: Building a Spring Boot 2 Application&#58; Ask the Audience!
+- id: building-a-spring-boot-application-ask-the-audience
+  title: Building a Spring Boot Application&#58; Ask the Audience!
   type: regular
   description: | 
     Spring Boot makes it easy to create stand-alone Spring-based applications that you can ‘just run’. It uses a ‘convention over configuration’ approach to get you up and running in no-time. And with the release of Spring Boot 2 in February 2018 all Spring 5.0 features will be available for Spring Boot users, as well as Kotlin support. In this session I will demonstrate this by live-coding a Spring Boot 2 application that will ‘just work’.
@@ -41,20 +51,6 @@
     During this session, I will introduce Tesseract, its pros and cons and how & when to use it. I will compare it to its competitors and I will explain why and how we used it in a case study. To top it off I will live-code a Java application that uses Tesseract and Tess4J to process some example images, so you'll be able to assess its accuracy for yourself.
 
     Now in geometry, a 'tesseract' is the four-dimensional analog of a cube. So will Tesseract live up to its name and help your project to 'enter the fourth dimension'? Attend this session and find out!
-
-- id: building-a-spring-boot-application-ask-the-audience
-  title: Building a Spring Boot Application&#58; Ask the Audience!
-  type: regular
-  description: | 
-    Spring Boot makes it easy to create stand-alone Spring-based applications that you can ‘just run’. It uses a ‘convention over configuration’ approach to get you up and running in no-time, while offering all Spring features that you have grown fond of in the past years. In this session this is demonstrated by live-coding a Spring Boot application that will ‘just work’.
-    
-    But audience beware, this is not your standard ‘live-coding session’. Attendees will have a vital say in the session’s content by defining the application’s requirements. Do you want a simple task planner? Or track your favourite movies? It's up to you! Should it use MongoDB or Couchbase? You decide! Do you want an Angular front-end with a RESTful back-end or do you prefer a classic web app with Thymeleaf templates? It's your call! Seriously.
-    
-    During the session you get to make these decisions by participating in an online vote. And you will discover that Spring Boot is up to the task no matter what choices you make.
-    
-    So what are you waiting for? Bring your own device, help shape the application that we're building and learn lots about Spring Boot in the process.
-    
-    This session is intended for Java software engineers with an interest in Spring Boot. Some Spring experience could come in handy, but is not strictly necessary. After this session, you will know enough to start your own Spring Boot project.
 
 - id: migrating-25k-lines-of-ant-scripting-to-gradle
   title: Migrating 25K lines of Ant scripting to Gradle

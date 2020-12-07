@@ -51,15 +51,17 @@
     <tr>
         <td><strong>Talk</strong></td>
         <td><a href="talks#{{talk.id}}">{{talk.title}}</a></td>
+    </tr>
+
         {% if talk.cospeakers != null and talk.cospeakers.size > 0 %}
             {% for cospeaker in talk.cospeakers %}
-            </tr>
             <tr>
-            <td><strong>Co-speaker</strong></td>
-            <td><a href="{{cospeaker.twitterUrl}}" target="_blank">{{cospeaker.name}}</a></td>
+                <td><strong>Co-speaker</strong></td>
+                <td><a href="{{cospeaker.twitterUrl}}" target="_blank">{{cospeaker.name}}</a></td>
             </tr>
             {% endfor %}
         {% endif %}
+
         {% if appearance.sessionPageUrl%}
             <tr>
                 <td>&nbsp;</td>
@@ -68,7 +70,6 @@
                 </td>
             </tr>
         {% endif %}
-    </tr>
         {% endfor %}
     {% else %}
     <tr>
