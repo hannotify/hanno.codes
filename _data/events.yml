@@ -14,13 +14,13 @@
   dateEnd: 18-03-2021
   appearances:
     - id: pattern-matching-from-small-enhancement-to-major-feature
-      sessionPageUrl: 
+      sessionPageUrl: https://programm.javaland.eu/2021/#/scheduledEvent/606394
       videoUrl:
       slidesUrl: 
       githubUrl:
       photos:
     - id: beware-of-survivorship-bias
-      sessionPageUrl: 
+      sessionPageUrl: https://programm.javaland.eu/2021/#/scheduledEvent/606407
       videoUrl:
       slidesUrl: 
       githubUrl:
@@ -52,7 +52,7 @@
   appearances:
     - id: jepardy
       sessionPageUrl: https://jfall.nl/sessions/ignite-sessions/
-      videoUrl:
+      videoUrl: https://youtu.be/qlm-OPx4oNg?t=295
       slidesUrl:
       githubUrl:
       photos:
