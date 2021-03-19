@@ -11,7 +11,7 @@
 {% endfor %}
 
 {% if upcomingEvents != null and upcomingEvents.size > 0 %}
-# [](#upcoming-events)Upcoming events ({{upcomingEvents.size}})
+# [](#upcoming-events)Upcoming ({{upcomingEvents.size}})
 {% endif %}
 
 {% for event in upcomingEvents %}

@@ -10,10 +10,20 @@
     {% endif %}
 {% endfor %}
 
-# [](#upcoming-events)Past events ({{ pastEvents.size }})
+{% assign pastEventsByYear = pastEvents | group_by: "year" %}
 
-{% for event in pastEvents %}
+{% for eventByYear in pastEventsByYear %}
+
+# [](#{{eventByYear.name}}){{eventByYear.name}} ({{eventByYear.items.size}})
+
+    {% for event in eventByYear.items %}
+
+    {% assign year = eventByYear.name | plus: 0 %}
+        {% if year > 2017 %}
 ## [](#{{event.id}})[{{event.name}} {{event.year}}]({{event.url}})
+        {% else %}
+#### [](#{{event.id}})[{{event.name}} {{event.year}}]({{event.url}})
+        {% endif %}
 
 <table>
     <tr>
@@ -66,4 +76,5 @@
         {% endif %}  
     {% endfor %}
 </table>
+    {% endfor %}
 {% endfor %}
