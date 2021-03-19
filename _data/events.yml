@@ -1,14 +1,20 @@
+- id: teqnation-2021
+  name: TEQNation
+  year: 2021
+  url: https://conference.teqnation.com/
+  dateStart: 10-05-2021
+  dateEnd: 12-05-2021
+  appearances:
+    - id: these-songs-would-make-some-great-code-comments
+      sessionPageUrl: 
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+
 - id: javaland-2021
   name: JavaLand
   year: 2021
-  country:
-    flag: de
-    name: Germany
-  city: Brühl
-  venue:
-    name: Phantasialand
-    latitude: 50.7993531
-    longitude: 6.8786675
   url: https://www.javaland.eu
   dateStart: 16-03-2021
   dateEnd: 18-03-2021
@@ -23,7 +29,7 @@
 - id: jlove-2020
   name: jLove
   year: 2020
-  url: https//jlove.konfy.care
+  url: https://jlove.konfy.care
   dateStart: 04-12-2020
   dateEnd: 05-12-2020
   appearances:
