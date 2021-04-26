@@ -6,7 +6,7 @@
   dateEnd: 12-05-2021
   appearances:
     - id: these-songs-would-make-some-great-code-comments
-      sessionPageUrl: 
+      sessionPageUrl: https://conference.teqnation.com/timetable-2021/
       videoUrl:
       slidesUrl:
       githubUrl:
@@ -22,8 +22,8 @@
     - id: pattern-matching-from-small-enhancement-to-major-feature
       sessionPageUrl: https://programm.javaland.eu/2021/#/scheduledEvent/606394
       videoUrl:
-      slidesUrl: 
-      githubUrl:
+      slidesUrl: https://www.slideshare.net/HannoEmbregts/pattern-matching-from-small-enhancement-to-major-feature-talk-from-javaland-2021
+      githubUrl: https://github.com/hannotify/pattern-matching-music-store
       photos:
 
 - id: jlove-2020
@@ -35,7 +35,7 @@
   appearances:
     - id: when-music-and-software-come-together
       sessionPageUrl: https://jlove.konfy.care/schedule-day-1/
-      videoUrl:
+      videoUrl: https://youtu.be/oTs-ZihE798
       slidesUrl:
       githubUrl:
       photos:
