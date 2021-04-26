@@ -1,3 +1,17 @@
+- id: codemotion-2021
+  name: CodeMotion
+  year: 2021
+  url: https://events.codemotion.com/conferences/online/2021/online-tech-conference-spring
+  dateStart: 18-05-2021
+  dateEnd: 20-05-2021
+  appearances:
+    - id: when-music-and-software-come-together
+      sessionPageUrl: https://conference.teqnation.com/timetable-2021/
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+
 - id: teqnation-2021
   name: TEQNation
   year: 2021
