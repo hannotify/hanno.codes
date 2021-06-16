@@ -1,3 +1,17 @@
+- id: jlove-2021
+  name: jLove
+  year: 2021
+  url: https://jlove.konfy.care
+  dateStart: 25-06-2021
+  dateEnd: 26-06-2021
+  appearances:
+    - id: pattern-matching-small-enhancement-or-major-feature
+      sessionPageUrl: https://embed.emamo.com/event/jlove-2021/s/pattern-matching-small-enhancement-or-major-feature-aZVZRa
+      videoUrl: 
+      slidesUrl:
+      githubUrl:
+      photos:
+
 - id: codemotion-2021
   name: CodeMotion
   year: 2021
@@ -33,7 +47,7 @@
   dateStart: 16-03-2021
   dateEnd: 18-03-2021
   appearances:
-    - id: pattern-matching-from-small-enhancement-to-major-feature
+    - id: pattern-matching-small-enhancement-or-major-feature
       sessionPageUrl: https://programm.javaland.eu/2021/#/scheduledEvent/606394
       videoUrl:
       slidesUrl: https://www.slideshare.net/HannoEmbregts/pattern-matching-from-small-enhancement-to-major-feature-talk-from-javaland-2021
@@ -128,7 +142,7 @@
       videoUrl:
       slidesUrl:
       githubUrl:
-      photos:
+      photos: https://www.flickr.com/photos/bejug/albums
 
 - id: j-fall-2019
   name: J-Fall
@@ -172,7 +186,7 @@
       videoUrl: https://youtu.be/yBAWZD-Cxcs
       slidesUrl: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-a-list-of-possible-successors
       githubUrl:
-      photos:
+      photos: https://www.flickr.com/photos/voxxedathens/albums/72157709060546536
 
 - id: 010-dev-2019
   name: 010DEV Meetup
