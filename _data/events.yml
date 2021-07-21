@@ -1,3 +1,17 @@
+- id: jcon-2021
+  name: JCON-ONLINE
+  year: 2021
+  url: https://jcon.one/
+  dateStart: 05-10-2021
+  dateEnd: 08-10-2021
+  appearances:
+    - id: will-git-be-around-forever-a-list-of-possible-successors
+      sessionPageUrl: https://jcon.sched.com/?iframe=yes&w=100%&sidebar=yes&bg=no#
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+
 - id: jlove-2021
   name: jLove
   year: 2021
@@ -7,7 +21,7 @@
   appearances:
     - id: pattern-matching-small-enhancement-or-major-feature
       sessionPageUrl: https://embed.emamo.com/event/jlove-2021/s/pattern-matching-small-enhancement-or-major-feature-aZVZRa
-      videoUrl: 
+      videoUrl:
       slidesUrl:
       githubUrl:
       photos:
