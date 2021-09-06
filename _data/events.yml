@@ -17,6 +17,14 @@
   year: 2021
   url: https://www.meetup.com/nl-NL/Utrecht-Java-User-Group
   dateStart: 20-09-2021
+  country:
+    flag: nl
+    name: The Netherlands
+  city: Nieuwegein
+  venue:
+    name: CodeSquad
+    latitude: 52.026640
+    longitude: 5.084668
   appearances:
     - id: will-git-be-around-forever-a-list-of-possible-successors
       sessionPageUrl: https://www.meetup.com/nl-NL/Utrecht-Java-User-Group/events/280570879/
