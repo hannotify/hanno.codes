@@ -12,6 +12,19 @@
       githubUrl:
       photos:
 
+- id: utrechtjug-2021
+  name: UtrechtJUG Meetup
+  year: 2021
+  url: https://www.meetup.com/nl-NL/Utrecht-Java-User-Group
+  dateStart: 20-09-2021
+  appearances:
+    - id: will-git-be-around-forever-a-list-of-possible-successors
+      sessionPageUrl: https://www.meetup.com/nl-NL/Utrecht-Java-User-Group/events/280570879/
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+
 - id: jlove-2021
   name: jLove
   year: 2021
