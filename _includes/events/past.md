@@ -5,7 +5,7 @@
 {% for event in site.data.events %}
     {% capture eventTime %}{{event.dateStart | date: '%s'}}{% endcapture %}
 
-    {% if nowUnix > eventTime %}
+    {% if event.dateStart and nowUnix > eventTime %}
         {% assign pastEvents = pastEvents | push: event %}
     {% endif %}
 {% endfor %}
@@ -19,7 +19,7 @@
     {% for event in eventByYear.items %}
 
     {% assign year = eventByYear.name | plus: 0 %}
-        {% if year > 2017 %}
+        {% if year > 2018 %}
 ## [](#{{event.id}})[{{event.name}} {{event.year}}]({{event.url}})
         {% else %}
 #### [](#{{event.id}})[{{event.name}} {{event.year}}]({{event.url}})

@@ -2,10 +2,10 @@
 {% capture nowUnix %}{{'now' | date: '%s'}}{% endcapture %}
 {% assign upcomingEvents = "" | split: "" %}
 
-{% for event in site.data.events %}
+{% for event in site.data.events | sort: 'date' | reverse %}
     {% capture eventTime %}{{event.dateStart | date: '%s'}}{% endcapture %}
 
-    {% if nowUnix < eventTime %}
+    {% if nowUnix < eventTime or eventTime == '' %}
         {% assign upcomingEvents = upcomingEvents | push: event %}
     {% endif %}
 {% endfor %}
@@ -17,9 +17,12 @@
 {% for event in upcomingEvents %}
     {% if event.dateEnd %}
         {% capture dateString %}{{ event.dateStart | date: "%B %e, %Y" }} - {{ event.dateEnd | date: "%B %e, %Y" }}{% endcapture %}
-    {% else %}
+    {% elsif event.dateStart %}
         {% assign dateString = event.dateStart | date: "%B %e, %Y" %}
+    {% else %}
+        {% assign dateString = "To be announced" %}
     {% endif %}
+
 
     {% if event.city %}
         {% capture locationString %}{{event.city}}, {{event.country.name}} <img src="images/flags/{{event.country.flag}}.gif"/>{% endcapture %}
