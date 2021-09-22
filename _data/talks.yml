@@ -1,3 +1,13 @@
+- id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
+  title: 11 Crazy Things I Didn't Know You Could Do With Java Until I Got My Java 11 Certification
+  type: lightning
+  description: |
+    This summer, I got my Java 11 certification. I expected it to be a breeze, because I've been a Java developer for 14 years now and surely I should have seen it all by now. Boy, was I wrong! I came across lots of things that I didn't even know were possible with Java.
+
+    Now this can either mean that I have been a terrible developer for a painfully long time, or that these things are just a bit lesser known and in fact very interesting to hear about.
+
+    I'm hoping the latter is actually the case, so in this talk I will take 16 minutes to go through 11 things that took me 14 years to learn. Which means that you have the chance to learn these things 460215 times faster than I did! 🚀
+
 - id: what-stairway-to-heaven-can-teach-us-about-software-development
   title: What "Stairway to Heaven" Can Teach Us About Software Development
   type: lightning

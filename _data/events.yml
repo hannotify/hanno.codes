@@ -15,7 +15,7 @@
     - id: will-git-be-around-forever-a-list-of-possible-successors
       sessionPageUrl: https://www.meetup.com/nl-NL/Utrecht-Java-User-Group/events/280570879/
       videoUrl:
-      slidesUrl:
+      slidesUrl: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-a-list-of-possible-successors-at-utrechtjug
       githubUrl:
       photos:
 
@@ -30,6 +30,28 @@
       sessionPageUrl: https://jcon.sched.com/?iframe=yes&w=100%&sidebar=yes&bg=no#
       videoUrl:
       slidesUrl:
+      githubUrl:
+      photos:
+
+- id: j-fall-2021
+  name: J-Fall
+  year: 2021
+  country:
+    flag: nl
+    name: The Netherlands
+  city: Ede
+  venue:
+    name: Pathé
+    latitude: 52.01577007972178
+    longitude: 5.64583211559008
+  url: https://www.jfall.nl
+  dateStart: 04-11-2021
+  dateEnd:
+  appearances:
+    - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
+      sessionPageUrl: 
+      videoUrl:
+      slidesUrl: 
       githubUrl:
       photos:
 
