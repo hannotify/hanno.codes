@@ -1,3 +1,18 @@
+
+- id: jcon-2021
+  name: JCON
+  year: 2021
+  url: https://jcon.one/
+  dateStart: 05-10-2021
+  dateEnd: 08-10-2021
+  appearances:
+    - id: will-git-be-around-forever-a-list-of-possible-successors
+      sessionPageUrl: https://jcon.sched.com/?iframe=yes&w=100%&sidebar=yes&bg=no#
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+
 - id: utrechtjug-2021
   name: UtrechtJUG Meetup
   year: 2021
@@ -16,20 +31,6 @@
       sessionPageUrl: https://www.meetup.com/nl-NL/Utrecht-Java-User-Group/events/280570879/
       videoUrl:
       slidesUrl: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-a-list-of-possible-successors-at-utrechtjug
-      githubUrl:
-      photos:
-
-- id: jcon-2021
-  name: JCON
-  year: 2021
-  url: https://jcon.one/
-  dateStart: 05-10-2021
-  dateEnd: 08-10-2021
-  appearances:
-    - id: will-git-be-around-forever-a-list-of-possible-successors
-      sessionPageUrl: https://jcon.sched.com/?iframe=yes&w=100%&sidebar=yes&bg=no#
-      videoUrl:
-      slidesUrl:
       githubUrl:
       photos:
 
@@ -55,6 +56,31 @@
       githubUrl:
       photos:
 
+- id: javazone-2021
+  name: JavaZone
+  year: 2021
+  url: https://2021.javazone.no
+  dateStart: 07-12-2021
+  dateEnd: 09-12-2021
+  country:
+    flag: "no"
+    name: Norway
+  city: Oslo
+  venue:
+    name: Oslo Spektrum
+    latitude: 59.912988
+    longitude: 10.7525537
+  appearances:
+    - id: pattern-matching-small-enhancement-or-major-feature
+      sessionPageUrl: 
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+      cospeakers:
+      - name: Peter Wessels
+        twitterUrl: https://www.twitter.com/PeterWessels
+        
 - id: frontmania-2022
   name: Frontmania
   year: 2022

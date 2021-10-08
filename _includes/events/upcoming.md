@@ -64,7 +64,15 @@
             </tr>
             {% endfor %}
         {% endif %}
-
+        {% if appearance.cospeakers != null and appearance.cospeakers.size > 0 %}
+            {% for cospeaker in appearance.cospeakers %}
+            <tr>
+                <td><strong>Co-speaker</strong></td>
+                <td><a href="{{cospeaker.twitterUrl}}" target="_blank">{{cospeaker.name}}</a></td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+        
         {% if appearance.sessionPageUrl%}
             <tr>
                 <td>&nbsp;</td>
