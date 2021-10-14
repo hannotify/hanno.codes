@@ -3,7 +3,8 @@ layout: post
 author: Hanno Embregts
 title: Congratulations Java, and many happy returns!
 date: 2020-05-23 12:15:43 +0200
-categories: Java
+labels: 
+- java
 ---
 
 Today is Java's 25th birthday! On the 23rd of May 1995 the language was introduced at the SunWorld conference, in a time where desktop applications reigned supreme and the internet was still in its infancy.

@@ -3,6 +3,9 @@ layout: default
 ---
 
 <h1>{{ page.title }}</h1>
-<p>Posted on {{ page.date | date_to_string }} by <strong>{{ page.author }}</strong>.</p>
+
+{% assign post = page %}
+
+{% include posts/post-attribution.md %}
 
 {{ content }}

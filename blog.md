@@ -9,7 +9,7 @@ title: Blog
 
 ## [{{post.title}}]({{post.url}})
 
-<p>{{ post.date | date_to_string }} - {{ post.author }}</p>
+{% include posts/post-attribution.md %}
 
 {{ post.excerpt }}
 
