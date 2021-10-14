@@ -1,12 +1,12 @@
 ---
 layout: post
 author: Hanno Embregts
-title: "Ethics in Software Development"
+title: Ethics in Software Development
 date: 2019-01-10 14:37:43 +0200
-categories: software-development
+categories: Software Development, Ethics
 ---
 
-> I was interviewed by [Peter Kofler](https://www.blogger.com/profile/09597605582212160361) on ethics in software development. He asked me some questions and I answered them as follows. A bit of it is about politics, another bit is about religion, but it is mainly about being a responsible software developer. So this time I mixed my personal and professional opinions. Still, I hope it makes for an interesting read!
+I was interviewed by [Peter Kofler](https://www.blogger.com/profile/09597605582212160361) on ethics in software development. He asked me some questions and I answered them as follows. A bit of it is about politics, another bit is about religion, but it is mainly about being a responsible software developer. So this time I mixed my personal and professional opinions. Still, I hope it makes for an interesting read!
 
 ## Hanno, how did you become a software developer?
 
