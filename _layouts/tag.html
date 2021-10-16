@@ -1,0 +1,9 @@
+---
+layout: default
+---
+
+<h1>Posts labeled '{{ page.tag }}'</h1>
+
+{% for post in site.tags[page.tag] %}
+{% include posts/post-overview.md %}
+{% endfor %}

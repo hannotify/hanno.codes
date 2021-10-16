@@ -1,6 +1,6 @@
 <p>
     Posted on {{ post.date | date_to_string }} by <strong>{{ post.author }}</strong>
-    {% for label in post.labels %}
-        <a href="#"><code>{{ label }}</code></a>
+    {% for tag in post.tags %}
+        <a href="/tags/{{ tag }}"><code>{{ tag }}</code></a>
     {% endfor %}
 </p>

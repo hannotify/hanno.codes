@@ -3,7 +3,7 @@ layout: post
 author: Hanno Embregts
 title: Ethics in Software Development
 date: 2019-01-10 14:37:43 +0200
-labels: 
+tags: 
 - ethics
 - engineering-culture
 ---

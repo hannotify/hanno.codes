@@ -3,7 +3,7 @@ layout: post
 author: Hanno Embregts
 title: Congratulations Java, and many happy returns!
 date: 2020-05-23 12:15:43 +0200
-labels: 
+tags: 
 - java
 ---
 

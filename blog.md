@@ -6,11 +6,5 @@ title: Blog
 # Blog
 
 {% for post in site.posts %}
-
-## [{{post.title}}]({{post.url}})
-
-{% include posts/post-attribution.md %}
-
-{{ post.excerpt }}
-
+{% include posts/post-overview.md %}
 {% endfor %}

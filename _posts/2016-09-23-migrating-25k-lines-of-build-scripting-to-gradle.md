@@ -3,9 +3,9 @@ layout: post
 author: Hanno Embregts
 title: Migrating 25K lines of build scripting to Gradle
 date: 2016-09-23 11:13:29 +0200
-labels: 
+tags: 
 - gradle
-- ci/cd
+- ci-cd
 ---
 
 Software developers are not particularly keen on maintaining build scripts. Sure, they will do their part in making things work and they’ll even have a go at optimizing the most necessary parts. But they prefer to spend their time writing production code using a ‘real language’, because they feel it better supports their desire for maintainability, flexibility and elegance. That old project that’s been gathering dust for ages and relies on thousands lines of Ant code is a case in point.
