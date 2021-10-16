@@ -10,7 +10,7 @@
     {% endif %}
 {% endfor %}
 
-{% if upcomingEvents != null and upcomingEvents.size > 0 %}
+{% if include.includeTitle and upcomingEvents != null and upcomingEvents.size > 0 %}
 # [](#upcoming-events)Upcoming ({{upcomingEvents.size}})
 {% endif %}
 
