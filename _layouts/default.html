@@ -6,6 +6,7 @@
 
 {% seo %}
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link rel="alternate" type="application/rss+xml" title="RSS feed" href="/feed.xml" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 	{% if site.google_analytics and jekyll.environment == 'production' %}
@@ -52,7 +53,7 @@
       <footer>
         <p>
           Twitter: <a href="//twitter.com/hannotify">@hannotify</a><br/>
-          Blog feed: <a href="feed.xml">Atom</a>
+          Blog feed: <a href="/feed.xml">Atom</a>
         </p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/mattgraham">mattgraham</a></small></p>
         <p><small>All content &mdash; Copyright &copy; {{ 'now' | date: "%Y" }} Hanno Embregts</small></p>
