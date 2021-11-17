@@ -3,6 +3,8 @@ layout: post
 author: Hanno Embregts
 title: Explaining software development to a class of 6-year olds
 date: 17-11-2021 20:07:21 +0200
+image: /images/blog/bee-bot.jpg
+
 tags: 
 - teaching
 - software-development

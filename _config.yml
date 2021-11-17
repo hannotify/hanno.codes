@@ -23,6 +23,10 @@ twitter_username: hannotify
 github_username: hannotify
 google_analytics: UA-109857788-1
 
+twitter:
+  username: hannotify
+  
+
 # Git settings
 repository: hannotify/hannotify.github.io
 
