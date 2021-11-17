@@ -17,7 +17,7 @@ title: Hanno Embregts
 description: >- # this means to ignore newlines until "baseurl:"
   Java Developer &amp; Speaker, strong with the Force
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://hanno.codes" # the base hostname & protocol for your site, e.g. http://example.com
 show_downloads: false
 twitter_username: hannotify
 github_username: hannotify
@@ -25,7 +25,7 @@ google_analytics: UA-109857788-1
 
 twitter:
   username: hannotify
-  
+  card: summary
 
 # Git settings
 repository: hannotify/hannotify.github.io
