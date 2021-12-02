@@ -1,80 +1,3 @@
-- id: jcon-2021
-  name: JCON
-  year: 2021
-  url: https://jcon.one/
-  dateStart: 05-10-2021
-  dateEnd: 08-10-2021
-  appearances:
-    - id: will-git-be-around-forever-a-list-of-possible-successors
-      sessionPageUrl: https://jcon.sched.com/?iframe=yes&w=100%&sidebar=yes&bg=no#
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
-
-- id: utrechtjug-2021
-  name: UtrechtJUG Meetup
-  year: 2021
-  url: https://www.meetup.com/nl-NL/Utrecht-Java-User-Group
-  dateStart: 20-09-2021
-  country:
-    flag: nl
-    name: The Netherlands
-  city: Nieuwegein
-  venue:
-    name: CodeSquad
-    latitude: 52.026640
-    longitude: 5.084668
-  appearances:
-    - id: will-git-be-around-forever-a-list-of-possible-successors
-      sessionPageUrl: https://www.meetup.com/nl-NL/Utrecht-Java-User-Group/events/280570879/
-      videoUrl:
-      slidesUrl: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-a-list-of-possible-successors-at-utrechtjug
-      githubUrl:
-      photos:
-
-- id: j-fall-2021
-  name: J-Fall
-  year: 2021
-  country:
-    flag: nl
-    name: The Netherlands
-  city: Ede
-  venue:
-    name: Pathé
-    latitude: 52.01577007972178
-    longitude: 5.64583211559008
-  url: https://www.jfall.nl
-  dateStart: 04-11-2021
-  dateEnd:
-  appearances:
-    - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
-      sessionPageUrl:
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
-
-- id: devoxx-ukraine-2021
-  name: Devoxx Ukraine
-  year: 2021
-  url: https://www.devoxx.com.ua
-  dateStart: 19-11-2021
-  dateEnd: 20-11-2021
-  appearances:
-    - id: when-music-and-software-come-together
-      sessionPageUrl: https://devoxx.com.ua/talk-details/?id=13659
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
-    - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
-      sessionPageUrl:
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
-
 - id: javazone-2021
   name: JavaZone
   year: 2021
@@ -113,6 +36,83 @@
       sessionPageUrl:
       videoUrl:
       slidesUrl:
+      photos:
+
+- id: devoxx-ukraine-2021
+  name: Devoxx Ukraine
+  year: 2021
+  url: https://www.devoxx.com.ua
+  dateStart: 19-11-2021
+  dateEnd: 20-11-2021
+  appearances:
+    - id: when-music-and-software-come-together
+      sessionPageUrl: https://devoxx.com.ua/talk-details/?id=13659
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+    - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
+      sessionPageUrl:
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+
+- id: j-fall-2021
+  name: J-Fall
+  year: 2021
+  country:
+    flag: nl
+    name: The Netherlands
+  city: Ede
+  venue:
+    name: Pathé
+    latitude: 52.01577007972178
+    longitude: 5.64583211559008
+  url: https://www.jfall.nl
+  dateStart: 04-11-2021
+  dateEnd:
+  appearances:
+    - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
+      sessionPageUrl:
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+
+- id: jcon-2021
+  name: JCON
+  year: 2021
+  url: https://jcon.one/
+  dateStart: 05-10-2021
+  dateEnd: 08-10-2021
+  appearances:
+    - id: will-git-be-around-forever-a-list-of-possible-successors
+      sessionPageUrl: https://jcon.sched.com/?iframe=yes&w=100%&sidebar=yes&bg=no#
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+
+- id: utrechtjug-2021
+  name: UtrechtJUG Meetup
+  year: 2021
+  url: https://www.meetup.com/nl-NL/Utrecht-Java-User-Group
+  dateStart: 20-09-2021
+  country:
+    flag: nl
+    name: The Netherlands
+  city: Nieuwegein
+  venue:
+    name: CodeSquad
+    latitude: 52.026640
+    longitude: 5.084668
+  appearances:
+    - id: will-git-be-around-forever-a-list-of-possible-successors
+      sessionPageUrl: https://www.meetup.com/nl-NL/Utrecht-Java-User-Group/events/280570879/
+      videoUrl:
+      slidesUrl: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-a-list-of-possible-successors-at-utrechtjug
+      githubUrl:
       photos:
 
 - id: jlove-2021
