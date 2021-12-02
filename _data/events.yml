@@ -91,7 +91,7 @@
     longitude: 10.7525537
   appearances:
     - id: pattern-matching-small-enhancement-or-major-feature
-      sessionPageUrl:
+      sessionPageUrl: https://2021.javazone.no/#/program/e63c4f79-a0d6-4ab6-972c-6c1335e0c9be
       videoUrl:
       slidesUrl:
       githubUrl:
