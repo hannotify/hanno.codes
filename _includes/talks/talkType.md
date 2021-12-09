@@ -20,7 +20,7 @@
 #### Appearances ({{events.size}})
 <ul>
     {% for event in events %}
-    <li><a href="/#{{event.id}}">{{event.name}} {{event.year}}</a></li>
+    <li><a href="/events#{{event.id}}">{{event.name}} {{event.year}}</a></li>
     {% endfor %}
 </ul>
     {% endif %}
