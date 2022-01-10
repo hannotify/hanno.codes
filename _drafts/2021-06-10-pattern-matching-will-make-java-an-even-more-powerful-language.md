@@ -36,7 +36,9 @@ public boolean equals(Object o) {
 }
 ```
 
-> In het voorbeeld definiëren we een pattern Musical m, dat bestaat uit een type Musical en een label m. In een instanceof-test wordt het type gebruikt om een object van dat type te matchen. Nadat de match heeft plaatsgevonden, wordt het object automatisch gecast en toegekend aan de variabele met het gedefinieerde label. Zo vervang je met een enkel pattern de expliciete cast en het toekennen aan een variabele. In een equals-methode is de impact wellicht nog beperkt, maar de kracht wordt pas echt duidelijk wanneer we in de toekomst pattern matching kunnen gaan gebruiken in een switch-expressie [3]. De syntax kan nog wijzigen [4], maar een voorbeeld zie je hieronder.
+This code example defines a pattern `Musical m`, that consists of a type `Musical` and a label `m`. This is the same type that is used in an *instanceof* test to match an object of said type. After a successful match the object is automatically cast and assigned to the pattern variable with a name equal to the defined label. This single pattern now replaces the *instanceof* test, an explicit cast and a variable assigment. 
+
+In the near future [switch expressions will also start supporting pattern matching](http://openjdk.java.net/jeps/406), which really showcases its power. The exact syntax is still subject to change, but it will probably look like the example below.
 
 ```java
 String whatDoesTheMusicianSay = switch (musical) {
@@ -50,38 +52,38 @@ String whatDoesTheMusicianSay = switch (musical) {
 };
 ```
 
-> Je ziet het; het combineren van de nieuwe switch-expressie met pattern matching levert verrassend korte en bondige code op. En dit is nog maar het begin.
+As you can see, the incorporation of pattern matching into switch expressions can yield code that is surprisingly elegant. But wait, there's more.
 
 ## Constant patterns
 
-> Naast type patterns is een tweede soort pattern jullie al bekend: de constante case-labels in een switch-statement. De numerieke, String- en enum-waardes die daarbij horen noemen we in het vervolg constant patterns. Een nieuwe naam voor iets dat al lang bestaat, om zo duidelijker te maken dat de case-labels in de toekomst allerlei soorten patterns aankunnen.
+A second kind of pattern may be already familiar to you: the case label of a switch statement. Case labels currently can take numeric, String or enum values, and in the future they will be referred to as *constant patterns*. It's a new name for a familiar concept, to further clarify that case labels will be able to take multiple kinds of patterns in the future. 
 
 ## Deconstruction patterns
 
-> Deconstruction patterns brengt de ondersteuning voor pattern matching nog een stapje verder door na het matchen op type, ook het object ‘uit te pakken’. Zo hoeven we niet meer afzonderlijke getters te gebruiken om interne velden te benaderen, maar kunnen we dat in een enkel statement. Zo’n deconstruction pattern gebruikt een pattern-definitie, een soort omgekeerde van een constructor, om bij matchen van een object de waardes van interne velden toe te kennen aan variabelen. In onderstaand codevoorbeeld zien we zo’n deconstruction pattern [4].
+*Deconstruction patterns* take pattern matching to the next level by adding an 'extract' capability after a successful pattern match. In the future we'll be able to use this feature, thereby eliminating the need to call any getters on the matched object. Instead, we can gather all revelant fields in a single statement. A deconstruction pattern performs this gathering by relying on a *pattern definition*, a 'reverse constructor' of some sort, to assign the values of the object's fields to the pattern variables. 
 
 ```java
 return switch (musical) {
-    case Orchestra(List musicians) -> String.format("Orchestra, consisting of %d musicians.", musicians.size());
+    case Orchestra(List<Musical> musicians) -> String.format("Orchestra, consisting of %d musicians.", musicians.size());
     // Using definition "public pattern Orchestra(List list)"
-    case InstrumentFamily(Guitar(true, guitarName), Trumpet(true, trumpetName)) -> String.format("Two principals of guitarist %s and trumpetist %s.", guitarName, trumpetName);
+    case InstrumentFamily(Guitar(true, String guitarName), Trumpet(true, String trumpetName)) -> String.format("Two principals of guitarist %s and trumpetist %s.", guitarName, trumpetName);
     // Using definitions "public pattern InstrumentFamily(Musical m1, Musical m2)" and "public pattern Musical(boolean isPrincipal, String name)"
 };
 ```
 
-> Zoals je herkent, matchen we in het voorbeeld op het type InstrumentFamily en Orchestra. Verder zien we dat bij het case-statement van type Orchestra de match alleen plaatsvindt als het genoemde veld uitgepakt kan worden als een lijst van Musical-objecten. Bij een match is deze variabele direct in scope en kunnen we er methodes op aanroepen. Met deze deconstruction patterns kunnen we objecten dus in een enkel case-statement matchen, casten en velden direct benaderen.
+The patterns in this code example match on the types `Orchestra` and `InstrumentFamily`. The match on the `Orchestra` type will only succeed if the object `musical` can be extracted as a `List` of `Musical`s. If the match succeeds, the variable `musicians` will be in scope and we can interact with it. So a deconstruction pattern allows us to match objects, cast them and interact with its fields: all using a single case construct.
 
-> Krachtiger dan dit wordt het niet, zou je denken. Behalve dan dat we alle beschreven patterns ook kunnen combineren, zoals staat weergegeven in het tweede case-statement van het codevoorbeeld hierboven. In dit geval combineren we een deconstruction pattern (het uitpakken van objecten bij een match), type patterns (het matchen op type) en een constant pattern (het matchen op een constante waarde). Samengevat matchen we op een InstrumentFamily als deze uitgepakt kan worden in een Guitar en Trumpet, waar voor beiden geldt dat isPrincipal gelijk is aan true. Zo staat de gehele collectie aan patterns tot je beschikking!
+It can't get more powerful than this, you might think. But it can! The patterns that we wrote about until now can also be used in *composition*, as is depicted in the second case block of the code example. Here we combine one deconstruction pattern (`InstrumentFamily(...)`), a few type patterns (`Guitar(...)` and  `Trumpet(...)`) and two constant patterns (`true`). To summarize: this pattern matches any `InstrumentFamily` that can be extracted as a `Guitar` and a `Trumpet`, which both have `isPrincipal` set to `true`. This shows that when composing patterns all pattern kinds are at your disposal and can be combined as you wish.
 
 ## Var & any patterns
 
-> Lokale variabelen kunnen sinds Java 10 ook met het keyword var worden aangeduid, in plaats van met een expliciet type [5]. Hetzelfde principe ligt ten grondslag aan var patterns: we kunnen in onze patterns var gebruiken in plaats van het expliciete type, en laten de compiler het juiste type pattern afleiden. Er is daarmee geen conditie op het type meer actief; de compiler gebruikt het eerste veld dat een valide type pattern oplevert en bindt de bijbehorende waarde aan de variabele.
+Java 10 brought us the capability of [declaring variables with the `var` keyword](https://openjdk.java.net/jeps/286), instead of a specific type. The same capability comes to mind with *var patterns*: pattern can use `var` instead of a specific type, and the compiler will then infer the right type pattern. This also bypasses the type condition, as the compiler will match on the first field that yields a valid type pattern, after which it will bind the encountered value to the pattern variable as usual.
 
 ```java
 case Guitar(var name) -> String.format("The guitar is called %s", name);
 ```
 
->Een any pattern (aangegeven met een underscore) is als een var pattern: het matcht op het eerstgevonden veld, maar bindt daarbij geen waarde aan de variabele. Dat klinkt misschien niet erg nuttig, maar als onderdeel van een genest pattern kan het elegant uitdrukken dat een deel van een component niet-relevant is en genegeerd kan worden.
+*Any patterns* (denoted by a single underscore character) are like var patterns: they match the first field that is found, but after matching successfully no value will be bound to any variable. This may not sound very useful at first, but it can become a powerful tool when used in a pattern composition. In this role, an any pattern can express that some parts of a matched object are in fact irrelevant and can be ignored.
 
 ```java
 case Orchestra(_, VocalFamily vf), Orchestra(VocalFamily vf, _) -> "This orchestra contains a vocalist.";
@@ -144,7 +146,7 @@ String whatDoesTheMusicianSay = switch (musical) {
 
 ## Wrap-up
 
-> Pattern matching gaat een heel stuk verder dan alleen het voorkomen van casts bij een instanceof. Het verbetert switch expressions, het kan complexe logica elegant uitdrukken en het deconstrueren van objecten is een ‘first-class citizen’ geworden, doordat pattern-definities het tegenovergestelde zijn van constructors. Bovendien is bij het ontwerpen van nieuwe features als sealed types en records de ondersteuning van pattern matching alvast voorzien. Dat laat zien dat pattern matching een belangrijke feature in Java gaat zijn én blijven.
+We have seen that pattern matching can do a lot more than just replace a few casts at an *instanceof* test. It improves switch expressions, it's able to express complex logic elegantly and deconstructing objects can be a breeze, because pattern definitions are the opposite of constructors. On top of that, the design of new features like sealed types and records has incorporated support for pattern matching up front. This shows that pattern matching is quickly becoming a very important Java feature, and it is here to stay.
 
 ## References & acknowledgements
 
