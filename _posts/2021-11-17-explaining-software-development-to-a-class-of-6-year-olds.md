@@ -9,7 +9,7 @@ tags:
 - software-development
 ---
 
-My daughter is 6 years old, and she and her classmates are currently learning about various professions. Her teacher asked the kids' parents whether they would want come into the classroom and explain their profession in 15 minutes or so. I really liked the idea of inspiring these bright young minds with some fun stories about software development, so I applied and prepared a lesson. Which turned out to be a lot harder than I thought it would be.
+My daughter is 6 years old, and she and her classmates are currently learning about various professions. Her teacher asked the kids' parents whether they would want to come into the classroom and explain their profession in 15 minutes or so. I really liked the idea of inspiring these bright young minds with some fun stories about software development, so I applied and prepared a lesson. Which turned out to be a lot harder than I thought it would be.
 
 ## Keep a primary school teacher around
 
@@ -27,7 +27,7 @@ So I continued by explaining that computers need *instructions* to perform their
 
 ## What are instructions?
 
-Then I showed the kids how a specific set of instructions can lead to the desired results, by using a Beebot. A Beebot is a bee-shaped robot, that can store a set of instructions and then execute them. Its available instructions are:
+Then I showed the kids how a specific set of instructions can lead to the desired results, by using a Beebot. A Beebot is a bee-shaped robot that can store a set of instructions and then execute them. Its available instructions are:
 
 * Move 15 centimeters forward;
 * Move 15 centimeters backward;
