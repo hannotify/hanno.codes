@@ -252,11 +252,11 @@
   appearances:
     - id: the-soft-side-of-software-development
       sessionPageUrl: https://devoxx.be/talk/?id=19709
-      videoUrl: https://youtu.be/Clo60O-EfjE
+      videoUrl: 
       githubUrl:
     - id: these-songs-would-make-some-great-code-comments
       sessionPageUrl: https://devoxx.be/talk/?id=19708
-      videoUrl:
+      videoUrl: https://youtu.be/Clo60O-EfjE
       slidesUrl:
       githubUrl:
       photos: https://www.flickr.com/photos/bejug/albums
