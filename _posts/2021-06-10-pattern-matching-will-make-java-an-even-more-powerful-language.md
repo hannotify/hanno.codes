@@ -60,7 +60,7 @@ A second kind of pattern may be already familiar to you: the case label of a swi
 
 ## Deconstruction patterns
 
-*Deconstruction patterns* take pattern matching to the next level by adding an 'extract' capability after a successful pattern match. In the future we'll be able to use this feature, thereby eliminating the need to call any getters on the matched object. Instead, we can gather all revelant fields in a single statement. A deconstruction pattern performs this gathering by relying on a *pattern definition*, a 'reverse constructor' of some sort, to assign the values of the object's fields to the pattern variables. 
+*Deconstruction patterns* take pattern matching to the next level by adding an 'extract' capability after a successful pattern match. In the future we'll be able to use this feature, thereby eliminating the need to call any getters on the matched object. Instead, we can gather all relevant fields in a single statement. A deconstruction pattern performs this gathering by relying on a *pattern definition*, a 'reverse constructor' if you will, to assign the values of the object's fields to the pattern variables. 
 
 ```java
 return switch (musical) {
@@ -83,7 +83,7 @@ Java 10 brought us the capability of [declaring variables with the `var` keyword
 case Guitar(var name) -> String.format("The guitar is called %s", name);
 ```
 
-*Any patterns* (denoted by a single underscore character) are like var patterns: they match the first field that is found, but after matching successfully no value will be bound to any variable. This may not sound very useful at first, but it can become a powerful tool when used in a pattern composition. In this role, an any pattern can express that some parts of a matched object are in fact irrelevant and can be ignored.
+*Any patterns* (denoted by a single underscore character) are like var patterns: they match the first field that is found, but after matching successfully no actual value will be bound. This may not sound very useful at first, but it can become a powerful tool when used in a pattern composition. In this role, an any pattern can express that some parts of a matched object are in fact irrelevant and can be ignored.
 
 ```java
 case Orchestra(_, VocalFamily vf), Orchestra(VocalFamily vf, _) -> "This orchestra contains a vocalist.";
@@ -91,11 +91,9 @@ case Orchestra(_, VocalFamily vf), Orchestra(VocalFamily vf, _) -> "This orchest
 
 ## A better serialization?
 
-> We zagen eerder al dat een deconstruction pattern een objectstructuur om kan zetten in losse, getypeerde velden. Eigenlijk net zoals een constructor losse, getypeerde velden omzet in een objectstructuur. Ze zijn elkaars tegenovergestelde. En dat inzicht zou wel eens een betere versie van serialisatie kunnen opleveren. Serialisatie is belangrijke functionaliteit in Java, maar veel mensen hebben een hekel aan de huidige implementatie. Het ondermijnt bijvoorbeeld het toegangsmodel, de serialisatielogica is geen ‘leesbare code’ en het omzeilt constructors en bijbehorende datavalidatie. Maar het gebruik van patterns zou de situatie drastisch kunnen verbeteren.
+Like a constructor transforms a set of typed variables into a populated object, a deconstruction pattern transforms a populated object into a set of typed variables. As such they are opposites, and this characteristic holds the potential to be an important part of the future of serialization. Although serialization is an integral part of the Java language, its implementation doesn't sit right with everyone. It undermines the accessibility model, for instance. On top of that, serialization logic is not readable code by default and it bypasses constructors, rendering any data validation logic that might be part of an object's initialization useless. But the situation could improve dramatically when we would introduce pattern matching to serialization.
 
-> Wanneer klasses in de toekomst pattern-definities kunnen bevatten, zou dat een goede plek zijn om een instantie van die klasse te serialiseren. Deserialiseren gebeurt dan via een (overloaded) constructor of een factory-methode. Hiermee zou alle serialisatielogica ‘leesbare code’ worden en expliciet onderdeel van de klassedefinitie. Door de annotaties is het direct duidelijk waar de code voor dient. Ook zou bestaande datavalidatie eenvoudig aangeroepen kunnen worden.
-
-> Het ondersteunen van serialisatie op meerdere versies van een klasse zal een uitdaging blijven, al bestaan er wel plannen om de @Serializer– en @Deserializer-annotaties met een version-property uit te rusten die een klasseversie kan bevatten [6]
+In the future, classes will be able to contain pattern definitions, and they would be a perfect place to serialize a class instance. Deserializing could then happen in an overloaded constructor or in a factory method. This would mean all serialization logic would become readable code, and any data validation could become a part of the deserialization logic. To top it off, applying specific annotations would further clarify the intent of the (de)serialization code.  
 
 ```java
 class Orchestra {
@@ -111,13 +109,15 @@ class Orchestra {
 }
 ```
 
+Supporting serialization for multiple versions for a class will remain a challenge, although [plans have been drawn up](https://cr.openjdk.java.net/~briangoetz/amber/serialization.html) to extend the `@Serializer` and `@Deserializer` annotation with a `version` property, which could contain the class version that is supported.
+
 ## Records & sealed types
 
-> Dat pattern matching niet op zichzelf staat, maar deel uitmaakt van een groter plan wordt nog duidelijker als we naar records gaan kijken. Deze compacte manier om immutable data te modelleren werd eerder al geïntroduceerd in Java Magazine [7] en heeft als voordeel dat constructors, getters, equals()– en hashCode()-implementaties al beschikbaar zijn, zonder ze expliciet te definiëren. Wanneer deconstruction patterns beschikbaar komen in Java, zullen records ook automatisch pattern-definities bevatten [8], waarmee een record direct bruikbaar wordt als deconstruction pattern in een switch expression.
+When we look at the roadmap for *records*, it becomes even more clear that pattern matching is part of a larger narrative. A compact way to model immutable data, [records](https://openjdk.java.net/jeps/395) provide constructors, getters and implementations for `equals()` and `hashCode()` without defining them explicitly. When deconstruction patterns are introduced in Java, they will come with the addition of [automatic pattern definitions in records](https://cr.openjdk.java.net/~briangoetz/amber/pattern-match.html). This will make it very easy to use records in a deconstruction pattern as part of a switch expression, for example.
 
 ```java
 record Trumpet(boolean isPrincipal, String name) implements Musical {
-    // This code is generated:
+    // The following piece of code will be generated:
     public pattern Trumpet(boolean isPrincipal, String name) {
         isPrincipal = this.isPrincipal;
         name = this.name;
@@ -125,13 +125,13 @@ record Trumpet(boolean isPrincipal, String name) implements Musical {
 }
 ```
 
-> Ook een andere, relatief nieuwe feature zal in de toekomst goed samenwerken met pattern matching, namelijk sealed types. Met sealed types – beschikbaar in preview vanaf Java 15 – leg je voor een interface of superklasse uitputtend vast welke implementaties er mogen zijn.
+*Sealed types* is another relatively new Java feature that will play nice with pattern matching. Sealed types allow to you restrict the classes that can be implementors of your interface.
 
 ```java
 sealed interface Musical permits Vocal, Guitar, Drums {}
 ```
 
-> Wanneer we vervolgens een switch expression op een sealed type toepassen, zal de default branch van de switch niet meer nodig zijn. De compiler ‘weet’ immers dat Musical maar drie implementaties heeft (en blijft hebben).
+A switch expression that uses a sealed type as its target will be able to omit the default branch altogether, because the compiler 'knows' that the `Musical` interface is restricted to have three specific implementors only. 
 
 ```java
 String whatDoesTheMusicianSay = switch (musical) {
@@ -144,12 +144,12 @@ String whatDoesTheMusicianSay = switch (musical) {
 };
 ```
 
-## Wrap-up
+## Conclusion
 
 We have seen that pattern matching can do a lot more than just replace a few casts at an *instanceof* test. It improves switch expressions, it's able to express complex logic elegantly and deconstructing objects can be a breeze, because pattern definitions are the opposite of constructors. On top of that, the design of new features like sealed types and records has incorporated support for pattern matching up front. This shows that pattern matching is quickly becoming a very important Java feature, and it is here to stay.
 
 ## References & acknowledgements
 
-The full code examples can be found at [GitHub](https://github.com/MrFix93/pattern-matching-orchestra).
+Full code examples can be found at [GitHub](https://github.com/MrFix93/pattern-matching-orchestra).
 
 This blog post is based on an article that was published in the Dutch Java Magazine ([#2-2021](https://nljug.org/java-magazine/java-magazine-2-2021-brand-new/)) and has been published here with permission by the [Dutch Java User Group](https://nljug.org/).
