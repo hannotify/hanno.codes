@@ -75,9 +75,9 @@
   appearances:
     - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
       sessionPageUrl:
-      videoUrl:
+      videoUrl: https://youtu.be/0gj0RhbL-dk
       slidesUrl:
-      githubUrl:
+      githubUrl: https://github.com/hannotify/eleven-crazy-java-things
       photos:
 
 - id: jcon-2021
