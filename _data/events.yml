@@ -1,3 +1,25 @@
+- id: joy-of-coding-2022
+  name: Joy of Coding
+  year: 2022
+  url: https://joyofcoding.org
+  dateStart: 17-06-2022
+  dateEnd: 
+  country:
+    flag: "nl"
+    name: Netherlands
+  city: Rotterdam
+  venue:
+    name: De Doelen
+    latitude: 51.9216667
+    longitude: 4.4708669
+  appearances:
+    - id: what-stairway-to-heaven-can-teach-us-about-software-development
+      sessionPageUrl: 
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+
 - id: javazone-2021
   name: JavaZone
   year: 2021
