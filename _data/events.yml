@@ -1,3 +1,25 @@
+- id: voxxed-days-zurich
+  name: Voxxed Days Zürich
+  year: 2022
+  country:
+    flag: ch
+    name: Switzerland
+  city: Zürich
+  venue:
+    name: Arena Cinemas
+    latitude: 47.3584227
+    longitude: 8.5204985
+  url: https://voxxeddays.com/zurich
+  dateStart: 17-05-2022
+  dateEnd:
+  appearances:
+    - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
+      sessionPageUrl:
+      videoUrl: 
+      slidesUrl:
+      githubUrl: https://github.com/hannotify/eleven-crazy-java-things
+      photos:
+
 - id: joy-of-coding-2022
   name: Joy of Coding
   year: 2022
@@ -111,7 +133,7 @@
   appearances:
     - id: will-git-be-around-forever-a-list-of-possible-successors
       sessionPageUrl: https://jcon.sched.com/?iframe=yes&w=100%&sidebar=yes&bg=no#
-      videoUrl:
+      videoUrl: https://youtube.com/watch?v=qyq-E8zXBmY
       slidesUrl:
       githubUrl:
       photos:
