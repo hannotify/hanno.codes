@@ -14,7 +14,7 @@
   dateEnd:
   appearances:
     - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
-      sessionPageUrl:
+      sessionPageUrl: https://voxxeddays.com/zurich/schedule/talk/?id=1897
       videoUrl: 
       slidesUrl:
       githubUrl: https://github.com/hannotify/eleven-crazy-java-things
