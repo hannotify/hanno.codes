@@ -1,23 +1,49 @@
-- id: voxxed-days-zurich
-  name: Voxxed Days Zürich
+- id: voxxed-days-bucharest-2019
+  name: Voxxed Days Bucharest
+  year: 2022
+  url: https://romania.voxxeddays.com/bucharest/voxxed-days-bucharest-2022/
+  dateStart: 23-03-2022
+  dateEnd: 25-03-2022
+  appearances:
+    - id: pattern-matching-small-enhancement-or-major-feature
+      sessionPageUrl: https://romania.voxxeddays.com/2022/02/21/pattern-matching-small-enhancement-or-major-feature/
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+      cospeakers:
+        - name: Peter Wessels
+          twitterUrl: https://www.twitter.com/PeterWessels
+
+- id: devoxx-uk-2022
+  name: Devoxx UK
   year: 2022
   country:
-    flag: ch
-    name: Switzerland
-  city: Zürich
+    flag: gb
+    name: United Kingdom
+  city: London
   venue:
-    name: Arena Cinemas
-    latitude: 47.3584227
-    longitude: 8.5204985
-  url: https://voxxeddays.com/zurich
-  dateStart: 17-05-2022
-  dateEnd:
+    name: Business Design Centre
+    latitude: 51.5358885
+    longitude: -0.1091954
+  url: https://www.devoxx.co.uk
+  dateStart: 11-05-2022
+  dateEnd: 13-05-2022
   appearances:
-    - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
-      sessionPageUrl: https://voxxeddays.com/zurich/schedule/talk/?id=1897
-      videoUrl: 
+    - id: pattern-matching-small-enhancement-or-major-feature
+      sessionPageUrl: https://www.devoxx.co.uk/speaker-details/?id=4111
+      videoUrl:
       slidesUrl:
-      githubUrl: https://github.com/hannotify/eleven-crazy-java-things
+      githubUrl:
+      photos:
+      cospeakers:
+        - name: Peter Wessels
+          twitterUrl: https://www.twitter.com/PeterWessels
+    - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
+      sessionPageUrl: https://www.devoxx.co.uk/speaker-details/?id=4111
+      videoUrl:
+      slidesUrl:
+      githubUrl:
       photos:
 
 - id: joy-of-coding-2022
@@ -42,20 +68,34 @@
       githubUrl:
       photos:
 
+- id: future-tech-2022
+  name: Future Tech
+  year: 2022
+  url: https://futuretech.nl
+  dateStart: 21-06-2022
+  dateEnd: 
+  country:
+    flag: "nl"
+    name: The Netherlands
+  city: Utrecht
+  venue:
+    name: Jaarbeurs
+    latitude: 52.0860406
+    longitude: 5.1014529
+  appearances:
+    - id: will-git-be-around-forever-a-list-of-possible-successors
+      sessionPageUrl: 
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+
 - id: javazone-2021
   name: JavaZone
   year: 2021
   url: https://2021.javazone.no
   dateStart: 07-12-2021
   dateEnd: 09-12-2021
-  country:
-    flag: "no"
-    name: Norway
-  city: Oslo
-  venue:
-    name: Oslo Spektrum
-    latitude: 59.912988
-    longitude: 10.7525537
   appearances:
     - id: pattern-matching-small-enhancement-or-major-feature
       sessionPageUrl: https://2021.javazone.no/#/program/e63c4f79-a0d6-4ab6-972c-6c1335e0c9be
@@ -169,7 +209,7 @@
     - id: pattern-matching-small-enhancement-or-major-feature
       sessionPageUrl: https://embed.emamo.com/event/jlove-2021/s/pattern-matching-small-enhancement-or-major-feature-aZVZRa
       videoUrl:
-      slidesUrl:
+      slidesUrl: https://www.slideshare.net/HannoEmbregts/pattern-matching-small-enhancement-or-major-feature-talk-from-jlove-2021
       githubUrl:
       photos:
 
