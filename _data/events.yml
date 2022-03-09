@@ -15,6 +15,23 @@
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
 
+- id: zoetermeer-tech-night-2022
+  name: Zoetermeer Tech Night
+  year: 2022
+  country: 
+    flag: nl
+    name: Netherlands
+  city: Zoetermeer
+  venue:
+   name: Dutch Innovation Centre
+   latitude:
+   longitude:
+  url: https://www.meetup.com/Zoetermeer-Tech-Night/events/284176869/
+  dateStart: 05-04-2022
+  appearances:
+    - id: when-music-and-software-come-together
+      sessionPageUrl: https://www.meetup.com/Zoetermeer-Tech-Night/events/284176869/
+
 - id: devoxx-uk-2022
   name: Devoxx UK
   year: 2022
