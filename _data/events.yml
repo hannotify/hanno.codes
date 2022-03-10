@@ -107,6 +107,27 @@
       githubUrl:
       photos:
 
+- id: developer-week-2022
+  name: Developer Week
+  year: 2022
+  url: https://developer-week.de
+  dateStart: 04-07-2022
+  dateEnd: 08-07-2022
+  country:
+    flag: de
+    name: Germany
+  city: Nürnberg
+  appearances:
+    - id: pattern-matching-small-enhancement-or-major-feature
+      sessionPageUrl: https://www.developer-week.de/programm/#/talk/pattern-matching-small-enhancement-or-major-feature
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+      cospeakers:
+        - name: Peter Wessels
+          twitterUrl: https://www.twitter.com/PeterWessels
+
 - id: javazone-2021
   name: JavaZone
   year: 2021
