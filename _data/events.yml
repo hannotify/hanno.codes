@@ -1,37 +1,3 @@
-- id: voxxed-days-bucharest-2019
-  name: Voxxed Days Bucharest
-  year: 2022
-  url: https://romania.voxxeddays.com/bucharest/voxxed-days-bucharest-2022/
-  dateStart: 23-03-2022
-  dateEnd: 25-03-2022
-  appearances:
-    - id: pattern-matching-small-enhancement-or-major-feature
-      sessionPageUrl: https://romania.voxxeddays.com/2022/02/21/pattern-matching-small-enhancement-or-major-feature/
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
-      cospeakers:
-        - name: Peter Wessels
-          twitterUrl: https://www.twitter.com/PeterWessels
-
-- id: zoetermeer-tech-night-2022
-  name: Zoetermeer Tech Night
-  year: 2022
-  country: 
-    flag: nl
-    name: Netherlands
-  city: Zoetermeer
-  venue:
-   name: Dutch Innovation Centre
-   latitude:
-   longitude:
-  url: https://www.meetup.com/Zoetermeer-Tech-Night/events/284176869/
-  dateStart: 05-04-2022
-  appearances:
-    - id: when-music-and-software-come-together
-      sessionPageUrl: https://www.meetup.com/Zoetermeer-Tech-Night/events/284176869/
-
 - id: devoxx-uk-2022
   name: Devoxx UK
   year: 2022
@@ -62,6 +28,31 @@
       slidesUrl:
       githubUrl:
       photos:
+
+- id: voxxed-days-brussels-2022
+  name: Voxxed Days Brussels
+  year: 2022
+  url: https://brussels.voxxeddays.com/
+  dateStart: 24-05-2022
+  dateEnd: 
+  country:
+    flag: "be"
+    name: Belgium
+  city: Brussels
+  venue:
+    name: The EGG Brussels
+    latitude: 50.8327485
+    longitude: 4.3270298
+  appearances:
+    - id: pattern-matching-small-enhancement-or-major-feature
+      sessionPageUrl: https://brussels.voxxeddays.com/#speakers
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+      cospeakers:
+        - name: Peter Wessels
+          twitterUrl: https://www.twitter.com/PeterWessels
 
 - id: joy-of-coding-2022
   name: Joy of Coding
@@ -120,6 +111,41 @@
   appearances:
     - id: pattern-matching-small-enhancement-or-major-feature
       sessionPageUrl: https://www.developer-week.de/programm/#/talk/pattern-matching-small-enhancement-or-major-feature
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+      cospeakers:
+        - name: Peter Wessels
+          twitterUrl: https://www.twitter.com/PeterWessels
+
+- id: zoetermeer-tech-night-2022
+  name: Zoetermeer Tech Night
+  year: 2022
+  country: 
+    flag: nl
+    name: Netherlands
+  city: Zoetermeer
+  venue:
+   name: Dutch Innovation Centre
+   latitude:
+   longitude:
+  url: https://www.meetup.com/Zoetermeer-Tech-Night/events/284176869/
+  dateStart: 05-04-2022
+  appearances:
+    - id: when-music-and-software-come-together
+      sessionPageUrl: https://www.meetup.com/Zoetermeer-Tech-Night/events/284176869/
+
+
+- id: voxxed-days-bucharest-2019
+  name: Voxxed Days Bucharest
+  year: 2022
+  url: https://romania.voxxeddays.com/bucharest/voxxed-days-bucharest-2022/
+  dateStart: 23-03-2022
+  dateEnd: 25-03-2022
+  appearances:
+    - id: pattern-matching-small-enhancement-or-major-feature
+      sessionPageUrl: https://romania.voxxeddays.com/2022/02/21/pattern-matching-small-enhancement-or-major-feature/
       videoUrl:
       slidesUrl:
       githubUrl:
