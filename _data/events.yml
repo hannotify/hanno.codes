@@ -29,31 +29,6 @@
       githubUrl:
       photos:
 
-- id: voxxed-days-brussels-2022
-  name: Voxxed Days Brussels
-  year: 2022
-  url: https://brussels.voxxeddays.com/
-  dateStart: 24-05-2022
-  dateEnd: 
-  country:
-    flag: "be"
-    name: Belgium
-  city: Brussels
-  venue:
-    name: The EGG Brussels
-    latitude: 50.8327485
-    longitude: 4.3270298
-  appearances:
-    - id: pattern-matching-small-enhancement-or-major-feature
-      sessionPageUrl: https://brussels.voxxeddays.com/#speakers
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
-      cospeakers:
-        - name: Peter Wessels
-          twitterUrl: https://www.twitter.com/PeterWessels
-
 - id: joy-of-coding-2022
   name: Joy of Coding
   year: 2022
