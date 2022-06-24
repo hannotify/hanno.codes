@@ -19,7 +19,7 @@
     {% for event in eventByYear.items %}
 
     {% assign year = eventByYear.name | plus: 0 %}
-        {% if year > 2018 %}
+        {% if year > 2019 %}
 ## [](#{{event.id}})[{{event.name}} {{event.year}}]({{event.url}})
         {% else %}
 #### [](#{{event.id}})[{{event.name}} {{event.year}}]({{event.url}})
