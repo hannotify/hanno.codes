@@ -1,3 +1,68 @@
+- id: future-tech-2022
+  name: Future Tech
+  year: 2022
+  url: https://futuretech.nl
+  dateStart: 21-06-2022
+  dateEnd: 
+  country:
+    flag: "nl"
+    name: The Netherlands
+  city: Utrecht
+  venue:
+    name: Jaarbeurs
+    latitude: 52.0860406
+    longitude: 5.1014529
+  appearances:
+    - id: will-git-be-around-forever-a-list-of-possible-successors
+      sessionPageUrl: https://futuretech.nl/timetable/
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+
+- id: developer-week-2022
+  name: Developer Week
+  year: 2022
+  url: https://developer-week.de
+  dateStart: 04-07-2022
+  dateEnd: 08-07-2022
+  country:
+    flag: de
+    name: Germany
+  city: Nürnberg
+  appearances:
+    - id: pattern-matching-small-enhancement-or-major-feature
+      sessionPageUrl: https://www.developer-week.de/programm/#/talk/pattern-matching-small-enhancement-or-major-feature
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+      cospeakers:
+        - name: Peter Wessels
+          twitterUrl: https://www.twitter.com/PeterWessels
+
+- id: joy-of-coding-2022
+  name: Joy of Coding
+  year: 2022
+  url: https://joyofcoding.org
+  dateStart: 17-06-2022
+  dateEnd: 
+  country:
+    flag: "nl"
+    name: The Netherlands
+  city: Rotterdam
+  venue:
+    name: De Doelen
+    latitude: 51.9216667
+    longitude: 4.4708669
+  appearances:
+    - id: what-stairway-to-heaven-can-teach-us-about-software-development
+      sessionPageUrl: https://joyofcoding.org/2022/speakers/hanno-embregts.html
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+
 - id: devoxx-uk-2022
   name: Devoxx UK
   year: 2022
@@ -28,71 +93,6 @@
       slidesUrl:
       githubUrl:
       photos:
-
-- id: joy-of-coding-2022
-  name: Joy of Coding
-  year: 2022
-  url: https://joyofcoding.org
-  dateStart: 17-06-2022
-  dateEnd: 
-  country:
-    flag: "nl"
-    name: The Netherlands
-  city: Rotterdam
-  venue:
-    name: De Doelen
-    latitude: 51.9216667
-    longitude: 4.4708669
-  appearances:
-    - id: what-stairway-to-heaven-can-teach-us-about-software-development
-      sessionPageUrl: 
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
-
-- id: future-tech-2022
-  name: Future Tech
-  year: 2022
-  url: https://futuretech.nl
-  dateStart: 21-06-2022
-  dateEnd: 
-  country:
-    flag: "nl"
-    name: The Netherlands
-  city: Utrecht
-  venue:
-    name: Jaarbeurs
-    latitude: 52.0860406
-    longitude: 5.1014529
-  appearances:
-    - id: will-git-be-around-forever-a-list-of-possible-successors
-      sessionPageUrl: 
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
-
-- id: developer-week-2022
-  name: Developer Week
-  year: 2022
-  url: https://developer-week.de
-  dateStart: 04-07-2022
-  dateEnd: 08-07-2022
-  country:
-    flag: de
-    name: Germany
-  city: Nürnberg
-  appearances:
-    - id: pattern-matching-small-enhancement-or-major-feature
-      sessionPageUrl: https://www.developer-week.de/programm/#/talk/pattern-matching-small-enhancement-or-major-feature
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
-      cospeakers:
-        - name: Peter Wessels
-          twitterUrl: https://www.twitter.com/PeterWessels
 
 - id: zoetermeer-tech-night-2022
   name: Zoetermeer Tech Night
@@ -145,21 +145,6 @@
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
-
-- id: frontmania-2022
-  name: Frontmania
-  year: 2022
-  url: https://frontmania.com
-  country:
-    flag: nl
-    name: The Netherlands
-  city: Utrecht
-  appearances:
-    - id: what-stairway-to-heaven-can-teach-us-about-software-development
-      sessionPageUrl:
-      videoUrl:
-      slidesUrl:
-      photos:
 
 - id: devoxx-ukraine-2021
   name: Devoxx Ukraine
