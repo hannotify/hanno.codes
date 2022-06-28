@@ -73,3 +73,6 @@ int[][] highscoreMatrix;
 ```
 
 So there you have it: a few freaky ways to declare arrays. Next week we'll take a look at stream elements!
+
+![Pinball machine](/images/blog/pinball.jpg)
+> Image from <a href="https://pxhere.com/nl/photo/201809?utm_content=clipUser&utm_medium=referral&utm_source=pxhere">PxHere</a>
