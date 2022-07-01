@@ -33,13 +33,13 @@
   appearances:
     - id: pattern-matching-small-enhancement-or-major-feature
       sessionPageUrl: https://www.developer-week.de/programm/#/talk/pattern-matching-small-enhancement-or-major-feature
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
+    - id: when-music-and-software-come-together
+      sessionPageUrl: https://www.developer-week.de/programm/#/talk/abendveranstaltung-when-music-and-software-come-together
+    - id: what-stairway-to-heaven-can-teach-us-about-software-development
+      sessionPageUrl: https://www.developer-week.de/programm/#/talk/abendveranstaltung-what-stairway-to-heaven-can-teach-us-about-software-development
 
 - id: joy-of-coding-2022
   name: Joy of Coding
