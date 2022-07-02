@@ -80,19 +80,13 @@
   appearances:
     - id: pattern-matching-small-enhancement-or-major-feature
       sessionPageUrl: https://www.devoxx.co.uk/speaker-details/?id=4111
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
+      videoUrl: https://youtu.be/05BnMGJ2AmM
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
     - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
       sessionPageUrl: https://www.devoxx.co.uk/speaker-details/?id=4111
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
+      videoUrl: https://youtu.be/J3dqRwNQONE
 
 - id: zoetermeer-tech-night-2022
   name: Zoetermeer Tech Night
