@@ -2,7 +2,7 @@
 layout: post
 author: Hanno Embregts
 title: The ultimate use case for text blocks
-#date: 29-10-2021 15:31:21 +0200
+#date: 05-07-2022 10:35:00 +0200
 tags: 
 - java
 ---

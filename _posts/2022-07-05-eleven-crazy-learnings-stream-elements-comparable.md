@@ -2,7 +2,7 @@
 layout: post
 author: Hanno Embregts
 title: "Eleven crazy learnings from the Java 11 certification: stream elements should implement Comparable (2/11)"
-#date: 29-10-2021 15:31:21 +0200
+date: 05-07-2022 10:35:00 +0200
 tags: 
 - java
 - certification
@@ -50,6 +50,51 @@ java.lang.ClassCastException: class com.github.hannotify.elevencrazyjavathings.n
     (...)
 ```
 
+It certainly looks like the sorting is not working yet. 
+And the error message is quite unusual, as it doesn't seem to have anything to do with sorting in the first place.
+The key here is the mention of the `Comparable` interface.
+Apparently the `sorted()` method that we're calling on the stream expects its elements to implement `Comparable`.
+
+And sure enough, when we get to the JavaDoc of the method `Stream.sorted()`, this is what we read:
+
+> Returns a stream consisting of the elements of this stream, sorted according to natural order. If the elements of this stream are not Comparable, a java.lang.ClassCastException may be thrown when the terminal operation is executed.
+
+Well, *now* it makes perfect sense!
+So to get this example working, we should make sure that `Talk` implements `Comparable`:
+
+```java
+class Talk implements Comparable<Talk> {
+    private final String speaker;
+    private final String title;
+    private final LocalTime startTime;
+
+    public Talk(String speaker, String title, LocalTime startTime) {
+        this.speaker = speaker;
+        this.title = title;
+        this.startTime = startTime;
+    }
+
+    @Override
+    public int compareTo(Talk otherTalk) {
+        return startTime.compareTo(otherTalk.startTime) ;
+    }
+}
+```
+
+Alternatively, we can call the overloaded `sorted()` method, which takes a `Comparator`:
+
+```java
+return Stream.of(
+        new Talk("Bugs Bunny", "Carrots Are Awesome!", LocalTime.of(11, 0)),
+        new Talk("Road Runner", "Stop Living Too Slow", LocalTime.of(9, 30)),
+        new Talk("Tweety", "Ban All Cats Off The Internet", LocalTime.of(14, 45))
+).sorted(Comparator.comparing(Talk::getStartTime)).collect(Collectors.toCollection(TreeSet::new));
+```
+
+But for this to work you would need to add a `getStartTime()` method to the `Talk` class, of course.
+
+So this is how you can sort stream elements, even when you're struggling with a few `ClassCastExpections`. Next week we'll take a look at static interface methods!
+
 ## Other blog posts in this series
 
 Did you miss a blog post in this series? Here's a list of all posts that have been published so far:
@@ -57,4 +102,5 @@ Did you miss a blog post in this series? Here's a list of all posts that have be
 1. [A few freaky array declarations](/2022/06/28/eleven-crazy-learnings-initialising-arrays.html)
 2. Stream elements should implement Comparable  
 
-
+![Clock](/images/blog/clock.jpg)
+> Image from <a href="https://pxhere.com/nl/photo/883658">PxHere</a>

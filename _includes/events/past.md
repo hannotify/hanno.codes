@@ -3,7 +3,11 @@
 {% assign pastEvents = "" | split: "" %}
 
 {% for event in site.data.events %}
-    {% capture eventTime %}{{event.dateStart | date: '%s'}}{% endcapture %}
+    {% if event.dateEnd %}
+        {% capture eventTime %}{{event.dateEnd | date: '%s'}}{% endcapture %}
+    {% else %}
+        {% capture eventTime %}{{event.dateStart | date: '%s'}}{% endcapture %}
+    {% endif %}
 
     {% if event.dateStart and nowUnix > eventTime %}
         {% assign pastEvents = pastEvents | push: event %}

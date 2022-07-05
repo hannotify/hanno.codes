@@ -3,8 +3,12 @@
 {% assign upcomingEvents = "" | split: "" %}
 
 {% for event in site.data.events | sort: 'date' | reverse %}
-    {% capture eventTime %}{{event.dateStart | date: '%s'}}{% endcapture %}
-
+    {% if event.dateEnd %}
+        {% capture eventTime %}{{event.dateEnd | date: '%s'}}{% endcapture %}
+    {% else %}
+        {% capture eventTime %}{{event.dateStart | date: '%s'}}{% endcapture %}
+    {% endif %}
+    
     {% if nowUnix < eventTime or eventTime == '' %}
         {% assign upcomingEvents = upcomingEvents | push: event %}
     {% endif %}
