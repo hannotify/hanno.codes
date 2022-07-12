@@ -101,6 +101,7 @@ Did you miss a blog post in this series? Here's a list of all posts that have be
 
 1. [A few freaky array declarations](/2022/06/28/eleven-crazy-learnings-initialising-arrays.html)
 2. Stream elements should implement Comparable  
+3. [Accessing static interface methods](2022/07/12/eleven-crazy-learning-accessing-static-interface-methods.html)
 
 ![Clock](/images/blog/clock.jpg)
 > Image from <a href="https://pxhere.com/nl/photo/883658">PxHere</a>

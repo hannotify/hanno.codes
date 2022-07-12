@@ -74,5 +74,14 @@ int[][] highscoreMatrix;
 
 So there you have it: a few freaky ways to declare arrays. Next week we'll take a look at stream elements!
 
+## Other blog posts in this series
+
+Did you miss a blog post in this series? Here's a list of all posts that have been published so far:
+
+1. A few freaky array declarations
+2. [Stream elements should implement Comparable](/2022/07/05/eleven-crazy-learnings-stream-elements-comparable.html)
+3. [Accessing static interface methods](2022/07/12/eleven-crazy-learning-accessing-static-interface-methods.html)
+
+
 ![Pinball machine](/images/blog/pinball.jpg)
 > Image from <a href="https://pxhere.com/nl/photo/201809>PxHere</a>
