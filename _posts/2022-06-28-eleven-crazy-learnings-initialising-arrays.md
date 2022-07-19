@@ -78,10 +78,11 @@ So there you have it: a few freaky ways to declare arrays. Next week we'll take 
 
 Did you miss a blog post in this series? Here's a list of all posts that have been published so far:
 
-1. A few freaky array declarations
+1. A few freaky array declarations (you've just finished reading it!)
 2. [Stream elements should implement Comparable](/2022/07/05/eleven-crazy-learnings-stream-elements-comparable.html)
-3. [Accessing static interface methods](2022/07/12/eleven-crazy-learning-accessing-static-interface-methods.html)
+3. [Accessing static interface methods](/2022/07/12/eleven-crazy-learnings-accessing-static-interface-methods.html)
+4. [Anonymous subclasses in enums](/2022/07/19/eleven-crazy-learnings-anonymous-subclass-in-enum.html)
 
 
 ![Pinball machine](/images/blog/pinball.jpg)
-> Image from <a href="https://pxhere.com/nl/photo/201809>PxHere</a>
+> Image from <a href="https://pxhere.com/nl/photo/201809">PxHere</a>

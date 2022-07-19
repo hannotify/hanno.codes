@@ -100,8 +100,9 @@ So this is how you can sort stream elements, even when you're struggling with a 
 Did you miss a blog post in this series? Here's a list of all posts that have been published so far:
 
 1. [A few freaky array declarations](/2022/06/28/eleven-crazy-learnings-initialising-arrays.html)
-2. Stream elements should implement Comparable  
-3. [Accessing static interface methods](2022/07/12/eleven-crazy-learning-accessing-static-interface-methods.html)
+2. Stream elements should implement Comparable (you've just finished reading it!)
+3. [Accessing static interface methods](/2022/07/12/eleven-crazy-learnings-accessing-static-interface-methods.html)
+4. [Anonymous subclasses in enums](/2022/07/19/eleven-crazy-learnings-anonymous-subclass-in-enum.html)
 
 ![Clock](/images/blog/clock.jpg)
 > Image from <a href="https://pxhere.com/nl/photo/883658">PxHere</a>

@@ -2,7 +2,7 @@
 layout: post
 author: Hanno Embregts
 title: "Eleven crazy learnings from the Java 11 certification: accessing static interface methods (3/11)"
-#date: 12-07-2022 10:35:00 +0200
+date: 12-07-2022 10:35:00 +0200
 tags: 
 - java
 - certification
@@ -109,7 +109,8 @@ Did you miss a blog post in this series? Here's a list of all posts that have be
 
 1. [A few freaky array declarations](/2022/06/28/eleven-crazy-learnings-initialising-arrays.html)
 2. [Stream elements should implement Comparable](/2022/07/05/eleven-crazy-learnings-stream-elements-comparable.html)
-3. Accessing static interface methods
+3. Accessing static interface methods (you've just finished reading it!)
+4. [Anonymous subclasses in enums](/2022/07/19/eleven-crazy-learnings-anonymous-subclass-in-enum.html)
 
 ![Clock](/images/blog/clock.jpg)
 > Image from <a href="https://pxhere.com/nl/photo/883658">PxHere</a>
