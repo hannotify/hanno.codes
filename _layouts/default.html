@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-{% seo %}
+    {% capture seoWithProperTwitterMetaTags %}
+    {% seo %}
+    {% endcapture %}
 
-{% if page.image %}
-  {% include twitter_image.html %}
-{% endif %}
+    <!-- because of https://stackoverflow.com/a/71063178/505996 -->
+    {{ seoWithProperTwitterMetaTags | replace: 'property="twitter:image"', 'name="twitter:image"' }}
 
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <link rel="alternate" type="application/rss+xml" title="RSS feed" href="/feed.xml" />
