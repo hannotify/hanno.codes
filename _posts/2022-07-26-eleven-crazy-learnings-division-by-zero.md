@@ -13,9 +13,6 @@ In the summer of 2021, I got my Java 11 certification. I expected it to be quite
 
 ## Dividing by zero has no meaning
 
-> TODO: Zoek het probleem van de missende images nog even uit.
-> Begin hier met zoeken: https://stackoverflow.com/questions/41740110/twitter-twitter-cards-not-showing-image-after-tweet-post
-
 What happens if you divide a number by zero?
 You probably learned all about this mathematical quirk in your middle or high school mathematics class.
 In ordinary arithmetic, an expression that consists of a division by zero has no meaning, which is why we were taught that such an expression evaluates to *undefined*.
@@ -96,12 +93,12 @@ and:
 
 Did you miss a blog post in this series? Here's a list of all posts that have been published so far:
 
-1. [A few freaky array declarations](/2022/06/28/eleven-crazy-learnings-initialising-arrays.html)
+1. [A few freaky array declarations]({% post_url 2022-06-28-eleven-crazy-learnings-initialising-arrays %})
 2. [Stream elements should implement Comparable](/2022/07/05/eleven-crazy-learnings-stream-elements-comparable.html)
 3. [Accessing static interface methods](/2022/07/12/eleven-crazy-learnings-accessing-static-interface-methods.html)
 4. [Anonymous subclasses in enums](/2022/07/19/eleven-crazy-learnings-anonymous-subclass-in-enum.html)
 5. Division by zero (you've just finished reading it!)
 
-![Conference](/images/blog/maths.jpg)
+![Maths](/images/blog/maths.jpg)
 > Image from <a href="https://pxhere.com/nl/photo/464083">PxHere</a>
 

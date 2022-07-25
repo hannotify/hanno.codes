@@ -127,6 +127,7 @@ Did you miss a blog post in this series? Here's a list of all posts that have be
 2. [Stream elements should implement Comparable](/2022/07/05/eleven-crazy-learnings-stream-elements-comparable.html)
 3. [Accessing static interface methods](/2022/07/12/eleven-crazy-learnings-accessing-static-interface-methods.html)
 4. Anonymous subclasses in enums (you've just finished reading it!)
+5. [Division by zero]({% post_url 2022-07-26-eleven-crazy-learnings-division-by-zero %})
 
 ![Conference](/images/blog/conference.jpg)
 > Image from <a href="https://pxhere.com/nl/photo/489447">PxHere</a>
