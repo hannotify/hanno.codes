@@ -13,15 +13,17 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: MM
-email:
+title: Hanno Embregts
+subtitle: The guy who talks and sings about Java at software conferences!
+name: Hanno Embregts
+url: https://hanno.codes
+email: hello@hanno.codes
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-twitter_username: username
-github_username: username
-minimal_mistakes_skin: default
+  Public speaker, Java developer, guitarist, singer.
+repository: hannotify/hannotify.github.io
+twitter_username: hannotify
+github_username: hannotify
+minimal_mistakes_skin: dirt
 search: true
 
 # Build settings
@@ -58,9 +60,9 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : "First Lastname"
+  name   : "Hanno Embregts"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "My awesome biography constrained to a sentence or two goes here."
+  bio    : "The Java guy that sings at conferences."
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
