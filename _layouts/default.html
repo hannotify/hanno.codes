@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
 {% seo %}
+
+{% if page.image %}
+  {% include twitter_image.html %}
+{% endif %}
+
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <link rel="alternate" type="application/rss+xml" title="RSS feed" href="/feed.xml" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
