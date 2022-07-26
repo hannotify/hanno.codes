@@ -23,7 +23,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 repository: hannotify/hannotify.github.io
 twitter_username: hannotify
 github_username: hannotify
-minimal_mistakes_skin: dirt
+minimal_mistakes_skin: air
 search: true
 
 # Build settings

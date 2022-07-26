@@ -7,12 +7,12 @@ author_profile: true
 header:
   overlay_filter: "0.6"
   overlay_image: /assets/images/jfall-2021.jpg
+  caption: "J-Fall 2021"
   actions:
     - label: "Talks"
       url: "/talks/"
     - label: "Projects"
       url: "/projects/"
-  caption: "**Photo:** J-Fall 2021"
 excerpt: > 
   Java developer & speaker
 ---
