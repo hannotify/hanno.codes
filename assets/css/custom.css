@@ -1,3 +1,11 @@
 .page__hero--overlay {
     background-position-y: top;
 }
+
+.page__hero--overlay .page__lead {
+    max-width: initial;
+}
+
+.wrapper {
+    text-align: center;
+}

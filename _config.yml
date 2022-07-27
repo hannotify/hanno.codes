@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Hanno Embregts
-subtitle: The guy who talks and sings about Java at software conferences!
+subtitle: Java developer & speaker
 name: Hanno Embregts
 url: https://hanno.codes
 email: hello@hanno.codes
