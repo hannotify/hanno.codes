@@ -119,6 +119,9 @@ So although I never heard about this feature until recently, it can still help y
 Though I wouldn't go overboard with it by introducing anonymous subclasses in enum definitions for all possible variants of your enum logic.
 Use it appropriately, just as you would use inheritance in some specific cases (but certainly not everywhere!).
 
+![Conference](/images/blog/conference.jpg)
+> Image from <a href="https://pxhere.com/nl/photo/489447">PxHere</a>
+
 ## Other blog posts in this series
 
 Did you miss a blog post in this series? Here's a list of all posts that have been published so far:
@@ -128,6 +131,4 @@ Did you miss a blog post in this series? Here's a list of all posts that have be
 3. [Accessing static interface methods](/2022/07/12/eleven-crazy-learnings-accessing-static-interface-methods.html)
 4. Anonymous subclasses in enums (you've just finished reading it!)
 5. [Division by zero]({% post_url 2022-07-26-eleven-crazy-learnings-division-by-zero %})
-
-![Conference](/images/blog/conference.jpg)
-> Image from <a href="https://pxhere.com/nl/photo/489447">PxHere</a>
+6. [Method overloading priorities]({% post_url 2022-08-02-eleven-crazy-learnings-method-overloading-priorities %})

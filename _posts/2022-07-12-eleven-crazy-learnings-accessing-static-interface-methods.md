@@ -105,6 +105,9 @@ According to the Java Language Specification, [a class does not inherit (...) st
 
 Recall that Java allows a class to implement multiple interfaces. What if those interfaces would all define the same static method? What method would then be available to the implementing class? The compiler wouldn't know which one to invoke! So that's why the restriction was put in place, and why developers should explicitly name the interface that contains the static method you want to call.
 
+![Clock](/images/blog/clock.jpg)
+> Image from <a href="https://pxhere.com/nl/photo/883658">PxHere</a>
+
 ## Other blog posts in this series
 
 Did you miss a blog post in this series? Here's a list of all posts that have been published so far:
@@ -114,6 +117,4 @@ Did you miss a blog post in this series? Here's a list of all posts that have be
 3. Accessing static interface methods (you've just finished reading it!)
 4. [Anonymous subclasses in enums](/2022/07/19/eleven-crazy-learnings-anonymous-subclass-in-enum.html)
 5. [Division by zero]({% post_url 2022-07-26-eleven-crazy-learnings-division-by-zero %})
-
-![Clock](/images/blog/clock.jpg)
-> Image from <a href="https://pxhere.com/nl/photo/883658">PxHere</a>
+6. [Method overloading priorities]({% post_url 2022-08-02-eleven-crazy-learnings-method-overloading-priorities %})

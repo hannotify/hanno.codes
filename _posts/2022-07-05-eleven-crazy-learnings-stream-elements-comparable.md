@@ -97,6 +97,9 @@ But for this to work you would need to add a `getStartTime()` method to the `Tal
 
 So this is how you can sort stream elements, even when you're struggling with a few `ClassCastExpections`. Next week we'll take a look at static interface methods!
 
+![Clock](/images/blog/clock.jpg)
+> Image from <a href="https://pxhere.com/nl/photo/883658">PxHere</a>
+
 ## Other blog posts in this series
 
 Did you miss a blog post in this series? Here's a list of all posts that have been published so far:
@@ -106,6 +109,4 @@ Did you miss a blog post in this series? Here's a list of all posts that have be
 3. [Accessing static interface methods](/2022/07/12/eleven-crazy-learnings-accessing-static-interface-methods.html)
 4. [Anonymous subclasses in enums](/2022/07/19/eleven-crazy-learnings-anonymous-subclass-in-enum.html)
 5. [Division by zero]({% post_url 2022-07-26-eleven-crazy-learnings-division-by-zero %})
-
-![Clock](/images/blog/clock.jpg)
-> Image from <a href="https://pxhere.com/nl/photo/883658">PxHere</a>
+6. [Method overloading priorities]({% post_url 2022-08-02-eleven-crazy-learnings-method-overloading-priorities %})

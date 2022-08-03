@@ -89,6 +89,9 @@ and:
 
 (This behaviour is in accordance with the IEEE Standard for Floating-Point Arithmetic ([IEEE 754](https://en.wikipedia.org/wiki/IEEE_754)).)
 
+![Maths](/images/blog/maths.jpg)
+> Image from <a href="https://pxhere.com/nl/photo/464083">PxHere</a>
+
 ## Other blog posts in this series
 
 Did you miss a blog post in this series? Here's a list of all posts that have been published so far:
@@ -98,7 +101,5 @@ Did you miss a blog post in this series? Here's a list of all posts that have be
 3. [Accessing static interface methods](/2022/07/12/eleven-crazy-learnings-accessing-static-interface-methods.html)
 4. [Anonymous subclasses in enums](/2022/07/19/eleven-crazy-learnings-anonymous-subclass-in-enum.html)
 5. Division by zero (you've just finished reading it!)
-
-![Maths](/images/blog/maths.jpg)
-> Image from <a href="https://pxhere.com/nl/photo/464083">PxHere</a>
+6. [Method overloading priorities]({% post_url 2022-08-02-eleven-crazy-learnings-method-overloading-priorities %})
 
