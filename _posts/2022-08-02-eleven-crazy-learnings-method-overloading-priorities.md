@@ -75,6 +75,19 @@ To summarize: the older feature is always preferred over the newer feature to en
 
 This meant that I didn't have to learn some boring list by heart; I just had to assess for each possible method overload how long it has been possible in Java to execute that specific overload and work out the right priorities from there.
 
+This is why widening is preferred over boxing and varargs, because it's an 'older' language feature.
+
+## What if the 'oldest' overloading rule doesn't work?
+
+> Many thanks to [Tom Cools](https://twitter.com/TCoolsIT) & [Jan-Hendrik Kuperus](https://twitter.com/jhkuperus) for providing me with [this addendum via Twitter](https://twitter.com/jhkuperus/status/1554756615953342464)!
+
+Now varargs and autoboxing are both Java 5 features, so the 'oldest' overloading rule doesn't work to distinguish their priorities.
+Between those two, the most performant wins, which is autoboxing. 
+Because varargs create arrays, and that is heavier work than just (un)boxing.
+
+Also, variable arity is usually considered last to prevent confusion. 
+Which is also why the varargs-param must be the last one.
+
 ## General advice
 
 I think this point brings us to a useful piece of general advice.
