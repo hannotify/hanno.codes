@@ -132,3 +132,5 @@ Did you miss a blog post in this series? Here's a list of all posts that have be
 4. Anonymous subclasses in enums (you've just finished reading it!)
 5. [Division by zero]({% post_url 2022-07-26-eleven-crazy-learnings-division-by-zero %})
 6. [Method overloading priorities]({% post_url 2022-08-02-eleven-crazy-learnings-method-overloading-priorities %})
+7. [The crazy stuff that is allowed in switch statements]({% post_url 2022-08-09-eleven-crazy-learnings-crazy-stuff-in-switch-statements %})
+   
