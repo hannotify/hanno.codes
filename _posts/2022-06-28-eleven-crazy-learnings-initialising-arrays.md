@@ -90,4 +90,4 @@ Did you miss a blog post in this series? Here's a list of all posts that have be
 5. [Division by zero]({% post_url 2022-07-26-eleven-crazy-learnings-division-by-zero %})
 6. [Method overloading priorities]({% post_url 2022-08-02-eleven-crazy-learnings-method-overloading-priorities %})
 7. [The crazy stuff that is allowed in switch statements]({% post_url 2022-08-09-eleven-crazy-learnings-crazy-stuff-in-switch-statements %})
-   
+8. [Equality in cloned arrays]({% post_url 2022-08-16-eleven-crazy-learnings-equality-in-cloned-arrays %})
