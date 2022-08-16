@@ -127,7 +127,7 @@ So it makes sense that it would return `true` for our example arrays.
 There's one small caveat: you have to make sure that you've overridden the `equals()` method of the type your array is constructed of (in our case the `Talk` class) and provide a meaningful implementation.
 Otherwise the `equals()` implementation of Object is used again.
 
-(and I don't know about you, but I've growen a bit tired of that implementation 🙂)
+(and I don't know about you, but I've grown a bit tired of that implementation 🙂)
 
 ```java
     @Test
