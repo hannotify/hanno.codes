@@ -1,8 +1,6 @@
 ---
-# You don't need to edit this file, it's empty on purpose.
-# Edit theme's home layout instead if you wanna make some changes
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-layout: home
+layout: splash
+title: Hanno Embregts
 author_profile: true
 header:
   overlay_filter: "0.5"
@@ -17,3 +15,22 @@ excerpt: >
   The guy who talks and sings about Java at software conferences!
 ---
 
+# upcoming events
+
+{% include events/upcoming.md %}
+
+[More events](/events){: .btn .btn--primary .btn--large}
+
+<br/>
+
+# latest blog posts
+
+[More blog posts](/blog){: .btn .btn--primary .btn--large}
+
+<br/>
+
+# hanno.codes?
+
+[hanno.codes](https://hanno.codes) is the personal website of Hanno Embregts. 
+
+[More about me](/bio){: .btn .btn--primary .btn--large}
