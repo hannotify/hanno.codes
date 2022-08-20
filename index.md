@@ -31,6 +31,6 @@ excerpt: >
 
 # hanno.codes?
 
-[hanno.codes](https://hanno.codes) is the personal website of Hanno Embregts. 
+[hanno.codes](https://hanno.codes) is the personal website of Hanno Embregts, an IT Consultant at Info Support (the Netherlands). He has extensive experience with both front- and back-end development, with a special interest in automating the software development process to the fullest.
 
 [More about me](/bio){: .btn .btn--primary .btn--large}
