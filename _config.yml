@@ -63,7 +63,7 @@ plugins:
 author:
   name   : "Hanno Embregts"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "The Java guy that sings at conferences."
+  bio    : "The guy who talks and sings about Java at software conferences!"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
