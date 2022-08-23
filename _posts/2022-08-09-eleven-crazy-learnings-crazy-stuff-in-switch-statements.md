@@ -102,4 +102,4 @@ Did you miss a blog post in this series? Here's a list of all posts that have be
 6. [Method overloading priorities]({% post_url 2022-08-02-eleven-crazy-learnings-method-overloading-priorities %})
 7. The crazy stuff that is allowed in switch statements (you've just finished reading it!)
 8. [Equality in cloned arrays]({% post_url 2022-08-16-eleven-crazy-learnings-equality-in-cloned-arrays %})
-
+9. [Wrapper objects: some are more equal than others]({% post_url 2022-08-23-eleven-crazy-learnings-wrapper-objects-some-are-more-equal-than-others %})
