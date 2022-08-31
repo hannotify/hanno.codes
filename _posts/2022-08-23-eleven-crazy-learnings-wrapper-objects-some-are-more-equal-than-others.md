@@ -113,4 +113,5 @@ Did you miss a blog post in this series? Here's a list of all posts that have be
 6. [Method overloading priorities]({% post_url 2022-08-02-eleven-crazy-learnings-method-overloading-priorities %})
 7. [The crazy stuff that is allowed in switch statements]({% post_url 2022-08-09-eleven-crazy-learnings-crazy-stuff-in-switch-statements %})
 8. [Equality in cloned arrays]({% post_url 2022-08-16-eleven-crazy-learnings-equality-in-cloned-arrays %})
-9. Wrapper objects: some are more equal than others (you've just finished reading it!)
+9. **Wrapper objects: some are more equal than others**
+10. [Functional interfaces actually CAN contain multiple abstract methods]({% post_url 2022-08-30-eleven-crazy-learnings-functional-interfaces %})
