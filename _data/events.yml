@@ -1,3 +1,52 @@
+- id: frontmania-2022
+  name: FrontMania
+  year: 2022
+  country:
+    flag: nl
+    name: Netherlands
+  city: Utrecht
+  venue:
+    name: Jaarbeurs
+    latitude: 52.0860406
+    longitude: 5.1014529
+  url: https://www.frontmania.com
+  dateStart: 05-10-2022
+  appearances:
+    - id: will-git-be-around-forever-a-list-of-possible-successors
+      sessionPageUrl: https://frontmania.com/programme/
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+
+- id: devoxx-2022
+  name: Devoxx
+  year: 2022
+  country:
+    flag: be
+    name: Belgium
+  city: Antwerp
+  venue:
+    name: Kinepolis
+    latitude: 51.2459082
+    longitude: 4.4140204
+  url: https://www.devoxx.be
+  dateStart: 10-10-2022
+  dateEnd: 14-10-2022
+  appearances:
+    - id: will-git-be-around-forever-a-list-of-possible-successors
+      sessionPageUrl: 
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+    - id: panel-sustainability-in-tech-without-the-guilt-trips
+      sessionPageUrl: 
+      videoUrl:
+      slidesUrl:
+      githubUrl:
+      photos:
+
 - id: developer-week-2022
   name: Developer Week
   year: 2022

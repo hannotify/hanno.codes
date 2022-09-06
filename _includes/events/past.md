@@ -54,7 +54,7 @@
         {% if talk.cospeakers != null and talk.cospeakers.size > 0 %}
             {% for cospeaker in talk.cospeakers %}
             <tr>
-                <td><strong>Co-speaker</strong></td>
+                <td style="text-align: right">Co-speaker</td>
                 <td><a href="{{cospeaker.twitterUrl}}" target="_blank">{{cospeaker.name}}</a></td>
             </tr>
             {% endfor %}
@@ -62,7 +62,7 @@
         {% if appearance.cospeakers != null and appearance.cospeakers.size > 0 %}
             {% for cospeaker in appearance.cospeakers %}
             <tr>
-                <td><strong>Co-speaker</strong></td>
+                <td style="text-align: right">Co-speaker</td>
                 <td><a href="{{cospeaker.twitterUrl}}" target="_blank">{{cospeaker.name}}</a></td>
             </tr>
             {% endfor %}
