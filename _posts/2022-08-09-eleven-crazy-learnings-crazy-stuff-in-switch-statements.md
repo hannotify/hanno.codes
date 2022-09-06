@@ -104,3 +104,4 @@ Did you miss a blog post in this series? Here's a list of all posts that have be
 8. [Equality in cloned arrays]({% post_url 2022-08-16-eleven-crazy-learnings-equality-in-cloned-arrays %})
 9. [Wrapper objects: some are more equal than others]({% post_url 2022-08-23-eleven-crazy-learnings-wrapper-objects-some-are-more-equal-than-others %})
 10. [Functional interfaces actually CAN contain multiple abstract methods]({% post_url 2022-08-30-eleven-crazy-learnings-functional-interfaces %})
+11. [Passing arguments to method references]({% post_url 2022-09-06-eleven-crazy-learnings-passing-arguments-to-method-references %})
