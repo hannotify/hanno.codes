@@ -35,13 +35,13 @@
   dateEnd: 14-10-2022
   appearances:
     - id: will-git-be-around-forever-a-list-of-possible-successors
-      sessionPageUrl: 
+      sessionPageUrl: https://devoxx.be/talk/?id=18772
       videoUrl:
       slidesUrl:
       githubUrl:
       photos:
-    - id: panel-sustainability-in-tech-without-the-guilt-trips
-      sessionPageUrl: 
+    - id: panel-exploring-sustainability-in-tech-without-the-guilt-trips
+      sessionPageUrl: https://devoxx.be/talk/?id=19434
       videoUrl:
       slidesUrl:
       githubUrl:
