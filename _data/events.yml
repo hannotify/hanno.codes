@@ -14,10 +14,7 @@
   appearances:
     - id: will-git-be-around-forever-a-list-of-possible-successors
       sessionPageUrl: https://frontmania.com/programme/
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
+      slidesUrl: https://nest.pijul.com/hannotify/will-git-be-around-forever
 
 - id: devoxx-2022
   name: Devoxx
@@ -46,6 +43,29 @@
       slidesUrl:
       githubUrl:
       photos:
+
+- id: j-fall-2022
+  name: J-Fall
+  year: 2022
+  country:
+    flag: nl
+    name: The Netherlands
+  city: Ede
+  venue:
+    name: Pathé
+    latitude: 52.01577007972178
+    longitude: 5.64583211559008
+  url: https://www.jfall.nl
+  dateStart: 03-11-2022
+  dateEnd:
+  appearances:
+    - id: pattern-matching-small-enhancement-or-major-feature
+      sessionPageUrl: https://jfall.nl/timetable-2022/
+      cospeakers:
+        - name: Peter Wessels
+          twitterUrl: https://www.twitter.com/PeterWessels
+    - id: panel-exploring-sustainability-in-tech-without-the-guilt-trips
+      sessionPageUrl: https://jfall.nl/timetable-2022/      
 
 - id: developer-week-2022
   name: Developer Week
