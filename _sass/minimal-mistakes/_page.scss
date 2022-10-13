@@ -14,7 +14,9 @@
   -webkit-animation-delay: 0.15s;
   animation-delay: 0.15s;
 
-  text-align: center;
+  .splash {
+    text-align: center;
+  }
 
   @include breakpoint($x-large) {
     max-width: $max-width;
