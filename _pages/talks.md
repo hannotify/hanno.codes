@@ -2,7 +2,7 @@
 layout: single-wide-toc
 author_profile: false
 classes: wide
-permalink: /Talks/
+permalink: /talks/
 toc: true
 toc_sticky: true
 toc_label: Talks
