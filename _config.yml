@@ -22,6 +22,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Public speaker, Java developer, guitarist, singer.
 repository: hannotify/hannotify.github.io
 twitter_username: hannotify
+mastodon_username: hannotify
 github_username: hannotify
 stackoverflow_username: 505996/hanno
 minimal_mistakes_skin: air
@@ -65,12 +66,12 @@ author:
   avatar : "/assets/images/bio-photo.jpg"
   bio    : "Talks 🎙 and sings 🎤🎸 about Java at software conferences! Architect, Java Developer, Technology Advocate & Community Lead at Info Support. 🇺🇦🏳️‍🌈"
   links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "https://hanno.codes"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://www.twitter.com/hannotify"
+    - label: "Mastodon"
+      icon: "fab fa-fw fa-mastodon"
+      url: "https://mastodon.social/@hannotify"      
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://www.github.com/hannotify"
