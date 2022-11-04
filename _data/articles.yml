@@ -1,0 +1,41 @@
+- title: Voel je als een vis in het water met de Fish-shell
+  language: nl
+  year: 2022
+  source: Java Magazine
+  url: https://nljug.org/java-magazine/java-magazine-2-2022-java-18-is-here/
+  synopsis: An introduction of the Fish shell. In Dutch.
+
+- title: Pattern Matching maakt Java nóg krachtiger
+  language: nl
+  year: 2021
+  source: Java Magazine
+  url: https://nljug.org/java-magazine/java-magazine-2-2021-brand-new/
+  synopsis: Overview of the pattern matching features that became available in Java, and how this feature will shape Java in the future. In Dutch.
+
+- title: Van Java 8 naar Java 11
+  language: nl
+  year: 2019
+  source: Java Magazine
+  url: https://nljug.org/java-magazine/java-magazine-1-2019/
+  synopsis: Project report of upgrading Java 8 to Java 11. In Dutch.
+
+- title: Ethics in Software Development
+  language: en
+  year: 2019
+  source: Code Cop Blog
+  url: https://blog.code-cop.org/2019/01/interview-hanno-embregts.html
+  synopsis: I was interviewed by Peter Kopfler (a.k.a. the Code Cop) on ethics in software development.
+
+- title: Migrating 25K lines of Ant scripting to Gradle
+  language: en
+  year: 2016
+  source: Voxxed.com
+  url: https://www.voxxed.com/blog/2016/09/migration-ant-gradle
+  synopsis: Project report on the migration from Ant to Gradle and our experience with that.
+
+- title: Grip op je buildproces met Gradle
+  language: nl
+  year: 2015
+  source: Java Magazine
+  url: https://nljug.org/java-magazine/grip-op-je-buildproces-met-gradle/
+  synopsis: Project report on the migration from Ant to Gradle and our experience with that. In Dutch.
