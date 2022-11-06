@@ -2,8 +2,7 @@
 layout: single
 author_profile: true
 header:
-  overlay_filter: "0.0"
-  overlay_image: /assets/images/overlay/devoxx-uk-2022.jpg
+  image: /assets/images/overlay/devoxx-uk-2022.jpg
   caption: "Devoxx UK 2022"
 permalink: /about-me/
 ---

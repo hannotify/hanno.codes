@@ -1,8 +1,6 @@
 main:
   - title: "Talks"
     url: /talks/
-  - title: "Projects"
-    url: /projects/
   - title: "Events"
     url: /events/
   - title: "Blog"

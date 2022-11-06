@@ -3,8 +3,7 @@ layout: single-wide-toc
 author_profile: false
 classes: wide
 header:
-  overlay_filter: "0.0"
-  overlay_image: /assets/images/overlay/devoxx-uk-2022.jpg
+  image: /assets/images/overlay/devoxx-uk-2022.jpg
   caption: "Devoxx UK 2022"
 permalink: /talks/
 toc: true

@@ -9,8 +9,8 @@ header:
   actions:
     - label: "Talks"
       url: "/talks/"
-    - label: "Projects"
-      url: "/projects/"
+    - label: "Articles"
+      url: "/articles/"
 excerpt: > 
   The guy who talks and sings about Java at software conferences!
 ---
