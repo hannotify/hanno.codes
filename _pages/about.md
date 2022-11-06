@@ -1,8 +1,13 @@
 ---
+layout: single
+author_profile: true
+header:
+  overlay_filter: "0.0"
+  overlay_image: /assets/images/overlay/devoxx-uk-2022.jpg
+  caption: "Devoxx UK 2022"
 permalink: /about-me/
-title: "About me"
 ---
 
-Tempor velit sint sunt ipsum tempor enim ad qui ullamco. Est dolore anim ad velit duis dolore minim sunt aliquip amet commodo labore. Ut eu pariatur aute ea aute excepteur laborum. Esse ea esse excepteur minim mollit qui cillum excepteur ex dolore magna. Labore deserunt fugiat incididunt incididunt sint ea. Consequat dolore aute laboris quis proident quis non et est consectetur ex eiusmod sit culpa.
+Hanno Embregts is an IT Consultant at Info Support (the Netherlands). He has extensive experience with both front- and back-end development, with a special interest in automating the software development process to the fullest.
 
-Cupidatat ea do et in excepteur in. Ad nostrud ut est esse eu duis ea sunt eiusmod. Aliquip tempor veniam sint elit fugiat. Velit incididunt laboris amet incididunt labore dolore irure velit excepteur commodo deserunt laborum. Consectetur eu fugiat veniam veniam Lorem labore magna eiusmod. Ea occaecat reprehenderit pariatur consectetur minim labore ut aliquip.
+He likes his work best when it is fast-paced and versatile, which is why he juggles Java development, public speaking, leading Info Support’s Java Community and teaching courses at Info Support’s Knowledge Centre. When Hanno doesn’t have access to any kind of computer - which can only be called the most desperate of times - he plays in a band as a lead singer and guitar player. He is also a passionate fan of alternative rock band Switchfoot and Dutch football club Feyenoord. Last but not least: he has been told off repeatedly for using Star Wars quotes at work (things didn’t improve much by replying “I find your lack of faith disturbing”).

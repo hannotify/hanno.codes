@@ -4,7 +4,7 @@ title: Hanno Embregts
 author_profile: true
 header:
   overlay_filter: "0.5"
-  overlay_image: /assets/images/voxxed-days-bucharest-2019.jpg
+  overlay_image: /assets/images/overlay/voxxed-days-bucharest-2019.jpg
   caption: "Voxxed Days Bucharest 2019"
   actions:
     - label: "Talks"
