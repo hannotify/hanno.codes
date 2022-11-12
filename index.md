@@ -19,7 +19,7 @@ excerpt: >
 
 # upcoming events
 
-{% include events/upcoming.md %}
+{% include home/upcoming-events.md %}
 
 [More events](/events){: .btn .btn--primary .btn--large}
 

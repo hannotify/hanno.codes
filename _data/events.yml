@@ -1,3 +1,64 @@
+- id: jfokus-2023
+  name: JFokus
+  year: 2023
+  country: 
+    flag: se
+    name: Sweden
+  city: Stockholm
+  venue:
+  url: https://www.jfokus.se
+  dateStart: 06-02-2023
+  dateEnd: 08-02-2023
+  appearances: 
+    - id: what-stairway-to-heaven-can-teach-us-about-software-development
+      sessionPageUrl: 
+
+- id: javaland-2023
+  name: JavaLand
+  year: 2023
+  country:
+    flag: de
+    name: Germany
+  city: Brühl
+  venue:
+    name: Phantasialand
+    latitude: 50.7993531
+    longitude: 6.8786675
+  url: https://www.javaland.eu
+  dateStart: 21-03-2023
+  dateEnd: 23-03-2023
+  appearances:
+    - id: pattern-matching-small-enhancement-or-major-feature
+      sessionPageUrl: https://shop.doag.org/events/javaland/2023/agenda/#eventDay.1679439600
+      cospeakers:
+        - name: Peter Wessels
+          twitterUrl: https://www.twitter.com/PeterWessels
+
+- id: j-fall-2022
+  name: J-Fall
+  year: 2022
+  country:
+    flag: nl
+    name: The Netherlands
+  city: Ede
+  venue:
+    name: Pathé
+    latitude: 52.01577007972178
+    longitude: 5.64583211559008
+  url: https://www.jfall.nl
+  dateStart: 03-11-2022
+  dateEnd:
+  appearances:
+    - id: pattern-matching-small-enhancement-or-major-feature
+      sessionPageUrl: https://jfall.nl/timetable-2022/
+      slidesUrl: https://www.slideshare.net/HannoEmbregts/pattern-matching-small-enhancement-or-major-feature-253981213
+      cospeakers:
+        - name: Peter Wessels
+          twitterUrl: https://www.twitter.com/PeterWessels
+    - id: panel-exploring-sustainability-in-tech-without-the-guilt-trips
+      sessionPageUrl: https://jfall.nl/timetable-2022/
+      slidesUrl: https://docs.google.com/presentation/d/e/2PACX-1vTQdPhE9_uJwxFHz5kp3gMImFkhwqurL94h8Nbo5UOElV0X9CxLe3sKcBZEQ5N2Cg_-2Pelvst3wNOR/pub?start=false&loop=false&delayms=3000
+
 - id: devoxx-2022
   name: Devoxx
   year: 2022
@@ -10,16 +71,34 @@
     latitude: 51.2459082
     longitude: 4.4140204
   url: https://www.devoxx.be
-  logo: devoxx.png
   dateStart: 10-10-2022
   dateEnd: 14-10-2022
   appearances:
     - id: will-git-be-around-forever-a-list-of-possible-successors
-      sessionPageUrl: 
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
+      sessionPageUrl: https://devoxx.be/talk/?id=18772
+      videoUrl: https://youtu.be/M4KktA_jbOE
+      slidesUrl: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-a-list-of-possible-successors-from-devoxx-2022
+    - id: panel-exploring-sustainability-in-tech-without-the-guilt-trips
+      sessionPageUrl: https://devoxx.be/talk/?id=19434
+      slidesUrl: https://docs.google.com/presentation/d/e/2PACX-1vTQdPhE9_uJwxFHz5kp3gMImFkhwqurL94h8Nbo5UOElV0X9CxLe3sKcBZEQ5N2Cg_-2Pelvst3wNOR/pub?start=false&loop=false&delayms=3000
+
+- id: frontmania-2022
+  name: FrontMania
+  year: 2022
+  country:
+    flag: nl
+    name: Netherlands
+  city: Utrecht
+  venue:
+    name: Jaarbeurs
+    latitude: 52.0860406
+    longitude: 5.1014529
+  url: https://www.frontmania.com
+  dateStart: 05-10-2022
+  appearances:
+    - id: will-git-be-around-forever-a-list-of-possible-successors
+      sessionPageUrl: https://frontmania.com/programme/
+      slidesUrl: https://nest.pijul.com/hannotify/will-git-be-around-forever
 
 - id: developer-week-2022
   name: Developer Week
@@ -34,6 +113,7 @@
   appearances:
     - id: pattern-matching-small-enhancement-or-major-feature
       sessionPageUrl: https://www.developer-week.de/programm/#/talk/pattern-matching-small-enhancement-or-major-feature
+      slidesUrl: https://www.slideshare.net/HannoEmbregts/pattern-matching-small-enhancement-or-major-feature-from-developer-week-202
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
