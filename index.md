@@ -3,7 +3,7 @@ layout: splash
 title: Hanno Embregts
 author_profile: true
 header:
-  overlay_filter: "0.5"
+  overlay_filter: "0.6"
   overlay_image: /assets/images/overlay/voxxed-days-bucharest-2019.jpg
   caption: "Voxxed Days Bucharest 2019"
   actions:
@@ -12,7 +12,9 @@ header:
     - label: "Articles"
       url: "/articles/"
 excerpt: > 
-  The guy who talks and sings about Java at software conferences!
+  Java Developer by day. 💻 <br/>
+  Musician by night. 🎤🎸 <br/>
+  A little bit of both at software conferences.
 ---
 
 # upcoming events

@@ -3,8 +3,8 @@ layout: single-wide-toc
 author_profile: false
 classes: wide
 header:
-  image: /assets/images/overlay/devoxx-uk-2022.jpg
-  caption: "Devoxx UK 2022"
+  image: /assets/images/overlay/jfall-2021.jpg
+  caption: "J-Fall 2021"
 permalink: /talks/
 toc: true
 toc_sticky: true

@@ -2,8 +2,8 @@
 layout: single
 author_profile: true
 header:
-  image: /assets/images/overlay/devoxx-uk-2022.jpg
-  caption: "Devoxx UK 2022"
+  image: /assets/images/overlay/joy-of-coding-2022.jpg
+  caption: "Joy of Coding 2022"
 permalink: /about-me/
 ---
 
