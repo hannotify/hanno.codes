@@ -1,3 +1,20 @@
+- id: panel-exploring-sustainability-in-tech-without-the-guilt-trips
+  title: Panel&#58; Exploring Sustainability in Tech Without the Guilt-Trips
+  type: unconference
+  cospeakers:
+  - name: Julien Lengrand-Lambert
+    twitterUrl: https://www.twitter.com/jlengrand
+  - name: Jan Ouwens
+    twitterUrl: https://www.twitter.com/jqno
+  - name: Jan-Hendrik Kuperus
+    twitterUrl: https://www.twitter.com/jhkuperus
+  description: |
+    Most of us are all well aware of it: the current trend of climate change is not looking great. We can already feel some of its consequences and it is very likely to only become worse. As software developers we’re all about innovation though, so as long as we’re innovating not all hope is lost.
+
+    So how can you use innovation to become more sustainable, both as a software developer and as a human being? There is no single answer to that question, which is why we’re hosting this talk as a panel so that you’ll be able to hear multiple opinions. Each of us has a different perspective and knows different things we can do to help make a difference, and we'd like to hear from you as well!
+
+    We'd like to emphasize that we don't want to guilt-trip anyone. This session is intended as a source of inspiration. The sheer scope of the problem can cause even the best of us to freeze up. Hearing ideas, no matter how small, from peers will provide you and us with ideas for the next step to take. This talk could be an opportunity for you to catch a few sustainability tips that can find their way into your life without costing you any noticeable effort.
+
 - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
   title: 11 Crazy Things I Didn't Know You Could Do With Java Until I Got My Java 11 Certification
   type: lightning

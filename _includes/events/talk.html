@@ -1,0 +1,40 @@
+<tr>
+    <td><strong>Talk</strong></td>
+    <td><a href="talks#{{talk.id}}">{{talk.title}}</a></td>
+</tr>
+
+    {% if talk.cospeakers != null and talk.cospeakers.size > 0 %}
+        {% for cospeaker in talk.cospeakers %}
+<tr>
+    <td style="text-align: right">Co-speaker</td>
+    <td><a href="{{cospeaker.twitterUrl}}" target="_blank">{{cospeaker.name}}</a></td>
+</tr>
+        {% endfor %}
+    {% endif %}
+    {% if appearance.cospeakers != null and appearance.cospeakers.size > 0 %}
+        {% for cospeaker in appearance.cospeakers %}
+<tr>
+    <td style="text-align: right">Co-speaker</td>
+    <td><a href="{{cospeaker.twitterUrl}}" target="_blank">{{cospeaker.name}}</a></td>
+</tr>
+        {% endfor %}
+    {% endif %}
+    {% if appearance.sessionPageUrl or appearance.videoUrl or appearance.slidesUrl or appearance.githubUrl %}
+<tr>
+    <td><strong>Resources</strong></td>
+    <td>
+        {% if appearance.sessionPageUrl %}
+            <a target="_blank" href="{{appearance.sessionPageUrl}}" class="btn btn--inverse" title="Conference schedule"><i class="fa fa-calendar"></i></a>
+        {% endif %}
+        {% if appearance.videoUrl %}
+            <a target="_blank" href="{{appearance.videoUrl}}" class="btn btn--inverse" title="Video recording"><i class="fab fa-youtube"></i></a>
+        {% endif %}
+        {% if appearance.slidesUrl %}
+            <a target="_blank" href="{{appearance.slidesUrl}}" class="btn btn--inverse" title="Slide deck"><i class="fab fa-slideshare"></i></a>
+        {% endif %}
+        {% if appearance.githubUrl %}
+            <a target="_blank" href="{{appearance.githubUrl}}" class="btn btn--inverse" title="GitHub repository"><i class="fab fa-github"></i></a>
+        {% endif %}
+    </td>
+</tr>  
+    {% endif %}

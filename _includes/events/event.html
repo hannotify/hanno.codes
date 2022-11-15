@@ -1,0 +1,27 @@
+
+<h2>
+    <a href="#{{event.id}}"></a>
+    <a href="{{event.url}}">{{event.name}} {{event.year}}</a>
+</h2>
+
+<table>
+    <tr>
+        <td><strong>Location</strong></td>
+        {% if event.city %}
+            <td>{{event.city}}, {{event.country.name}} :{{event.country.flag}}:</td>
+        {% else %}
+            <td>Online</td>
+        {% endif %}
+    </tr>
+    <tr>
+        <td><strong>Date</strong></td>
+        {% if event.dateEnd %}
+            <td>{{ event.dateStart | date: "%B %e, %Y" }} - {{ event.dateEnd | date: "%B %e, %Y" }}</td>
+        {% else %}
+            <td >{{ event.dateStart | date: "%B %e, %Y" }}</td>
+        {% endif %}
+    </tr>
+    {% for appearance in event.appearances %}{% assign talk = site.data.talks | where: "id", appearance.id | first %}    
+        {% include events/talk.html %}
+    {% endfor %}
+</table>

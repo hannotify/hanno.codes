@@ -25,8 +25,7 @@
         <li><a href="/events#{{event.id}}">{{event.name}} {{event.year}}</a></li>
         {% endfor %}
     </ul>
-        {% endif %}
-
 </div>
+    {% endif %}
 
 {% endfor %}
