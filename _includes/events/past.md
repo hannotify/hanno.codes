@@ -29,7 +29,7 @@
     <tr>
         <td><strong>Location</strong></td>
         {% if event.city %}
-            <td>{{event.city}}, {{event.country.name}} <img src="images/flags/{{event.country.flag}}.gif"/></td>
+            <td>{{event.city}}, {{event.country.name}} :{{event.country.flag}}:</td>
         {% else %}
             <td>Online</td>
         {% endif %}

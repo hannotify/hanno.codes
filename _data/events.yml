@@ -2,7 +2,7 @@
   name: JFokus
   year: 2023
   country: 
-    flag: se
+    flag: sweden
     name: Sweden
   city: Stockholm
   venue:
@@ -38,7 +38,7 @@
   name: J-Fall
   year: 2022
   country:
-    flag: nl
+    flag: netherlands
     name: The Netherlands
   city: Ede
   venue:
@@ -63,7 +63,7 @@
   name: Devoxx
   year: 2022
   country:
-    flag: be
+    flag: belgium
     name: Belgium
   city: Antwerp
   venue:
@@ -86,7 +86,7 @@
   name: FrontMania
   year: 2022
   country:
-    flag: nl
+    flag: netherlands
     name: Netherlands
   city: Utrecht
   venue:
@@ -129,7 +129,7 @@
   dateStart: 21-06-2022
   dateEnd: 
   country:
-    flag: "nl"
+    flag: netherlands
     name: The Netherlands
   city: Utrecht
   venue:
@@ -151,7 +151,7 @@
   dateStart: 17-06-2022
   dateEnd: 
   country:
-    flag: "nl"
+    flag: netherlands
     name: The Netherlands
   city: Rotterdam
   venue:
@@ -195,7 +195,7 @@
   name: Zoetermeer Tech Night
   year: 2022
   country: 
-    flag: nl
+    flag: netherlands
     name: Netherlands
   city: Zoetermeer
   venue:
@@ -267,7 +267,7 @@
   name: J-Fall
   year: 2021
   country:
-    flag: nl
+    flag: netherlands
     name: The Netherlands
   city: Ede
   venue:
@@ -305,7 +305,7 @@
   url: https://www.meetup.com/nl-NL/Utrecht-Java-User-Group
   dateStart: 20-09-2021
   country:
-    flag: nl
+    flag: netherlands
     name: The Netherlands
   city: Nieuwegein
   venue:
@@ -394,7 +394,7 @@
   name: J-Fall
   year: 2020
   country:
-    flag: nl
+    flag: netherlands
     name: The Netherlands
   url: //www.jfall.nl
   dateStart: 03-11-2020
@@ -422,7 +422,7 @@
   name: DotNed Saturday
   year: 2020
   country:
-    flag: nl
+    flag: netherlands
     name: Netherlands
   city: Veenendaal
   venue:
@@ -444,7 +444,7 @@
   name: Devoxx
   year: 2019
   country:
-    flag: be
+    flag: belgium
     name: Belgium
   city: Antwerp
   venue:
@@ -470,7 +470,7 @@
   name: J-Fall
   year: 2019
   country:
-    flag: nl
+    flag: netherlands
     name: The Netherlands
   city: Ede
   venue:
@@ -492,7 +492,7 @@
   name: Voxxed Days Athens
   year: 2019
   country:
-    flag: gr
+    flag: greece
     name: Greece
   city: Athens
   venue:
@@ -515,7 +515,7 @@
   year: 2019
   occasion: Joy of Coding 2019 pre-party
   country:
-    flag: nl
+    flag: netherlands
     name: The Netherlands
   city: Rotterdam
   venue:
@@ -537,7 +537,7 @@
   name: Voxxed Days Bucharest
   year: 2019
   country:
-    flag: ro
+    flag: romania
     name: Romania
   city: Bucharest
   venue:
@@ -570,7 +570,7 @@
   name: Devoxx
   year: 2018
   country:
-    flag: be
+    flag: belgium
     name: Belgium
   city: Antwerp
   venue:
@@ -592,7 +592,7 @@
   name: J-Fall
   year: 2018
   country:
-    flag: nl
+    flag: netherlands
     name: The Netherlands
   city: Ede
   venue:
@@ -614,7 +614,7 @@
   name: GeeCON
   year: 2018
   country:
-    flag: pl
+    flag: poland
     name: Poland
   city: Kraków
   venue:
@@ -636,7 +636,7 @@
   name: TEQNation
   year: 2018
   country:
-    flag: nl
+    flag: netherlands
     name: Netherlands
   city: Utrecht
   venue:
@@ -658,7 +658,7 @@
   name: Voxxed Days Vienna
   year: 2018
   country:
-    flag: at
+    flag: austria
     name: Austria
   city: Vienna
   venue:
@@ -680,7 +680,7 @@
   name: JVMCon
   year: 2018
   country:
-    flag: nl
+    flag: netherlands
     name: The Netherlands
   city: Ede
   venue:
@@ -702,7 +702,7 @@
   name: Devoxx
   year: 2017
   country:
-    flag: be
+    flag: belgium
     name: Belgium
   city: Antwerp
   venue:
@@ -741,7 +741,7 @@
   name: J-Fall
   year: 2017
   country:
-    flag: nl
+    flag: netherlands
     name: The Netherlands
   city: Ede
   venue:
@@ -846,7 +846,7 @@
   name: jPrime
   year: 2016
   country:
-    flag: bg
+    flag: bulgaria
     name: Bulgaria
   city: Sofia
   venue:

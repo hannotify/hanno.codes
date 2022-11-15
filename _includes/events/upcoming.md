@@ -29,7 +29,7 @@
 
 
     {% if event.city %}
-        {% capture locationString %}{{event.city}}, {{event.country.name}} <img src="images/flags/{{event.country.flag}}.gif"/>{% endcapture %}
+        {% capture locationString %}{{event.city}}, {{event.country.name}} :{{event.country.flag}}:{% endcapture %}
     {% else %}
         {% assign locationString = "Online" %}
     {% endif %}
