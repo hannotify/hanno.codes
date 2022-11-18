@@ -5,13 +5,14 @@
     flag: sweden
     name: Sweden
   city: Stockholm
-  venue:
+  venue: Waterfront Congress Center
   url: https://www.jfokus.se
   dateStart: 06-02-2023
   dateEnd: 08-02-2023
+  logo: jfokus-2023.svg
   appearances: 
     - id: what-stairway-to-heaven-can-teach-us-about-software-development
-      sessionPageUrl: 
+      sessionPageUrl: https://www.jfokus.se/schedule
 
 - id: javaland-2023
   name: JavaLand
@@ -27,6 +28,7 @@
   url: https://www.javaland.eu
   dateStart: 21-03-2023
   dateEnd: 23-03-2023
+  logo: javaland.png
   appearances:
     - id: pattern-matching-small-enhancement-or-major-feature
       sessionPageUrl: https://shop.doag.org/events/javaland/2023/agenda/#eventDay.1679439600

@@ -16,6 +16,6 @@
 
 {% for event in upcomingEvents %}
 
-[![{{event.name}} {{event.year}}](../../assets/images/conference-logos/{{event.logo}})](events#{{event.id}})
+[![{{event.name}} {{event.year}}](../../assets/images/conference-logos/{{event.logo}}){:width="200em"}](events#{{event.id}})
 
 {% endfor %}
