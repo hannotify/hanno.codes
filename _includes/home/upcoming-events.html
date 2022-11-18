@@ -16,6 +16,10 @@
 
 {% for event in upcomingEvents %}
 
-[![{{event.name}} {{event.year}}](../../assets/images/conference-logos/{{event.logo}}){:width="200em"}](events#{{event.id}})
+<p>
+  <a href="events#{{event.id}}" title="{{event.name}} {{event.year}}">
+    <img src="../../assets/images/conference-logos/{{event.logo}}" alt="{{event.name}} {{event.year}}" width="200em">
+  </a>
+</p>
 
 {% endfor %}

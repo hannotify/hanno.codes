@@ -2,6 +2,7 @@
 layout: splash
 title: Hanno Embregts
 author_profile: true
+entries_layout: list
 header:
   overlay_filter: "0.6"
   overlay_image: /assets/images/overlay/voxxed-days-bucharest-2019.jpg
@@ -19,15 +20,9 @@ excerpt: >
 
 # upcoming events
 
-{% include home/upcoming-events.md %}
+{% include home/upcoming-events.html %}
 
 [More events](/events){: .btn .btn--primary .btn--large}
-
-<br/>
-
-# latest blog posts
-
-[More blog posts](/blog){: .btn .btn--primary .btn--large}
 
 <br/>
 
@@ -35,4 +30,12 @@ excerpt: >
 
 [hanno.codes](https://hanno.codes) is the personal website of Hanno Embregts, an IT Consultant at Info Support (the Netherlands). He has extensive experience with both front- and back-end development, with a special interest in automating the software development process to the fullest.
 
-[More about me](/bio){: .btn .btn--primary .btn--large}
+[More about me](/about-me){: .btn .btn--primary .btn--large}
+
+<br/>
+
+# latest blog posts
+
+{% include home/latest-blogposts.md %}
+
+[More blog posts](/blog){: .btn .btn--primary .btn--large}
