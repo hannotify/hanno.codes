@@ -22,6 +22,6 @@
 
     {% for event in eventByYear.items %}
     {% assign year = eventByYear.name | plus: 0 %}
-    {% include events/event.html %}
+    {% include events/partial/event.html %}
     {% endfor %}
 {% endfor %}

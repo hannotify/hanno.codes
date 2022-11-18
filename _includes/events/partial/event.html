@@ -1,6 +1,5 @@
 
-<h2>
-    <a href="#{{event.id}}"></a>
+<h2 id="{{event.id}}">
     <a href="{{event.url}}">{{event.name}} {{event.year}}</a>
 </h2>
 
@@ -22,6 +21,6 @@
         {% endif %}
     </tr>
     {% for appearance in event.appearances %}{% assign talk = site.data.talks | where: "id", appearance.id | first %}    
-        {% include events/talk.html %}
+        {% include events/partial/talk.html %}
     {% endfor %}
 </table>

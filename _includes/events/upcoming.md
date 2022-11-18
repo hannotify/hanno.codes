@@ -34,5 +34,5 @@
         {% assign locationString = "Online" %}
     {% endif %}
 
-    {% include events/event.html %}
+    {% include events/partial/event.html %}
 {% endfor %}
