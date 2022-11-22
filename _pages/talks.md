@@ -1,5 +1,6 @@
 ---
 layout: single-wide-toc
+title: Talks
 author_profile: false
 classes: wide
 header:

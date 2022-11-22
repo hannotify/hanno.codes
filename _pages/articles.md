@@ -1,5 +1,6 @@
 ---
 layout: single
+title: Articles
 author_profile: false
 header:
   image: /assets/images/overlay/devoxx-uk-2022.jpg

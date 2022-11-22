@@ -1,5 +1,6 @@
 ---
 layout: single
+title: Events
 author_profile: false
 header:
   image: /assets/images/overlay/devoxx-belgium-2019.jpg

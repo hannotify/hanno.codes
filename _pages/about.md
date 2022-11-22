@@ -1,5 +1,6 @@
 ---
 layout: single
+title: About me
 author_profile: true
 header:
   image: /assets/images/overlay/joy-of-coding-2022.jpg
