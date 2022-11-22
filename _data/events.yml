@@ -11,7 +11,7 @@
   dateEnd: 08-02-2023
   appearances: 
     - id: what-stairway-to-heaven-can-teach-us-about-software-development
-      sessionPageUrl: 
+      sessionPageUrl: https://www.jfokus.se/talks/1116
 
 - id: javaland-2023
   name: JavaLand
