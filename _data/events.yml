@@ -12,7 +12,7 @@
   logo: jfokus-2023.svg
   appearances: 
     - id: what-stairway-to-heaven-can-teach-us-about-software-development
-      sessionPageUrl: https://www.jfokus.se/schedule
+      sessionPageUrl: https://www.jfokus.se/talks/1116
 
 - id: javaland-2023
   name: JavaLand
