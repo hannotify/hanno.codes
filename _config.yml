@@ -14,6 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: hanno.codes
+logo: assets/images/rockstar-duke.png
 subtitle: 
 name: Hanno Embregts
 url: https://hanno.codes
