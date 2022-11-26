@@ -13,9 +13,7 @@ header:
     - label: "Articles"
       url: "/articles/"
 excerpt: > 
-  Java Developer by day. 💻 <br/>
-  Musician by night. 🎤🎸 <br/>
-  A little bit of both at software conferences.
+  Talks 🎙 and sings 🎤🎸 at software conferences!
 ---
 
 # upcoming events
