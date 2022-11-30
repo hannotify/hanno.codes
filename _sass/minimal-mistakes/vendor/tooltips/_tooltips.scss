@@ -30,6 +30,13 @@
 
     a {
         position: relative;
+        color: white;
+        &:visited {
+            color: white;
+        }
+        &:hover {
+            color: white;
+        }
     
         &:before {
             content: "";
