@@ -1,6 +1,8 @@
 ---
 layout: post
-author: Hanno Embregts, Steve Poole & Martijn Verburg
+co-authors: 
+- Steve Poole
+- Martijn Verburg
 title: Do you know Java? Care to prove it?
 date: 11-02-2022 11:28:13 +0200
 image: /assets/images/blog/jeopardy-logo.jpg 

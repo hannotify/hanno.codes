@@ -1,6 +1,9 @@
 ---
 layout: post
-author: Hanno Embregts, Julien Lengrand-Lambert, Jan-Hendrik Kuperus & Jan Ouwens
+co-authors: 
+- Julien Lengrand-Lambert
+- Jan-Hendrik Kuperus
+- Jan Ouwens
 title: "Exploring sustainability in tech (without the guilt-trips)"
 date: 14-11-2022 20:00:00 +0200
 image: /assets/images/blog/2022-11-14-exploring-sustainability-in-tech/IMG_1142.JPG

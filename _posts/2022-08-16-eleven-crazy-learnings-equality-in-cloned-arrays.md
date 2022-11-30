@@ -1,6 +1,5 @@
 ---
 layout: post
-author: Hanno Embregts
 title: "Eleven crazy learnings from the Java 11 certification: equality in cloned arrays (8/11)"
 date: 16-08-2022 17:00:00 +0200
 image: /assets/images/blog/auditorium.jpg

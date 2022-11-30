@@ -1,0 +1,68 @@
+Peter Wessels:
+  name: "Peter Wessels"
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://peterwessels.nl"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/PeterWessels"
+    - label: "Mastodon"
+      icon: "fab fa-fw fa-mastodon"
+      url: "https://mastodon.social/@PeterWessels"
+
+Jan Ouwens:
+  name: "Jan Ouwens"
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://jqno.nl"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/jqno"
+    - label: "Mastodon"
+      icon: "fab fa-fw fa-mastodon"
+      url: "https://mastodon.online/@jqno"
+
+Jan-Hendrik Kuperus:
+  name: "Jan-Hendrik Kuperus"
+  links:
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/jhkuperus"
+    - label: "Mastodon"
+      icon: "fab fa-fw fa-mastodon"
+      url: "https://mastodon.online/@jhkuperus"
+
+Julien Lengrand-Lambert:
+  name: "Julien Lengrand-Lambert"
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://lengrand.fr"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/jlengrand"
+    - label: "Mastodon"
+      icon: "fab fa-fw fa-mastodon"
+      url: "https://mastodon.online/@jlengrand"
+
+Steve Poole:
+  name: "Steve Poole"
+  links:
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/spoole167"
+
+Martijn Verburg:
+  name: "Martijn Verburg"
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://martijnverburg.blogspot.com"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/karianna"
+    - label: "Mastodon"
+      icon: "fab fa-fw fa-mastodon"
+      url: "https://mastodon.online/@martijnverburg"

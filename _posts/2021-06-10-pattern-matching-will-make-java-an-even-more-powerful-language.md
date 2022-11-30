@@ -1,6 +1,7 @@
 ---
 layout: post
-author: Hanno Embregts & Peter Wessels
+co-authors: 
+- Peter Wessels
 title: Pattern matching will make Java an even more powerful language
 date: 10-06-2021 11:59:02 +0200
 tags: 

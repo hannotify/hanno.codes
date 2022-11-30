@@ -1,6 +1,5 @@
 ---
 layout: post
-author: Hanno Embregts
 title: "Eleven crazy learnings from the Java 11 certification: the crazy stuff that is allowed in switch statements (7/11)"
 date: 09-08-2022 17:00:00 +0200
 image: /assets/images/blog/rating.jpg

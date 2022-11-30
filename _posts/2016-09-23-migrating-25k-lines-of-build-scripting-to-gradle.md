@@ -1,6 +1,5 @@
 ---
 layout: post
-author: Hanno Embregts
 title: Migrating 25K lines of build scripting to Gradle
 date: 2016-09-23 11:13:29 +0200
 tags: 

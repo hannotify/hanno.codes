@@ -1,0 +1,14 @@
+{% assign post = page %}
+{% assign allAuthors = "" | split: "" | push: site.author %}
+
+{% for coAuthorName in post.co-authors %}
+    {% assign allAuthors = allAuthors | push: site.data.authors[coAuthorName] %}
+{% endfor %}
+
+{% assign ampersandCutoffPoint =  allAuthors.size | minus: 1 %}
+
+◦ posted on {{ post.date | date_to_string }} by  
+{% for author in allAuthors %}
+    {%- include author-profile-link.html -%}
+    {% if forloop.index == ampersandCutoffPoint %} & {% elsif forloop.last != true %}, {% endif %}
+{%- endfor -%}.

@@ -1,6 +1,5 @@
 ---
 layout: post
-author: Hanno Embregts
 title: "Eleven crazy learnings from the Java 11 certification: accessing static interface methods (3/11)"
 date: 12-07-2022 10:35:00 +0200
 image: /assets/images/blog/clock.jpg

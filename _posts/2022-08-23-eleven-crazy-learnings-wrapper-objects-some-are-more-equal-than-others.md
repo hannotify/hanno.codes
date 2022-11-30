@@ -1,6 +1,5 @@
 ---
 layout: post
-author: Hanno Embregts
 title: "Eleven crazy learnings from the Java 11 certification: wrapper objects - some are more equal than others (9/11)"
 date: 23-08-2022 17:00:00 +0200
 image: /assets/images/blog/maths-confusion.jpg
