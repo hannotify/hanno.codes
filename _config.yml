@@ -65,6 +65,7 @@ plugins:
 
 author:
   name   : "Hanno Embregts"
+  firstName: "Hanno"
   avatar : "/assets/images/bio-photo.jpg"
   bio    : "Talks 🎙 and sings 🎤🎸 at software conferences! Architect, #Java Developer, Technology Advocate & Community Lead at Info Support. 🇺🇦🏳️‍🌈"
   links:

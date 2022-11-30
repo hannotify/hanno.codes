@@ -5,7 +5,7 @@ _site
 
 # Ruby
 .bundle/
-vendor/
+**/vendor/bundle
 
 # Mac
 .DS_Store

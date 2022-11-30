@@ -1,5 +1,6 @@
 Peter Wessels:
   name: "Peter Wessels"
+  firstName: "Peter"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
@@ -13,6 +14,7 @@ Peter Wessels:
 
 Jan Ouwens:
   name: "Jan Ouwens"
+  firstName: "Jan"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
@@ -26,6 +28,7 @@ Jan Ouwens:
 
 Jan-Hendrik Kuperus:
   name: "Jan-Hendrik Kuperus"
+  firstName: "Jan-Hendrik"
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
@@ -36,6 +39,7 @@ Jan-Hendrik Kuperus:
 
 Julien Lengrand-Lambert:
   name: "Julien Lengrand-Lambert"
+  firstName: "Julien"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
@@ -49,6 +53,7 @@ Julien Lengrand-Lambert:
 
 Steve Poole:
   name: "Steve Poole"
+  firstName: "Steve"
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
@@ -56,6 +61,7 @@ Steve Poole:
 
 Martijn Verburg:
   name: "Martijn Verburg"
+  firstName: "Martijn"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
@@ -66,3 +72,17 @@ Martijn Verburg:
     - label: "Mastodon"
       icon: "fab fa-fw fa-mastodon"
       url: "https://mastodon.online/@martijnverburg"
+
+Maarten Mulders:
+  name: "Maarten Mulders"
+  firstName: "Maarten"
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://maarten.mulders.it"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/mthmulders"
+    - label: "Mastodon"
+      icon: "fab fa-fw fa-mastodon"
+      url: "https://mastodon.online/@mthmulders"

@@ -12,6 +12,8 @@
 @include breakpoint-set("to ems", true);
 @import "minimal-mistakes/vendor/magnific-popup/magnific-popup"; // Magnific Popup
 @import "minimal-mistakes/vendor/susy/susy";
+@import "minimal-mistakes/vendor/tooltips/tooltips";
+
 @import "minimal-mistakes/mixins";
 
 /* Core CSS */
@@ -38,3 +40,4 @@
 @import "minimal-mistakes/archive";
 @import "minimal-mistakes/sidebar";
 @import "minimal-mistakes/print";
+

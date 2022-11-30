@@ -1,0 +1,73 @@
+/*
+   Visibility
+   ========================================================================== */
+/* https://www.w3schools.com/css/css_tooltip.asp */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted #444;
+
+    .tooltiptext {
+        visibility: hidden;
+        width: 100px;
+        background: #444;
+        opacity: 0.95;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        top: 150%;
+        left: 50%;
+        margin-left: -60px;
+    }
+
+    i {
+        visibility: hidden;
+    }
+
+    a {
+        position: relative;
+    
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            height: 4px;
+            background: $primary-color;
+            width: 100%;
+            -webkit-transition: $global-transition;
+            transition: $global-transition;
+            -webkit-transform: scaleX(0) translate3d(0, 0, 0);
+            transform: scaleX(0) translate3d(0, 0, 0); // hide
+        }
+    
+        &:hover:before {
+            -webkit-transform: scaleX(1);
+            -ms-transform: scaleX(1);
+            transform: scaleX(1); // reveal
+        }
+    }
+}
+
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #444 transparent;
+}
+  
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tooltip:hover .tooltiptext i {
+    visibility: visible;
+}
