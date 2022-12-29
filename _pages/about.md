@@ -8,6 +8,8 @@ header:
 permalink: /about-me/
 ---
 
-Hanno Embregts is an IT Consultant at Info Support (the Netherlands). He has extensive experience with both front- and back-end development, with a special interest in automating the software development process to the fullest.
+Hanno Embregts is {% include about/short-bio.md %}
 
-He likes his work best when it is fast-paced and versatile, which is why he juggles Java development, public speaking, leading Info Support’s Java Community and teaching courses at Info Support’s Knowledge Centre. When Hanno doesn’t have access to any kind of computer - which can only be called the most desperate of times - he plays in a band as a lead singer and guitar player. He is also a passionate fan of alternative rock band Switchfoot and Dutch football club Feyenoord. Last but not least: he has been told off repeatedly for using Star Wars quotes at work (things didn’t improve much by replying “I find your lack of faith disturbing”).
+In his day-to-day job as an IT Consultant at [Info Support](https://www.infosupport.com), Hanno prefers work that is fast-paced and versatile. This is why he juggles Java development, software architecture, public speaking, leading Info Support’s Java Community and teaching courses at Info Support’s Knowledge Centre. He is also one of the editors of the Dutch [Java Magazine](https://nljug.org/category/java-magazine/). Outside of work Hanno likes making music with his friends. He plays the flute, the guitar and he likes to sing.
+
+Software conferences are Hanno's favourite thing in the world, because they allow him to do the three things he loves most at the same time: learning new things, teaching others about stuff he discovered and yes: [even making music](/talks/#what-stairway-to-heaven-can-teach-us-about-software-development) from time to time!

@@ -13,7 +13,8 @@ header:
     - label: "Articles"
       url: "/articles/"
 excerpt: > 
-  Talks 🎙 and sings 🎤🎸 at software conferences!
+  Java Developer 💻 by day, musician 🎤🎸 by night.<br/>
+  (and a little bit of both at software conferences)
 ---
 
 # upcoming events
@@ -26,7 +27,7 @@ excerpt: >
 
 # hanno.codes?
 
-[hanno.codes](https://hanno.codes) is the personal website of Hanno Embregts, an IT Consultant at Info Support (the Netherlands). He has extensive experience with both front- and back-end development, with a special interest in automating the software development process to the fullest.
+[hanno.codes](https://hanno.codes) is the personal website of Hanno Embregts, {% include about/short-bio.md %}
 
 [More about me](/about-me){: .btn .btn--primary .btn--large}
 
