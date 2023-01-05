@@ -14,6 +14,28 @@
     - id: what-stairway-to-heaven-can-teach-us-about-software-development
       sessionPageUrl: https://www.jfokus.se/talks/1116
 
+- id: it-development-cafe-meetup-2023
+  name: IT Development Café
+  year: 2023
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Amsterdam
+  venue:
+    name: Van der Valk Hotel Amsterdam Zuidas
+    latitude: 52.3368084
+    longitude: 4.88609
+  url: https://www.meetup.com/it-development-cafe/
+  dateStart: 28-02-2023
+  logo: it-development-cafe-meetup.jpeg
+  appearances:
+    - id: pattern-matching-small-enhancement-or-major-feature
+      sessionPageUrl: 
+      slidesUrl: 
+      cospeakers:
+        - name: Peter Wessels
+          twitterUrl: https://www.twitter.com/PeterWessels
+
 - id: javaland-2023
   name: JavaLand
   year: 2023
