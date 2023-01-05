@@ -5,8 +5,10 @@
 {% for event in site.data.events | sort: 'date' | reverse %}
     {% if event.dateEnd %}
         {% capture eventTime %}{{event.dateEnd | date: '%s'}}{% endcapture %}
+        {% capture eventTitle %}{{event.name}} {{event.year}} ({{event.dateStart | date: '%B %e, %Y'}}{{event.dateEnd | date: '%B %e, %Y' | prepend: ' - ')}}{% endcapture %}
     {% else %}
         {% capture eventTime %}{{event.dateStart | date: '%s'}}{% endcapture %}
+        {% capture eventTitle %}{{event.name}} {{event.year}} ({{event.dateStart | date: '%B %e, %Y')}}{% endcapture %}
     {% endif %}
     
     {% if nowUnix < eventTime or eventTime == '' %}
@@ -15,10 +17,15 @@
 {% endfor %}
 
 {% for event in upcomingEvents %}
+  {% if event.dateEnd %}
+    {% capture eventTitle %}{{event.name}} {{event.year}} ({{event.dateStart | date: '%B %e, %Y'}}{{event.dateEnd | date: '%B %e, %Y' | prepend: ' - '}}){% endcapture %}
+  {% else %}
+    {% capture eventTitle %}{{event.name}} {{event.year}} ({{event.dateStart | date: '%B %e, %Y'}}){% endcapture %}
+  {% endif %}
 
 <p>
-  <a href="events#{{event.id}}" title="{{event.name}} {{event.year}}">
-    <img src="../../assets/images/conference-logos/{{event.logo}}" alt="{{event.name}} {{event.year}}" width="200em">
+  <a href="events#{{event.id}}" title="{{eventTitle}}">
+    <img src="../../assets/images/conference-logos/{{event.logo}}" alt="{{event.name}} {{event.year}}" width="250em">
   </a>
 </p>
 
