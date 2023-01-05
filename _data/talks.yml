@@ -41,10 +41,9 @@
   description: | 
     At first it seemed to be just a small enhancement: the addition of "Pattern Matching for instanceof" (JEP 305) in Java 14. No more unnecessary casting after an `instanceof`, that ought to save us a few seconds a day! However, upon further investigation you'll quickly discover that pattern matching is not just an enhancement, but rather a vital puzzle piece in the grander scheme of things.
 
-    Why were switch expressions added to Java, for example? To make them support pattern matching in a later release! And why did Java 14 bring us records and will Java 15 contain sealed types? Because they could work really well with pattern matching in a later release! These new concepts are the foundation upon which advanced pattern matching features will be built.
+    Why were switch expressions added to Java, for example? To make them support pattern matching in a later release! And why did Java 14 bring us records and did Java 15 contain sealed types? Because they could work really well with pattern matching in a later release! These new concepts are the foundation upon which advanced pattern matching features will be built.
 
     So attend this session to get all caught up! You'll hear about type patterns, deconstruction patterns, nested patterns and even how pattern matching could improve serialization in the future. Live coding included, of course!
-
 - id: jepardy
   title: JEPardy!
   type: ignite
