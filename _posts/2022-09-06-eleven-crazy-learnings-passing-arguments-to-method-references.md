@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Eleven crazy learnings from the Java 11 certification: wrapper objects - passing arguments to method references (11/11)"
+title: "Eleven crazy learnings from the Java 11 certification: passing arguments to method references (11/11)"
 date: 06-09-2022 20:00:00 +0200
 image: /assets/images/blog/auditorium.jpg
 excerpt: For this final part of the blog series we'll dive into method references.
