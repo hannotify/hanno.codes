@@ -112,3 +112,8 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+
+collections: 
+  slides:
+    output: true
+    permalink: /slides/:path/
