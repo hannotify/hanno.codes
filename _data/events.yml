@@ -128,8 +128,7 @@
     - id: will-git-be-around-forever-a-list-of-possible-successors
       sessionPageUrl: https://frontmania.com/programme/
       slides: 
-        source: files
-        url: https://nest.pijul.com/hannotify/will-git-be-around-forever
+        source: local
 
 - id: developer-week-2022
   name: Developer Week

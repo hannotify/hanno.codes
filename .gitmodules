@@ -4,3 +4,6 @@
 [submodule "_slides/will-git-be-around-forever-a-list-of-possible-successors/devoxx-2022"]
 	path = _slides/will-git-be-around-forever-a-list-of-possible-successors/devoxx-2022
 	url = https://github.com/hannotify/will-git-be-around-forever-a-list-of-possible-successors.git
+[submodule "frontmania-2022"]
+	path = _slides/will-git-be-around-forever-a-list-of-possible-successors/frontmania-2022
+	url = https://github.com/hannotify/will-git-be-around-forever-a-list-of-possible-successors
