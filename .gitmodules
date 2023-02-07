@@ -1,0 +1,15 @@
+[submodule "assets/lib/reveal.js"]
+	path = _slides/reveal.js
+	url = https://github.com/hakimel/reveal.js
+[submodule "_slides/will-git-be-around-forever-a-list-of-possible-successors/devoxx-2022"]
+	path = _slides/will-git-be-around-forever-a-list-of-possible-successors/devoxx-2022
+	url = https://github.com/hannotify/will-git-be-around-forever-a-list-of-possible-successors.git
+[submodule "frontmania-2022"]
+	path = _slides/will-git-be-around-forever-a-list-of-possible-successors/frontmania-2022
+	url = https://github.com/hannotify/will-git-be-around-forever-a-list-of-possible-successors
+[submodule "_slides/pattern-matching-small-enhancement-or-major-feature/jfall-2022"]
+	path = _slides/pattern-matching-small-enhancement-or-major-feature/j-fall-2022
+	url = https://github.com/hannotify/pattern-matching-small-enhancement-or-major-feature
+[submodule "_slides/pattern-matching-small-enhancement-or-major-feature/developer-week-2022"]
+	path = _slides/pattern-matching-small-enhancement-or-major-feature/developer-week-2022
+	url = https://github.com/hannotify/pattern-matching-small-enhancement-or-major-feature
