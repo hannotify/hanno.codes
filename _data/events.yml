@@ -74,8 +74,7 @@
     - id: pattern-matching-small-enhancement-or-major-feature
       sessionPageUrl: https://jfall.nl/timetable-2022/
       slides: 
-        source: slideshare
-        url: https://www.slideshare.net/HannoEmbregts/pattern-matching-small-enhancement-or-major-feature-253981213
+        source: local
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
@@ -144,8 +143,7 @@
     - id: pattern-matching-small-enhancement-or-major-feature
       sessionPageUrl: https://www.developer-week.de/programm/#/talk/pattern-matching-small-enhancement-or-major-feature
       slides: 
-          source: slideshare
-          url: https://www.slideshare.net/HannoEmbregts/pattern-matching-small-enhancement-or-major-feature-from-developer-week-202
+          source: local
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
