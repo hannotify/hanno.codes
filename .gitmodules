@@ -1,5 +1,5 @@
 [submodule "assets/lib/reveal.js"]
-	path = assets/lib/reveal.js
+	path = _slides/reveal.js
 	url = https://github.com/hakimel/reveal.js
 [submodule "_slides/will-git-be-around-forever-a-list-of-possible-successors/devoxx-2022"]
 	path = _slides/will-git-be-around-forever-a-list-of-possible-successors/devoxx-2022
