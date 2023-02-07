@@ -30,8 +30,6 @@
   logo: it-development-cafe-meetup.jpeg
   appearances:
     - id: pattern-matching-small-enhancement-or-major-feature
-      sessionPageUrl: 
-      slidesUrl: 
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
@@ -75,13 +73,17 @@
   appearances:
     - id: pattern-matching-small-enhancement-or-major-feature
       sessionPageUrl: https://jfall.nl/timetable-2022/
-      slidesUrl: https://www.slideshare.net/HannoEmbregts/pattern-matching-small-enhancement-or-major-feature-253981213
+      slides: 
+        source: slideshare
+        url: https://www.slideshare.net/HannoEmbregts/pattern-matching-small-enhancement-or-major-feature-253981213
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
     - id: panel-exploring-sustainability-in-tech-without-the-guilt-trips
       sessionPageUrl: https://jfall.nl/timetable-2022/
-      slidesUrl: https://docs.google.com/presentation/d/e/2PACX-1vTQdPhE9_uJwxFHz5kp3gMImFkhwqurL94h8Nbo5UOElV0X9CxLe3sKcBZEQ5N2Cg_-2Pelvst3wNOR/pub?start=false&loop=false&delayms=3000
+      slides: 
+        source: google-drive
+        url: https://docs.google.com/presentation/d/e/2PACX-1vTQdPhE9_uJwxFHz5kp3gMImFkhwqurL94h8Nbo5UOElV0X9CxLe3sKcBZEQ5N2Cg_-2Pelvst3wNOR/pub?start=false&loop=false&delayms=3000
 
 - id: devoxx-2022
   name: Devoxx
@@ -101,10 +103,13 @@
     - id: will-git-be-around-forever-a-list-of-possible-successors
       sessionPageUrl: https://devoxx.be/talk/?id=18772
       videoUrl: https://youtu.be/M4KktA_jbOE
-      slidesUrl: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-a-list-of-possible-successors-from-devoxx-2022
+      slides:
+        source: local
     - id: panel-exploring-sustainability-in-tech-without-the-guilt-trips
       sessionPageUrl: https://devoxx.be/talk/?id=19434
-      slidesUrl: https://docs.google.com/presentation/d/e/2PACX-1vTQdPhE9_uJwxFHz5kp3gMImFkhwqurL94h8Nbo5UOElV0X9CxLe3sKcBZEQ5N2Cg_-2Pelvst3wNOR/pub?start=false&loop=false&delayms=3000
+      slides: 
+        source: google-drive
+        url: https://docs.google.com/presentation/d/e/2PACX-1vTQdPhE9_uJwxFHz5kp3gMImFkhwqurL94h8Nbo5UOElV0X9CxLe3sKcBZEQ5N2Cg_-2Pelvst3wNOR/pub?start=false&loop=false&delayms=3000
 
 - id: frontmania-2022
   name: FrontMania
@@ -122,7 +127,9 @@
   appearances:
     - id: will-git-be-around-forever-a-list-of-possible-successors
       sessionPageUrl: https://frontmania.com/programme/
-      slidesUrl: https://nest.pijul.com/hannotify/will-git-be-around-forever
+      slides: 
+        source: files
+        url: https://nest.pijul.com/hannotify/will-git-be-around-forever
 
 - id: developer-week-2022
   name: Developer Week
@@ -137,7 +144,9 @@
   appearances:
     - id: pattern-matching-small-enhancement-or-major-feature
       sessionPageUrl: https://www.developer-week.de/programm/#/talk/pattern-matching-small-enhancement-or-major-feature
-      slidesUrl: https://www.slideshare.net/HannoEmbregts/pattern-matching-small-enhancement-or-major-feature-from-developer-week-202
+      slides: 
+          source: slideshare
+          url: https://www.slideshare.net/HannoEmbregts/pattern-matching-small-enhancement-or-major-feature-from-developer-week-202
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
@@ -164,7 +173,8 @@
     - id: will-git-be-around-forever-a-list-of-possible-successors
       sessionPageUrl: https://futuretech.nl/timetable/
       videoUrl:
-      slidesUrl:
+      slides:
+          source: local
       githubUrl:
       photos:
 
@@ -186,7 +196,6 @@
     - id: what-stairway-to-heaven-can-teach-us-about-software-development
       sessionPageUrl: https://joyofcoding.org/2022/speakers/hanno-embregts.html
       videoUrl:
-      slidesUrl:
       githubUrl:
       photos:
 
@@ -242,10 +251,6 @@
   appearances:
     - id: pattern-matching-small-enhancement-or-major-feature
       sessionPageUrl: https://romania.voxxeddays.com/2022/02/21/pattern-matching-small-enhancement-or-major-feature/
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
@@ -260,7 +265,6 @@
     - id: pattern-matching-small-enhancement-or-major-feature
       sessionPageUrl: https://2021.javazone.no/#/program/e63c4f79-a0d6-4ab6-972c-6c1335e0c9be
       videoUrl:
-      slidesUrl:
       githubUrl:
       photos:
       cospeakers:
@@ -277,13 +281,11 @@
     - id: when-music-and-software-come-together
       sessionPageUrl: https://devoxx.com.ua/talk-details/?id=13659
       videoUrl: https://youtu.be/7OaekEmcyCA
-      slidesUrl:
       githubUrl:
       photos:
     - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
       sessionPageUrl:
       videoUrl:
-      slidesUrl:
       githubUrl:
       photos:
 
@@ -305,7 +307,6 @@
     - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
       sessionPageUrl:
       videoUrl: https://youtu.be/0gj0RhbL-dk
-      slidesUrl:
       githubUrl: https://github.com/hannotify/eleven-crazy-java-things
       photos:
 
@@ -319,7 +320,6 @@
     - id: will-git-be-around-forever-a-list-of-possible-successors
       sessionPageUrl: https://jcon.sched.com/?iframe=yes&w=100%&sidebar=yes&bg=no#
       videoUrl: https://youtube.com/watch?v=qyq-E8zXBmY
-      slidesUrl:
       githubUrl:
       photos:
 
@@ -340,7 +340,9 @@
     - id: will-git-be-around-forever-a-list-of-possible-successors
       sessionPageUrl: https://www.meetup.com/nl-NL/Utrecht-Java-User-Group/events/280570879/
       videoUrl:
-      slidesUrl: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-a-list-of-possible-successors-at-utrechtjug
+      slides: 
+          source: slideshare
+          url: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-a-list-of-possible-successors-at-utrechtjug
       githubUrl:
       photos:
 
@@ -354,7 +356,9 @@
     - id: pattern-matching-small-enhancement-or-major-feature
       sessionPageUrl: https://embed.emamo.com/event/jlove-2021/s/pattern-matching-small-enhancement-or-major-feature-aZVZRa
       videoUrl:
-      slidesUrl: https://www.slideshare.net/HannoEmbregts/pattern-matching-small-enhancement-or-major-feature-talk-from-jlove-2021
+      slides: 
+          source: slideshare
+          url: https://www.slideshare.net/HannoEmbregts/pattern-matching-small-enhancement-or-major-feature-talk-from-jlove-2021
       githubUrl:
       photos:
 
@@ -368,7 +372,6 @@
     - id: when-music-and-software-come-together
       sessionPageUrl: https://events.codemotion.com/conferences/online/2021/online-tech-conference-spring/agenda
       videoUrl: https://talks.codemotion.com/when-music-and-software-come-together?view=true
-      slidesUrl:
       githubUrl:
       photos:
 
@@ -382,7 +385,6 @@
     - id: these-songs-would-make-some-great-code-comments
       sessionPageUrl: https://conference.teqnation.com/timetable-2021/
       videoUrl:
-      slidesUrl:
       githubUrl:
       photos:
 
@@ -396,7 +398,9 @@
     - id: pattern-matching-small-enhancement-or-major-feature
       sessionPageUrl: https://programm.javaland.eu/2021/#/scheduledEvent/606394
       videoUrl:
-      slidesUrl: https://www.slideshare.net/HannoEmbregts/pattern-matching-from-small-enhancement-to-major-feature-talk-from-javaland-2021
+      slides: 
+          source: slideshare
+          url: https://www.slideshare.net/HannoEmbregts/pattern-matching-from-small-enhancement-to-major-feature-talk-from-javaland-2021
       githubUrl: https://github.com/hannotify/pattern-matching-music-store
       photos:
 
@@ -410,9 +414,6 @@
     - id: when-music-and-software-come-together
       sessionPageUrl: https://jlove.konfy.care/schedule-day-1/
       videoUrl: https://youtu.be/oTs-ZihE798
-      slidesUrl:
-      githubUrl:
-      photos:
 
 - id: j-fall-2020
   name: J-Fall
@@ -427,9 +428,6 @@
     - id: jepardy
       sessionPageUrl: https://jfall.nl/sessions/ignite-sessions/
       videoUrl: https://youtu.be/qlm-OPx4oNg?t=295
-      slidesUrl:
-      githubUrl:
-      photos:
 
 - id: all-the-talks-2020
   name: All The Talks
@@ -459,10 +457,6 @@
   appearances:
     - id: when-music-and-software-come-together
       sessionPageUrl: https://dotnedsaturday.nl/sessions/keynote-muziek-en-software-zijn-overal-een-muzikale-reis-door-software-ontwikkeling/
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
 
 - id: devoxx-2019
   name: Devoxx
@@ -486,8 +480,6 @@
     - id: these-songs-would-make-some-great-code-comments
       sessionPageUrl: https://devoxx.be/talk/?id=19708
       videoUrl: https://youtu.be/Clo60O-EfjE
-      slidesUrl:
-      githubUrl:
       photos: https://www.flickr.com/photos/bejug/albums
 
 - id: j-fall-2019
@@ -508,7 +500,9 @@
     - id: beware-of-survivorship-bias
       sessionPageUrl: https://jfall.nl/sessions/beware-of-survivorship-bias/
       videoUrl: https://youtu.be/1G1NvRKEwVY
-      slidesUrl: https://www.slideshare.net/HannoEmbregts/beware-of-survivorship-bias-conference-talk-at-jfall-2019
+      slides: 
+          source: slideshare
+          url: https://www.slideshare.net/HannoEmbregts/beware-of-survivorship-bias-conference-talk-at-jfall-2019
       githubUrl:
       photos:
 
@@ -530,7 +524,9 @@
     - id: will-git-be-around-forever-a-list-of-possible-successors
       sessionPageUrl: https://voxxeddays.com/athens/will-git-be-around-forever-a-list-of-possible-successors/
       videoUrl: https://youtu.be/yBAWZD-Cxcs
-      slidesUrl: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-a-list-of-possible-successors
+      slides: 
+          source: slideshare
+          url: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-a-list-of-possible-successors
       githubUrl:
       photos: https://www.flickr.com/photos/voxxedathens/albums/72157709060546536
 
@@ -553,7 +549,9 @@
     - id: these-songs-would-make-some-great-code-comments
       sessionPageUrl: https://www.meetup.com/010DEV/events/259440243/
       videoUrl:
-      slidesUrl: https://docs.google.com/presentation/d/e/2PACX-1vQR31q9KQ2XdUg4gV451jZXfVXJa822mPIor25SavdyC1NJm-sA-BrM6a2fi6JQRvN3fefD5_y1h3k7/pub?start=false&loop=false&delayms=30000#slide=id.p
+      slides: 
+          source: google-drive
+          url: https://docs.google.com/presentation/d/e/2PACX-1vQR31q9KQ2XdUg4gV451jZXfVXJa822mPIor25SavdyC1NJm-sA-BrM6a2fi6JQRvN3fefD5_y1h3k7/pub?start=false&loop=false&delayms=30000#slide=id.p
       githubUrl:
       photos:
 
@@ -575,7 +573,9 @@
     - id: entering-the-fourth-dimension-of-ocr-with-tesseract
       sessionPageUrl: https://romania.voxxeddays.com/2019/01/27/entering-the-fourth-dimension-of-ocr-with-tesseract/
       videoUrl: https://youtu.be/THgFc9pwyJ0
-      slidesUrl: https://www.slidgiteshare.net/HannoEmbregts/entering-the-fourth-dimension-of-ocr-with-tesseract-talk-from-voxxed-days-bucharest-2019
+      slides: 
+          source: slideshare
+          url: https://www.slideshare.net/HannoEmbregts/entering-the-fourth-dimension-of-ocr-with-tesseract-talk-from-voxxed-days-bucharest-2019
       githubUrl: https://github.com/hannotify/tesseract-tess4j-quickstart
       photos:
 
@@ -607,10 +607,6 @@
   appearances:
     - id: these-songs-would-make-some-great-code-comments
       sessionPageUrl: https://dvbe18.confinabox.com/talk/GMA-9130/These_Songs_Would_Make_Some_Great_Code_Comments
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
 
 - id: j-fall-2018
   name: J-Fall
@@ -630,9 +626,6 @@
     - id: these-songs-would-make-some-great-code-comments
       sessionPageUrl: https://jfall.nl/sessions/ignite-sessions/
       videoUrl: https://youtu.be/eq4v9P6kNOA?t=136
-      slidesUrl:
-      githubUrl:
-      photos:
 
 - id: geecon-2018
   name: GeeCON
@@ -652,9 +645,9 @@
     - id: qwerty-or-dvorak-debunking-the-keyboard-layout-myths
       sessionPageUrl: https://2018.geecon.org/speakers/info.html?id=393
       videoUrl: https://youtu.be/7lVVkasTQz4
-      slidesUrl: https://www.slideshare.net/HannoEmbregts/qwerty-or-dvorak-debunking-the-keyboard-layout-myths-from-geecon-2018
-      githubUrl:
-      photos:
+      slides: 
+          source: slideshare
+          url: https://www.slideshare.net/HannoEmbregts/qwerty-or-dvorak-debunking-the-keyboard-layout-myths-from-geecon-2018
 
 - id: teqnation-2018
   name: TEQNation
@@ -673,10 +666,6 @@
   appearances:
     - id: qwerty-or-dvorak-debunking-the-keyboard-layout-myths
       sessionPageUrl: https://teqnation.nl/sessions/quickie-qwerty-or-dvorak-debunking-the-keyboard-layout-myths/
-      videoUrl:
-      slidesUrl:
-      githubUrl:
-      photos:
 
 - id: voxxed-days-vienna-2018
   name: Voxxed Days Vienna
@@ -696,7 +685,9 @@
     - id: building-a-spring-boot-application-ask-the-audience
       sessionPageUrl: https://voxxeddaysvienna2018.sched.com/event/DkzY/building-a-spring-boot-2-application-ask-the-audience
       videoUrl: https://youtu.be/GLuOr-5bXG0
-      slidesUrl: https://www.slideshare.net/HannoEmbregts/building-a-spring-boot-2-application-ask-the-audience-from-voxxed-days-vienna-2018-90505063
+      slides: 
+          source: slideshare
+          url: https://www.slideshare.net/HannoEmbregts/building-a-spring-boot-2-application-ask-the-audience-from-voxxed-days-vienna-2018-90505063
       githubUrl: https://github.com/hannotify/spring-boot-2-beer-voxxed-vienna-2018
       photos:
 
@@ -718,7 +709,9 @@
     - id: building-a-spring-boot-application-ask-the-audience
       sessionPageUrl: //www.jvmcon.com/#/sessions
       videoUrl:
-      slidesUrl: //www.slideshare.net/HannoEmbregts/building-a-spring-boot-application-ask-the-audience-from-jvmcon-2018
+      slides:
+          source: slideshare
+          url: //www.slideshare.net/HannoEmbregts/building-a-spring-boot-application-ask-the-audience-from-jvmcon-2018
       githubUrl: //github.com/hannotify/spring-boot-beer-jvmcon-2018
       photos:
 
@@ -740,13 +733,17 @@
     - id: qwerty-or-dvorak-debunking-the-keyboard-layout-myths
       sessionPageUrl: //cfp.devoxx.be/2017/talk/MLV-7954/QWERTY_or_DVORAK%3F_Debunking_the_Keyboard_Layout_Myths
       videoUrl: //youtu.be/blRn9U9Fapg
-      slidesUrl: //www.slideshare.net/HannoEmbregts/qwerty-or-dvorak-debunking-the-keyboard-layout-myths
+      slides: 
+          source: slideshare
+          url: //www.slideshare.net/HannoEmbregts/qwerty-or-dvorak-debunking-the-keyboard-layout-myths
       githubUrl:
       photos:
     - id: slide-deck-version-management-the-good-the-bad-and-the-ugly
       sessionPageUrl: //cfp.devoxx.be/2017/talk/KTK-2683/Slide_Deck_Version_Management:_The_Good,_The_Bad_and_The_Ugly
       videoUrl:
-      slidesUrl: //docs.google.com/presentation/d/e/2PACX-1vTxe6reiny3WofqmNVUfZXs6T5U9ordw6o7kgDWURYMK5SJYZ9p45SyYug7vrIqKNRcskKD4IRj-GtA/pub?start=false&loop=false&delayms=3000
+      slides:
+          source: google-drive
+          url: //docs.google.com/presentation/d/e/2PACX-1vTxe6reiny3WofqmNVUfZXs6T5U9ordw6o7kgDWURYMK5SJYZ9p45SyYug7vrIqKNRcskKD4IRj-GtA/pub?start=false&loop=false&delayms=3000
       githubUrl:
       photos:
 
@@ -779,13 +776,14 @@
     - id: building-a-spring-boot-application-ask-the-audience
       sessionPageUrl: //jfall.nl/sessions/building-spring-boot-application-ask-audience/
       videoUrl: https://youtu.be/2uqvSlDaLtg
-      slidesUrl:
       githubUrl:
       photos:
     - id: slide-deck-version-management-the-good-the-bad-and-the-ugly
       sessionPageUrl: //jfall.nl/sessions/slide-deck-version-management-good-bad-ugly/
       videoUrl:
-      slidesUrl: //docs.google.com/presentation/d/e/2PACX-1vTxe6reiny3WofqmNVUfZXs6T5U9ordw6o7kgDWURYMK5SJYZ9p45SyYug7vrIqKNRcskKD4IRj-GtA/pub?start=false&loop=false&delayms=3000
+      slides:
+          source: google-drive
+          url: //docs.google.com/presentation/d/e/2PACX-1vTxe6reiny3WofqmNVUfZXs6T5U9ordw6o7kgDWURYMK5SJYZ9p45SyYug7vrIqKNRcskKD4IRj-GtA/pub?start=false&loop=false&delayms=3000
       githubUrl:
       photos:
 
@@ -807,7 +805,6 @@
     - id: building-a-spring-boot-application-ask-the-audience
       sessionPageUrl: http://www.jbcnconf.com/2017/infoSpeaker.html?ref=hanno-embregts
       videoUrl: //youtu.be/iywXl48dJI4
-      slidesUrl:
       githubUrl: //github.com/hannotify/spring-boot-beer-jbcnconf
       photos:
 
@@ -829,7 +826,9 @@
     - id: building-a-spring-boot-application-ask-the-audience
       sessionPageUrl: //programm.javaland.eu/2017/talk.html#talk?talkId=529558
       videoUrl:
-      slidesUrl: //www.slideshare.net/HannoEmbregts/building-a-spring-boot-application-ask-the-audience-from-javaland-2017
+      slides:
+          source: slideshare
+          url: //www.slideshare.net/HannoEmbregts/building-a-spring-boot-application-ask-the-audience-from-javaland-2017
       githubUrl:
       photos:
 
@@ -862,7 +861,9 @@
     - id: migrating-25k-lines-of-ant-scripting-to-gradle
       sessionPageUrl:
       videoUrl: //youtu.be/7U1n5Sp0eS4
-      slidesUrl: //www.slideshare.net/HannoEmbregts/migrating-25k-lines-of-ant-scripting-to-gradle-62891474
+      slides:
+          source: slideshare
+          url: //www.slideshare.net/HannoEmbregts/migrating-25k-lines-of-ant-scripting-to-gradle-62891474
       githubUrl:
       photos:
 
@@ -884,6 +885,8 @@
     - id: migrating-25k-lines-of-ant-scripting-to-gradle
       sessionPageUrl: //jprime.io/nav/article/61
       videoUrl: //youtu.be/FEEiuyrAa6Q
-      slidesUrl: //www.slideshare.net/HannoEmbregts/migrating-25k-lines-of-ant-scripting-to-gradle
+      slides: 
+          source: slideshare
+          url: //www.slideshare.net/HannoEmbregts/migrating-25k-lines-of-ant-scripting-to-gradle
       githubUrl:
       photos:
