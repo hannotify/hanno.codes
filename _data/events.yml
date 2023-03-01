@@ -17,6 +17,7 @@
       sessionPageUrl: https://www.spilberg.nl/en/events/power-up-your-jvm-language-skills-1?source=linkedin.com
       slides: 
         source: local
+      githubUrl: https://github.com/hannotify/pattern-matching-music-store
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
