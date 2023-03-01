@@ -13,3 +13,6 @@
 [submodule "_slides/pattern-matching-small-enhancement-or-major-feature/developer-week-2022"]
 	path = _slides/pattern-matching-small-enhancement-or-major-feature/developer-week-2022
 	url = https://github.com/hannotify/pattern-matching-small-enhancement-or-major-feature
+[submodule "_slides/spilberg-meetup-2023"]
+	path = _slides/pattern-matching-small-enhancement-or-major-feature/spilberg-meetup-2023
+	url = https://github.com/hannotify/pattern-matching-small-enhancement-or-major-feature

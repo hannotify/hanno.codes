@@ -1,5 +1,5 @@
-- id: it-development-cafe-meetup-2023
-  name: IT Development Café
+- id: spilberg-meetup-2023
+  name: Spilberg Meetup
   year: 2023
   country:
     flag: netherlands
@@ -14,6 +14,9 @@
   logo: it-development-cafe-meetup.jpeg
   appearances:
     - id: pattern-matching-small-enhancement-or-major-feature
+      sessionPageUrl: https://www.spilberg.nl/en/events/power-up-your-jvm-language-skills-1?source=linkedin.com
+      slides: 
+        source: local
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
