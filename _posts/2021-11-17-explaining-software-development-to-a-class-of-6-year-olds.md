@@ -2,7 +2,8 @@
 layout: post
 title: Explaining software development to a class of 6-year olds
 date: 17-11-2021 20:07:21 +0200
-image: /assets/images/blog/bee-bot.jpg 
+header:
+  teaser: /assets/images/blog/bee-bot.jpg 
 tags: 
 - teaching
 - software-development

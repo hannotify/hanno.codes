@@ -2,7 +2,8 @@
 layout: post
 title: "Eleven crazy learnings from the Java 11 certification: a few freaky array declarations (1/11)"
 date: 28-06-2022 21:44:00 +0200
-image: /assets/images/blog/pinball.jpg
+header:
+  teaser: /assets/images/blog/pinball.jpg
 tags: 
 - java
 - certification

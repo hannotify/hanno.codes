@@ -2,7 +2,8 @@
 layout: post
 title: "What Makes A Good Abstract?"
 date: 06-01-2023
-image: 
+header:
+  teaser:
 tags: 
 - conference
 - abstract

@@ -22,9 +22,14 @@ email: hello@hanno.codes
 description: >- # this means to ignore newlines until "baseurl:"
   Public speaker, Java developer, guitarist, singer.
 repository: hannotify/hannotify.github.io
-twitter_username: hannotify
-mastodon_server: foojay.social
-mastodon_username: hannotify
+
+twitter:
+  username: hannotify
+
+mastodon:
+  server: foojay.social
+  username: hannotify
+
 github_username: hannotify
 stackoverflow_username: 505996/hanno
 minimal_mistakes_skin: air

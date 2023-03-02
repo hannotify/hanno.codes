@@ -5,7 +5,8 @@ co-authors:
 - Martijn Verburg
 title: Do you know Java? Care to prove it?
 date: 11-02-2022 11:28:13 +0200
-image: /assets/images/blog/jeopardy-logo.jpg 
+header:
+  teaser: /assets/images/blog/jeopardy-logo.jpg 
 tags: 
 - java
 - conference

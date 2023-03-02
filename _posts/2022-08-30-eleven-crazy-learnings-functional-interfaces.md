@@ -2,7 +2,8 @@
 layout: post
 title: "Eleven crazy learnings from the Java 11 certification: functional interfaces actually CAN contain multiple abstract methods (10/11)"
 date: 30-08-2022 19:00:00 +0200
-image: /assets/images/blog/lanyard.jpg
+header:
+  teaser: /assets/images/blog/lanyard.jpg
 tags: 
 - java
 - certification

@@ -2,7 +2,8 @@
 layout: post
 title: Community Contributions
 date: 10-02-2023
-image: 
+header:
+  teaser:
 tags: 
 - community-contributions
 ---

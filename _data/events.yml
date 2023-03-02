@@ -130,7 +130,7 @@
   city: Nürnberg
   appearances:
     - id: pattern-matching-small-enhancement-or-major-feature
-      sessionPageUrl: https://www.developer-week.de/en/program/#/talk/pattern-matching-small-enhancement-or-major-feature
+      sessionPageUrl: https://www.developer-week.de/en/prram/#/talk/pattern-matching-small-enhancement-or-major-feature
       slides: 
           source: local
       cospeakers:

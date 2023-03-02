@@ -2,7 +2,8 @@
 layout: post
 title: "Eleven crazy learnings from the Java 11 certification: stream elements should implement Comparable (2/11)"
 date: 05-07-2022 10:35:00 +0200
-image: /assets/images/blog/clock.jpg
+header:
+  teaser: /assets/images/blog/clock.jpg
 tags: 
 - java
 - certification
