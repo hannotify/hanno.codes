@@ -3,21 +3,24 @@ layout: post
 title: It's Java 20 Release Day! Here's What's New
 date: 21-03-2023
 header:
-  teaser:
+  teaser: /assets/images/blog/package-just-for-you.jpg
 tags: 
 - java
 ---
 
-Hurray, today is Java 20 release day! 
+This will be a good day, because it's Java 20 release day! It's been six months since Java 19 was released, and so it's time for another fresh wave of Java features. This post will take you on a tour through all JEPs that are associated with this release and give you a brief introduction of each one of them. Where applicable the differences with Java 19 are highlighted and a few typical use cases are provided, so that you'll be more than ready to use these features after you've finished reading!
 
-TODO
+![Package, just for you](/assets/images/blog/package-just-for-you.jpg)
+> Image from <a href="https://pxhere.com/nl/photo/535806">PxHere</a>
 
 ## From Project Amber
 
-The goal of [Project Amber](https://openjdk.org/projects/amber/) is to explore and incubate smaller, productivity-oriented Java language features. Java 20 contains two JEPS that originate from Project Amber:
+Java 20 contains two features that originated from [Project Amber](https://openjdk.org/projects/amber/):
 
 * Record Patterns;
 * Pattern Matching for switch.
+
+> The goal of Project Amber is to explore and incubate smaller, productivity-oriented Java language features.
 
 ### JEP 432: Record Patterns (Second Preview)
 
@@ -48,25 +51,25 @@ For more information on this feature, see [JEP 433](https://openjdk.org/jeps/433
 
 ## From Project Loom
 
-[Project Loom](http://openjdk.java.net/projects/loom/) strives to simplify maintaining concurrent applications in Java by introducing *virtual threads* and an API for *structured concurrency*, among other things. Java 20 contains three JEPs that originate from Project Loom: 
+Java 20 contains three features that originated from [Project Loom](http://openjdk.java.net/projects/loom/):
 
 * Virtual Threads;
 * Scoped Values;
 * Structured Concurrency.
 
+> Project Loom strives to simplify maintaining concurrent applications in Java by introducing *virtual threads* and an API for *structured concurrency*, among other things.
+
 ### JEP 436: Virtual Threads (Second Preview)
 
-Threads have been part of Java since the very beginning, and in light of the work in Project Valhalla these 'classic threads' are now called 'platform threads'. A platform thread runs Java code on an underlying OS thread and captures the OS thread for the code's entire lifetime. The number of platform threads is therefore limited to the number of OS threads that can be started on the machine in question.
+Threads have been a part of Java since the very beginning, and since the start of Project Loom we've gradually started calling these 'classic' threads 'platform threads' instead. A platform thread runs Java code on an underlying OS thread and captures the OS thread for the code's entire lifetime. The number of platform threads is therefore limited to the number of available OS threads.
 
-Modern applications, however, might need many more threads than that; when dealing with tens of thousands of requests (or more) at the same time, for example. This is where *virtual threads* come in. A virtual thread is an instance of `java.lang.Thread` that runs Java code on an underlying OS thread, but does not capture the OS thread for the code's entire lifetime. This means that many virtual threads can run their Java code on the same OS thread, effectively sharing it. The number of virtual threads can thus be much larger than the number of OS threads.
+Modern applications, however, might need many more threads than that; when dealing with tens of thousands of requests at the same time, for example. This is where *virtual threads* come in. A virtual thread is an instance of `java.lang.Thread` that runs Java code on an underlying OS thread, but does not capture the OS thread for the code's entire lifetime. This means that many virtual threads can run their Java code on the same OS thread, effectively sharing it. The number of virtual threads can thus be much larger than the number of available OS threads.
 
-Aside from being plentiful, virtual threads are also cheap to create and dispose of. This means that a web framework, for example, can dedicate a new virtual thread to the task of handling a request and still be able to process thousands or millions of requests at once.
-
-Virtual threads are cheap and plentiful, and thus should never be pooled: A new virtual thread should be created for every application task. Most virtual threads will thus be short-lived and have shallow call stacks, performing as little as a single HTTP client call or a single JDBC query. Platform threads, by contrast, are heavyweight and expensive, and thus often must be pooled. They tend to be long-lived, have deep call stacks, and be shared among many tasks.
+Aside from being plentiful, virtual threads are also cheap to create and dispose of. This means that a web framework, for example, can dedicate a new virtual thread to the task of handling a request and still be able to process thousands or even millions of requests at once.
 
 #### Typical Use Cases
 
-Using virtual threads does not require learning new concepts, though it may require unlearning habits developed to cope with today's high cost of threads. Virtual threads will not only help application developers — they will also help framework designers provide easy-to-use APIs that are compatible with the platform's design without compromising on scalability.
+Using virtual threads does not require learning new concepts, though it may require unlearning habits developed to cope with today's high cost of threads. Virtual threads will not only help application developers; they will also help framework designers provide easy-to-use APIs that are compatible with the platform's design without compromising on scalability.
 
 #### Creating Virtual Threads
 
@@ -75,16 +78,18 @@ Just like a platform thread, a virtual thread is an instance of `java.lang.Threa
 Creating a virtual thread is a bit different, but just as easy as creating a platform thread:
 
 ```java
-Thread platformThread = new Thread(() -> {
+var platformThread = new Thread(() -> {
     // do some work in a platform thread
 });
+platformThread.start();
 
-Thread virtualThread = Thread.startVirtualThread(() -> {
+var virtualThread = Thread.startVirtualThread(() -> {
     // do some work in a virtual thread
 });
+virtualThread.start();
 ```
 
-When your concurrent code uses the `ExecutorService` already, switching to virtual threads even takes less effort:
+When your code uses the `ExecutorService` interface already, switching to virtual threads can take even less effort:
 
 ```java
 var platformThreadsExecutor = Executors.newCachedThreadPool();
@@ -100,13 +105,13 @@ try (var virtualThreadsExecutor = Executors.newVirtualThreadPerTaskExecutor()) {
 } // close() is called implicitly
 ```
 
-Note that the `ExecutorService` interface was  adjusted in Java 19 to extend `AutoCloseable`, so that it may be used in a try-with-resources construct.
+Note that the `ExecutorService` interface was  adjusted in Java 19 to extend `AutoCloseable`, so it can now be used in a try-with-resources construct.
 
 #### What's Different From Java 19?
 
-The feature is in the 'second preview' stage, to allow for more feedback. On top of that, a few API changes were made permanent and as a result are not proposed for preview any longer. They've been made permanent because they involve functionality that is broadly useful and is not specific to virtual threads, including:
+The feature is in the 'second preview' stage, to allow for more feedback. On top of that, a few API changes were made permanent and as a result are not proposed for preview any longer. They've been made permanent because they involve functionality that is useful in general and is not specific to virtual threads, including:
 
-* new methods in `Thread`
+* new methods in `Thread` class:
   * `join(Duration)`; 
   * `sleep(Duration)`; 
   * `threadId()`. 
@@ -129,15 +134,15 @@ They are preferred to thread-local variables, especially when using large number
 Since Java 1.2 we can make use of `ThreadLocal` variables, which confine a certain value to the thread that created it.
 In [some cases](https://stackoverflow.com/a/817926) it can be a simple way to achieve thread-safety.
 
-But thread-local variables also come with a few caveats. Every thread-local variable is mutable, which makes it hard to discern which component updates shared state and in what order. There's also the risk of memory leaks when using thread-local variables, because unless you call `remove()` on the `ThreadLocal` the data is retained until it is garbage collected (which is only after the thread has terminated). And finally, thread-local variables of a parent thread can be inherited by child threads, which results in the child thread having to allocate storage for every thread-local variable previously written in the parent thread.
+But thread-local variables also come with a few caveats. Every thread-local variable is mutable, which makes it hard to discern which component updates shared state and in what order. There's also the risk of memory leaks, because unless you call `remove()` on the `ThreadLocal` the data is retained until it is garbage collected (which is only after the thread has terminated). And finally, thread-local variables of a parent thread can be inherited by child threads, which results in the child thread having to allocate storage for every thread-local variable previously written in the parent thread.
 
-These drawbacks become more apparent now that virtual threads have been introduced, because in theory millions of them could be active at the same time - each with their own thread-local variable - which would undoubtedly result in a very significant memory footprint.
+These drawbacks become more apparent now that virtual threads have been introduced, because millions of them could be active at the same time - each with their own thread-local variables - which would result in a very significant memory footprint.
 
 #### Scoped Values
 
 Like a thread-local variable, a scoped value has multiple incarnations, one per thread. Unlike a thread-local variable, a scoped value is written once and is then immutable, and is available only for a bounded period during execution of the thread.
 
-JEP 429 illustrates the use of scoped values by the pseudo code example below:
+The JEP illustrates the use of scoped values with the pseudo code example below:
 
 ```java
 final static ScopedValue<...> V = new ScopedValue<>();
@@ -166,16 +171,16 @@ For more information on this feature, see [JEP 429](https://openjdk.org/jeps/429
 
 ### JEP 437: Structured Concurrency (Second Incubator)
 
-Java's current implementation of concurrency is *unstructured*, which leads to error handling and cancellation with multiple tasks being challenging. When multiple tasks are started up asynchronously, we currently aren't able to cancel the remaining tasks once the first task returns an error.
+Java's current implementation of concurrency is *unstructured*, which makes error handling and cancellation with multiple tasks a challenge. When multiple tasks are started up asynchronously, we currently aren't able to cancel the remaining tasks once the first task returns an error.
 
 Let's illustrate this point with the code example from the JEP: 
 
 ```java
 Response handle() throws ExecutionException, InterruptedException {
-    Future<String>  user  = esvc.submit(() -> findUser());
-    Future<Integer> order = esvc.submit(() -> fetchOrder());
-    String theUser  = user.get();   // Join findUser
-    int    theOrder = order.get();  // Join fetchOrder
+    Future<String>  user = executor.submit(() -> findUser());
+    Future<Integer> order = executor.submit(() -> fetchOrder());
+    String theUser = user.get();   // Join findUser
+    int theOrder = order.get();  // Join fetchOrder
     return new Response(theUser, theOrder);
 }
 ```
@@ -185,8 +190,8 @@ Though when we would rewrite this code to use just a single thread, the situatio
 
 ```java
 Response handle() throws IOException {
-    String theUser  = findUser();
-    int    theOrder = fetchOrder();
+    String theUser = findUser();
+    int theOrder = fetchOrder();
     return new Response(theUser, theOrder);
 }
 ```
@@ -195,7 +200,7 @@ Because here we would be able to prevent the second call once the first one has 
 
 In general, multithreaded programming in Java would be easier, more reliable, and more observable if the parent-child relationships between tasks and their subtasks were expressed syntactically — just as for single-threaded code. The syntactic structure would delineate the lifetimes of subtasks and enable a runtime representation of the inter-thread hierarchy, enabling error propagation and cancellation as well as meaningful observation of the concurrent program.
 
-Enter *structured concurrency*. We've rewritten the code example to make use of the new `StructuredTaskScope` API:
+Enter *structured concurrency*. We've now rewritten the code example to make use of the new `StructuredTaskScope` API:
 
 ```java
 Response handle() throws ExecutionException, InterruptedException {
@@ -214,7 +219,7 @@ Response handle() throws ExecutionException, InterruptedException {
 
 In structured concurrency, subtasks work on behalf of a task. The task awaits the subtasks' results and monitors them for failures. The `StructuredTaskScope` class allows developers to structure a task as a family of concurrent subtasks, and to coordinate them as a unit. Subtasks are executed in their own threads by forking them individually and then joining them as a unit and, possibly, cancelling them as a unit. The subtasks' successful results or exceptions are aggregated and handled by the parent task. 
 
-In contrast to the original example, understanding the lifetimes of the threads involved here is easy: Under all conditions their lifetimes are confined to a lexical scope, namely the body of the try-with-resources statement. Furthermore, the use of StructuredTaskScope ensures a number of valuable properties:
+In contrast to the original example, understanding the lifetimes of the threads involved here is easy. Under all conditions their lifetimes are confined to a lexical scope, namely the body of the try-with-resources statement. Furthermore, the use of `StructuredTaskScope` ensures a number of valuable properties:
 
 * *Error handling with short-circuiting*. If either the findUser() or fetchOrder() subtasks fail, the other is cancelled if it has not yet completed. This is managed by the cancellation policy implemented by `ShutdownOnFailure`; other policies like `ShutdownOnSuccess` are also available.
 
@@ -222,7 +227,7 @@ In contrast to the original example, understanding the lifetimes of the threads 
 
 * *Clarity* — The above code has a clear structure: Set up the subtasks, wait for them to either complete or be cancelled, and then decide whether to succeed (and process the results of the child tasks, which are already finished) or fail (and the subtasks are already finished, so there is nothing more to clean up).
 
-By the way: it is by no means coincidental that structured concurrency is coming to Java at the same time as virtual thread. Modern Java programs will likely use an abundance of threads, and they need to be correctly and robustly coordinated. Structured concurrency can provide exactly that, while also enabling observability tools to display threads as they are understood by the developer.
+By the way: it is by no means coincidental that structured concurrency is coming to Java at the same time as virtual threads. Modern Java programs will likely use an abundance of threads, and they need to be correctly and robustly coordinated. Structured concurrency can provide exactly that, while also enabling observability tools to display threads as they are understood by the developer.
 
 #### What's Different From Java 19?
 
@@ -235,10 +240,12 @@ For more information on this feature, see [JEP 437](https://openjdk.org/jeps/437
 
 ## From Project Panama
 
-[Project Panama](http://openjdk.java.net/projects/panama/) aims to improve the connection between the JVM and foreign (non-Java) libraries. Java 20 contains two JEPs that originate from Project Panama: 
+Java 20 contains two features that originated from [Project Panama](http://openjdk.java.net/projects/panama/):
 
 * Foreign Function & Memory API;
 * Vector API.
+
+> Project Panama aims to improve the connection between the JVM and foreign (non-Java) libraries.
 
 ### JEP 434: Foreign Function & Memory API (Second Preview)
 
