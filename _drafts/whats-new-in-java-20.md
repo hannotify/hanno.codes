@@ -50,9 +50,9 @@ For more information on this feature, see [JEP 433](https://openjdk.org/jeps/433
 
 [Project Loom](http://openjdk.java.net/projects/loom/) strives to simplify maintaining concurrent applications in Java by introducing *virtual threads* and an API for *structured concurrency*, among other things. Java 20 contains three JEPs that originate from Project Loom: 
 
-* Virtual threads;
-* Scoped values;
-* Structured concurrency.
+* Virtual Threads;
+* Scoped Values;
+* Structured Concurrency.
 
 ### JEP 436: Virtual Threads (Second Preview)
 
@@ -158,7 +158,7 @@ Scoped values will be useful in all places where currently thread-local variable
 
 #### What's Different From Java 19?
 
-Java 19 didn't contain anything related to scoped values yet, so Java 20 is the first time we get to experiment with scoped values. Note that the JEP is in the [incubator](https://openjdk.org/jeps/11) status, so it's about a non-final API that's in an incubator stage. You'll need to add `--add-modules jdk.incubator.concurrent` to the command-line to be able to take the feature for a test drive.
+Java 19 didn't contain anything related to scoped values yet, so Java 20 is the first time we get to experiment with scoped values. Note that the JEP is in the [incubator](https://openjdk.org/jeps/11) stage, so you'll need to add `--enable-preview --add-modules jdk.incubator.concurrent` to the command-line to be able to take the feature for a spin.
 
 #### More Information
 
@@ -166,10 +166,68 @@ For more information on this feature, see [JEP 429](https://openjdk.org/jeps/429
 
 ### JEP 437: Structured Concurrency (Second Incubator)
 
+Java's current implementation of concurrency is *unstructured*, which leads to error handling and cancellation with multiple tasks being challenging. When multiple tasks are started up asynchronously, we currently aren't able to cancel the remaining tasks once the first task returns an error.
+
+Let's illustrate this point with the code example from the JEP: 
+
+```java
+Response handle() throws ExecutionException, InterruptedException {
+    Future<String>  user  = esvc.submit(() -> findUser());
+    Future<Integer> order = esvc.submit(() -> fetchOrder());
+    String theUser  = user.get();   // Join findUser
+    int    theOrder = order.get();  // Join fetchOrder
+    return new Response(theUser, theOrder);
+}
+```
+
+When the `user.get()` call results in an error, there is no way for us to cancel the second task to prevent getting a result that won't be needed anyway. 
+Though when we would rewrite this code to use just a single thread, the situation becomes a lot simpler:
+
+```java
+Response handle() throws IOException {
+    String theUser  = findUser();
+    int    theOrder = fetchOrder();
+    return new Response(theUser, theOrder);
+}
+```
+
+Because here we would be able to prevent the second call once the first one has failed.
+
+In general, multithreaded programming in Java would be easier, more reliable, and more observable if the parent-child relationships between tasks and their subtasks were expressed syntactically — just as for single-threaded code. The syntactic structure would delineate the lifetimes of subtasks and enable a runtime representation of the inter-thread hierarchy, enabling error propagation and cancellation as well as meaningful observation of the concurrent program.
+
+Enter *structured concurrency*. We've rewritten the code example to make use of the new `StructuredTaskScope` API:
+
+```java
+Response handle() throws ExecutionException, InterruptedException {
+  try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
+      Future<String>  user  = scope.fork(() -> findUser());
+      Future<Integer> order = scope.fork(() -> fetchOrder());
+
+      scope.join();           // Join both forks
+      scope.throwIfFailed();  // ... and propagate errors
+
+      // Here, both forks have succeeded, so compose their results
+      return new Response(user.resultNow(), order.resultNow());
+  }
+}
+```
+
+In structured concurrency, subtasks work on behalf of a task. The task awaits the subtasks' results and monitors them for failures. The `StructuredTaskScope` class allows developers to structure a task as a family of concurrent subtasks, and to coordinate them as a unit. Subtasks are executed in their own threads by forking them individually and then joining them as a unit and, possibly, cancelling them as a unit. The subtasks' successful results or exceptions are aggregated and handled by the parent task. 
+
+In contrast to the original example, understanding the lifetimes of the threads involved here is easy: Under all conditions their lifetimes are confined to a lexical scope, namely the body of the try-with-resources statement. Furthermore, the use of StructuredTaskScope ensures a number of valuable properties:
+
+* *Error handling with short-circuiting*. If either the findUser() or fetchOrder() subtasks fail, the other is cancelled if it has not yet completed. This is managed by the cancellation policy implemented by `ShutdownOnFailure`; other policies like `ShutdownOnSuccess` are also available.
+
+* *Cancellation propagation*. If the thread running handle() is interrupted before or during the call to join(), both forks are cancelled automatically when the thread exits the scope.
+
+* *Clarity* — The above code has a clear structure: Set up the subtasks, wait for them to either complete or be cancelled, and then decide whether to succeed (and process the results of the child tasks, which are already finished) or fail (and the subtasks are already finished, so there is nothing more to clean up).
+
+By the way: it is by no means coincidental that structured concurrency is coming to Java at the same time as virtual thread. Modern Java programs will likely use an abundance of threads, and they need to be correctly and robustly coordinated. Structured concurrency can provide exactly that, while also enabling observability tools to display threads as they are understood by the developer.
 
 #### What's Different From Java 19?
 
-[changes since previous preview]
+The situation is roughly the same to how it was in Java 19 (see [JEP 428](https://openjdk.org/jeps/428)).
+The only change is an update to `StructuredTaskScope` to make it support the inheritance of [scoped values](#jep-429-scoped-values-incubator) by threads created in a task scope. This streamlines the sharing of immutable data across threads. Note that the JEP is in the [incubator](https://openjdk.org/jeps/11) stage, so you'll need to add `--enable-preview --add-modules jdk.incubator.concurrent` to the command-line to be able to take the feature for a spin.
 
 #### More Information
 
@@ -281,4 +339,4 @@ For more information on this feature, see [JEP 438](https://openjdk.org/jeps/438
 
 ## Wrap-up
 
-...
+...TODO
