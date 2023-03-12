@@ -8,7 +8,7 @@ tags:
 - java
 ---
 
-This will be a good day, because it's Java 20 release day! It's been six months since Java 19 was released, and so it's time for another fresh wave of Java features. This post will take you on a tour through all JEPs that are associated with this release and give you a brief introduction of each one of them. Where applicable the differences with Java 19 are highlighted and a few typical use cases are provided, so that you'll be more than ready to use these features after you've finished reading!
+This will be a good day, because it's Java 20 release day! It's been six months since Java 19 was released, and so it's time for another fresh wave of Java features. This post will take you on a tour through all JEPs that come with this release and give you a brief introduction of each one of them. Where applicable the differences with Java 19 are highlighted and a few typical use cases are provided, so that you'll be more than ready to use these features after you've finished reading!
 
 ![Package, just for you](/assets/images/blog/package-just-for-you.jpg)
 > Image from <a href="https://pxhere.com/nl/photo/535806">PxHere</a>
@@ -34,15 +34,15 @@ Since Java 16 we are able to avoid casting after `instanceof` checks by using 'P
 static String apply(Effect effect) {
     String formatted = "";
     if (effect instanceof Delay de) {
-        formatted = String.format("Delay active of %d ms.", de.getTimeInMs());
+        formatted = String.format("Delay active of %d ms.", de.timeInMs());
     } else if (effect instanceof Reverb re) {
-        formatted = String.format("Reverb active of type %s and roomSize %d.", re.getName(), re.getRoomSize());
+        formatted = String.format("Reverb active of type %s and roomSize %d.", re.name(), re.roomSize());
     } else if (effect instanceof Overdrive ov) {
-        formatted = String.format("Overdrive active with gain %d.", ov.getGain());
+        formatted = String.format("Overdrive active with gain %d.", ov.gain());
     } else if (effect instanceof Tremolo tr) {
-        formatted = String.format("Tremolo active with depth %d and rate %d.", tr.getDepth(), tr.getRate());
+        formatted = String.format("Tremolo active with depth %d and rate %d.", tr.depth(), tr.rate());
     } else if (effect instanceof Tuner tu) {
-        formatted = String.format("Tuner active with pitch %d. Muting all signal!", tu.getPitchInHz());
+        formatted = String.format("Tuner active with pitch %d. Muting all signal!", tu.pitchInHz());
     } else {
         formatted = String.format("Unknown effect active: %s.", effect);
     }
@@ -55,11 +55,11 @@ This code is still riddled with ceremony, though. On top of that it leaves room 
 ```java
 static String apply(Effect effect) {
     return switch(effect) {
-        case Delay de      -> String.format("Delay active of %d ms.", de.getTimeInMs());
-        case Reverb re     -> String.format("Reverb active of type %s and roomSize %d.", re.getName(), re.getRoomSize());
-        case Overdrive ov  -> String.format("Overdrive active with gain %d.", ov.getGain());
-        case Tremolo tr    -> String.format("Tremolo active with depth %d and rate %d.", tr.getDepth(), tr.getRate());
-        case Tuner tu      -> String.format("Tuner active with pitch %d. Muting all signal!", tu.getPitchInHz());
+        case Delay de      -> String.format("Delay active of %d ms.", de.timeInMs());
+        case Reverb re     -> String.format("Reverb active of type %s and roomSize %d.", re.name(), re.roomSize());
+        case Overdrive ov  -> String.format("Overdrive active with gain %d.", ov.gain());
+        case Tremolo tr    -> String.format("Tremolo active with depth %d and rate %d.", tr.depth(), tr.rate());
+        case Tuner tu      -> String.format("Tuner active with pitch %d. Muting all signal!", tu.pitchInHz());
         case null, default -> String.format("Unknown or empty effect active: %s.", effect);
     };
 }
@@ -72,11 +72,11 @@ Checking an additional condition on top of the pattern match is easily done with
 ```java
 static String apply(Effect effect, Guitar guitar) {
     return switch(effect) {
-        case Delay de      -> String.format("Delay active of %d ms.", de.getTimeInMs());
-        case Reverb re     -> String.format("Reverb active of type %s and roomSize %d.", re.getName(), re.getRoomSize());
-        case Overdrive ov  -> String.format("Overdrive active with gain %d.", ov.getGain());
-        case Tremolo tr    -> String.format("Tremolo active with depth %d and rate %d.", tr.getDepth(), tr.getRate());
-        case Tuner tu when !guitar.isInTune() -> String.format("Tuner active with pitch %d. Muting all signal!", tu.getPitchInHz());
+        case Delay de      -> String.format("Delay active of %d ms.", de.timeInMs());
+        case Reverb re     -> String.format("Reverb active of type %s and roomSize %d.", re.name(), re.roomSize());
+        case Overdrive ov  -> String.format("Overdrive active with gain %d.", ov.gain());
+        case Tremolo tr    -> String.format("Tremolo active with depth %d and rate %d.", tr.depth(), tr.rate());
+        case Tuner tu when !guitar.isInTune() -> String.format("Tuner active with pitch %d. Muting all signal!", tu.pitchInHz());
         case Tuner tu      -> "Guitar is already in tune.";
         case null, default -> String.format("Unknown or empty effect active: %s.", effect);
     };
@@ -98,11 +98,75 @@ For more information on this feature, see [JEP 433](https://openjdk.org/jeps/433
 
 ### JEP 432: Record Patterns (Second Preview)
 
-[feature summary]
+Pattern matching is a feature in Java that is being rolled out gradually over multiple Java versions. Being able to deconstruct an object using patterns was always one of the ultimate goals of the feature arc. With the introduction of *record patterns*, deconstructing records is now possible, along with nesting record and type patterns to enable a powerful, declarative, and composable form of data navigation and processing.
+
+[Records](https://openjdk.org/jeps/395) are transparent carriers for data. Code that receives an instance of a record will typically extract the data, known as the components. This was also the case in our 'Pattern Matching for switch' code example, if we'd assume that all implementations of the `Effect` interface were records there. In that piece of code it is clear that the pattern variables only serve to access the record fields. Using record patterns we can avoid creating pattern variables for each record altogether:
+
+```java
+static String apply(Effect effect) {
+    return switch(effect) {
+        case Delay(int timeInMs) -> String.format("Delay active of %d ms.", timeInMs);
+        case Reverb(String name, int roomSize) -> String.format("Reverb active of type %s and roomSize %d.", name, roomSize);
+        case Overdrive(int gain) -> String.format("Overdrive active with gain %d.", gain);
+        case Tremolo(int depth, int rate) -> String.format("Tremolo active with depth %d and rate %d.", depth, rate);
+        case Tuner(int pitchInHz) -> String.format("Tuner active with pitch %d. Muting all signal!", pitchInHz);
+        case null, default -> String.format("Unknown or empty effect active: %s.", effect);
+    };
+}
+```
+
+`Delay(int timeInMs)` is a record pattern here, deconstructing the `Delay` instance into its components. And this construct becomes even more powerful when we apply it to a more complicated object graph by using *nested* record patterns:
+
+```java
+record Tuner(int pitchInHz, Note note) implements Effect {}
+record Note(String note) {}
+
+class TunerApplier {
+    static String apply(Effect effect, Guitar guitar) {
+        return switch(effect) {
+            case Tuner(int pitch, Note(String note)) -> String.format("Tuner active with pitch %d on note %s", pitch, note);
+        };
+    }
+}
+```
+#### Inference of type arguments
+
+Nested record patterns also benefit from *inference of type arguments*. For example:
+
+```java
+class TunerApplier {
+    static String apply(Effect effect, Guitar guitar) {
+        return switch(effect) {
+            case Tuner(var pitch, Note(var note)) -> String.format("Tuner active with pitch %d on note %s", pitch, note);
+        };
+    }
+}
+```
+
+Here the type arguments for the nested pattern `Tuner(var pitch, Note(var note))` are inferred. This only works with nested patterns for now; type patterns don't yet support implicit inference of type arguments. So the type pattern `Tuner tu` is always treated as a raw type pattern.
+
+#### Enhanced for statements
+
+Record patterns are now also allowed in enhanced `for` statements, making it easy to loop over a collection of record values and swiftly extract the components of each record:
+
+```java
+record Delay(int timeInMs) implements Effect {}
+
+class DelayPrinter {
+    static void printDelays(List&lt;Delay&gt; delays) {
+        for (Delay(var timeInMs) : delays) {
+            System.out.println("Delay found with timeInMs=" + timeInMs);
+        }
+    }
+}
+```
 
 #### What's Different From Java 19?
 
-[changes since previous preview]
+The following changes were made to this feature compared to Java 19:
+
+* Add support for inference of type arguments of generic record patterns;
+* Add support for record patterns to appear in the header of an enhanced for statement.
 
 #### More Information
 
@@ -191,7 +255,7 @@ They are preferred to thread-local variables, especially when using large number
 #### ThreadLocal
 
 Since Java 1.2 we can make use of `ThreadLocal` variables, which confine a certain value to the thread that created it.
-In [some cases](https://stackoverflow.com/a/817926) it can be a simple way to achieve thread-safety.
+In [some cases](https://stackoverflow.com/a/817926) that can be a simple way to achieve thread-safety.
 
 But thread-local variables also come with a few caveats. Every thread-local variable is mutable, which makes it hard to discern which component updates shared state and in what order. There's also the risk of memory leaks, because unless you call `remove()` on the `ThreadLocal` the data is retained until it is garbage collected (which is only after the thread has terminated). And finally, thread-local variables of a parent thread can be inherited by child threads, which results in the child thread having to allocate storage for every thread-local variable previously written in the parent thread.
 
@@ -403,6 +467,6 @@ Once the features of Project Valhalla are available, the Vector API will be adap
 
 For more information on this feature, see [JEP 438](https://openjdk.org/jeps/438).
 
-## Wrap-up
+## Final thoughts
 
-...TODO
+So, these are exciting times for Java programmers! The language is evolving at a fast pace, and new features are being published alongside each other in a coordinated way. On top of that, they tend to be more focused on making the best use of modern hardware, which gives Java the best chance of remaining relevant in this day and age.
