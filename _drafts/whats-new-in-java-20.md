@@ -469,4 +469,4 @@ For more information on this feature, see [JEP 438](https://openjdk.org/jeps/438
 
 ## Final thoughts
 
-So, these are exciting times for Java programmers! The language is evolving at a fast pace, and new features are being published alongside each other in a coordinated way. On top of that, they tend to be more focused on making the best use of modern hardware, which gives Java the best chance of remaining relevant in this day and age.
+So, these are exciting times for Java programmers! The language is evolving at a fast pace, and new features are being published alongside each other in a coordinated way. On top of that, they tend to be more focused on making the best use of modern hardware, which gives Java a very good chance of remaining relevant in this day and age. So what are you waiting for? Take [Java 20](https://jdk.java.net/20/) for a spin!
