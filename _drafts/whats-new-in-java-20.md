@@ -17,10 +17,84 @@ This will be a good day, because it's Java 20 release day! It's been six months 
 
 Java 20 contains two features that originated from [Project Amber](https://openjdk.org/projects/amber/):
 
-* Record Patterns;
-* Pattern Matching for switch.
+* Pattern Matching for switch;
+* Record Patterns.
 
 > The goal of Project Amber is to explore and incubate smaller, productivity-oriented Java language features.
+
+### JEP 433: Pattern Matching for switch (Fourth Preview)
+
+The feature 'Pattern Matching for switch' that was first introduced in Java 17 has reached its fourth preview stage, now that Java 20 has been released. The feature has always gathered a lot of feedback in the past, and on top of that it needs alignment with the related Record Patterns preview feature. In the end there are lots of reasons to keep it in preview just a little longer.
+
+Since Java 16 we are able to avoid casting after `instanceof` checks by using 'Pattern Matching for instanceof'. Let's see how that works in a code example.
+
+> Code examples that illustrate this JEP were taken from my conference talk ["Pattern Matching: Small Enhancement or Major Feature?"](https://hanno.codes/talks/#pattern-matching-small-enhancement-or-major-feature).
+
+```java
+static String apply(Effect effect) {
+    String formatted = "";
+    if (effect instanceof Delay de) {
+        formatted = String.format("Delay active of %d ms.", de.getTimeInMs());
+    } else if (effect instanceof Reverb re) {
+        formatted = String.format("Reverb active of type %s and roomSize %d.", re.getName(), re.getRoomSize());
+    } else if (effect instanceof Overdrive ov) {
+        formatted = String.format("Overdrive active with gain %d.", ov.getGain());
+    } else if (effect instanceof Tremolo tr) {
+        formatted = String.format("Tremolo active with depth %d and rate %d.", tr.getDepth(), tr.getRate());
+    } else if (effect instanceof Tuner tu) {
+        formatted = String.format("Tuner active with pitch %d. Muting all signal!", tu.getPitchInHz());
+    } else {
+        formatted = String.format("Unknown effect active: %s.", effect);
+    }
+    return formatted;
+}
+```
+
+This code is still riddled with ceremony, though. On top of that it leaves room for subtle bugs — what if you added an else-if branch that didn't assign anything to `formatted`? So in the spirit of this JEP (and its predecessors), let's see what pattern matching in a switch statement (or even better: in a switch *expression*) would look like:
+
+```java
+static String apply(Effect effect) {
+    return switch(effect) {
+        case Delay de      -> String.format("Delay active of %d ms.", de.getTimeInMs());
+        case Reverb re     -> String.format("Reverb active of type %s and roomSize %d.", re.getName(), re.getRoomSize());
+        case Overdrive ov  -> String.format("Overdrive active with gain %d.", ov.getGain());
+        case Tremolo tr    -> String.format("Tremolo active with depth %d and rate %d.", tr.getDepth(), tr.getRate());
+        case Tuner tu      -> String.format("Tuner active with pitch %d. Muting all signal!", tu.getPitchInHz());
+        case null, default -> String.format("Unknown or empty effect active: %s.", effect);
+    };
+}
+```
+
+Pattern matching for switch made our code far more elegant here. We're even able to address possible `null`s by defining a specific case for it or combining it with the default (which is what we've done here).
+
+Checking an additional condition on top of the pattern match is easily done with a *guard* (the part after the `when` keyword in the code below):
+
+```java
+static String apply(Effect effect, Guitar guitar) {
+    return switch(effect) {
+        case Delay de      -> String.format("Delay active of %d ms.", de.getTimeInMs());
+        case Reverb re     -> String.format("Reverb active of type %s and roomSize %d.", re.getName(), re.getRoomSize());
+        case Overdrive ov  -> String.format("Overdrive active with gain %d.", ov.getGain());
+        case Tremolo tr    -> String.format("Tremolo active with depth %d and rate %d.", tr.getDepth(), tr.getRate());
+        case Tuner tu when !guitar.isInTune() -> String.format("Tuner active with pitch %d. Muting all signal!", tu.getPitchInHz());
+        case Tuner tu      -> "Guitar is already in tune.";
+        case null, default -> String.format("Unknown or empty effect active: %s.", effect);
+    };
+}
+```
+
+Here, the guard makes sure that intricate boolean logic can still be expressed concisely. Having to nest `if` statements to test this logic within a case branch would not only be more verbose, but also potentially introduce subtle bugs that we set out to avoid in the first place.
+
+#### What's Different From Java 19?
+
+A few changes were made to this feature compared to Java 19:
+
+* When a pattern match fails abruptly, a `MatchException` is now thrown.
+* Inference of type arguments for [record patterns](#jep-432-record-patterns-second-preview) is now supported in switch expressions and statements. This means that you can now use `var` in the patterns you want to match.
+
+#### More Information
+
+For more information on this feature, see [JEP 433](https://openjdk.org/jeps/433).
 
 ### JEP 432: Record Patterns (Second Preview)
 
@@ -33,21 +107,6 @@ Java 20 contains two features that originated from [Project Amber](https://openj
 #### More Information
 
 For more information on this feature, see [JEP 432](https://openjdk.org/jeps/432).
-
-### JEP 433: Pattern Matching for switch (Fourth Preview)
-
-The feature 'Pattern Matching for switch' that was first introduced in Java 16 has reached its fourth preview status now that Java 20 has been released.
-...
-
-[feature summary]
-
-#### What's Different From Java 19?
-
-[changes since previous preview]
-
-#### More Information
-
-For more information on this feature, see [JEP 433](https://openjdk.org/jeps/433).
 
 ## From Project Loom
 
