@@ -24,7 +24,7 @@ Java 20 contains two features that originated from [Project Amber](https://openj
 
 ### JEP 433: Pattern Matching for switch (Fourth Preview)
 
-The feature 'Pattern Matching for switch' that was first introduced in Java 17 has reached its fourth preview stage, now that Java 20 has been released. The feature has always gathered a lot of feedback in the past, and on top of that it needs alignment with the related Record Patterns preview feature. In the end there are lots of reasons to keep it in preview just a little longer.
+The feature 'Pattern Matching for switch' that was first introduced in Java 17 has reached its fourth preview stage, now that Java 20 has been released. The feature has always gathered a lot of feedback in the past, and on top of that it needs alignment with the related Record Patterns preview feature. In the end there are plenty of reasons to keep it in preview just a little longer.
 
 Since Java 16 we are able to avoid casting after `instanceof` checks by using 'Pattern Matching for instanceof'. Let's see how that works in a code example.
 
@@ -65,7 +65,7 @@ static String apply(Effect effect) {
 }
 ```
 
-Pattern matching for switch made our code far more elegant here. We're even able to address possible `null`s by defining a specific case for it or combining it with the default (which is what we've done here).
+Pattern matching for switch made our code far more elegant here. We're even able to address possible `null`s by defining a specific case for them or combining it with the default case (which is what we've done here).
 
 Checking an additional condition on top of the pattern match is easily done with a *guard* (the part after the `when` keyword in the code below):
 
@@ -83,7 +83,7 @@ static String apply(Effect effect, Guitar guitar) {
 }
 ```
 
-Here, the guard makes sure that intricate boolean logic can still be expressed concisely. Having to nest `if` statements to test this logic within a case branch would not only be more verbose, but also potentially introduce subtle bugs that we set out to avoid in the first place.
+Here, the guard makes sure that intricate boolean logic can still be expressed in a concise way. Having to nest `if` statements to test this logic within a case branch would not only be more verbose, but also potentially introduce subtle bugs that we set out to avoid in the first place.
 
 #### What's Different From Java 19?
 
@@ -100,7 +100,7 @@ For more information on this feature, see [JEP 433](https://openjdk.org/jeps/433
 
 Pattern matching is a feature in Java that is being rolled out gradually over multiple Java versions. Being able to deconstruct an object using patterns was always one of the ultimate goals of the feature arc. With the introduction of *record patterns*, deconstructing records is now possible, along with nesting record and type patterns to enable a powerful, declarative, and composable form of data navigation and processing.
 
-[Records](https://openjdk.org/jeps/395) are transparent carriers for data. Code that receives an instance of a record will typically extract the data, known as the components. This was also the case in our 'Pattern Matching for switch' code example, if we'd assume that all implementations of the `Effect` interface were records there. In that piece of code it is clear that the pattern variables only serve to access the record fields. Using record patterns we can avoid creating pattern variables for each record altogether:
+[Records](https://openjdk.org/jeps/395) are transparent carriers for data. Code that receives an instance of a record will typically extract the data, known as the components. This was also the case in our 'Pattern Matching for switch' code example, if we assume that all implementations of the `Effect` interface were in fact records there. In that piece of code it is clear that the pattern variables only serve to access the record fields. Using record patterns we can avoid having to create pattern variables altogether:
 
 ```java
 static String apply(Effect effect) {
@@ -115,7 +115,7 @@ static String apply(Effect effect) {
 }
 ```
 
-`Delay(int timeInMs)` is a record pattern here, deconstructing the `Delay` instance into its components. And this construct becomes even more powerful when we apply it to a more complicated object graph by using *nested* record patterns:
+`Delay(int timeInMs)` is a record pattern here, deconstructing the `Delay` instance into its components. And this mechanism can become even more powerful when we apply it to a more complicated object graph by using *nested* record patterns:
 
 ```java
 record Tuner(int pitchInHz, Note note) implements Effect {}
@@ -143,7 +143,7 @@ class TunerApplier {
 }
 ```
 
-Here the type arguments for the nested pattern `Tuner(var pitch, Note(var note))` are inferred. This only works with nested patterns for now; type patterns don't yet support implicit inference of type arguments. So the type pattern `Tuner tu` is always treated as a raw type pattern.
+Here the type arguments for the nested pattern `Tuner(var pitch, Note(var note))` are inferred. This only works with nested patterns for now; type patterns do not yet support implicit inference of type arguments. So the type pattern `Tuner tu` is always treated as a raw type pattern.
 
 #### Enhanced for statements
 
@@ -184,7 +184,7 @@ Java 20 contains three features that originated from [Project Loom](http://openj
 
 ### JEP 436: Virtual Threads (Second Preview)
 
-Threads have been a part of Java since the very beginning, and since the start of Project Loom we've gradually started calling these 'classic' threads 'platform threads' instead. A platform thread runs Java code on an underlying OS thread and captures the OS thread for the code's entire lifetime. The number of platform threads is therefore limited to the number of available OS threads.
+Threads have been a part of Java since the very beginning, and since the start of Project Loom we've gradually started calling them 'platform threads' instead. A platform thread runs Java code on an underlying OS thread and captures the OS thread for the code's entire lifetime. The number of platform threads is therefore limited to the number of available OS threads.
 
 Modern applications, however, might need many more threads than that; when dealing with tens of thousands of requests at the same time, for example. This is where *virtual threads* come in. A virtual thread is an instance of `java.lang.Thread` that runs Java code on an underlying OS thread, but does not capture the OS thread for the code's entire lifetime. This means that many virtual threads can run their Java code on the same OS thread, effectively sharing it. The number of virtual threads can thus be much larger than the number of available OS threads.
 
@@ -212,7 +212,7 @@ var virtualThread = Thread.startVirtualThread(() -> {
 virtualThread.start();
 ```
 
-When your code uses the `ExecutorService` interface already, switching to virtual threads can take even less effort:
+When your code uses the `ExecutorService` interface already, switching to virtual threads will take even less effort:
 
 ```java
 var platformThreadsExecutor = Executors.newCachedThreadPool();
@@ -232,7 +232,7 @@ Note that the `ExecutorService` interface was  adjusted in Java 19 to extend `Au
 
 #### What's Different From Java 19?
 
-The feature is in the 'second preview' stage, to allow for more feedback. On top of that, a few API changes were made permanent and as a result are not proposed for preview any longer. They've been made permanent because they involve functionality that is useful in general and is not specific to virtual threads, including:
+The feature is in the 'second preview' stage, to allow for more feedback. On top of that, a few API changes were made permanent and as a result are not proposed for preview any longer. This is because they involve functionality that is useful in general and is not specific to virtual threads, including:
 
 * new methods in `Thread` class:
   * `join(Duration)`; 
@@ -259,7 +259,7 @@ In [some cases](https://stackoverflow.com/a/817926) that can be a simple way to 
 
 But thread-local variables also come with a few caveats. Every thread-local variable is mutable, which makes it hard to discern which component updates shared state and in what order. There's also the risk of memory leaks, because unless you call `remove()` on the `ThreadLocal` the data is retained until it is garbage collected (which is only after the thread has terminated). And finally, thread-local variables of a parent thread can be inherited by child threads, which results in the child thread having to allocate storage for every thread-local variable previously written in the parent thread.
 
-These drawbacks become more apparent now that virtual threads have been introduced, because millions of them could be active at the same time - each with their own thread-local variables - which would result in a very significant memory footprint.
+These drawbacks become more apparent now that virtual threads have been introduced, because millions of them could be active at the same time - each with their own thread-local variables - which would result in a significant memory footprint.
 
 #### Scoped Values
 
@@ -286,7 +286,7 @@ Scoped values will be useful in all places where currently thread-local variable
 
 #### What's Different From Java 19?
 
-Java 19 didn't contain anything related to scoped values yet, so Java 20 is the first time we get to experiment with scoped values. Note that the JEP is in the [incubator](https://openjdk.org/jeps/11) stage, so you'll need to add `--enable-preview --add-modules jdk.incubator.concurrent` to the command-line to be able to take the feature for a spin.
+Java 19 didn't contain anything related to scoped values yet, so Java 20 is the first time we get to experiment with them. Note that the JEP is in the [incubator](https://openjdk.org/jeps/11) stage, so you'll need to add `--enable-preview --add-modules jdk.incubator.concurrent` to the command-line to be able to take the feature for a spin.
 
 #### More Information
 
@@ -294,9 +294,9 @@ For more information on this feature, see [JEP 429](https://openjdk.org/jeps/429
 
 ### JEP 437: Structured Concurrency (Second Incubator)
 
-Java's current implementation of concurrency is *unstructured*, which makes error handling and cancellation with multiple tasks a challenge. When multiple tasks are started up asynchronously, we currently aren't able to cancel the remaining tasks once the first task returns an error.
+Java's current implementation of concurrency is *unstructured*, which can make error handling and cancellation with multiple tasks a challenge. When multiple tasks are started up asynchronously, we currently aren't able to cancel the remaining tasks once the first task returns an error.
 
-Let's illustrate this point with the code example from the JEP: 
+Let's illustrate this point with a code example from the JEP: 
 
 ```java
 Response handle() throws ExecutionException, InterruptedException {
@@ -308,8 +308,8 @@ Response handle() throws ExecutionException, InterruptedException {
 }
 ```
 
-When the `user.get()` call results in an error, there is no way for us to cancel the second task to prevent getting a result that won't be needed anyway. 
-Though when we would rewrite this code to use just a single thread, the situation becomes a lot simpler:
+When the `user.get()` call results in an error, there is no way for us to cancel the second task when we want to prevent getting a result that won't be used anyway. 
+Though when we would rewrite this code to use just a single thread, the situation would become a lot simpler:
 
 ```java
 Response handle() throws IOException {
@@ -319,7 +319,7 @@ Response handle() throws IOException {
 }
 ```
 
-Because here we would be able to prevent the second call once the first one has failed.
+See? Here we would be able to prevent the second call once the first one has failed.
 
 In general, multithreaded programming in Java would be easier, more reliable, and more observable if the parent-child relationships between tasks and their subtasks were expressed syntactically — just as for single-threaded code. The syntactic structure would delineate the lifetimes of subtasks and enable a runtime representation of the inter-thread hierarchy, enabling error propagation and cancellation as well as meaningful observation of the concurrent program.
 
@@ -344,9 +344,9 @@ In structured concurrency, subtasks work on behalf of a task. The task awaits th
 
 In contrast to the original example, understanding the lifetimes of the threads involved here is easy. Under all conditions their lifetimes are confined to a lexical scope, namely the body of the try-with-resources statement. Furthermore, the use of `StructuredTaskScope` ensures a number of valuable properties:
 
-* *Error handling with short-circuiting*. If either the findUser() or fetchOrder() subtasks fail, the other is cancelled if it has not yet completed. This is managed by the cancellation policy implemented by `ShutdownOnFailure`; other policies like `ShutdownOnSuccess` are also available.
+* *Error handling with short-circuiting*. If one of the subtasks fail, the other is cancelled if it has not yet completed. This is managed by the cancellation policy implemented by `ShutdownOnFailure`; other policies like `ShutdownOnSuccess` are also available.
 
-* *Cancellation propagation*. If the thread running handle() is interrupted before or during the call to join(), both forks are cancelled automatically when the thread exits the scope.
+* *Cancellation propagation*. If the thread running `handle()` is interrupted before or during the call to `join()`, both forks are cancelled automatically when the thread exits the scope.
 
 * *Clarity* — The above code has a clear structure: Set up the subtasks, wait for them to either complete or be cancelled, and then decide whether to succeed (and process the results of the child tasks, which are already finished) or fail (and the subtasks are already finished, so there is nothing more to clean up).
 
@@ -354,8 +354,8 @@ By the way: it is by no means coincidental that structured concurrency is coming
 
 #### What's Different From Java 19?
 
-The situation is roughly the same to how it was in Java 19 (see [JEP 428](https://openjdk.org/jeps/428)).
-The only change is an update to `StructuredTaskScope` to make it support the inheritance of [scoped values](#jep-429-scoped-values-incubator) by threads created in a task scope. This streamlines the sharing of immutable data across threads. Note that the JEP is in the [incubator](https://openjdk.org/jeps/11) stage, so you'll need to add `--enable-preview --add-modules jdk.incubator.concurrent` to the command-line to be able to take the feature for a spin.
+The situation is roughly the same as how it was in Java 19 (see [JEP 428](https://openjdk.org/jeps/428)).
+The only change is an update to `StructuredTaskScope` to make it support the inheritance of [scoped values](#jep-429-scoped-values-incubator) by threads created in a task scope. This streamlines the sharing of immutable data across threads. Again, note that the JEP is in the [incubator](https://openjdk.org/jeps/11) stage, so you'll need to add `--enable-preview --add-modules jdk.incubator.concurrent` to the command-line to be able to take the feature for a spin.
 
 #### More Information
 
@@ -382,7 +382,7 @@ However, these three mechanisms all come with their own drawbacks, which is why 
 
 #### Code Example
 
-In order to demonstrate the new API, [JEP 434](https://openjdk.org/jeps/434) lists a code example that obtains a method handle for a C library function `radixsort` and then uses it to sort four strings which start life in a Java array:
+In order to demonstrate the new API, [JEP 434](https://openjdk.org/jeps/434) lists a code example that obtains a method handle for a C library function `radixsort` and then uses it to sort four strings that start out as Java array elements:
 
 ```java
 // 1. Find foreign function on the C library path
@@ -414,13 +414,13 @@ assert Arrays.equals(javaStrings, new String[] {"car", "cat", "dog", "mouse"}); 
 Let's look at some of the types this code uses in more detail to get a rough idea of their function and purpose within the Foreign Function & Memory API:
 
 `Linker`
-: Provides access to foreign functions from Java code, and access to Java code from foreign functions. It allows Java code to link against foreign functions, via *downcall method handles*. It also foreign functions to call Java method handles, via the generation of *upcall stubs*. See the [JavaDoc](https://download.java.net/java/early_access/jdk20/docs/api/java.base/java/lang/foreign/Linker.html) of this type for more information.
+: Provides access to foreign functions from Java code, and access to Java code from foreign functions. It allows Java code to link against foreign functions, via *downcall method handles*. It also allows foreign functions to call Java method handles, via the generation of *upcall stubs*. See the [JavaDoc](https://download.java.net/java/early_access/jdk20/docs/api/java.base/java/lang/foreign/Linker.html) of this type for more information.
 
 `SymbolLookup`
 : Retrieves the address of a symbol in one or more libraries. See the [JavaDoc](https://download.java.net/java/early_access/jdk20/docs/api/java.base/java/lang/foreign/SymbolLookup.html) of this type for more information.
 
 `Arena`
-: Controls the lifecycle of memory segments. An arena has a scope, called the arena scope. When the arena is closed, the arena scope is no longer alive. As a result, all the segments associated with the arena scope are invalidated, safely and atomically, their backing memory regions are deallocated (where applicable) and can no longer be accessed after the arena is closed. See the [JavaDoc](https://download.java.net/java/early_access/jdk20/docs/api/java.base/java/lang/foreign/Arena.html) of this type for more information.
+: Controls the lifecycle of memory segments. An arena has a scope, called the arena scope. When the arena is closed, the arena scope is no longer alive. As a result, all the segments associated with the arena scope are invalidated, their backing memory regions are deallocated (where applicable) and can no longer be accessed after the arena is closed. See the [JavaDoc](https://download.java.net/java/early_access/jdk20/docs/api/java.base/java/lang/foreign/Arena.html) of this type for more information.
 
 `MemorySegment`
 : Provides access to a contiguous region of memory. There are two kinds of memory segments: *heap segments* (inside the Java memory heap) and *native segments* (outside of the Java memory heap). See the [JavaDoc](https://download.java.net/java/early_access/jdk20/docs/api/java.base/java/lang/foreign/MemorySegment.html) of this type for more information. 
@@ -433,7 +433,7 @@ Let's look at some of the types this code uses in more detail to get a rough ide
 In Java 19, this feature was in its first preview status (in the form of [JEP 424](https://openjdk.org/jeps/424)), so the language feature was complete and developer feedback was gathered. Based on this feedback the following changes happened to Java 20:
 
 * The `MemorySegment` and `MemoryAddress` abstractions were unified (memory addresses are now modeled by zero-length memory segments);
-* The sealed `MemoryLayout` hierarchy was enhanced to facilitate usage with pattern matching in switch expressions and statements (see [JEP 433](#jep-433-pattern-matching-for-switch-fourth-preview));
+* The sealed `MemoryLayout` hierarchy was enhanced to facilitate usage with [pattern matching for switch](http://localhost:4000/2023/03/21/whats-new-in-java-20/#jep-433-pattern-matching-for-switch-fourth-preview);
 * `MemorySession` has been split into `Arena` and `SegmentScope` to facilitate sharing segments across maintenance boundaries.
 
 #### More Information
@@ -449,7 +449,40 @@ This means that these computations will significantly outperform equivalent scal
 
 A *vector computation* is a mathematical operation on one or more one-dimensional matrices of an arbitrary length. Think of a vector as an array with a dynamic length. Furthermore, the elements in the vector can be accessed in constant time via indices, just like with an array. 
 
-In the past, Java programmers could only program such computations at the assembly-code level. But now that modern CPUs support advanced [SIMD](https://en.wikipedia.org/wiki/Single_instruction,_multiple_data) features (Single Instruction, Multiple Data), it becomes more important to take advantage of the performance gain that SIMD instructions and multiple lanes operating in parallel can bring. The Vector API brings that possibility closer to the Java programmer.
+In the past, Java programmers could only program such computations at the assembly-code level. But now that modern CPUs support advanced [SIMD](https://en.wikipedia.org/wiki/Single_instruction,_multiple_data) features (Single Instruction, Multiple Data), it becomes more important to take advantage of the performance gains that SIMD instructions and multiple lanes operating in parallel can bring. The Vector API brings that possibility closer to the Java programmer.
+
+#### Code Example
+
+Here is a code example (taken from the JEP) that compares a simple scalar computation over elements of arrays with its equivalent using the Vector API:
+
+```java
+void scalarComputation(float[] a, float[] b, float[] c) {
+   for (int i = 0; i < a.length; i++) {
+        c[i] = (a[i] * a[i] + b[i] * b[i]) * -1.0f;
+   }
+}
+
+static final VectorSpecies<Float> SPECIES = FloatVector.SPECIES_PREFERRED;
+
+void vectorComputation(float[] a, float[] b, float[] c) {
+    int i = 0;
+    int upperBound = SPECIES.loopBound(a.length);
+    for (; i < upperBound; i += SPECIES.length()) {
+        // FloatVector va, vb, vc;
+        var va = FloatVector.fromArray(SPECIES, a, i);
+        var vb = FloatVector.fromArray(SPECIES, b, i);
+        var vc = va.mul(va)
+                   .add(vb.mul(vb))
+                   .neg();
+        vc.intoArray(c, i);
+    }
+    for (; i < a.length; i++) {
+        c[i] = (a[i] * a[i] + b[i] * b[i]) * -1.0f;
+    }
+}
+```
+
+From the perspective of the Java developer, this is just another way of expressing scalar computations. It might come across as being slightly more verbose, but on the other hand it can bring spectacular performance gains. 
 
 #### Typical Use Cases
 
@@ -469,4 +502,4 @@ For more information on this feature, see [JEP 438](https://openjdk.org/jeps/438
 
 ## Final thoughts
 
-So, these are exciting times for Java programmers! The language is evolving at a fast pace, and new features are being published alongside each other in a coordinated way. On top of that, they tend to be more focused on making the best use of modern hardware, which gives Java a very good chance of remaining relevant in this day and age. So what are you waiting for? Take [Java 20](https://jdk.java.net/20/) for a spin!
+So, these are exciting times for Java programmers! The language is evolving at a fast pace, and new features are being published alongside each other in a coordinated way. On top of that, they tend to be more focused on making the best use of modern hardware, which gives Java a very good chance of remaining relevant in this day and age. So what are you still waiting for? Take [Java 20](https://jdk.java.net/20/) for a spin!
