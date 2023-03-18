@@ -35,7 +35,7 @@
 
     So during this talk I will perform snippets of the song, explain why I think it is about software development and how your next software project can be better because of it. I'll make sure to cover the identity of 'the lady', interpretation of requirements, reverting architectural decisions and the cost of overly ambitious guitar solos.  
 
-- id: pattern-matching-small-enhancement-or-major-feature
+- id: pattern-matching
   title: Pattern Matching&#58; Small Enhancement or Major Feature?
   type: regular
   description: | 
