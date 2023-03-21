@@ -268,7 +268,7 @@ Like a thread-local variable, a scoped value has multiple incarnations, one per 
 The JEP illustrates the use of scoped values with the pseudo code example below:
 
 ```java
-final static ScopedValue<...> V = new ScopedValue<>();
+final static ScopedValue<...> V = ScopedValue.newInstance();
 
 // In some method
 ScopedValue.where(V, <value>)
