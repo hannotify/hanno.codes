@@ -26,7 +26,7 @@ This is a list of articles that I (co-)wrote, but were published externally.
 {{article.synopsis}}
 
 **Language:** :{{article.language}}:<br/>
-**Source:** [{{article.source}}]({{article.url}})
+**Source:** [{{article.source}}]({{article.url}}){:target="_blank"}
 
     {% endfor %}
 {% endfor %}
