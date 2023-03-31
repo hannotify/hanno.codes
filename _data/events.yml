@@ -1,26 +1,45 @@
-- id: spilberg-meetup-2023
-  name: Spilberg Meetup
+- id: devoxx-pl-2023
+  name: Devoxx Poland
   year: 2023
   country:
-    flag: netherlands
-    name: The Netherlands
-  city: Amsterdam
+    flag: poland
+    name: Poland
+  city: Krakow
   venue:
-    name: Van der Valk Hotel Amsterdam Zuidas
-    latitude: 52.3368084
-    longitude: 4.88609
-  url: https://www.meetup.com/it-development-cafe/
-  dateStart: 28-02-2023
-  logo: it-development-cafe-meetup.jpeg
+    name: ICE Krakow Congress Centre
+    latitude: 50.0477778
+    longitude: 19.9292002
+  url: https://www.devoxx.pl
+  dateStart: 31-03-2023
+  dateEnd: 02-06-2023
+  logo: devoxx-pl.png
   appearances:
     - id: pattern-matching
-      sessionPageUrl: https://www.spilberg.nl/en/events/power-up-your-jvm-language-skills-1?source=linkedin.com
-      slides: 
-        source: local
+      sessionPageUrl: 
       githubUrl: https://github.com/hannotify/pattern-matching-music-store
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
+
+
+- id: jcon-europe-2023
+  name: JCON EUROPE
+  year: 2023
+  country:
+    flag: de
+    name: Germany
+  city: Köln
+  venue:
+    name: Cinedom
+    latitude: 50.9480818
+    longitude: 6.9441045
+  url: https://www.jcon.one
+  dateStart: 20-06-2023
+  dateEnd: 23-06-2023
+  logo: jcon-europe-2023.png
+  appearances:
+    - id: beware-of-survivorship-bias
+      sessionPageUrl: https://jconeurope2023.sched.com/event/1K3y1
 
 - id: javaland-2023
   name: JavaLand
@@ -42,6 +61,30 @@
       sessionPageUrl: https://shop.doag.org/events/javaland/2023/agenda/#eventDay.1679439600
       slides: 
         source: local
+      cospeakers:
+        - name: Peter Wessels
+          twitterUrl: https://www.twitter.com/PeterWessels
+
+- id: spilberg-meetup-2023
+  name: Spilberg Meetup
+  year: 2023
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Amsterdam
+  venue:
+    name: Van der Valk Hotel Amsterdam Zuidas
+    latitude: 52.3368084
+    longitude: 4.88609
+  url: https://www.meetup.com/it-development-cafe/
+  dateStart: 28-02-2023
+  logo: it-development-cafe-meetup.jpeg
+  appearances:
+    - id: pattern-matching
+      sessionPageUrl: https://www.spilberg.nl/en/events/power-up-your-jvm-language-skills-1?source=linkedin.com
+      slides: 
+        source: local
+      githubUrl: https://github.com/hannotify/pattern-matching-music-store
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
