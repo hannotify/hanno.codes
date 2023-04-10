@@ -1,0 +1,22 @@
+<tr>
+    <td style="text-align: right">Resources</td>
+    <td>
+        <a target="_blank" href="{{event.url}}" class="btn btn--inverse" title="Event website"><i class="fa fa-globe"></i></a>
+        {% if appearance.sessionPageUrl %}
+            <a target="_blank" href="{{appearance.sessionPageUrl}}" class="btn btn--inverse" title="Event schedule"><i class="fa fa-calendar"></i></a>
+        {% endif %}
+        {% if appearance.videoUrl %}
+            <a target="_blank" href="{{appearance.videoUrl}}" class="btn btn--inverse" title="Video recording"><i class="fab fa-youtube"></i></a>
+        {% endif %}
+        {% if appearance.slides %}
+            {% if appearance.slides.source == 'local' %}
+                <a href="/slides/{{talk.id}}/{{event.id}}" class="btn btn--inverse" title="Slide deck"><i class="fa fa-tv"></i></a>
+            {% else %}
+                <a target="_blank" href="{{appearance.slides.url}}" class="btn btn--inverse" title="External slide deck"><i class="fab fa-{{ appearance.slides.source }}"></i></a>
+            {% endif %}
+        {% endif %}
+        {% if appearance.githubUrl %}
+            <a target="_blank" href="{{appearance.githubUrl}}" class="btn btn--inverse" title="GitHub repository"><i class="fab fa-github"></i></a>
+        {% endif %}
+    </td>
+</tr>  
