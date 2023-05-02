@@ -86,3 +86,17 @@ Maarten Mulders:
     - label: "Mastodon"
       icon: "fab fa-fw fa-mastodon"
       url: "https://mastodon.online/@mthmulders"
+
+Marit van Dijk:
+  name: "Marit van Dijk"
+  firstName: "Marit"
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://maritvandijk.com/"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/MaritVanDijk77"
+    - label: "Mastodon"
+      icon: "fab fa-fw fa-mastodon"
+      url: "https://mastodon.social/@maritvandijk"

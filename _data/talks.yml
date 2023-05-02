@@ -1,3 +1,11 @@
+- id: public-static-void-main-
+  title: public static void main 🎶
+  type: lightning
+  cospeakers:
+  - name: Marit van Dijk
+  description: |
+    Why just *type* the words “public static void main”, when you can also *sing* them? This talk-slash-pop-quiz is about 15 songs that will work with “public static void main” as the lyrics, enabling you to fully enjoy writing main methods while impressing your colleagues with your musical creativity at the same time. 
+
 - id: panel-exploring-sustainability-in-tech-without-the-guilt-trips
   title: Panel&#58; Exploring Sustainability in Tech Without the Guilt-Trips
   type: unconference

@@ -45,6 +45,25 @@
     - id: beware-of-survivorship-bias
       sessionPageUrl: https://jconeurope2023.sched.com/event/1K3y1
 
+- id: joy-of-coding-2023
+  name: Joy of Coding
+  year: 2023
+  url: https://joyofcoding.org
+  dateStart: 23-06-2023
+  dateEnd: 
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Rotterdam
+  venue:
+    name: De Doelen
+    latitude: 51.9216667
+    longitude: 4.4708669
+  logo: joy-of-coding-2023.png
+  appearances:
+    - id: public-static-void-main-
+      sessionPageUrl: https://joyofcoding.org/speakers/lightning-talks.html
+
 - id: javaland-2023
   name: JavaLand
   year: 2023
