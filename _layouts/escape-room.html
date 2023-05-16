@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <title>hanno.codes - Escape Room!</title>
+  </head>
+  <body class="text-center">
+    <br/><br/><br/><br/><br/>
+
+    <h1>Escape Room!</h1>
+
+    <br/>
+
+    <form class="container" action="javascript: checkCode()">
+        <div class="form-row justify-content-center">
+          <div class="form-group col-md-3">
+            <i class="fa-solid fa-lock-keyhole-open"></i>
+            <div class="input-group mx-auto mb-3 form-inline">
+              <input type="number" id="num1" class="form-control mr-2" maxlength="1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+              <input type="number" id="num2" class="form-control mr-2" maxlength="1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+              <input type="number" id="num3" class="form-control" maxlength="1" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+            </div>
+            <input type="submit" id="submitButton" class="btn btn-dark" value="Klopt deze code?"/>
+            <div id="successAlert" class="alert alert-success" role="alert" style="display: none">
+              Goed gedaan!
+            </div>
+          </div>
+        </div>
+      </form>
+
+    <button type="button" id="restartButton" class="btn btn-light" style="display: none" onClick="javascript: restart()"">Opnieuw beginnen</button>
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+        function checkCode() {
+            var num1 = $("#num1").val();
+            var num2 = $("#num2").val();
+            var num3 = $("#num3").val();
+
+            console.log(num1);
+            console.log(num2);
+            console.log(num3);
+
+
+            if (num1 == 1 && num2 == 3 && num3 == 1) {
+                $("body").removeClass("bg-danger");
+                $("body").addClass("bg-success");
+                $("#submitButton").removeAttr("style").hide();
+                $("#successAlert").show();
+            } else {
+                $("body").removeClass("bg-success");
+                $("body").addClass("bg-danger");
+                $("#submitButton").show();
+                $("#successAlert").hide();
+            }
+            $("#restartButton").show();
+        }
+
+        function restart() {
+            $("body").removeClass();
+            $("body").addClass("text-center");
+            $("#restartButton").hide();
+            $("#successAlert").hide();
+            $("#submitButton").show();
+
+            $("#num1").val('');
+            $("#num2").val('');
+            $("#num3").val('');
+        }
+    </script>
+    </body>
+</html>
