@@ -1,4 +1,4 @@
-- id: devoxx-pl-2023
+- id: devoxxpl-2023
   name: Devoxx Poland
   year: 2023
   country:
@@ -16,13 +16,19 @@
   appearances:
     - id: pattern-matching
       sessionPageUrl: https://devoxx.pl/talk-details/?id=4256
+      slides: 
+        source: local
       githubUrl: https://github.com/hannotify/pattern-matching-music-store
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
-    - id: will-git-be-around-forever-a-list-of-possible-successors
+    - id: will-git-be-around-forever
+      slides: 
+        source: local
       sessionPageUrl: https://devoxx.pl/talk-details/?id=3486
-    - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
+    - id: eleven-crazy-java-things
+      slides: 
+        source: local
       sessionPageUrl: https://devoxx.pl/talk-details/?id=3487
       githubUrl: https://github.com/hannotify/eleven-crazy-java-things
 
@@ -155,7 +161,7 @@
   dateStart: 10-10-2022
   dateEnd: 14-10-2022
   appearances:
-    - id: will-git-be-around-forever-a-list-of-possible-successors
+    - id: will-git-be-around-forever
       sessionPageUrl: https://devoxx.be/talk/?id=18772
       videoUrl: https://youtu.be/M4KktA_jbOE
       slides:
@@ -180,7 +186,7 @@
   url: https://www.frontmania.com
   dateStart: 05-10-2022
   appearances:
-    - id: will-git-be-around-forever-a-list-of-possible-successors
+    - id: will-git-be-around-forever
       sessionPageUrl: https://frontmania.com/programme/
       videoUrl: https://www.youtube.com/watch?v=xZw7ysUXH8A
       slides: 
@@ -224,7 +230,7 @@
     latitude: 52.0860406
     longitude: 5.1014529
   appearances:
-    - id: will-git-be-around-forever-a-list-of-possible-successors
+    - id: will-git-be-around-forever
       sessionPageUrl: https://2022.futuretech.nl/timetable/
       videoUrl:
       slides:
@@ -274,7 +280,7 @@
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
-    - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
+    - id: eleven-crazy-java-things
       sessionPageUrl: https://web.archive.org/web/20220516053811/https://www.devoxx.co.uk/wednesday-schedule/
       videoUrl: https://youtu.be/J3dqRwNQONE
 
@@ -337,7 +343,7 @@
       videoUrl: https://youtu.be/7OaekEmcyCA
       githubUrl:
       photos:
-    - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
+    - id: eleven-crazy-java-things
       sessionPageUrl: https://web.archive.org/web/20211130030548/https://devoxx.com.ua/saturday-20th-nov-2021/
       videoUrl: https://youtu.be/7OaekEmcyCA
       githubUrl:
@@ -358,11 +364,11 @@
   dateStart: 04-11-2021
   dateEnd:
   appearances:
-    - id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
+    - id: eleven-crazy-java-things
       sessionPageUrl: https://2021.jfall.nl/timetable-2021/
       videoUrl: https://youtu.be/0gj0RhbL-dk
       githubUrl: https://github.com/hannotify/eleven-crazy-java-things
-      photos:
+      photos: 
 
 - id: jcon-2021
   name: JCON
@@ -371,7 +377,7 @@
   dateStart: 05-10-2021
   dateEnd: 08-10-2021
   appearances:
-    - id: will-git-be-around-forever-a-list-of-possible-successors
+    - id: will-git-be-around-forever
       sessionPageUrl: https://jcon.sched.com/?iframe=yes&w=100%&sidebar=yes&bg=no#
       videoUrl: https://youtube.com/watch?v=qyq-E8zXBmY
       githubUrl:
@@ -391,12 +397,12 @@
     latitude: 52.026640
     longitude: 5.084668
   appearances:
-    - id: will-git-be-around-forever-a-list-of-possible-successors
+    - id: will-git-be-around-forever
       sessionPageUrl: https://www.meetup.com/nl-NL/Utrecht-Java-User-Group/events/280570879/
       videoUrl:
       slides: 
           source: slideshare
-          url: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-a-list-of-possible-successors-at-utrechtjug
+          url: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-at-utrechtjug
       githubUrl:
       photos:
 
@@ -575,12 +581,12 @@
   dateStart: 07-06-2019
   dateEnd: 08-06-2019
   appearances:
-    - id: will-git-be-around-forever-a-list-of-possible-successors
-      sessionPageUrl: https://voxxeddays.com/athens/will-git-be-around-forever-a-list-of-possible-successors/
+    - id: will-git-be-around-forever
+      sessionPageUrl: https://voxxeddays.com/athens/will-git-be-around-forever/
       videoUrl: https://youtu.be/yBAWZD-Cxcs
       slides: 
           source: slideshare
-          url: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-a-list-of-possible-successors
+          url: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever
       githubUrl:
       photos: https://www.flickr.com/photos/voxxedathens/albums/72157709060546536
 

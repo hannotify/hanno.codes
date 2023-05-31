@@ -19,3 +19,9 @@
 [submodule "_slides/pattern-matching/javaland-2023"]
 	path = _slides/pattern-matching/javaland-2023
 	url = https://github.com/hannotify/pattern-matching-small-enhancement-or-major-feature.git
+[submodule "_slides/pattern-matching/devoxxpl-2023"]
+	path = _slides/pattern-matching/devoxxpl-2023
+	url = https://github.com/hannotify/pattern-matching-small-enhancement-or-major-feature.git
+[submodule "_slides/eleven-crazy-java-things/devoxxpl-2023"]
+	path = _slides/eleven-crazy-java-things/devoxxpl-2023
+	url = https://github.com/hannotify/eleven-crazy-java-things

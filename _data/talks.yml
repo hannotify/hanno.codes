@@ -23,7 +23,7 @@
 
     We'd like to emphasize that we don't want to guilt-trip anyone. This session is intended as a source of inspiration. The sheer scope of the problem can cause even the best of us to freeze up. Hearing ideas, no matter how small, from peers will provide you and us with ideas for the next step to take. This talk could be an opportunity for you to catch a few sustainability tips that can find their way into your life without costing you any noticeable effort.
 
-- id: 11-crazy-things-i-didnt-know-you-could-do-with-java-until-i-got-my-java-11-certification
+- id: eleven-crazy-java-things
   title: 11 Crazy Things I Didn't Know You Could Do With Java Until I Got My Java 11 Certification
   type: lightning
   description: |
@@ -58,7 +58,7 @@
   description: | 
     This... is... JEPardy! In this special edition of America's favorite quiz show, the contestants will match various Java Enhancement Proposals (JEPs) to their proper descriptions. Instead of money, something far better can be won here today: improvements on their ready knowledge and understanding of the JEPs that drive the innovation in our favorite programming language.
 
-- id: will-git-be-around-forever-a-list-of-possible-successors
+- id: will-git-be-around-forever
   title: Will Git Be Around Forever? A List of Possible Successors
   type: regular
   description: |
