@@ -27,8 +27,6 @@
         source: local
       sessionPageUrl: https://devoxx.pl/talk-details/?id=3486
     - id: eleven-crazy-java-things
-      slides: 
-        source: local
       sessionPageUrl: https://devoxx.pl/talk-details/?id=3487
       githubUrl: https://github.com/hannotify/eleven-crazy-java-things
 
