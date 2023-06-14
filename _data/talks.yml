@@ -1,3 +1,13 @@
+- id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+  title: Java's Concurrency Journey Continues! Exploring Structured Concurrency and Scoped Values
+  type: regular
+  description: |
+    Java's concurrency journey has been a long and winding one. We departed from the 'classic threads' station and traveled through Runnables, ExecutorServices, CompletableFutures and ForkJoinPools, before finally arriving at 'virtual threads'. But does 'finally' mean that we've arrived at our final destination, or is it a transfer at best?
+
+    Now that virtual threads are available, our Java programs will likely use an abundance of threads. This increase in thread count will immediately make thread coordination, observability and isolation more difficult. Two new Java features are currently in development that might make things a bit easier: Structured Concurrency and Scoped Values.
+
+    In this talk, we'll introduce and demonstrate these new features, and how they can help address the challenges that have emerged since the introduction of virtual threads. We'll also discuss how the availability of these features will impact your day-to-day programming life and whether Java's concurrency journey is actually over now that these features have become available or if there are still more stops to come.
+
 - id: public-static-void-main-
   title: public static void main 🎶
   type: lightning

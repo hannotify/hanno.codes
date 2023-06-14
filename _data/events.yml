@@ -10,7 +10,7 @@
     latitude: 50.0477778
     longitude: 19.9292002
   url: https://www.devoxx.pl
-  dateStart: 31-03-2023
+  dateStart: 31-05-2023
   dateEnd: 02-06-2023
   logo: devoxx-pl.png
   appearances:
@@ -54,7 +54,6 @@
   year: 2023
   url: https://joyofcoding.org
   dateStart: 23-06-2023
-  dateEnd: 
   country:
     flag: netherlands
     name: The Netherlands
@@ -67,6 +66,23 @@
   appearances:
     - id: public-static-void-main-
       sessionPageUrl: https://joyofcoding.org/speakers/lightning-talks.html
+
+- id: arnhemjug-2023
+  name: ArnhemJUG
+  year: 2023
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Nijmegen
+  venue:
+    name: Planon
+    latitude: 51.8236587
+    longitude: 5.7830688
+  url: https://www.meetup.com/arnhemjug/
+  dateStart: 31-10-2023
+  logo: arnhemjug.jpeg
+  appearances:
+    - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
 
 - id: javaland-2023
   name: JavaLand
