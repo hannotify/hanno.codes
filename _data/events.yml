@@ -48,6 +48,10 @@
   appearances:
     - id: beware-of-survivorship-bias
       sessionPageUrl: https://jconeurope2023.sched.com/event/1K3y1
+      slides: 
+        source: speakerdeck
+        url: https://speakerdeck.com/mthmulders/beware-of-survivorship-bias-jcon
+
 
 - id: joy-of-coding-2023
   name: Joy of Coding
