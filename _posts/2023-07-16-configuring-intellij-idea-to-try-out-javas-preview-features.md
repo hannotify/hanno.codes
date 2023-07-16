@@ -10,7 +10,7 @@ tags:
 - intellij-idea
 ---
 
-Currently I'm working on both an [article](./articles/) and a [talk](./talks/#javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values) on structured concurrency in Java.
+Currently I'm working on both an [article](/articles/) and a [talk](/talks/#javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values) on structured concurrency in Java.
 Most of the work I did until now was based on [JEP 437](https://openjdk.org/jeps/437), which has been in Second Incubator status in Java 20.
 Structured concurrency is now set to appear in Preview Status as part of Java 21 (see [JEP 453](https://openjdk.org/jeps/453)), and I was eager to try out the feature and see what had changed since Java 20.
 It surprised me how much configuration I needed to do to get IntelliJ IDEA to play nice with this preview feature.
