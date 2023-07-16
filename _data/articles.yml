@@ -1,3 +1,10 @@
+- title: Structured Concurrency in Java 21
+  language: uk
+  year: 2023
+  source: Java Magazine
+  url: https://nljug.org/java-magazine/
+  synopsis: An introduction of structured concurrency in Java 21.
+
 - title: It’s Java 20 Release Day! Here’s What’s New
   language: uk
   year: 2023
