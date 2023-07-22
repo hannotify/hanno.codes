@@ -1,6 +1,12 @@
 <tr>
     <td><strong>Talk</strong></td>
-    <td><a href="/talks/#{{talk.id}}">{{talk.title}}</a></td>
+    <td>
+        {% if talk.title %}
+            <a href="/talks/#{{talk.id}}">{{talk.title}}</a>
+        {% else %}
+            (to be announced)
+        {% endif %}
+    </td>
 </tr>
 
 {% if talk.cospeakers != null and talk.cospeakers.size > 0 %}
