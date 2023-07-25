@@ -2,9 +2,15 @@
 # [](#{{ include.anchor }}){{ include.title }}
 {% endif %}
 
+{{ include.description }}
+
 {% for talk in include.talks %}
 
-## [](#{{ talk.id }}){{ talk.title }}{% if talk.retired %} (retired){% endif %}
+{% if talk.retired %}
+<div class="notice" markdown="1">
+{% endif %}
+
+## [](#{{ talk.id }}){{ talk.title }}
 
 {{ talk.description }}
 
@@ -27,5 +33,9 @@
     </ul>
 </div>
     {% endif %}
+
+{% if talk.retired %}
+</div>
+{% endif %}
 
 {% endfor %}
