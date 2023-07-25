@@ -100,3 +100,17 @@ Marit van Dijk:
     - label: "Mastodon"
       icon: "fab fa-fw fa-mastodon"
       url: "https://mastodon.social/@maritvandijk"
+
+Holly Cummins:
+  name: "Holly Cummins"
+  firstName: "Holly"
+  links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://hollycummins.com/"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/holly_cummins"
+    - label: "Mastodon"
+      icon: "fab fa-fw fa-mastodon"
+      url: "https://hachyderm.io/@holly_cummins"
