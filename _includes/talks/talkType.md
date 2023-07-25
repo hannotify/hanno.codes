@@ -1,9 +1,10 @@
+{% if include.talks.size > 0 %}
 # [](#{{ include.anchor }}){{ include.title }}
+{% endif %}
 
-{% assign talks = include.talks %}
-{% for talk in talks %}
+{% for talk in include.talks %}
 
-## [](#{{ talk.id }}){{ talk.title}}
+## [](#{{ talk.id }}){{ talk.title }}{% if talk.retired %} (retired){% endif %}
 
 {{ talk.description }}
 
@@ -17,7 +18,6 @@
     {% endfor %}
 
     {% if events.size > 0 %}
-
 <div class="notice--info">
     <strong>Appearances ({{events.size}})</strong>
     <ul>

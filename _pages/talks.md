@@ -12,8 +12,5 @@ toc_sticky: true
 toc_label: Talks
 ---
 
-{% include talks/keynote.md %}
-{% include talks/regular.md %}
-{% include talks/lightning.md %}
-{% include talks/unconference.md %}
-{% include talks/ignite.md %}
+{% include talks/active.md %}
+{% include talks/retired.md %}
