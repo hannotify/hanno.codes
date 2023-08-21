@@ -99,11 +99,58 @@ Java 20 contains three features that originated from [Project Loom](http://openj
 
 ### JEP 444: Virtual Threads
 
-TODO
+Threads have been a part of Java since the very beginning, and since the start of Project Loom we've gradually started calling them 'platform threads' instead. A platform thread runs Java code on an underlying OS thread and captures the OS thread for the code's entire lifetime. The number of platform threads is therefore limited to the number of available OS threads.
+
+Modern applications, however, might need many more threads than that; when dealing with tens of thousands of requests at the same time, for example. This is where *virtual threads* come in. A virtual thread is an instance of `java.lang.Thread` that runs Java code on an underlying OS thread, but does not capture the OS thread for the code's entire lifetime. This means that many virtual threads can run their Java code on the same OS thread, effectively sharing it. The number of virtual threads can thus be much larger than the number of available OS threads.
+
+Aside from being plentiful, virtual threads are also cheap to create and dispose of. This means that a web framework, for example, can dedicate a new virtual thread to the task of handling a request and still be able to process thousands or even millions of requests at once.
+
+#### Typical Use Cases
+
+Using virtual threads does not require learning new concepts, though it may require unlearning habits developed to cope with today's high cost of threads. Virtual threads will not only help application developers; they will also help framework designers provide easy-to-use APIs that are compatible with the platform's design without compromising on scalability.
+
+#### Creating Virtual Threads
+
+Just like a platform thread, a virtual thread is an instance of `java.lang.Thread`. So you can use a virtual thread in exactly the same way as a platform thread.
+
+Creating a virtual thread is a bit different, but just as easy as creating a platform thread:
+
+```java
+var platformThread = new Thread(() -> {
+    // do some work in a platform thread
+});
+platformThread.start();
+
+var virtualThread = Thread.startVirtualThread(() -> {
+    // do some work in a virtual thread
+});
+virtualThread.start();
+```
+
+When your code uses the `ExecutorService` interface already, switching to virtual threads will take even less effort:
+
+```java
+var platformThreadsExecutor = Executors.newCachedThreadPool();
+platformThreadsExecutor.submit(() -> {
+    // do some work in a platform thread
+});
+platformThreadsExecutor.close();
+
+try (var virtualThreadsExecutor = Executors.newVirtualThreadPerTaskExecutor()) {
+    virtualThreadsExecutor.submit(() -> {
+        // do some work in a virtual thread
+    });
+} // close() is called implicitly
+```
+
+Note that the `ExecutorService` interface was adjusted in Java 19 to extend `AutoCloseable`, so it can now be used in a try-with-resources construct.
 
 #### What's Different From Java 20?
 
-TODO
+Based on developer feedback the following changes were made to virtual threads compared to Java 20:
+
+* Virtual threads now always support thread-local variables. Guaranteed support for thread-local variables ensures that many more existing libraries can be used unchanged with virtual threads, and helps with the migration of task-oriented code to use virtual threads.
+* Virtual threads created directly with the Thread.Builder API (as opposed to those created through `Executors.newVirtualThreadPerTaskExecutor()`) are now also, by default, monitored throughout their lifetime and observable via the new thread dump mechanism that also was introduced with the virtual threads feature.
 
 #### More Information
 
