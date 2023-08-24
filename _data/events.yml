@@ -9,7 +9,8 @@
   dateStart: 12-09-2023
   logo: utrechtjug.png
   appearances:
-    - id: tba
+    - id: what-stairway-to-heaven-can-teach-us-about-software-development
+    - sessionPageUrl: https://www.meetup.com/utrecht-java-user-group/events/291485771
 
 - id: arnhemjug-2023
   name: ArnhemJUG
