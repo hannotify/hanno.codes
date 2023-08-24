@@ -18,8 +18,8 @@ Today's the first day of Java 21's availability! It's been six months since Java
 Java 21 contains five features that originated from [Project Amber](https://openjdk.org/projects/amber/):
 
 * String Templates;
-* Record Patterns;
 * Pattern Matching for switch;
+* Record Patterns;
 * Unnamed Patterns and Variables;
 * Unnamed Classes and Instance Main Methods.
 
@@ -37,9 +37,130 @@ TODO
 
 For more information on this feature, see [JEP 430](https://openjdk.org/jeps/430).
 
-### JEP 440: Record Patterns
+### JEP 441: Pattern Matching for switch
+
+The feature 'Pattern Matching for switch' that was first introduced in Java 17 has now reached completion status, with the release of Java 21.
+
+Since Java 16 we are able to avoid casting after `instanceof` checks by using 'Pattern Matching for instanceof'. Let's see how that works in a code example.
+
+> Code examples that illustrate this JEP were taken from my conference talk ["Pattern Matching: Small Enhancement or Major Feature?"](https://hanno.codes/talks/#pattern-matching-small-enhancement-or-major-feature).
+
+```java
+static String apply(Effect effect) {
+    String formatted = "";
+    if (effect instanceof Delay de) {
+        formatted = String.format("Delay active of %d ms.", de.timeInMs());
+    } else if (effect instanceof Reverb re) {
+        formatted = String.format("Reverb active of type %s and roomSize %d.", re.name(), re.roomSize());
+    } else if (effect instanceof Overdrive ov) {
+        formatted = String.format("Overdrive active with gain %d.", ov.gain());
+    } else if (effect instanceof Tremolo tr) {
+        formatted = String.format("Tremolo active with depth %d and rate %d.", tr.depth(), tr.rate());
+    } else if (effect instanceof Tuner tu) {
+        formatted = String.format("Tuner active with pitch %d. Muting all signal!", tu.pitchInHz());
+    } else {
+        formatted = String.format("Unknown effect active: %s.", effect);
+    }
+    return formatted;
+}
+```
+
+This code is still riddled with ceremony, though. On top of that it leaves room for subtle bugs — what if you added an else-if branch that didn't assign anything to `formatted`? So in the spirit of this JEP (and its predecessors), let's see what pattern matching in a switch statement (or even better: in a switch *expression*) would look like:
+
+```java
+static String apply(Effect effect) {
+    return switch(effect) {
+        case Delay de      -> String.format("Delay active of %d ms.", de.timeInMs());
+        case Reverb re     -> String.format("Reverb active of type %s and roomSize %d.", re.name(), re.roomSize());
+        case Overdrive ov  -> String.format("Overdrive active with gain %d.", ov.gain());
+        case Tremolo tr    -> String.format("Tremolo active with depth %d and rate %d.", tr.depth(), tr.rate());
+        case Tuner tu      -> String.format("Tuner active with pitch %d. Muting all signal!", tu.pitchInHz());
+        case null, default -> String.format("Unknown or empty effect active: %s.", effect);
+    };
+}
+```
+
+Pattern matching for switch made our code far more elegant here. We're even able to address possible `null`s by defining a specific case for them or combining it with the default case (which is what we've done here).
+
+Checking an additional condition on top of the pattern match is easily done with a *guard* (the part after the `when` keyword in the code below):
+
+```java
+static String apply(Effect effect, Guitar guitar) {
+    return switch(effect) {
+        case Delay de      -> String.format("Delay active of %d ms.", de.timeInMs());
+        case Reverb re     -> String.format("Reverb active of type %s and roomSize %d.", re.name(), re.roomSize());
+        case Overdrive ov  -> String.format("Overdrive active with gain %d.", ov.gain());
+        case Tremolo tr    -> String.format("Tremolo active with depth %d and rate %d.", tr.depth(), tr.rate());
+        case Tuner tu when !guitar.isInTune() -> String.format("Tuner active with pitch %d. Muting all signal!", tu.pitchInHz());
+        case Tuner tu      -> "Guitar is already in tune.";
+        case null, default -> String.format("Unknown or empty effect active: %s.", effect);
+    };
+}
+```
+
+Here, the guard makes sure that intricate boolean logic can still be expressed in a concise way. Having to nest `if` statements to test this logic within a case branch would not only be more verbose, but also potentially introduce subtle bugs that we set out to avoid in the first place.
+
+#### What's Different From Java 20?
 
 TODO
+
+Apart from various editorial changes, the main changes from the previous JEP are to:
+
+* Remove parenthesized patterns, since they did not have sufficient value, and
+* Allow qualified enum constants as case constants in switch expressions and statements.
+
+#### More Information
+
+For more information on this feature, see [JEP 441](https://openjdk.org/jeps/441).
+
+### JEP 440: Record Patterns
+
+Pattern matching is a feature in Java that is being rolled out gradually over multiple Java versions. Being able to deconstruct an object using patterns was always one of the ultimate goals of the feature arc. With the introduction of *record patterns*, deconstructing records is now possible, along with nesting record and type patterns to enable a powerful, declarative, and composable form of data navigation and processing.
+
+[Records](https://openjdk.org/jeps/395) are transparent carriers for data. Code that receives an instance of a record will typically extract the data, known as the components. This was also the case in our 'Pattern Matching for switch' code example, if we assume that all implementations of the `Effect` interface were in fact records there. In that piece of code it is clear that the pattern variables only serve to access the record fields. Using record patterns we can avoid having to create pattern variables altogether:
+
+```java
+static String apply(Effect effect) {
+    return switch(effect) {
+        case Delay(int timeInMs) -> String.format("Delay active of %d ms.", timeInMs);
+        case Reverb(String name, int roomSize) -> String.format("Reverb active of type %s and roomSize %d.", name, roomSize);
+        case Overdrive(int gain) -> String.format("Overdrive active with gain %d.", gain);
+        case Tremolo(int depth, int rate) -> String.format("Tremolo active with depth %d and rate %d.", depth, rate);
+        case Tuner(int pitchInHz) -> String.format("Tuner active with pitch %d. Muting all signal!", pitchInHz);
+        case null, default -> String.format("Unknown or empty effect active: %s.", effect);
+    };
+}
+```
+
+`Delay(int timeInMs)` is a record pattern here, deconstructing the `Delay` instance into its components. And this mechanism can become even more powerful when we apply it to a more complicated object graph by using *nested* record patterns:
+
+```java
+record Tuner(int pitchInHz, Note note) implements Effect {}
+record Note(String note) {}
+
+class TunerApplier {
+    static String apply(Effect effect, Guitar guitar) {
+        return switch(effect) {
+            case Tuner(int pitch, Note(String note)) -> String.format("Tuner active with pitch %d on note %s", pitch, note);
+        };
+    }
+}
+```
+#### Inference of type arguments
+
+Nested record patterns also benefit from *inference of type arguments*. For example:
+
+```java
+class TunerApplier {
+    static String apply(Effect effect, Guitar guitar) {
+        return switch(effect) {
+            case Tuner(var pitch, Note(var note)) -> String.format("Tuner active with pitch %d on note %s", pitch, note);
+        };
+    }
+}
+```
+
+Here the type arguments for the nested pattern `Tuner(var pitch, Note(var note))` are inferred. This only works with nested patterns for now; type patterns do not yet support implicit inference of type arguments. So the type pattern `Tuner tu` is always treated as a raw type pattern.
 
 #### What's Different From Java 20?
 
@@ -50,18 +171,6 @@ TODO: why?
 #### More Information
 
 For more information on this feature, see [JEP 440](https://openjdk.org/jeps/440).
-
-### JEP 441: Pattern Matching for switch
-
-TODO
-
-#### What's Different From Java 20?
-
-TODO
-
-#### More Information
-
-For more information on this feature, see [JEP 441](https://openjdk.org/jeps/441).
 
 ### JEP 443: Unnamed Patterns and Variables (Preview)
 
