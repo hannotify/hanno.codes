@@ -3,15 +3,15 @@ layout: post
 title: Java 21 is Available Today! Here's What's Inside
 date: 19-09-2023 04:30:00 +0200
 header:
-  teaser: TODO
+  teaser: /assets/images/blog/ready-set-go.jpg
 tags: 
 - java
 ---
 
-Today's the first day of Java 21's availability! It's been six months since Java 20 was released, and so it's time for another fresh wave of Java features. This post will take you on a tour through all JEPs that are associated with this release and give you a brief introduction to each one of them. Where applicable the differences with Java 20 are highlighted and a few typical use cases are provided, so that you'll be more than ready to use these features after you've finished reading!
+Today's the first day of Java 21's availability! It's been six months since Java 20 was released, and so it's time for another fresh wave of Java features. This post takes you on a tour of the JEPs that are associated with this release and it gives you a brief introduction to each one of them. Where applicable the differences with Java 20 are highlighted and a few typical use cases are provided, so that you'll be more than ready to use these features after you've finished reading!
 
-![TODO](/assets/images/blog/TODO.jpg)
-> Image from <a href="https://TODO">TODO</a>
+![Ready, set, go!](/assets/images/blog/ready-set-go.jpg)
+> Image from <a href="https://pxhere.com/en/photo/47097">PxHere</a>
 
 ## From Project Amber
 
@@ -39,11 +39,11 @@ For more information on this feature, see [JEP 430](https://openjdk.org/jeps/430
 
 ### JEP 441: Pattern Matching for switch
 
-The feature 'Pattern Matching for switch' that was first introduced in Java 17 has now reached completion status, with the release of Java 21.
+The feature 'Pattern Matching for switch' that was first introduced in Java 17 has reached completion status, now that Java 21 has been released.
 
-Since Java 16 we are able to avoid casting after `instanceof` checks by using 'Pattern Matching for instanceof'. Let's see how that works in a code example.
+Since Java 16 we have been able to avoid casting after `instanceof` checks by using 'Pattern Matching for instanceof'. Let's see how that works in a code example.
 
-> Code examples that illustrate this JEP were taken from my conference talk ["Pattern Matching: Small Enhancement or Major Feature?"](https://hanno.codes/talks/#pattern-matching-small-enhancement-or-major-feature).
+> All code examples that illustrate pattern matching features were taken from my conference talk ["Pattern Matching: Small Enhancement or Major Feature?"](https://hanno.codes/talks/#pattern-matching-small-enhancement-or-major-feature).
 
 ```java
 static String apply(Effect effect) {
@@ -102,12 +102,10 @@ Here, the guard makes sure that intricate boolean logic can still be expressed i
 
 #### What's Different From Java 20?
 
-TODO
+There have been two major changes from the previous JEP:
 
-Apart from various editorial changes, the main changes from the previous JEP are to:
-
-* Remove parenthesized patterns, since they did not have sufficient value, and
-* Allow qualified enum constants as case constants in switch expressions and statements.
+* An earlier version of the 'Pattern Matching for switch' feature came with [parenthesized patterns](https://docs.oracle.com/en/java/javase/17/language/pattern-matching.html#GUID-A59EF0C7-4CB7-4555-986D-0FD804555C25), which helped resolve parsing ambiguities back when guards were still expressed with the `&&` operator. Now that the `when` keyword has replaced the `&&` operator for guards, the value for parenthesized patterns has decreased significantly. So the choice was made to remove them in Java 21.
+* Switch expressions and statements now allow qualified enum constants as case constants. This makes it easier to perform an exhaustive `switch` over an interface type when both a class and an enum implementation of that interface exists. The JEP description has [a good example of this mechanism](https://openjdk.org/jeps/441#Switches-and-enum-constants), should you wish to learn more about it.    
 
 #### More Information
 
@@ -178,7 +176,7 @@ TODO
 
 #### What's Different From Java 20?
 
-TODO
+Java 20 didn't contain anything related to unnamed patterns and variables yet, so Java 21 is the first time we get to experiment with them. Note that the JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to be able to take the feature for a spin.
 
 #### More Information
 
@@ -190,7 +188,7 @@ TODO
 
 #### What's Different From Java 20?
 
-TODO
+Java 20 didn't contain anything related to unnamed classes and instance methods yet, so Java 21 is the first time we get to experiment with them. Note that the JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to be able to take the feature for a spin.
 
 #### More Information
 
@@ -198,7 +196,7 @@ For more information on this feature, see [JEP 445](https://openjdk.org/jeps/445
 
 ## From Project Loom
 
-Java 20 contains three features that originated from [Project Loom](http://openjdk.java.net/projects/loom/):
+Java 21 contains three features that originated from [Project Loom](http://openjdk.java.net/projects/loom/):
 
 * Virtual Threads;
 * Scoped Values;
@@ -322,21 +320,39 @@ TODO
 
 For more information on this feature, see [JEP 448](https://openjdk.org/jeps/448).
 
-## Hotspot
+## HotSpot
 
-TODO
+Java 21 introduces three changes to [HotSpot](https://openjdk.org/groups/hotspot/):
 
 * Generational ZGC;
 * Deprecate the Windows 32-bit x86 Port for Removal;
 * Prepare to Disallow the Dynamic Loading of Agents.
 
+> The HotSpot JVM is the runtime engine that is developed by Oracle. It translates Java bytecode into machine code for the host operating system's processor architecture.
+
 ### JEP 439: Generational ZGC
 
-TODO
+The Z Garbage Collector (ZGC) is a scalable, low-latency garbage collector. It has been [available for production use since Java 15](https://openjdk.org/jeps/377) and has been designed to keep pause times consistent and short, even for very large heaps. It uses techniques like region-based memory management and compaction to achieve this.
+
+Java 21 introduces an extension to ZGC that maintains separate *generations* for young and old objects, allowing ZGC to collect young objects (which tend to die young) more frequently. This will result in a significant performance gain for applications running with generational ZGC, without sacrificing any of the valuable properties that the Z garbage collector is already known for:
+
+* Pause times do not exceed 1 millisecond;
+* Heap sizes from a few hundred megabytes up to many terabytes are supported;
+* Minimal manual configuration is needed.
+
+The reason for handling young and old objects separately stems from the [weak generational hypothesis](#GUID-71D796B3-CBAB-4D80-B5C3-2620E45F6E5D), stating that young objects tend to die young, while old objects tend to stick around. This means that collecting young objects requires fewer resources and yields more memory, while collecting old objects requires more resources and yields less memory. This is the reason we can improve the performance of applications that use ZGC by collecting young objects more frequently.
 
 #### What's Different From Java 20?
 
-TODO
+The Z garbage collector in Java 20 was only able to behave in a non-generational way. Running it required the following command-line configuration:
+
+`$ java -XX:+UseZGC ...`
+
+To run your workload with the new Generational ZGC in Java 21, use the following configuration:
+
+`$ java -XX:+UseZGC -XX:+ZGenerational ...`
+
+As you can see, Generational ZGC has been introduced *alongside* non-generational ZGC. In a future release we can expect Generational ZGC to become the default configuration for the Z garbage collector, while an even later release will probably remove non-generational ZGC altogether.
 
 #### More Information
 
@@ -344,15 +360,24 @@ For more information on this feature, see [JEP 439](https://openjdk.org/jeps/439
 
 ### JEP 449: Deprecate the Windows 32-bit x86 Port for Removal
 
-TODO
+Supporting multiple platforms has been the focus of the Java ecosystem since the beginning. 
+But older platforms cannot be supported indefinitely, and that is one of the reasons why the Windows 32-bit x86 port is now scheduled for removal.
+
+There are a few reasons for this:
+
+* Windows 10, the last Windows operating system to support 32-bit operation, [will reach end-of-life in October 2025](https://learn.microsoft.com/lifecycle/products/windows-10-home-and-pro);
+* The implementation of virtual threads on Windows 32-bit x86 is rudimentary to say the least: it effectively uses a single platform thread for each virtual thread, effectively rendering the feature useless on this platform;
+* It will allow the OpenJDK contributors to accelerate the development of new features and enhancements.
 
 #### What's Different From Java 20?
 
-TODO
+Configuring a Windows x86-32 build will now fail on JDK 21. 
+This error can be suppressed by using the new build configuration option `--enable-deprecated-ports=yes`.
+Note that this currently still means Windows x86-32 users can still use JDK 21; however a future release will actually remove the support, and by that time the affected users are expected to migrate to Windows x64 and a 64-bit JVM. 
 
 #### More Information
 
-For more information on this feature, see [JEP 449](https://openjdk.org/jeps/449).
+For more information about this deprecation, see [JEP 449](https://openjdk.org/jeps/449).
 
 ### JEP 451: Prepare to Disallow the Dynamic Loading of Agents
 
