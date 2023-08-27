@@ -206,9 +206,9 @@ Java 21 contains three features that originated from [Project Loom](http://openj
 
 ### JEP 444: Virtual Threads
 
-Threads have been a part of Java since the very beginning, and since the start of Project Loom we've gradually started calling them 'platform threads' instead. A platform thread runs Java code on an underlying OS thread and captures the OS thread for the code's entire lifetime. The number of platform threads is therefore limited to the number of available OS threads.
+Threads have been a part of Java since the very beginning, and since the start of Project Loom we gradually started calling them 'platform threads' instead. A platform thread runs Java code on an underlying OS thread and captures the OS thread for the code's entire lifetime. The number of platform threads is therefore limited to the number of available OS threads.
 
-Modern applications, however, might need many more threads than that; when dealing with tens of thousands of requests at the same time, for example. This is where *virtual threads* come in. A virtual thread is an instance of `java.lang.Thread` that runs Java code on an underlying OS thread, but does not capture the OS thread for the code's entire lifetime. This means that many virtual threads can run their Java code on the same OS thread, effectively sharing it. The number of virtual threads can thus be much larger than the number of available OS threads.
+Modern applications, however, might need many more threads than that; when dealing with tens of thousands of requests at the same time, for example. This is where *virtual threads* come in. A virtual thread is an instance of `java.lang.Thread` that also runs Java code on an underlying OS thread, but does not capture the OS thread for the code's entire lifetime. This means that many virtual threads can run their Java code on the same OS thread, effectively sharing it. The number of virtual threads can thus be much larger than the number of available OS threads.
 
 Aside from being plentiful, virtual threads are also cheap to create and dispose of. This means that a web framework, for example, can dedicate a new virtual thread to the task of handling a request and still be able to process thousands or even millions of requests at once.
 
@@ -220,7 +220,7 @@ Using virtual threads does not require learning new concepts, though it may requ
 
 Just like a platform thread, a virtual thread is an instance of `java.lang.Thread`. So you can use a virtual thread in exactly the same way as a platform thread.
 
-Creating a virtual thread is a bit different, but just as easy as creating a platform thread:
+Creating a virtual thread is a bit different from creating a platform thread, but just as easy:
 
 ```java
 var platformThread = new Thread(() -> {
@@ -252,11 +252,15 @@ try (var virtualThreadsExecutor = Executors.newVirtualThreadPerTaskExecutor()) {
 
 Note that the `ExecutorService` interface was adjusted in Java 19 to extend `AutoCloseable`, so it can now be used in a try-with-resources construct.
 
+#### Thread Dump Mechanism
+
+A new kind of thread dump in `jcmd` was introduced to present virtual threads alongside platform threads, all grouped in a meaningful way. This new way of presenting threads was needed, because of the way the JDK's traditional thread dump (obtained through `jstack` or `jcmd`) presents a flat list of threads. The old format worked fine with hundreds of platform threads, but it is unsuitable for thousands or millions of virtual threads. An additional benefit of the new thread dump is the ability to show richer relationships amoung threads when programs use [structured concurrency](#jep-453-structured-concurrency-preview).
+
 #### What's Different From Java 20?
 
 Based on developer feedback the following changes were made to virtual threads compared to Java 20:
 
-* Virtual threads now always support thread-local variables. Guaranteed support for thread-local variables ensures that many more existing libraries can be used unchanged with virtual threads, and helps with the migration of task-oriented code to use virtual threads.
+* Virtual threads now always support thread-local variables. Guaranteed support for thread-local variables ensures that many more existing libraries can be used unchanged with virtual threads, and this helps with the migration of task-oriented code to use virtual threads.
 * Virtual threads created directly with the Thread.Builder API (as opposed to those created through `Executors.newVirtualThreadPerTaskExecutor()`) are now also, by default, monitored throughout their lifetime and observable via the new thread dump mechanism that also was introduced with the virtual threads feature.
 
 #### More Information
@@ -381,11 +385,11 @@ For more information about this deprecation, see [JEP 449](https://openjdk.org/j
 
 ### JEP 451: Prepare to Disallow the Dynamic Loading of Agents
 
-TODO
+An *agent* is a component that can alter the code of a Java application while it is running. Introduced in JDK 5, agents provide a way for tools (such as profilers) to instrument classes, with the aim of altering the code in a class so that it emits events to be consumed by a tool outside the application. *Dynamically loaded agents* grant serviceability tools the capability to modify a *running* application. However, this capability is available to both tools and libraries, and it can just as easily be used for modifications with bad intentions. To assure integrity, stronger measures are needed to prevent the misuse by libraries of dynamically loaded agents. JEP 451 therefore proposes to require the dynamic loading of agents to be approved by the application owner. This means that in Java 21, the application owner will have to explicitly allow the dynamic loading of agents via a command-line option.
 
 #### What's Different From Java 20?
 
-TODO
+Java 21 is the first version of Java that issues warnings when agents are loaded dynamically into a running JVM. A future release of the JDK will, by default, disallow the mechanism. Agents that are loaded at startup will still be allowed though, so serviceability tools that use that mechanism won't be affected now or in the future. Maintainers of libraries which rely on dynamically agent loading will have to update their documentation to ask application owners for permission to load the agent at startup.
 
 #### More Information
 
