@@ -162,9 +162,7 @@ Here the type arguments for the nested pattern `Tuner(var pitch, Note(var note))
 
 #### What's Different From Java 20?
 
-Apart from some minor editorial changes, the main change since the second preview is to remove support for record patterns appearing in the header of an enhanced for statement. This feature may be re-proposed in a future JEP.
-
-TODO: why?
+Apart from some minor editorial changes, the main change since the second preview is the removal of support for record patterns appearing in the header of an enhanced for statement. Java 20 [introduced the feature](https://hanno.codes/2023/03/21/java-20-release-day-heres-whats-new/#enhanced-for-statements), but it was dropped in Java 21 because the feature "may need a significant redesign, to better align with other features under consideration" (see [this OpenJDK ticket](https://bugs.openjdk.org/browse/JDK-8304401) for more information). This may seem strange, but that is the way it can be with preview features: they are fully specified and implemented, and yet impermanent until the feature has been fully delivered. Not to worry though, JEP 440 also hints that support for record patterns in enhanced for statements may be re-proposed in a future JEP, presumably when able to be better aligned with other features under consideration.
 
 #### More Information
 
@@ -377,7 +375,7 @@ There are a few reasons for this:
 
 Configuring a Windows x86-32 build will now fail on JDK 21. 
 This error can be suppressed by using the new build configuration option `--enable-deprecated-ports=yes`.
-Note that this currently still means Windows x86-32 users can still use JDK 21; however a future release will actually remove the support, and by that time the affected users are expected to migrate to Windows x64 and a 64-bit JVM. 
+This currently means Windows x86-32 users can still use JDK 21; however a future release will actually remove the support, and by that time the affected users are expected to have migrated to Windows x64 and a 64-bit JVM. 
 
 #### More Information
 
@@ -404,12 +402,71 @@ TODO
 
 ### JEP 431: Sequenced Collections
 
-TODO
-(from Core Libs)
+One of the most well-known APIs in Java is the [collections framework](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/doc-files/coll-index.html), but did you know it doesn't even contain a collection type that represents an ordered sequence of elements? Sure, there are some subtypes that support encounter order (such as `List`, `SortedSet` and `Deque`), but their common supertype is `Collection`, which does not support it. So support for encounter order is dispersed across the type hierarchy, and that leads to more challenges. Consider obtaining the first or last element of a collection, for instance. While numerous implementations accommodate this functionality, each adopts a distinct approach, and a few are not as obvious (or don't support it at all). The process of sequentially traversing collection elements from the beginning to the end might appear simple and systematic, but iterating in reverse order is notably less straightforward.
+
+It seems like the concept of a collection with defined encounter order exists in multiple places in the collections framework, but there is no single type that represents it. And this is the gap in the collections framework that will be filled by Sequenced Collections.
+
+#### New Interfaces
+
+The JEP will introduce new interfaces for *sequenced collections*, *sequenced sets* and *sequenced maps*. They are retrofitted into the existing collections type hierarchy (making ample use of [default methods](https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html)), as follows:
+
+![A diagram of how the new interfaces related to sequence collections are retrofitted into the existing collections type hierarchy.](/assets/images/blog/java-21-release-day/sequenced-collections-diagram.png)
+> Image from <a href="https://openjdk.org/jeps/431#Retrofitting">JEP 431</a>
+
+A sequenced collection has first and last elements, allowing support for common operations at either end:
+
+```java
+interface SequencedCollection<E> extends Collection<E> {
+    // new method
+    SequencedCollection<E> reversed();
+    // methods promoted from Deque
+    void addFirst(E);
+    void addLast(E);
+    E getFirst();
+    E getLast();
+    E removeFirst();
+    E removeLast();
+}
+```
+
+A sequenced set is a `Set` that is a `SequencedCollection` that contains no duplicate elements:
+
+```java
+interface SequencedSet<E> extends Set<E>, SequencedCollection<E> {
+    SequencedSet<E> reversed();    // covariant override
+}
+```
+
+A sequenced map is a `Map` whose entries have a defined encounter order:
+
+```java
+interface SequencedMap<K,V> extends Map<K,V> {
+    // new methods
+    SequencedMap<K,V> reversed();
+    SequencedSet<K> sequencedKeySet();
+    SequencedCollection<V> sequencedValues();
+    SequencedSet<Entry<K,V>> sequencedEntrySet();
+    V putFirst(K, V);
+    V putLast(K, V);
+    // methods promoted from NavigableMap
+    Entry<K, V> firstEntry();
+    Entry<K, V> lastEntry();
+    Entry<K, V> pollFirstEntry();
+    Entry<K, V> pollLastEntry();
+}
+```
+
+The `Collections` utility class has also been extended to create unmodifiable wrappers for the three new types:
+
+* `Collections.unmodifiableSequencedCollection(sequencedCollection)`
+* `Collections.unmodifiableSequencedSet(sequencedSet)`
+* `Collections.unmodifiableSequencedMap(sequencedMap)`
+
+These additions to the collections framework ensure that common operations like getting the last element or iterating in reversed order become a lot easier. Moreover, ... TODO 
 
 #### What's Different From Java 20?
 
-TODO
+Java 20 didn't contain anything related to sequenced collections yet, so everything that you read about it so far is as new as it gets! However, the feature that now has been delivered is the result of an incremental evolution of an earlier proposal called [reversible collections](http://mail.openjdk.org/pipermail/core-libs-dev/2021-April/076461.html). And if you're seriously up for some digging: the earliest form of this proposal was Tagir Valeev's proposal from 2020 called [OrderedMap/OrderedSet](http://mail.openjdk.org/pipermail/core-libs-dev/2020-April/066028.html). These proposals have played a big part in shaping the feature that is now called 'sequenced collections' and that we get to enjoy in Java 21.
 
 #### More Information
 
@@ -417,16 +474,122 @@ For more information on this feature, see [JEP 431](https://openjdk.org/jeps/431
 
 ### JEP 452: Key Encapsulation Mechanism API
 
-TODO
-(from Security Libs)
+A protocol like Transport Layer Security (TLS) relies heavily on public key encryption schemes in order to provide a secure way for a sender and recipient to share information.
+But public key encryption schemes are usually less efficient than symmetric encryption schemes, which instead focus on establishing a shared symmetric key as the basis of all future communication between sender and recipient. Such a key is typically produced by a _key encapsulation mechanism_ (or KEM), and JEP 452 proposes to introduce such an API to the JDK. 
+
+#### Components
+
+A KEM needs the following components:
+
+* a key pair generation function that returns a key pair containing a public key and a private key.
+
+> This function is already covered by the existing [`KeyPairGenerator` API](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/security/KeyPairGenerator.html).
+ 
+* a key encapsulation function, called by the sender, that takes the receiver's public key and an encryption option; it returns a secret key and a _ciphertext_. The sender sends the key encapsulation message to the receiver.
+
+> The new `KEM` class contains an encapsulation function.
+   
+* a key decapsulation function, called by the receiver, that takes the receiver's private key and the received key encapsulation message; it returns the secret key.
+
+> The new `KEM` class contains a decapsulation function.
+
+#### `KEM` class
+
+For illustration purposes, the `KEM` class that is mentioned in the JEP is listed below:
+
+```java
+package javax.crypto;
+
+public class DecapsulateException extends GeneralSecurityException;
+
+public final class KEM {
+
+    public static KEM getInstance(String alg)
+        throws NoSuchAlgorithmException;
+    public static KEM getInstance(String alg, Provider p)
+        throws NoSuchAlgorithmException;
+    public static KEM getInstance(String alg, String p)
+        throws NoSuchAlgorithmException, NoSuchProviderException;
+
+    public static final class Encapsulated {
+        public Encapsulated(SecretKey key, byte[] encapsulation, byte[] params);
+        public SecretKey key();
+        public byte[] encapsulation();
+        public byte[] params();
+    }
+
+    public static final class Encapsulator {
+        String providerName();
+        int secretSize();           // Size of the shared secret
+        int encapsulationSize();    // Size of the key encapsulation message
+        Encapsulated encapsulate();
+        Encapsulated encapsulate(int from, int to, String algorithm);
+    }
+
+    public Encapsulator newEncapsulator(PublicKey pk)
+            throws InvalidKeyException;
+    public Encapsulator newEncapsulator(PublicKey pk, SecureRandom sr)
+            throws InvalidKeyException;
+    public Encapsulator newEncapsulator(PublicKey pk, AlgorithmParameterSpec spec,
+                                        SecureRandom sr)
+            throws InvalidAlgorithmParameterException, InvalidKeyException;
+
+    public static final class Decapsulator {
+        String providerName();
+        int secretSize();           // Size of the shared secret
+        int encapsulationSize();    // Size of the key encapsulation message
+        SecretKey decapsulate(byte[] encapsulation) throws DecapsulateException;
+        SecretKey decapsulate(byte[] encapsulation, int from, int to,
+                              String algorithm) throws DecapsulateException;
+    }
+
+    public Decapsulator newDecapsulator(PrivateKey sk)
+            throws InvalidKeyException;
+    public Decapsulator newDecapsulator(PrivateKey sk, AlgorithmParameterSpec spec)
+            throws InvalidAlgorithmParameterException, InvalidKeyException;
+}
+```
+
+> The `getInstance` methods create a new `KEM` object that implements the specified algorithm.
+
+And here is an example of how to use this class (again, taken from the JEP):
+
+```java
+// Receiver side
+KeyPairGenerator g = KeyPairGenerator.getInstance("ABC");
+KeyPair kp = g.generateKeyPair();
+publishKey(kp.getPublic());
+
+// Sender side
+KEM kemS = KEM.getInstance("ABC-KEM");
+PublicKey pkR = retrieveKey();
+ABCKEMParameterSpec specS = new ABCKEMParameterSpec(...);
+KEM.Encapsulator e = kemS.newEncapsulator(pkR, specS, null);
+KEM.Encapsulated enc = e.encapsulate();
+SecretKey secS = enc.key();
+sendBytes(enc.encapsulation());
+sendBytes(enc.params());
+
+// Receiver side
+byte[] em = receiveBytes();
+byte[] params = receiveBytes();
+KEM kemR = KEM.getInstance("ABC-KEM");
+AlgorithmParameters algParams = AlgorithmParameters.getInstance("ABC-KEM");
+algParams.init(params);
+ABCKEMParameterSpec specR = algParams.getParameterSpec(ABCKEMParameterSpec.class);
+KEM.Decapsulator d = kemR.newDecapsulator(kp.getPrivate(), specR);
+SecretKey secR = d.decapsulate(em);
+
+// secS and secR will be identical
+```
 
 #### What's Different From Java 20?
 
-TODO
+The Key Encapsulation Mechanism API didn't exist yet in Java 20; it was newly added in Java 21.
 
 #### More Information
 
-For more information on this feature, see [JEP 452](https://openjdk.org/jeps/452).
+There is a bit more to this API than we were able to cover here (like different _KEM configurations_, for example), so to get the full picture you could have a look at [JEP 452](https://openjdk.org/jeps/452).
 
 ## Final thoughts
 
