@@ -25,25 +25,13 @@ Java 21 contains five features that originated from [Project Amber](https://open
 
 > The goal of Project Amber is to explore and incubate smaller, productivity-oriented Java language features.
 
-### JEP 430: String Templates (Preview)
-
-TODO
-
-#### What's Different From Java 20?
-
-TODO
-
-#### More Information
-
-For more information on this feature, see [JEP 430](https://openjdk.org/jeps/430).
-
 ### JEP 441: Pattern Matching for switch
 
 The feature 'Pattern Matching for switch' that was first introduced in Java 17 has reached completion status, now that Java 21 has been released.
 
 Since Java 16 we have been able to avoid casting after `instanceof` checks by using 'Pattern Matching for instanceof'. Let's see how that works in a code example.
 
-> All code examples that illustrate pattern matching features were taken from my conference talk ["Pattern Matching: Small Enhancement or Major Feature?"](https://hanno.codes/talks/#pattern-matching-small-enhancement-or-major-feature).
+> All code examples that illustrate Project Amber features were taken from my conference talk ["Pattern Matching: Small Enhancement or Major Feature?"](https://hanno.codes/talks/#pattern-matching-small-enhancement-or-major-feature).
 
 ```java
 static String apply(Effect effect) {
@@ -110,6 +98,7 @@ There have been two major changes from the previous JEP:
 #### More Information
 
 For more information on this feature, see [JEP 441](https://openjdk.org/jeps/441).
+TODO: add Github-link to demo code
 
 ### JEP 440: Record Patterns
 
@@ -167,6 +156,7 @@ Apart from some minor editorial changes, the main change since the second previe
 #### More Information
 
 For more information on this feature, see [JEP 440](https://openjdk.org/jeps/440).
+TODO: add Github-link to demo code
 
 ### JEP 443: Unnamed Patterns and Variables (Preview)
 
@@ -192,13 +182,177 @@ Java 20 didn't contain anything related to unnamed classes and instance methods 
 
 For more information on this feature, see [JEP 445](https://openjdk.org/jeps/445).
 
+### JEP 430: String Templates (Preview)
+
+There are currently multiple ways in Java to compose a string from literal text and expressions:
+
+* String concatenation with the `+` operator;
+* `StringBuilder`;
+* `String::format` or `String::formatted`;
+* `java.text.MessageFormat`
+
+However, these mechanisms come with a few drawbacks. They involve hard-to-read code (`+` operator) or verbose code (`StringBuilder`), they separate the input string from the parameters (`String::format`) or they require a lot of ceremony (`MessageFormat`).
+
+_String interpolation_ is a mechanism that many programming languages offer as a solution to these drawbacks. But string interpolation comes with a drawback of its own: interpolated strings (typically holding HTML/XML documents, JSON snippets or SQL statements) need to be manually validated by the developer to avoid dangerous risks like [SQL injection](https://en.wikipedia.org/wiki/SQL_injection).
+
+This JEP proposes the 'String Templates' feature: a first-class, template-based mechanism for composing strings that offers the benefits of interpolation, but would be less prone to introducing security vulnerabilities. A _template expression_ is a new kind of expression in Java, that can perform string interpolation but is also programmable in a way that helps developers compose strings safely and efficiently.
+
+```java
+String guitarType = "Les Paul";
+System.out.println(STR."I bought a \{guitarType} yesterday.");
+// outputs "I bought a Les Paul yesterday."
+```
+
+The template expression `STR."I bought a \{guitarType} yesterday."` consists of:
+
+* A template processor (`STR`);
+* A dot character, as seen in other kinds of expressions; and
+* A template (`"I bought a \{guitarType} yesterday."`) which contains an embedded expression (`\{guitarType}`).
+
+When a template expression is evaluated at run time, its template processor combines the literal text in the template with the values of the embedded expressions in order to produce a result. The embedded expressions can perform arithmetic, invoke methods and access fields: 
+
+```java
+int price = 12;
+System.out.println(STR."A set of strings costs \{price} dollars; so each string costs \{price / 6} dollars.");
+// outputs "A set of strings costs 12 dollars; so each string costs 2 dollars."
+```
+
+```java
+record Guitar(String name, boolean inTune) {}
+class GuitarTuner {
+    public static void main(String... args) {
+        var guitar = new Guitar("Gibson Les Paul Standard '50s Heritage Cherry Sunburst", false);
+        System.out.println(STR."This guitar is \{guitar.inTune() ? "" : "not"} in tune.");
+        // outputs "This guitar is not in tune.
+    }
+}
+```
+
+As you can see, double-quote characters can be used inside embedded expressions without escaping them as `\"`, making the switch from concatenation (using `+`) to template expressions easier. Multi-line template expressions are also possible; they use a syntax similar to that of [text blocks](https://docs.oracle.com/javase/specs/jls/se20/html/jls-3.html#jls-3.10.6):
+
+```java
+String title = "My Online Guitar Store";
+String text = "Buy your next Les Paul here!";
+String html = STR."""
+        <html>
+          <head>
+            <title>\{title}</title>
+          </head>
+          <body>
+            <p>\{text}</p>
+          </body>
+        </html>
+        """;
+```
+
+#### Template Processors
+
+`STR` is a template processor defined in the Java Platform. It performs string interpolation by replacing each embedded expression in the template with the (stringified) value of that expression. It is a `public static final` field that is automatically imported into every Java source file.
+
+More template processors exist:
+
+* `FMT` - besides performing interpolation, it also interprets format specifiers which appear to the left of embedded expressions. The format specifiers are the same as those defined in `java.util.Formatter`.
+* `RAW` - a standard template processor that produces an unprocessed `StringTemplate` object.
+
+#### Ensuring Safety
+
+The construct `STR."..."` we've used so far is actually a short way to define a template and call its `process` method. That means that our first code example:
+
+```java
+String guitarType = "Les Paul";
+System.out.println(STR."I bought a \{guitarType} yesterday.");
+```
+
+is equivalent to:
+
+```java
+String guitarType = "Les Paul";
+StringTemplate template = RAW."I bought a \{guitarType} yesterday.");
+System.out.println(STR.process(template));
+```
+
+Template expressions are designed to prevent the direct conversion of strings with embedded expressions to interpolated strings. This makes it impossible for potentially incorrect strings to spread. A template processor securely handles this interpolation, and if you forget to use one, the compiler will report an error.
+
+```java
+String guitarType = "Les Paul";
+System.out.println("I bought a \{guitarType} yesterday."); // doesn't compile!
+// outputs: "error: processor missing from template expression"
+```
+
+#### Custom Template Processors
+
+Each template processor is an object that implements the functional interface `StringTemplate.Processor`, which means developers can easily create custom template processors. Custom template processors can make use of the methods `StringTemplate::fragments` and `StringTemplate::values` in order to use static fragments and dynamic values of the string template, respectively. 
+
+Custom template processors can be useful for various use cases. Let's illustrate two of them with a few code examples:
+
+```java
+var JSON = StringTemplate.Processor.of(
+    (StringTemplate st) -> new JSONObject(st.interpolate())
+);
+
+String name = "Gibson Les Paul Standard '50s Heritage Cherry Sunburst";
+String type = "Les Paul";
+JSONObject doc = JSON."""
+    {
+        "name": "\{name}",
+        "type": "\{type}"
+    };
+    """;
+```
+
+So the `JSON` template processor returns instances of `JSONObject` instead of `String`.
+If we wanted, we could simply add more validation logic to the implementation of `JSON` to make the template processor handles its parameters a bit more safely.
+
+```java
+record QueryBuilder(Connection conn) implements StringTemplate.Processor<PreparedStatement, SQLException> {
+    public PreparedStatement process(StringTemplate st) throws SQLException {
+        // 1. Replace StringTemplate placeholders with PreparedStatement placeholders
+        String query = String.join("?", st.fragments());
+
+        // 2. Create the PreparedStatement on the connection
+        PreparedStatement ps = conn.prepareStatement(query);
+
+        // 3. Set parameters of the PreparedStatement
+        int index = 1;
+        for (Object value : st.values()) {
+            switch (value) {
+                case Integer i -> ps.setInt(index++, i);
+                case Float f   -> ps.setFloat(index++, f);
+                case Double d  -> ps.setDouble(index++, d);
+                case Boolean b -> ps.setBoolean(index++, b);
+                default        -> ps.setString(index++, String.valueOf(value));
+            }
+        }
+
+        return ps;
+    }
+}
+```
+
+```java
+var DB = new QueryBuilder(conn);
+String type = "Les Paul"; 
+PreparedStatement ps = DB."SELECT * FROM Guitar g WHERE g.guitar_type = \{type}";
+ResultSet rs = ps.executeQuery();
+```
+
+The `DB` custom template processor is capable of constructing `PreparedStatements` that have their parameters injected in a safe way.
+
+#### What's Different From Java 20?
+
+Java 20 didn't contain anything related to string templates yet, so Java 21 is the first time we get to experiment with them. Note that the JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to be able to take the feature for a spin.
+
+#### More Information
+
+For more information on this feature, see [JEP 430](https://openjdk.org/jeps/430).
+
 ## From Project Loom
 
 Java 21 contains three features that originated from [Project Loom](http://openjdk.java.net/projects/loom/):
 
 * Virtual Threads;
-* Scoped Values;
 * Structured Concurrency.
+* Scoped Values;
 
 > Project Loom strives to simplify maintaining concurrent applications in Java by introducing *virtual threads* and an API for *structured concurrency*, among other things.
 
@@ -265,6 +419,153 @@ Based on developer feedback the following changes were made to virtual threads c
 
 For more information on this feature, see [JEP 444](https://openjdk.org/jeps/444).
 
+### JEP 453: Structured Concurrency (Preview)
+
+Java's current implementation of concurrency is _unstructured_, meaning that tasks run independently of each other. They don't come with any hierarchy, scope, or other structure, which means they cannot easily pass errors or cancellation intent to each other.
+To illustrate this, let's look at a code example that takes place in a restaurant:
+
+> All code examples that illustrate Structured Concurrency or Scoped Values were taken from my conference talk ["Java's Concurrency Journey Continues! Exploring Structured Concurrency and Scoped Values"](https://hanno.codes/talks/#javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values).
+
+```java
+public class MultiWaiterRestaurant implements Restaurant {
+    @Override
+    public MultiCourseMeal announceMenu() throws ExecutionException, InterruptedException {
+        Waiter grover = new Waiter("Grover");
+        Waiter zoe = new Waiter("Zoe");
+        Waiter rosita = new Waiter("Rosita");
+
+        try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+            Future<Course> starter = executor.submit(() -> grover.announceCourse(CourseType.STARTER));
+            Future<Course> main = executor.submit(() -> zoe.announceCourse(CourseType.MAIN));
+            Future<Course> dessert = executor.submit(() -> rosita.announceCourse(CourseType.DESSERT));
+
+            return new MultiCourseMeal(starter.get(), main.get(), dessert.get());
+        }
+    }
+}
+```
+
+Now, consider the fact that the `announceCourse(..)` method in the `Waiter` class sometimes fails with an `OutOfStockException`, because one of the ingredients for the course might not be in stock. This can lead to some problems:
+
+* If `zoe.announceCourse(CourseType.MAIN)` takes a long time to execute but `grover.announceCourse(CourseType.STARTER)` fails in the meantime, the `announceMenu(..)` method will unnecessarily wait for the main course announcement by blocking on `main.get()`, instead of cancelling it (which would be the sensible thing to do).
+- If an exception happens in `zoe.announceCourse(CourseType.MAIN)`, `main.get()` will throw it, but `grover.announceCourse(CourseType.STARTER)` will continue to run in its own thread, resulting in thread leakage.
+- If the thread executing `announceMenu(..)` is interrupted, the interruption will not propagate to the subtasks: all threads that run an `announceCourse(..)` invocation will leak, continuing to run even after `announceMenu()` has failed.
+
+Ultimately the problem here is that our program is logically structured with task-subtask relationships, but these relationships exist only in the mind of the developer. We might all prefer structured code that reads like a sequential story, but this example simply doesn't meet that criterion.
+
+In contrast, the execution of single-threaded code _always_ enforces a hierarchy of tasks and subtasks. Consider the following single-threaded version of our restaurant example:
+
+```java
+public class SingleWaiterRestaurant implements Restaurant {
+    @Override
+    public MultiCourseMeal announceMenu() throws OutOfStockException {
+        Waiter elmo = new Waiter("Elmo");
+
+        Course starter = elmo.announceCourse(CourseType.STARTER);
+        Course main = elmo.announceCourse(CourseType.MAIN);
+        Course dessert = elmo.announceCourse(CourseType.DESSERT);
+
+        return new MultiCourseMeal(starter, main, dessert);
+    }
+}
+```
+
+Here, we don't have _any_ of the problems we had before.
+Our waiter Elmo will announce the courses in exactly the right order, and if one subtask fails the remaining one(s) won't even be started.
+And because all work runs in the same thread, there is no risk of thread leakage.
+
+So from these two examples it is evident that concurrent programming would be a lot easier and more intuitive if it would be able to enforce the hierarchy of tasks and subtasks, just like single-threaded code can.
+
+#### Introducing Structured Concurrency
+
+In a structured concurrency approach, threads have a clear hierarchy, their own scope, and clear entry and exit points. Structured concurrency arranges threads hierarchically, akin to function calls, forming a tree with parent-child relationships. Execution scopes persist until all child threads complete, matching code structure.
+
+#### Shutdown on Failure
+
+Let's now take a look at a structured, concurrent version of our example:
+
+```java
+public class StructuredConcurrencyRestaurant implements Restaurant {
+    @Override
+    public MultiCourseMeal announceMenu() throws ExecutionException, InterruptedException {
+        Waiter grover = new Waiter("Grover");
+        Waiter zoe = new Waiter("Zoe");
+        Waiter rosita = new Waiter("Rosita");
+
+        try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
+            Supplier<Course> starter = scope.fork(() -> grover.announceCourse(CourseType.STARTER));
+            Supplier<Course> main = scope.fork(() -> zoe.announceCourse(CourseType.MAIN));
+            Supplier<Course> dessert = scope.fork(() -> rosita.announceCourse(CourseType.DESSERT));
+
+            scope.join(); // 1
+            scope.throwIfFailed(); // 2
+
+            return new MultiCourseMeal(starter.get(), main.get(), dessert.get()); // 3
+        }
+    }
+}
+```
+The scope's purpose is to keep the threads together.
+At `1`, we wait (`join`) until _all_ threads are done with their work. 
+If one of the threads is interrupted, an `InterruptedException` is thrown here. 
+At `2`, an `ExecutionException` can be thrown if an exception occurs in one of the threads. 
+Once we reach `3`, we can be sure everything has gone well, and we can retrieve and process the results.
+
+Actually, the main difference with the code we had before is the fact that we create threads (`fork`) within a new `scope`. 
+Now we can be certain that the lifetimes of the three threads are confined to this scope, which coincides with the body of the try-with-resources statement.
+
+Furthermore, we've gained _short-circuiting behaviour_. 
+When one of the `announceCourse(..)` subtasks fails, the others are cancelled if they have not completed yet.
+This behaviour is managed by the `ShutdownOnFailure` policy.
+We've also gained _cancellation propagation_.
+When the thread that runs `announceMenu()` is interrupted before or during the call to `scope.join()`, all subtasks are cancelled automatically when the thread exits the scope.
+
+#### Shutdown on Success
+
+So shutdown-on-failure policy cancels tasks if one of them fails, while a _shutdown-on-success_ policy cancels tasks if one succeeds. The latter is useful to prevent unnecessary work once a successful result is obtained.
+
+Let's see what a shutdown-on-success implementation would look like in that case:
+
+```java
+public record DrinkOrder(Guest guest, Drink drink) {}
+
+public class StructuredConcurrencyBar implements Bar {
+    @Override
+    public DrinkOrder determineDrinkOrder(Guest guest) throws InterruptedException, ExecutionException {
+        Waiter zoe = new Waiter("Zoe");
+        Waiter elmo = new Waiter("Elmo");
+
+        try (var scope = new StructuredTaskScope.ShutdownOnSuccess<DrinkOrder>()) {
+            scope.fork(() -> zoe.getDrinkOrder(guest, BEER, WINE, JUICE));
+            scope.fork(() -> elmo.getDrinkOrder(guest, COFFEE, TEA, COCKTAIL, DISTILLED));
+
+            return scope.join().result(); // 1
+        }
+    }
+}
+```
+
+In this example the waiter is responsible for getting a valid `DrinkOrder` object based on the preferences of the guest and the current supply of drinks at the bar.
+After the method `Waiter.getDrinkOrder(Guest guest, DrinkCategory... categories)` has been called, the waiter starts to list all available drinks in the supplied drink categories.
+Once a guest hears something they like, they respond and the waiter creates a drink order.
+As soon as our waitress Zoe has found a matching drink for her guest, the `getDrinkOrder(..)` method returns a `DrinkOrder` object and the scope will shut down. 
+This means that any unfinished subtasks (such as the one in which Elmo is still listing different kinds of tea) will be cancelled.
+The `result()` method at `1` will either return a valid `DrinkOrder` object, or throw an `ExecutionException` if one of the subtasks has failed.
+
+#### Custom Shutdown Policies
+
+So two shutdown policies are provided out-of-the-box, but it's also possible to create your own by extending the class `StructuredTaskScope` and its protected `handleComplete(..)` method.
+That will allow you to have full control over when the scope will shut down and what results will be collected.
+
+#### What's Different From Java 20?
+
+TODO
+
+#### More Information
+
+For more information on this feature, see [JEP 453](https://openjdk.org/jeps/453).
+TODO: add Github-link to demo code
+
 ### JEP 446: Scoped Values (Preview)
 
 TODO
@@ -276,18 +577,6 @@ TODO
 #### More Information
 
 For more information on this feature, see [JEP 446](https://openjdk.org/jeps/446).
-
-### JEP 453: Structured Concurrency (Preview)
-
-TODO
-
-#### What's Different From Java 20?
-
-TODO
-
-#### More Information
-
-For more information on this feature, see [JEP 453](https://openjdk.org/jeps/453).
 
 ## From Project Panama
 
