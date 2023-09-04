@@ -97,8 +97,7 @@ There have been two major changes from the previous JEP:
 
 #### More Information
 
-For more information on this feature, see [JEP 441](https://openjdk.org/jeps/441).
-TODO: add Github-link to demo code
+For more information on this feature, see [JEP 441](https://openjdk.org/jeps/441). Or if you want to try out pattern matching for switch and you liked the code examples, then here's a [GitHub repository](https://github.com/hannotify/pattern-matching-music-store) to get you started.
 
 ### JEP 440: Record Patterns
 
@@ -155,8 +154,7 @@ Apart from some minor editorial changes, the main change since the second previe
 
 #### More Information
 
-For more information on this feature, see [JEP 440](https://openjdk.org/jeps/440).
-TODO: add Github-link to demo code
+For more information on this feature, see [JEP 440](https://openjdk.org/jeps/440). Or if you want to try out record patterns and you liked the code examples, then here's a [GitHub repository](https://github.com/hannotify/pattern-matching-music-store) to get you started.
 
 ### JEP 443: Unnamed Patterns and Variables (Preview)
 
@@ -522,9 +520,9 @@ When the thread that runs `announceMenu()` is interrupted before or during the c
 
 #### Shutdown on Success
 
-So shutdown-on-failure policy cancels tasks if one of them fails, while a _shutdown-on-success_ policy cancels tasks if one succeeds. The latter is useful to prevent unnecessary work once a successful result is obtained.
+A shutdown-on-failure policy cancels tasks if one of them fails, while a _shutdown-on-success_ policy cancels tasks if one succeeds. The latter is useful to prevent unnecessary work once a successful result is obtained.
 
-Let's see what a shutdown-on-success implementation would look like in that case:
+Let's see what a shutdown-on-success implementation would look like:
 
 ```java
 public record DrinkOrder(Guest guest, Drink drink) {}
@@ -546,25 +544,28 @@ public class StructuredConcurrencyBar implements Bar {
 ```
 
 In this example the waiter is responsible for getting a valid `DrinkOrder` object based on the preferences of the guest and the current supply of drinks at the bar.
-After the method `Waiter.getDrinkOrder(Guest guest, DrinkCategory... categories)` has been called, the waiter starts to list all available drinks in the supplied drink categories.
-Once a guest hears something they like, they respond and the waiter creates a drink order.
-As soon as our waitress Zoe has found a matching drink for her guest, the `getDrinkOrder(..)` method returns a `DrinkOrder` object and the scope will shut down. 
+After the method `Waiter.getDrinkOrder(Guest guest, DrinkCategory... categories)` has been called, the waiter starts to list all available drinks in the drink categories that were passed to the method.
+Once a guest hears something they like, they respond and the waiter creates a drink order. When this happens, the `getDrinkOrder(..)` method returns a `DrinkOrder` object and the scope will shut down. 
 This means that any unfinished subtasks (such as the one in which Elmo is still listing different kinds of tea) will be cancelled.
 The `result()` method at `1` will either return a valid `DrinkOrder` object, or throw an `ExecutionException` if one of the subtasks has failed.
 
 #### Custom Shutdown Policies
 
-So two shutdown policies are provided out-of-the-box, but it's also possible to create your own by extending the class `StructuredTaskScope` and its protected `handleComplete(..)` method.
+Two shutdown policies are provided out-of-the-box, but it's also possible to create your own by extending the class `StructuredTaskScope` and its protected `handleComplete(..)` method.
 That will allow you to have full control over when the scope will shut down and what results will be collected.
 
 #### What's Different From Java 20?
 
-TODO
+The situation is roughly the same as how it was in Java 20 (see [JEP 437](https://openjdk.org/jeps/437)), except for two minor changes:
+
+* Structured Concurrency is now a Preview API;
+* The `StructuredTaskScope::fork` method now returns a `Subtask` instead of a `Future` ([why?](https://openjdk.org/jeps/453#Why-doesn't-fork----return-a-Future?)).
+
+Note that the JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to be able to take the feature for a spin.
 
 #### More Information
 
-For more information on this feature, see [JEP 453](https://openjdk.org/jeps/453).
-TODO: add Github-link to demo code
+For more information on this feature, see [JEP 453](https://openjdk.org/jeps/453). Or if you want to try out structured concurrency and you liked the code examples, then here's a [GitHub repository](https://github.com/hannotify/structured-concurrency-bar) to get you started.
 
 ### JEP 446: Scoped Values (Preview)
 
