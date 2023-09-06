@@ -29,6 +29,17 @@
   appearances:
     - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
 
+- id: jcon-world-2023
+  name: JCON WORLD
+  year: 2023
+  url: https://2023.world.jcon.one/speaker
+  dateStart: 20-11-2023
+  dateEnd: 22-11-2023
+  logo: jcon-world-2023.png
+  appearances:
+    - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+      sessionPageUrl: https://jconworld2023.sched.com/event/1RRXD/javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+
 - id: joy-of-coding-2023
   name: Joy of Coding
   year: 2023
