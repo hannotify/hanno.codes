@@ -158,7 +158,7 @@ For more information on this feature, see [JEP 440](https://openjdk.org/jeps/440
 
 ### JEP 443: Unnamed Patterns and Variables (Preview)
 
-Data processing in Java has become increasingly streamlined since the introduction of [records](https://openjdk.org/jeps/395) and [record patterns](#jep-440-record-patterns). But in some cases writing out an entire record pattern when some record component aren't even used in the logic that follows can be both cumbersome and confusing. Consider the following code example: 
+Data processing in Java has become increasingly streamlined since the introduction of [records](https://openjdk.org/jeps/395) and [record patterns](#jep-440-record-patterns). But in some cases writing out an entire record pattern when some record components aren't even used in the logic that follows can be both cumbersome and confusing. Let's consider the following code example: 
 
 ```java
 static boolean isDelayTimeEqualToReverbRoomSize(EffectLoop effectLoop) {
@@ -169,7 +169,7 @@ static boolean isDelayTimeEqualToReverbRoomSize(EffectLoop effectLoop) {
 }
 ```
 
-Here, the logic doesn't reference the reverb name whatsoever, but Java currently doesn't support a way to indicate that this omission might be intentional. And so the entire record pattern has been written out, leading future readers of this code to doubt the correctness of the implementation.
+Here, the logic doesn't reference the reverb name whatsoever, but Java currently doesn't have a way to indicate this omission might be intentional. And so the entire record pattern has been written out, leading future readers of this code to doubt the correctness of the implementation.
 
 #### Unnamed Patterns
 
@@ -188,7 +188,7 @@ The underscore denotes the unnamed pattern here: it is an unconditional pattern 
 
 #### Unnamed Pattern Variables
 
-_Unnamed pattern variables_ are also proposed by this JEP. You can use them whenever you care about the type your record pattern will match, but you don't actually need any value bound to the  pattern variable. Imagine we want our tuner code to also support tuning piano keys in the future, then we could use unnamed pattern variables like this:
+_Unnamed pattern variables_ are also proposed by this JEP. You can use them whenever you care about the type your record pattern will match, but when you don't need any value bound to the pattern variable. Imagine we want our tuner code to also support tuning piano keys in the future, then we could use unnamed pattern variables like this:
 
 ```java
 static void apply(Effect effect, Piano piano) {
@@ -200,11 +200,44 @@ static void apply(Effect effect, Piano piano) {
 }
 ```
 
-Here, we execute specific logic when we encounter a tuner that tunes a flat (♭) or sharp (♯) note. We use an unnamed pattern variable, because the logic acts on the matched type only - the value can be ignored.
+Here, we execute specific logic when we encounter a tuner that tunes a flat (♭) or sharp (♯) note. We use an unnamed pattern variable, because the logic acts on the matched type only - the value can be ignored safely.
 
 #### Unnamed Variables
 
-TODO
+_Unnamed variables_ are useful in situations where variables are unused and their names are irrelevant, for example when keeping a counter variable within the body of a for-each loop:
+
+```java
+int guitarCount = 0;
+for (Guitar guitar : guitars) {
+    if (guitarCount < LIMIT) { 
+        ... guitarCount++ ...
+    }
+}
+```
+
+The `guitar` variable is declared and populated here, but it is never used. Unfortunately, its intentional non-use doesn't come across as such to the reader. Moreover, static code analysis tools like Sonar will probably complain about the unused variable, raising suspicions even more. Introducing an unnamed variable can convey the intent of the code a lot better:
+
+```java
+int guitarCount = 0;
+for (Guitar _ : guitars) {
+    if (guitarCount < LIMIT) { 
+        guitarCount++;
+    }
+}
+```
+
+Another good example could be handling certain exceptions in a generic way:
+
+```java
+var lesPaul = new Guitar("Les Paul");
+try { 
+    cart.add(stock.get(lesPaul, guitarCount))
+} catch (OutOfStockException _) { 
+    System.out.println("Sorry, out of stock!");
+}
+```
+
+Keep in mind that unnamed variables only make sense when they're not visible outside a method, so they currently only work with local variables, exception parameters and lambda parameters. These kinds of variables can be renamed or made unnamed without external impact. The theoretical concept of _unnamed method parameters_ is briefly touched upon in the JEP, but supporting that comes with enough challenges to at least warrant postponing it to a future JEP.
 
 #### What's Different From Java 20?
 
@@ -668,17 +701,16 @@ Java 21 contains two features that originated from [Project Panama](http://openj
 
 ### JEP 442: Foreign Function & Memory API (Third Preview)
 
-Java programs have always had the option of interacting with code and data outside of the Java runtime.
-We could use the [Java Native Interface](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/) (JNI) to invoking foreign functions (outside of the JVM but on the same machine).
+Java programs have always had the option of interacting with code and data outside of the Java runtime, through the [Java Native Interface](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/) (JNI).
 And accessing foreign memory (outside of the JVM, so off-heap) was possible using either the [ByteBuffer API](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/ByteBuffer.html) or the [sun.misc.Unsafe API](https://github.com/openjdk/jdk/blob/master/src/jdk.unsupported/share/classes/sun/misc/Unsafe.java).
 
-However, these three mechanisms all come with their own drawbacks, which is why a more modern API is now proposed to support foreign functions and foreign memory in a better way.
+However, all these mechanisms have downsides, which is why a more modern API is now proposed to support foreign functions and foreign memory in a better way.
 
 > Performance-critical libraries like [Tensorflow](https://github.com/tensorflow/tensorflow), [Lucene](https://lucene.apache.org/) or [Netty](https://netty.io/) typically rely on using foreign memory, because they need more control over the memory they use to prevent the cost and unpredictability that comes with garbage collection.
 
 #### Code Example
 
-In order to demonstrate the new API, [JEP 434](https://openjdk.org/jeps/434) lists a code example that obtains a method handle for a C library function `radixsort` and then uses it to sort four strings that start out as Java array elements:
+In order to demonstrate the new API, [JEP 442](https://openjdk.org/jeps/442) lists a code example that obtains a method handle for a C library function `radixsort` and then uses it to sort four strings that start out as Java array elements:
 
 ```java
 // 1. Find foreign function on the C library path
@@ -688,7 +720,7 @@ MethodHandle radixsort = linker.downcallHandle(stdlib.find("radixsort"), ...);
 // 2. Allocate on-heap memory to store four strings
 String[] javaStrings = { "mouse", "cat", "dog", "car" };
 // 3. Use try-with-resources to manage the lifetime of off-heap memory
-try (Arena offHeap = Arena.openConfined()) {
+try (Arena offHeap = Arena.ofConfined()) {
     // 4. Allocate a region of off-heap memory to store four pointers
     MemorySegment pointers = offHeap.allocateArray(ValueLayout.ADDRESS, javaStrings.length);
     // 5. Copy the strings from on-heap to off-heap
@@ -706,8 +738,6 @@ try (Arena offHeap = Arena.openConfined()) {
 } // 8. All off-heap memory is deallocated here
 assert Arrays.equals(javaStrings, new String[] {"car", "cat", "dog", "mouse"});  // true
 ```
-
-TODO: update this code example from the JEP.
 
 Let's look at some of the types this code uses in more detail to get a rough idea of their function and purpose within the Foreign Function & Memory API:
 
@@ -728,15 +758,13 @@ Let's look at some of the types this code uses in more detail to get a rough ide
 
 #### What's Different From Java 20?
 
-In Java 20, this feature was in its second preview status (in the form of [JEP 434](https://openjdk.org/jeps/434)), so the language feature was complete and developer feedback was gathered. Based on this feedback the following changes happened to Java 21:
+In Java 20, this feature was in second preview (in the form of [JEP 434](https://openjdk.org/jeps/434)) to gather more developer feedback. Based on this feedback the following changes happened in Java 21:
 
-* Centralized the management of the lifetimes of native segments in the `Arena` interface;
-* Enhanced layout paths with a new element to dereference address layouts;
-* Provided a linker option to optimize calls to functions that are short-lived and will not upcall to Java (e.g., `clock_gettime`);
-* Provided a fallback native linker implementation, based on libffi, to facilitate porting; and
-* Removed the `VaList` class.
-
-TODO: streamline the above.
+* Lifetimes management of native segments in the `Arena` interface is now centralized;
+* Layout paths with a new element to dereference address layouts have been enhanced;
+* A linker option to optimize calls to functions that are short-lived and will not upcall to Java has been provided;
+* A fallback native linker implementation has been provided, to facilitate porting;
+* The `VaList` class has been removed.
 
 #### More Information
 
@@ -789,16 +817,6 @@ From the perspective of the Java developer, this is just another way of expressi
 #### Typical Use Cases
 
 The Vector API provides a way to write complex vector algorithms in Java that perform extremely well, such as vectorized `hashCode` implementations or specialized array comparisons. Numerous domains can benefit from this, including machine learning, linear algebra, encryption, text processing, finance, and code within the JDK itself.
-
-#### What's Different From Java 19?
-
-
-
-  the alignment of this feature with [Project Valhalla](https://openjdk.org/projects/valhalla/) is the biggest difference with Java 19. And it's one that makes a lot of sense, as both the Vector API and Project Valhalla focus on performance improvements. 
-
-> Recall that Project Valhalla's aim is to augment the Java object model with value objects and user-defined primitives, combining the abstractions of object-oriented programming with the performance characteristics of simple primitives. 
-
-Once the features of Project Valhalla are available, the Vector API will be adapted to make use of value objects and by that time it will be promoted to a preview feature.
 
 #### What's Different From Java 20?
 
