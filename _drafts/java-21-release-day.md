@@ -210,7 +210,7 @@ _Unnamed variables_ are useful in situations where variables are unused and thei
 int guitarCount = 0;
 for (Guitar guitar : guitars) {
     if (guitarCount < LIMIT) { 
-        ... guitarCount++ ...
+        guitarCount++;
     }
 }
 ```
@@ -226,12 +226,12 @@ for (Guitar _ : guitars) {
 }
 ```
 
-Another good example could be handling certain exceptions in a generic way:
+Another good example could be handling exceptions in a generic way:
 
 ```java
 var lesPaul = new Guitar("Les Paul");
 try { 
-    cart.add(stock.get(lesPaul, guitarCount))
+    cart.add(stock.get(lesPaul, guitarCount));
 } catch (OutOfStockException _) { 
     System.out.println("Sorry, out of stock!");
 }
@@ -249,11 +249,67 @@ For more information on this feature, see [JEP 443](https://openjdk.org/jeps/443
 
 ### JEP 445: Unnamed Classes and Instance Main Methods (Preview)
 
-TODO
+Java's take on the classic [Hello, World!](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) program is notoriously verbose:
+
+```java
+public class HelloWorld { 
+    public static void main(String[] args) { 
+        System.out.println("Hello, World!");
+    }
+}
+```
+
+On top of that, it forces newcomers to Java to grasp a few concepts that they certainly don't need on their first day of Java programming:
+
+* The `public` access modifier and the role it plays in encapsulating units of code, together with its counterparts `private`, `protected` and default;
+* The `String[] args` parameter, that allows the operating system's shell to pass arguments to the program;
+* The `static` modifier and how it's part of Java's class-and-object model.
+
+The motivation for this JEP is to help programmers that are new to Java by introducing concepts in the right order, starting with the more fundamental ones. This is done by hiding the unnecessary details until they are useful in larger programs.
+
+#### Launch Protocol
+
+To achieve this, the JEP proposes the following changes to the launch protocol:
+
+* allow _instance main methods_, which are not `static` and don't need a `public` modifier, nor a `String[]` parameter;
+
+```java
+class HelloWorld { 
+    void main() { // this is an instance main method
+        System.out.println("Hello, World!");
+    }
+}
+```
+
+* introduce _unnamed classes_ to make the `class` declaration implicit;
+
+```java
+void main() { // this is an instance main method inside of an unnamed class
+    System.out.println("Hello, World!");
+}
+```
+
+#### Selecting a Main Method
+
+In Java 21, when launching a class, the launch protocol chooses the first of the following methods to invoke:
+
+* A `static void main(String[] args)` method of non-private access (i.e., `public`, `protected` or package) declared in the launched class,
+* A `static void main()` method of non-private access declared in the launched class,
+* A `void main(String[] args)` instance method of non-private access declared in the launched class or inherited from a superclass, or, finally,
+* A `void main()` instance method of non-private access declared in the launched class or inherited from a superclass.
+
+#### Unnamed Classes
+
+With the introduction of unnamed classes, the Java compiler will implicitly consider a method that is not enclosed in a class declaration, as well as any unenclosed fields and any classes declared in the file, to be members of an unnamed top-level class. 
+An unnamed class belongs to the unnamed package, is `final`, and can't implement interfaces or extend classes except `Object`. You can't reference it by name or use method references for its static methods, but you can use `this` and make method references to its instance methods. Unnamed classes can't be instantiated or referenced by name in code. They're mainly used as program entry points and must have a `main` method, enforced by the Java compiler.
+
+#### Evolving Unnamed Classes
+
+We have seen that an unnamed "Hello, World!" program is more focused on its core functionality, omitting unnecessary concepts. However, it's still interpreted like a regular class. To turn it into a regular class, you just need to wrap its declaration (excluding imports) inside an explicit class declaration.
 
 #### What's Different From Java 20?
 
-Java 20 didn't contain anything related to unnamed classes and instance methods yet, so Java 21 is the first time we get to experiment with them. Note that the JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to be able to take the feature for a spin.
+Java 20 didn't contain anything related to unnamed classes and instance main methods yet, so Java 21 is the first time we get to experiment with them. Note that the JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to be able to take the feature for a spin.
 
 #### More Information
 
