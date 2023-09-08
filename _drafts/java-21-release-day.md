@@ -1156,7 +1156,4 @@ There is a bit more to this API than we were able to cover here (like different 
 
 ## Final thoughts
 
-JDK 21: 15 JEPs delivered. Plus thousands of performance, stability and other updates!!
-Java continues to focus on performance, stability, security and compatibility/maintainability.
-
-TODO: finish the wrap-up.
+Phew! I guess it's safe to say that JDK 21 turned out to be quite the update, with no less than 15 JEPs delivered! And that's not even all that's new: thousands of other updates were included in this new release, including various performance and stability updates. Our favourite language is clearly more alive than ever, and I think it's due to Java's continuing focus on its best traits: performance, stability, security, compatibility and maintainability. Wishing you many happy hours of developing with Java 21!
