@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Java 21 is Available Today! Here's What's Inside
+title: Java 21 is Available Today! And It's Quite the Update
 date: 19-09-2023 04:30:00 +0200
 header:
   teaser: /assets/images/blog/ready-set-go.jpg
@@ -8,7 +8,7 @@ tags:
 - java
 ---
 
-Today's the first day of Java 21's availability! It's been six months since Java 20 was released, and so it's time for another fresh wave of Java features. This post takes you on a tour of the JEPs that are associated with this release and it gives you a brief introduction to each one of them. Where applicable the differences with Java 20 are highlighted and a few typical use cases are provided, so that you'll be more than ready to use these features after you've finished reading!
+Today's the first day of Java 21's availability! It's been six months since Java 20 was released, so it's time for another fresh wave of Java features. This post takes you on a tour of the JEPs that are associated with this release and it gives you a brief introduction to each of them. Where applicable the differences with Java 20 are highlighted and a few typical use cases are provided, so that you'll be more than ready to use these features after reading this!
 
 ![Ready, set, go!](/assets/images/blog/ready-set-go.jpg)
 > Image from <a href="https://pxhere.com/en/photo/47097">PxHere</a>
@@ -17,21 +17,21 @@ Today's the first day of Java 21's availability! It's been six months since Java
 
 Java 21 contains five features that originated from [Project Amber](https://openjdk.org/projects/amber/):
 
-* String Templates;
 * Pattern Matching for switch;
 * Record Patterns;
 * Unnamed Patterns and Variables;
-* Unnamed Classes and Instance Main Methods.
+* Unnamed Classes and Instance Main Methods;
+* String Templates.
 
 > The goal of Project Amber is to explore and incubate smaller, productivity-oriented Java language features.
 
 ### JEP 441: Pattern Matching for switch
 
-The feature 'Pattern Matching for switch' that was first introduced in Java 17 has reached completion status, now that Java 21 has been released.
+The feature 'Pattern Matching for switch' (first introduced in Java 17) has reached completion status, now that Java 21 has been released.
 
-Since Java 16 we have been able to avoid casting after `instanceof` checks by using 'Pattern Matching for instanceof'. Let's see how that works in a code example.
+Since Java 16 we've been able to avoid casting after `instanceof` checks by using 'Pattern Matching for instanceof'. Let's refresh our memory with a code example.
 
-> All code examples that illustrate Project Amber features were taken from my conference talk ["Pattern Matching: Small Enhancement or Major Feature?"](https://hanno.codes/talks/#pattern-matching-small-enhancement-or-major-feature).
+> All code examples about Project Amber features were taken from my conference talk ["Pattern Matching: Small Enhancement or Major Feature?"](https://hanno.codes/talks/#pattern-matching-small-enhancement-or-major-feature).
 
 ```java
 static String apply(Effect effect) {
@@ -53,7 +53,7 @@ static String apply(Effect effect) {
 }
 ```
 
-This code is still riddled with ceremony, though. On top of that it leaves room for subtle bugs — what if you added an else-if branch that didn't assign anything to `formatted`? So in the spirit of this JEP (and its predecessors), let's see what pattern matching in a switch statement (or even better: in a switch *expression*) would look like:
+This code is still riddled with ceremony, though. On top of that it leaves room for subtle bugs — what if you added an else-if branch that didn't assign anything to `formatted`? Let's see what pattern matching in a switch statement (or even better: in a switch *expression*) would look like:
 
 ```java
 static String apply(Effect effect) {
@@ -70,7 +70,7 @@ static String apply(Effect effect) {
 
 Pattern matching for switch made our code far more elegant here. We're even able to address possible `null`s by defining a specific case for them or combining it with the default case (which is what we've done here).
 
-Checking an additional condition on top of the pattern match is easily done with a *guard* (the part after the `when` keyword in the code below):
+Checking an additional condition after the pattern match is easily done with a *guard* (the part after the `when` keyword in the code below):
 
 ```java
 static String apply(Effect effect, Guitar guitar) {
@@ -90,18 +90,18 @@ Here, the guard makes sure that intricate boolean logic can still be expressed i
 
 #### What's Different From Java 20?
 
-There have been two major changes from the previous JEP:
+There have been two major changes from [the previous JEP](https://openjdk.org/jeps/433):
 
 * An earlier version of the 'Pattern Matching for switch' feature came with [parenthesized patterns](https://docs.oracle.com/en/java/javase/17/language/pattern-matching.html#GUID-A59EF0C7-4CB7-4555-986D-0FD804555C25), which helped resolve parsing ambiguities back when guards were still expressed with the `&&` operator. Now that the `when` keyword has replaced the `&&` operator for guards, the value for parenthesized patterns has decreased significantly. So the choice was made to remove them in Java 21.
-* Switch expressions and statements now allow qualified enum constants as case constants. This makes it easier to perform an exhaustive `switch` over an interface type when both a class and an enum implementation of that interface exists. The JEP description has [a good example of this mechanism](https://openjdk.org/jeps/441#Switches-and-enum-constants), should you wish to learn more about it.    
+* Switch expressions and statements now allow qualified enum constants as case constants. This makes it easier to do an exhaustive `switch` on an interface type when both a class and an enum implementation of that interface exists. The JEP description has [a good example of this mechanism](https://openjdk.org/jeps/441#Switches-and-enum-constants), should you wish to learn more about it.    
 
 #### More Information
 
-For more information on this feature, see [JEP 441](https://openjdk.org/jeps/441). Or if you want to try out pattern matching for switch and you liked the code examples, then here's a [GitHub repository](https://github.com/hannotify/pattern-matching-music-store) to get you started.
+For more information on this feature, see [JEP 441](https://openjdk.org/jeps/441). Or if you want to try out pattern matching for switch with the provided code examples, then here's a [GitHub repository](https://github.com/hannotify/pattern-matching-music-store) to get you started.
 
 ### JEP 440: Record Patterns
 
-Pattern matching is a feature in Java that is being rolled out gradually over multiple Java versions. Being able to deconstruct an object using patterns was always one of the ultimate goals of the feature arc. With the introduction of *record patterns*, deconstructing records is now possible, along with nesting record and type patterns to enable a powerful, declarative, and composable form of data navigation and processing.
+With the introduction of *record patterns*, deconstructing records is now possible, along with nesting record and type patterns to enable a powerful, declarative, and composable form of data navigation and processing.
 
 [Records](https://openjdk.org/jeps/395) are transparent carriers for data. Code that receives an instance of a record will typically extract the data, known as the components. This was also the case in our 'Pattern Matching for switch' code example, if we assume that all implementations of the `Effect` interface were in fact records there. In that piece of code it is clear that the pattern variables only serve to access the record fields. Using record patterns we can avoid having to create pattern variables altogether:
 
@@ -150,11 +150,11 @@ Here the type arguments for the nested pattern `Tuner(var pitch, Note(var note))
 
 #### What's Different From Java 20?
 
-Apart from some minor editorial changes, the main change since the second preview is the removal of support for record patterns appearing in the header of an enhanced for statement. Java 20 [introduced the feature](https://hanno.codes/2023/03/21/java-20-release-day-heres-whats-new/#enhanced-for-statements), but it was dropped in Java 21 because the feature "may need a significant redesign, to better align with other features under consideration" (see [this OpenJDK ticket](https://bugs.openjdk.org/browse/JDK-8304401) for more information). This may seem strange, but that is the way it can be with preview features: they are fully specified and implemented, and yet impermanent until the feature has been fully delivered. Not to worry though, JEP 440 also hints that support for record patterns in enhanced for statements may be re-proposed in a future JEP, presumably when able to be better aligned with other features under consideration.
+Apart from some minor editorial changes and the fact that the feature is now in its final state, the main change since the second preview is the removal of support for record patterns appearing in the header of an enhanced for statement. Java 20 [introduced this feature](https://hanno.codes/2023/03/21/java-20-release-day-heres-whats-new/#enhanced-for-statements), but it was dropped in Java 21 because it "may need a significant redesign, to better align with other features under consideration" (see [this OpenJDK ticket](https://bugs.openjdk.org/browse/JDK-8304401) for more information). This may seem strange, but this is the way it can be with preview features: they are fully specified and implemented, and yet impermanent until the feature has been fully delivered. Not to worry though, JEP 440 also hints that support for record patterns in enhanced for statements may be re-proposed in a future JEP, presumably when it's able to be better aligned with other features under consideration.
 
 #### More Information
 
-For more information on this feature, see [JEP 440](https://openjdk.org/jeps/440). Or if you want to try out record patterns and you liked the code examples, then here's a [GitHub repository](https://github.com/hannotify/pattern-matching-music-store) to get you started.
+For more information on this feature, see [JEP 440](https://openjdk.org/jeps/440). Or if you want to try out record patterns with the provided code examples,, then here's a [GitHub repository](https://github.com/hannotify/pattern-matching-music-store) to get you started.
 
 ### JEP 443: Unnamed Patterns and Variables (Preview)
 
@@ -200,7 +200,7 @@ static void apply(Effect effect, Piano piano) {
 }
 ```
 
-Here, we execute specific logic when we encounter a tuner that tunes a flat (♭) or sharp (♯) note. We use an unnamed pattern variable, because the logic acts on the matched type only - the value can be ignored safely.
+Here, we execute specific logic when we encounter a tuner that tunes a flat (♭) or sharp (♯) note. We use an unnamed pattern variable, because the logic acts on the matched type only - the value can be safely ignored.
 
 #### Unnamed Variables
 
@@ -215,7 +215,7 @@ for (Guitar guitar : guitars) {
 }
 ```
 
-The `guitar` variable is declared and populated here, but it is never used. Unfortunately, its intentional non-use doesn't come across as such to the reader. Moreover, static code analysis tools like Sonar will probably complain about the unused variable, raising suspicions even more. Introducing an unnamed variable can convey the intent of the code a lot better:
+The `guitar` variable is declared and populated here, but it is never used. Unfortunately, its intentional non-use doesn't come across as such to the reader. Moreover, static code analysis tools like Sonar will probably complain about the unused variable, raising suspicions even more. Introducing an unnamed variable can better convey the intent of the code:
 
 ```java
 int guitarCount = 0;
@@ -237,7 +237,7 @@ try {
 }
 ```
 
-Keep in mind that unnamed variables only make sense when they're not visible outside a method, so they currently only work with local variables, exception parameters and lambda parameters. These kinds of variables can be renamed or made unnamed without external impact. The theoretical concept of _unnamed method parameters_ is briefly touched upon in the JEP, but supporting that comes with enough challenges to at least warrant postponing it to a future JEP.
+Keep in mind that unnamed variables only make sense when they're not visible outside a method, so they currently only work with local variables, exception parameters and lambda parameters. The theoretical concept of _unnamed method parameters_ is briefly touched upon in the JEP, but supporting that comes with enough challenges to at least warrant postponing it to a future JEP.
 
 #### What's Different From Java 20?
 
@@ -267,7 +267,7 @@ On top of that, it forces newcomers to Java to grasp a few concepts that they ce
 
 The motivation for this JEP is to help programmers that are new to Java by introducing concepts in the right order, starting with the more fundamental ones. This is done by hiding the unnecessary details until they are useful in larger programs.
 
-#### Launch Protocol
+#### Changing the Launch Protocol
 
 To achieve this, the JEP proposes the following changes to the launch protocol:
 
@@ -301,11 +301,7 @@ In Java 21, when launching a class, the launch protocol chooses the first of the
 #### Unnamed Classes
 
 With the introduction of unnamed classes, the Java compiler will implicitly consider a method that is not enclosed in a class declaration, as well as any unenclosed fields and any classes declared in the file, to be members of an unnamed top-level class. 
-An unnamed class belongs to the unnamed package, is `final`, and can't implement interfaces or extend classes except `Object`. You can't reference it by name or use method references for its static methods, but you can use `this` and make method references to its instance methods. Unnamed classes can't be instantiated or referenced by name in code. They're mainly used as program entry points and must have a `main` method, enforced by the Java compiler.
-
-#### Evolving Unnamed Classes
-
-We have seen that an unnamed "Hello, World!" program is more focused on its core functionality, omitting unnecessary concepts. However, it's still interpreted like a regular class. To turn it into a regular class, you just need to wrap its declaration (excluding imports) inside an explicit class declaration.
+An unnamed class always belongs to the unnamed package, is `final`, and can't implement interfaces or extend classes except `Object`. You can't reference it by name or use method references for its static methods, but you can use `this` and make method references to its instance methods. Unnamed classes can't be instantiated or referenced by name in code. They're mainly used as program entry points and must have a `main` method, enforced by the Java compiler.
 
 #### What's Different From Java 20?
 
@@ -324,11 +320,11 @@ There are currently multiple ways in Java to compose a string from literal text 
 * `String::format` or `String::formatted`;
 * `java.text.MessageFormat`
 
-However, these mechanisms come with a few drawbacks. They involve hard-to-read code (`+` operator) or verbose code (`StringBuilder`), they separate the input string from the parameters (`String::format`) or they require a lot of ceremony (`MessageFormat`).
+However, these mechanisms come with drawbacks. They involve hard-to-read code (`+` operator) or verbose code (`StringBuilder`), they separate the input string from the parameters (`String::format`) or they require a lot of ceremony (`MessageFormat`).
 
-_String interpolation_ is a mechanism that many programming languages offer as a solution to these drawbacks. But string interpolation comes with a drawback of its own: interpolated strings (typically holding HTML/XML documents, JSON snippets or SQL statements) need to be manually validated by the developer to avoid dangerous risks like [SQL injection](https://en.wikipedia.org/wiki/SQL_injection).
+_String interpolation_ is a mechanism that many programming languages offer as a solution to these drawbacks. But string interpolation comes with a drawback of its own: interpolated strings need to be manually validated by the developer to avoid dangerous risks like [SQL injection](https://en.wikipedia.org/wiki/SQL_injection).
 
-This JEP proposes the 'String Templates' feature: a first-class, template-based mechanism for composing strings that offers the benefits of interpolation, but would be less prone to introducing security vulnerabilities. A _template expression_ is a new kind of expression in Java, that can perform string interpolation but is also programmable in a way that helps developers compose strings safely and efficiently.
+This JEP proposes the 'String Templates' feature: a template-based mechanism for composing strings that offers the benefits of interpolation, but would be less prone to introducing security vulnerabilities. A _template expression_ is a new kind of expression in Java, that can perform string interpolation but is also programmable in a way that helps developers compose strings safely and efficiently.
 
 ```java
 String guitarType = "Les Paul";
@@ -546,7 +542,7 @@ A new kind of thread dump in `jcmd` was introduced to present virtual threads al
 Based on developer feedback the following changes were made to virtual threads compared to Java 20:
 
 * Virtual threads now always support thread-local variables. Guaranteed support for thread-local variables ensures that many more existing libraries can be used unchanged with virtual threads, and this helps with the migration of task-oriented code to use virtual threads.
-* Virtual threads created directly with the Thread.Builder API (as opposed to those created through `Executors.newVirtualThreadPerTaskExecutor()`) are now also, by default, monitored throughout their lifetime and observable via the new thread dump mechanism that also was introduced with the virtual threads feature.
+* Virtual threads created directly with the Thread.Builder API (as opposed to those created through `Executors.newVirtualThreadPerTaskExecutor()`) are now also, by default, monitored throughout their lifetime and observable via the new thread dump mechanism.
 
 #### More Information
 
@@ -931,14 +927,14 @@ But older platforms cannot be supported indefinitely, and that is one of the rea
 There are a few reasons for this:
 
 * Windows 10, the last Windows operating system to support 32-bit operation, [will reach end-of-life in October 2025](https://learn.microsoft.com/lifecycle/products/windows-10-home-and-pro);
-* The implementation of virtual threads on Windows 32-bit x86 is rudimentary to say the least: it effectively uses a single platform thread for each virtual thread, effectively rendering the feature useless on this platform;
+* The implementation of virtual threads on Windows 32-bit x86 is rudimentary to say the least: it uses a single platform thread for each virtual thread, effectively rendering the feature useless on this platform;
 * It will allow the OpenJDK contributors to accelerate the development of new features and enhancements.
 
 #### What's Different From Java 20?
 
 Configuring a Windows x86-32 build will now fail on JDK 21. 
 This error can be suppressed by using the new build configuration option `--enable-deprecated-ports=yes`.
-This currently means Windows x86-32 users can still use JDK 21; however a future release will actually remove the support, and by that time the affected users are expected to have migrated to Windows x64 and a 64-bit JVM. 
+This means Windows x86-32 users can still use JDK 21; however a future release will actually remove the support, and by that time the affected users are expected to have migrated to Windows x64 and a 64-bit JVM. 
 
 #### More Information
 
@@ -956,9 +952,9 @@ Java 21 is the first version of Java that issues warnings when agents are loaded
 
 For more information on this feature, see [JEP 451](https://openjdk.org/jeps/451).
 
-## Other Libs
+## Core & Security Libs
 
-TODO
+Java 21 also brings you two additions that are part of the Core Libs and Security Libs, respectively:
 
 * Sequenced Collections
 * Key Encapsulation Mechanism API
@@ -1025,11 +1021,9 @@ The `Collections` utility class has also been extended to create unmodifiable wr
 * `Collections.unmodifiableSequencedSet(sequencedSet)`
 * `Collections.unmodifiableSequencedMap(sequencedMap)`
 
-These additions to the collections framework ensure that common operations like getting the last element or iterating in reversed order become a lot easier. Moreover, ... TODO 
-
 #### What's Different From Java 20?
 
-Java 20 didn't contain anything related to sequenced collections yet, so everything that you read about it so far is as new as it gets! However, the feature that now has been delivered is the result of an incremental evolution of an earlier proposal called [reversible collections](http://mail.openjdk.org/pipermail/core-libs-dev/2021-April/076461.html). And if you're seriously up for some digging: the earliest form of this proposal was Tagir Valeev's proposal from 2020 called [OrderedMap/OrderedSet](http://mail.openjdk.org/pipermail/core-libs-dev/2020-April/066028.html). These proposals have played a big part in shaping the feature that is now called 'sequenced collections' and that we get to enjoy in Java 21.
+Java 20 didn't contain anything related to sequenced collections yet, so everything that you read about it so far is as new as it gets! However, the feature that now has been delivered is the result of an incremental evolution of an earlier proposal called [reversible collections](http://mail.openjdk.org/pipermail/core-libs-dev/2021-April/076461.html). And if you're up for a trip down memory lane: the earliest form of this proposal was the one by Tagir Valeev's from 2020 called [OrderedMap/OrderedSet](http://mail.openjdk.org/pipermail/core-libs-dev/2020-April/066028.html). These proposals have played a big part in shaping the feature that is now called 'sequenced collections' and that we get to enjoy in Java 21.
 
 #### More Information
 
@@ -1038,7 +1032,7 @@ For more information on this feature, see [JEP 431](https://openjdk.org/jeps/431
 ### JEP 452: Key Encapsulation Mechanism API
 
 A protocol like Transport Layer Security (TLS) relies heavily on public key encryption schemes in order to provide a secure way for a sender and recipient to share information.
-But public key encryption schemes are usually less efficient than symmetric encryption schemes, which instead focus on establishing a shared symmetric key as the basis of all future communication between sender and recipient. Such a key is typically produced by a _key encapsulation mechanism_ (or KEM), and JEP 452 proposes to introduce such an API to the JDK. 
+But public key encryption schemes are usually less efficient than symmetric encryption schemes, which instead focus on establishing a shared symmetric key as the basis of all future communication between sender and recipient. Such a key is typically produced by a _key encapsulation mechanism_ (or KEM), and JEP 452 proposes to introduce an API for it. 
 
 #### Components
 
