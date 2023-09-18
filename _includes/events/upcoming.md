@@ -2,7 +2,7 @@
 {% capture nowUnix %}{{'now' | date: '%s'}}{% endcapture %}
 {% assign upcomingEvents = "" | split: "" %}
 
-{% for event in site.data.events | sort: 'date' | reverse %}
+{% for event in site.data.events %}
     {% if event.dateEnd %}
         {% capture eventTime %}{{event.dateEnd | date: '%s'}}{% endcapture %}
     {% else %}
@@ -18,7 +18,7 @@
 # [](#upcoming-events)Upcoming ({{upcomingEvents.size}})
 {% endif %}
 
-{% for event in upcomingEvents %}
+{% for event in upcomingEvents | sort: "dateEnd" %}
     {% if event.dateEnd %}
         {% capture dateString %}{{ event.dateStart | date: "%B %e, %Y" }} - {{ event.dateEnd | date: "%B %e, %Y" }}{% endcapture %}
     {% elsif event.dateStart %}

@@ -1,3 +1,10 @@
+- id: a-birds-eye-view-of-version-control-with-pijul
+  title: A Bird's-Eye View of Version Control with Pijul
+  type: lightning
+  retired: false
+  description: |
+    Git has done wonders for the world of version control, but [it is not without its quirks](https://dangitgit.com/en). If you are looking for a distributed VCS that goes a bit easier on newcomers by being more intuitive, you should check out Pijul. The Pijul VCS is patch-based (instead of snapshot-based), fast (it is written in Rust) and it supports interactive recording. In 15 minutes I will introduce Pijul, discuss pros and cons, compare it to Git and demonstrate a few typical use cases (such as recording patches, pushing to Pijul Nest and resolving conflicts).
+
 - id: six-things-we-learned-implementing-rockstar-on-quarkus-
   title: Six things we learned implementing Rockstar on Quarkus 🎸  
   type: regular

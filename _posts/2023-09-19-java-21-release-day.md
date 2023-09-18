@@ -4,6 +4,7 @@ title: Java 21 is Available Today, And It's Quite the Update
 date: 19-09-2023 04:30:00 +0200
 header:
   teaser: /assets/images/blog/ready-set-go.jpg
+excerpt: Java 21 is available today, and it's quite the update. It brings us 15 (!) JEPS, finalizing features like Record Patterns & Virtual Threads and previewing new ones like String Templates. This blog post has all the info!
 tags: 
 - java
 ---

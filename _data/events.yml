@@ -1,17 +1,3 @@
-- id: utrechtjug-2023
-  name: UtrechtJUG
-  year: 2023
-  country:
-    flag: netherlands
-    name: The Netherlands
-  city: Utrecht
-  url: https://www.meetup.com/nl-NL/Utrecht-Java-User-Group
-  dateStart: 12-09-2023
-  logo: utrechtjug.png
-  appearances:
-    - id: what-stairway-to-heaven-can-teach-us-about-software-development
-      sessionPageUrl: https://www.meetup.com/utrecht-java-user-group/events/291485771
-
 - id: arnhemjug-2023
   name: ArnhemJUG
   year: 2023
@@ -24,17 +10,48 @@
     latitude: 51.8236587
     longitude: 5.7830688
   url: https://www.meetup.com/arnhemjug/
-  dateStart: 31-10-2023
+  dateStart: 2023-10-31
   logo: arnhemjug.jpeg
   appearances:
     - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+
+- id: j-fall-2023
+  name: J-Fall
+  year: 2023
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Ede
+  venue:
+    name: Pathé
+    latitude: 52.01577007972178
+    longitude: 5.64583211559008
+  url: https://www.jfall.nl
+  dateStart: 2023-11-09
+  logo: jfall.png
+  appearances:
+    - id: a-birds-eye-view-of-version-control-with-pijul
+
+- id: utrechtjug-2023
+  name: UtrechtJUG
+  year: 2023
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Utrecht
+  url: https://www.meetup.com/nl-NL/Utrecht-Java-User-Group
+  dateStart: 2023-09-12
+  logo: utrechtjug.png
+  appearances:
+    - id: what-stairway-to-heaven-can-teach-us-about-software-development
+      sessionPageUrl: https://www.meetup.com/utrecht-java-user-group/events/291485771
 
 - id: jcon-world-2023
   name: JCON WORLD
   year: 2023
   url: https://2023.world.jcon.one/speaker
-  dateStart: 20-11-2023
-  dateEnd: 22-11-2023
+  dateStart: 2023-11-20
+  dateEnd: 2023-11-22
   logo: jcon-world-2023.png
   appearances:
     - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
