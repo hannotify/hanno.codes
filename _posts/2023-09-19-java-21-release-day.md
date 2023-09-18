@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Java 21 is Available Today! And It's Quite the Update
+title: Java 21 is Available Today, And It's Quite the Update
 date: 19-09-2023 04:30:00 +0200
 header:
   teaser: /assets/images/blog/ready-set-go.jpg
@@ -901,7 +901,7 @@ Java 21 introduces an extension to ZGC that maintains separate *generations* for
 * Heap sizes from a few hundred megabytes up to many terabytes are supported;
 * Minimal manual configuration is needed.
 
-The reason for handling young and old objects separately stems from the [weak generational hypothesis](#GUID-71D796B3-CBAB-4D80-B5C3-2620E45F6E5D), stating that young objects tend to die young, while old objects tend to stick around. This means that collecting young objects requires fewer resources and yields more memory, while collecting old objects requires more resources and yields less memory. This is the reason we can improve the performance of applications that use ZGC by collecting young objects more frequently.
+The reason for handling young and old objects separately stems from the [weak generational hypothesis](https://docs.oracle.com/en/java/javase/17/gctuning/garbage-collector-implementation.html#GUID-71D796B3-CBAB-4D80-B5C3-2620E45F6E5D), stating that young objects tend to die young, while old objects tend to stick around. This means that collecting young objects requires fewer resources and yields more memory, while collecting old objects requires more resources and yields less memory. This is the reason we can improve the performance of applications that use ZGC by collecting young objects more frequently.
 
 #### What's Different From Java 20?
 
