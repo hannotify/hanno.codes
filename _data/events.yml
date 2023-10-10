@@ -14,6 +14,7 @@
   logo: arnhemjug.jpeg
   appearances:
     - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+      sessionPageUrl: https://www.meetup.com/arnhemjug/events/296251934/
 
 - id: j-fall-2023
   name: J-Fall
@@ -31,6 +32,7 @@
   logo: jfall.png
   appearances:
     - id: a-birds-eye-view-of-version-control-with-pijul
+      sessionPageUrl: https://jfall.nl/timetable/
 
 - id: utrechtjug-2023
   name: UtrechtJUG
@@ -74,6 +76,7 @@
   appearances:
     - id: public-static-void-main-
       sessionPageUrl: https://joyofcoding.org/speakers/lightning-talks.html
+      videoUrl: https://youtu.be/V5hx4-os7_4?feature=shared&t=1361
 
 - id: jcon-europe-2023
   name: JCON EUROPE
