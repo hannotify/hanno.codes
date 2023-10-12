@@ -34,6 +34,36 @@
     - id: a-birds-eye-view-of-version-control-with-pijul
       sessionPageUrl: https://jfall.nl/timetable/
 
+- id: jcon-world-2023
+  name: JCON WORLD
+  year: 2023
+  url: https://2023.world.jcon.one/speaker
+  dateStart: 2023-11-20
+  dateEnd: 2023-11-22
+  logo: jcon-world-2023.png
+  appearances:
+    - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+      sessionPageUrl: https://jconworld2023.sched.com/event/1RRXD/javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+
+- id: jfokus-2024
+  name: JFokus
+  year: 2024
+  country:
+    flag: sweden
+    name: Sweden
+  city: Stockholm
+  venue:
+    name: Waterfront Congress Centre
+    latitude: 59.3299581
+    longitude: 18.0534562
+  url: https://www.jfokus.se
+  dateStart: 2024-02-05
+  dateEnd: 2024-02-07
+  logo: jfokus.jpeg
+  appearances:
+    - id: six-things-we-learned-implementing-rockstar-on-quarkus-
+      sessionPageUrl: https://www.jfokus.se/talks/1643
+
 - id: utrechtjug-2023
   name: UtrechtJUG
   year: 2023
@@ -47,17 +77,6 @@
   appearances:
     - id: what-stairway-to-heaven-can-teach-us-about-software-development
       sessionPageUrl: https://www.meetup.com/utrecht-java-user-group/events/291485771
-
-- id: jcon-world-2023
-  name: JCON WORLD
-  year: 2023
-  url: https://2023.world.jcon.one/speaker
-  dateStart: 2023-11-20
-  dateEnd: 2023-11-22
-  logo: jcon-world-2023.png
-  appearances:
-    - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
-      sessionPageUrl: https://jconworld2023.sched.com/event/1RRXD/javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
 
 - id: joy-of-coding-2023
   name: Joy of Coding
