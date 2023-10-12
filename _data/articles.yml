@@ -1,3 +1,10 @@
+- title: Java 21 is Available Today, And It’s Quite the Update 
+  language: uk
+  year: 2023
+  source: foojay.io
+  url: https://foojay.io/today/java-21-is-available-today-and-its-quite-the-update/
+  synopsis: A tour through all Java 21 JEPs, with a brief introduction and typical use case for each one of them.
+
 - title: Structured Concurrency in Java 21 (scheduled for August 2023)
   language: uk
   year: 2023
