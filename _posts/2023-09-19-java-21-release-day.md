@@ -554,7 +554,7 @@ For more information on this feature, see [JEP 444](https://openjdk.org/jeps/444
 Java's current implementation of concurrency is _unstructured_, meaning that tasks run independently of each other. They don't come with any hierarchy, scope, or other structure, which means they cannot easily pass errors or cancellation intent to each other.
 To illustrate this, let's look at a code example that takes place in a restaurant:
 
-> All code examples that illustrate Structured Concurrency were taken from my conference talk ["Java's Concurrency Journey Continues! Exploring Structured Concurrency and Scoped Values"](https://hanno.codes/talks/#javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values).
+> All code examples that illustrate Structured Concurrency were taken from my conference talk ["Java's Concurrency Journey Continues! Exploring Structured Concurrency and Scoped Values"](https://hanno.codes/talks/#javas-concurrency-journey-continues).
 
 ```java
 public class MultiWaiterRestaurant implements Restaurant {

@@ -13,8 +13,10 @@
   dateStart: 2023-10-31
   logo: arnhemjug.jpeg
   appearances:
-    - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+    - id: javas-concurrency-journey-continues
       sessionPageUrl: https://www.meetup.com/arnhemjug/events/296251934/
+      slides:   
+        source: local
 
 - id: j-fall-2023
   name: J-Fall
@@ -42,7 +44,7 @@
   dateEnd: 2023-11-22
   logo: jcon-world-2023.png
   appearances:
-    - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+    - id: javas-concurrency-journey-continues
       sessionPageUrl: https://jconworld2023.sched.com/event/1RRXD/javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
 
 - id: jfokus-2024
