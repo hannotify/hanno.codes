@@ -31,3 +31,6 @@
 [submodule "_slides/javas-concurrency-journey-continues/arnhemjug-2023"]
 	path = _slides/javas-concurrency-journey-continues/arnhemjug-2023
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
+[submodule "_slides/pijul/jfall-2023"]
+	path = _slides/pijul/jfall-2023
+	url = https://github.com/hannotify/a-birds-eye-view-of-version-control-with-pijul

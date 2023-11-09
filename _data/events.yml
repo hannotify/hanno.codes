@@ -1,3 +1,23 @@
+- id: jfall-2023
+  name: J-Fall
+  year: 2023
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Ede
+  venue:
+    name: Pathé
+    latitude: 52.01577007972178
+    longitude: 5.64583211559008
+  url: https://www.jfall.nl
+  dateStart: 2023-11-09
+  logo: jfall.png
+  appearances:
+    - id: pijul
+      sessionPageUrl: https://jfall.nl/timetable/
+      slides:   
+        source: local
+
 - id: arnhemjug-2023
   name: ArnhemJUG
   year: 2023
@@ -17,24 +37,6 @@
       sessionPageUrl: https://www.meetup.com/arnhemjug/events/296251934/
       slides:   
         source: local
-
-- id: j-fall-2023
-  name: J-Fall
-  year: 2023
-  country:
-    flag: netherlands
-    name: The Netherlands
-  city: Ede
-  venue:
-    name: Pathé
-    latitude: 52.01577007972178
-    longitude: 5.64583211559008
-  url: https://www.jfall.nl
-  dateStart: 2023-11-09
-  logo: jfall.png
-  appearances:
-    - id: a-birds-eye-view-of-version-control-with-pijul
-      sessionPageUrl: https://jfall.nl/timetable/
 
 - id: jcon-world-2023
   name: JCON WORLD
