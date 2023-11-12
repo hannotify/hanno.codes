@@ -513,7 +513,6 @@ platformThread.start();
 var virtualThread = Thread.startVirtualThread(() -> {
     // do some work in a virtual thread
 });
-virtualThread.start();
 ```
 
 When your code uses the `ExecutorService` interface already, switching to virtual threads will take even less effort:
