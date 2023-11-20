@@ -38,7 +38,7 @@
       slides:   
         source: local
 
-- id: jcon-world-2023
+- id: jcon-2023
   name: JCON WORLD
   year: 2023
   url: https://2023.world.jcon.one/speaker
@@ -48,6 +48,8 @@
   appearances:
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://jconworld2023.sched.com/event/1RRXD/javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+      slides: 
+        source: local
 
 - id: jfokus-2024
   name: JFokus
