@@ -1,3 +1,63 @@
+- id: devnexus-2024
+  name: Devnexus
+  year: 2024
+  country:
+    flag: usa
+    name: USA
+  city: Atlanta
+  venue:
+    name: Georgia World Congress Centre
+    latitude: 33.76042
+    longitude: -84.3980223
+  url: https://www.devnexus.com
+  dateStart: 2024-04-09
+  dateEnd: 2024-04-11
+  logo: devnexus.png
+  appearances:
+    - id: beware-of-survivorship-bias
+      sessionPageUrl: https://devnexus.com/presentations/beware-of-survivorship-bias/
+
+- id: jcon-europe-2024
+  name: JCON EUROPE
+  year: 2024
+  country:
+    flag: de
+    name: Germany
+  city: Köln
+  venue:
+    name: Cinedom
+    latitude: 50.9480818
+    longitude: 6.9441045
+  url: https://www.jcon.one
+  dateStart: 2024-05-13
+  dateEnd: 2024-05-16
+  logo: jcon-2024.png
+  appearances:
+    - id: what-stairway-to-heaven-can-teach-us-about-software-development
+
+- id: jfokus-2024
+  name: JFokus
+  year: 2024
+  country:
+    flag: sweden
+    name: Sweden
+  city: Stockholm
+  venue:
+    name: Waterfront Congress Centre
+    latitude: 59.3299581
+    longitude: 18.0534562
+  url: https://www.jfokus.se
+  dateStart: 2024-02-05
+  dateEnd: 2024-02-07
+  logo: jfokus.jpeg
+  appearances:
+    - id: six-things-we-learned-implementing-rockstar-on-quarkus-
+      sessionPageUrl: https://www.jfokus.se/talks/1643
+      slides: 
+        source: speakerdeck
+        url: https://speakerdeck.com/hollycummins/six-things-we-learned-implementing-rockstar-on-quarkus
+
+
 - id: jfall-2023
   name: J-Fall
   year: 2023
@@ -50,25 +110,6 @@
       sessionPageUrl: https://jconworld2023.sched.com/event/1RRXD/javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
       slides: 
         source: local
-
-- id: jfokus-2024
-  name: JFokus
-  year: 2024
-  country:
-    flag: sweden
-    name: Sweden
-  city: Stockholm
-  venue:
-    name: Waterfront Congress Centre
-    latitude: 59.3299581
-    longitude: 18.0534562
-  url: https://www.jfokus.se
-  dateStart: 2024-02-05
-  dateEnd: 2024-02-07
-  logo: jfokus.jpeg
-  appearances:
-    - id: six-things-we-learned-implementing-rockstar-on-quarkus-
-      sessionPageUrl: https://www.jfokus.se/talks/1643
 
 - id: utrechtjug-2023
   name: UtrechtJUG
