@@ -2,14 +2,14 @@
   name: Devnexus
   year: 2024
   country:
-    flag: usa
+    flag: us
     name: USA
   city: Atlanta
   venue:
     name: Georgia World Congress Centre
     latitude: 33.76042
     longitude: -84.3980223
-  url: https://www.devnexus.com
+  url: https://devnexus.com
   dateStart: 2024-04-09
   dateEnd: 2024-04-11
   logo: devnexus.png
