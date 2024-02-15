@@ -53,10 +53,10 @@
   appearances:
     - id: six-things-we-learned-implementing-rockstar-on-quarkus-
       sessionPageUrl: https://www.jfokus.se/talks/1643
+      videoUrl: https://youtu.be/qG9M1YrrmoE?si=r5hB5avqe_R11gCN
       slides: 
         source: speaker-deck
         url: https://speakerdeck.com/hollycummins/six-things-we-learned-implementing-rockstar-on-quarkus
-
 
 - id: jfall-2023
   name: J-Fall
