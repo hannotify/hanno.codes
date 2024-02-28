@@ -17,6 +17,24 @@
     - id: beware-of-survivorship-bias
       sessionPageUrl: https://devnexus.com/presentations/beware-of-survivorship-bias/
 
+- id: devoxx-uk-2024
+  name: Devoxx UK
+  year: 2024
+  country:
+    flag: gb
+    name: United Kingdom
+  city: London
+  venue:
+    name: Business Design Centre
+    latitude: 51.5358885
+    longitude: -0.1091954
+  url: https://www.devoxx.co.uk
+  dateStart: 08-05-2024
+  dateEnd: 10-05-2024
+  logo: devoxx-uk.jpeg
+  appearances:
+    - id: six-things-we-learned-implementing-rockstar-on-quarkus-
+
 - id: jcon-europe-2024
   name: JCON EUROPE
   year: 2024
