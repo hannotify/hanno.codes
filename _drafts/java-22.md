@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Java 22 TODO
+title: Java 22 Has Been Launched, And It's Ready To Rock
 date: 19-03-2024 04:30:00 +0200
 header:
-  teaser: /assets/images/blog/TODO.jpg
+  teaser: /assets/images/blog/guitar-pedals.jpg
 excerpt: TODO
 tags: 
 - java
@@ -11,8 +11,12 @@ tags:
 
 TODO: intro
 
-![TODO](/assets/images/blog/TODO.jpg)
-> Image from <a href="https://TODO">TODO</a>
+![Java 22 - Ready to rock!](/assets/images/blog/guitar-pedals.jpg)
+> Image from <a href="https://pxhere.com/en/photo/680220">PxHere</a>
+
+## On the Structure of this Article
+
+TODO
 
 ## From Project Amber
 
@@ -399,7 +403,7 @@ void main() { // this is an instance main method inside of an implicitly declare
 
 Java 22 enhances the launch protocol to offer more flexibility in declaring a program's entry point. The `main` method of a launched class can now have `public`, `protected` or default access, for example. Other enhancements of the launch protocol include:
 
-* If the launched class contains a main method with a String[] parameter then choose that method.
+* If the launched class contains a main method with a `String[]` parameter then choose that method.
 * Otherwise, if the class contains a main method with no parameters then choose that method.
 * In either case, if the chosen method is static then simply invoke it.
 * Otherwise, the chosen method is an instance method and the launched class must have a zero-parameter, non-private constructor. Invoke that constructor and then invoke the main method of the resulting object. If there is no such constructor then report an error and terminate.
@@ -437,7 +441,7 @@ Java 22 contains two features that originated from [Project Loom](http://openjdk
 Historically, Java's take on concurrency has been _unstructured_, meaning that tasks run independently of each other. They don't come with any hierarchy, scope, or other structure, which means they cannot easily pass errors or cancellation intent to each other.
 To illustrate this, let's look at a code example that takes place in a restaurant:
 
-> All code examples that illustrate Structured Concurrency were taken from my conference talk ["Java's Concurrency Journey Continues! Exploring Structured Concurrency and Scoped Values"](https://hanno.codes/talks/#javas-concurrency-journey-continues).
+> The code examples that illustrate Structured Concurrency were taken from my conference talk ["Java's Concurrency Journey Continues! Exploring Structured Concurrency and Scoped Values"](https://hanno.codes/talks/#javas-concurrency-journey-continues).
 
 ```java
 public class MultiWaiterRestaurant implements Restaurant {
@@ -581,38 +585,48 @@ For more information on this feature, see [JEP 462](https://openjdk.org/jeps/462
 
 ### JEP 464: Scoped Values (Second Preview)
 
-
 *Scoped values* enable the sharing of immutable data within and across threads.
 They are preferred to thread-local variables, especially when using large numbers of virtual threads.
 
+> The code examples that illustrate Scoped Values were taken from my conference talk ["Java's Concurrency Journey Continues! Exploring Structured Concurrency and Scoped Values"](https://hanno.codes/talks/#javas-concurrency-journey-continues).
+
 #### ThreadLocal
 
-Since Java 1.2 we can make use of `ThreadLocal` variables, which confine a certain value to the thread that created it. Back then it could be a simple way to achieve thread-safety, [in some cases](https://stackoverflow.com/a/817926).
+Since Java 1.2 we can make use of `ThreadLocal` variables, which confine a certain value to the thread that created it. Back then this was a simple way to achieve thread-safety, [in some cases](https://stackoverflow.com/a/817926).
 
-But thread-local variables also come with a few caveats. Every thread-local variable is mutable, which makes it hard to discern which component updates shared state and in what order. There's also the risk of memory leaks, because unless you call `remove()` on the `ThreadLocal` the data is retained until it is garbage collected (which is only after the thread terminates). And finally, thread-local variables of a parent thread can be inherited by child threads, which results in the child thread having to allocate storage for every thread-local variable previously written in the parent thread.
+But thread-local variables also come with a few caveats. Every thread-local variable is mutable, which makes it hard to discern which component updates shared state and in what order. There's also the risk of memory leaks, because unless you call `remove()` on the `ThreadLocal` the data is retained until it is garbage collected (which is only after the thread terminates). And finally, thread-local variables of a parent thread can be inherited by child threads, meaning that the child thread has to allocate storage for every thread-local variable previously written in the parent thread.
 
-These drawbacks become more apparent now that virtual threads have been introduced, because millions of them could be active at the same time - each with their own thread-local variables - which would result in a significant memory footprint.
+These drawbacks become more apparent now that virtual threads have been introduced, because millions of them could be active at the same time - each with their own thread-local variables - resulting in a significant memory footprint.
 
 #### Scoped Values
 
 Like a thread-local variable, a scoped value has multiple incarnations, one per thread. Unlike a thread-local variable, a scoped value is written once and is then immutable, and is available only for a bounded period during execution of the thread.
 
-TODO: replace the JEP example with a Restaurant one.
-
-The JEP illustrates the use of scoped values with the pseudo code example below:
+To demonstrate this feature, we've added a scoped value to the `StructuredConcurrencyBar` class that you're already familiar with:
 
 ```java
-final static ScopedValue<...> V = ScopedValue.newInstance();
+public class StructuredConcurrencyBar implements Bar {
+    private static final ScopedValue<Integer> drinkOrderId = ScopedValue.newInstance();
 
-// In some method
-ScopedValue.where(V, <value>)
-           .run(() -> { ... V.get() ... call methods ... });
+    @Override
+    public DrinkOrder determineDrinkOrder(Guest guest) throws Exception {
+        Waiter zoe = new Waiter("Zoe");
+        Waiter elmo = new Waiter("Elmo");
 
-// In a method called directly or indirectly from the lambda expression
-... V.get() ...
+        return ScopedValue.where(drinkOrderId, 1)
+                .call(() -> {
+                    try (var scope = new StructuredTaskScope.ShutdownOnSuccess<DrinkOrder>()) {
+                        scope.fork(() -> zoe.getDrinkOrder(guest, BEER, WINE, JUICE));
+                        scope.fork(() -> elmo.getDrinkOrder(guest, COFFEE, TEA, COCKTAIL, DISTILLED));
+
+                        return scope.join().result();
+                    }
+                });
+    }
+}
 ```
 
-We see that `ScopedValue.where(...)` is called, presenting a scoped value and the object to which it is to be bound. The call to `run(...)` binds the scoped value, providing an incarnation that is specific to the current thread, and then executes the lambda expression passed as argument. During the lifetime of the `run(...)` call, the lambda expression, or any method called directly or indirectly from that expression, can read the scoped value via the value’s `get()` method. After the `run(...)` method finishes, the binding is destroyed.
+We see that `ScopedValue.where(...)` is called, presenting a scoped value and the object to which it is to be bound. The invocation of `call(...)` binds the scoped value, providing an incarnation that is specific to the current thread, and then executes the lambda expression passed as argument. During the lifetime of `call(...)`, the lambda expression - or any method called directly or indirectly from that expression - can read the scoped value via the value’s `get()` method. After the `call(...)` method finishes, the binding is destroyed.
 
 #### Typical Use Cases
 
@@ -623,7 +637,6 @@ Scoped values will be useful in all places where currently thread-local variable
 Compared to the preview version of this feature in Java 21, nothing was changed or added. JEP 464 simply exists to gather more feedback from users of this feature.
 
 Note that the JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to be able to take the feature for a spin.
-
 
 #### More Information
 
@@ -639,7 +652,6 @@ Java 22 contains two features that originated from [Project Panama](http://openj
 > Project Panama aims to improve the connection between the JVM and foreign (non-Java) libraries.
 
 ### JEP 454: Foreign Function & Memory API
-
 
 Java programs have always had the option of interacting with code and data outside of the Java runtime, through the [Java Native Interface](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/) (JNI).
 And accessing foreign memory (outside of the JVM, so off-heap) was possible using either the [ByteBuffer API](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/nio/ByteBuffer.html) or the [sun.misc.Unsafe API](https://github.com/openjdk/jdk/blob/master/src/jdk.unsupported/share/classes/sun/misc/Unsafe.java).
@@ -780,11 +792,17 @@ Java 22 introduces a single change to [HotSpot](https://openjdk.org/groups/hotsp
 
 ### JEP 423: Region Pinning for G1
 
-TODO
+The Java Native Interface ([JNI](https://docs.oracle.com/en/java/javase/21/docs/specs/jni/index.html)) facilitates interaction between Java and unmanaged languages like C and C++. It allows for the exchange of pointers to Java objects, enabling interoperability. When using JNI, functions are employed to acquire and release pointers to Java objects in pairs. This creates what is called a *critical region*, where code operates on a *critical object*.
+
+During garbage collection, Java must ensure that critical objects aren't moved, as they're being actively used. One method to achieve this is by pinning objects in place ('region pinning'), essentially locking them during GC. However, the default garbage collector, G1, currently opts to disable GC during critical regions to avoid moving critical objects.
+
+This approach can lead to significant latency issues, particularly if a Java thread triggers GC while others are in critical regions. Users have reported scenarios where critical sections block application functionality for extended periods, leading to out-of-memory conditions and even VM shutdown. Consequently, some Java libraries and frameworks abstain from using critical regions to maintain throughput, despite potential adverse effects on performance.
+
+JEP 423 proposes a change to address this issue by ensuring Java threads never wait for G1GC operations to complete, thereby mitigating the latency problems associated with critical regions.
 
 #### What's Different From Java 21?
 
-TODO
+In Java 21, G1GC disables garbage collection during critical regions to avoid moving critical objects. In Java 22, G1GC will use *region pinning* instead.
 
 #### More Information
 
@@ -792,21 +810,67 @@ For more information on this feature, see [JEP 423](https://openjdk.org/jeps/423
 
 ## Compiler
 
-Java 22 also brings us a single addition that's part of the compiler:
+Java 22 also brings us an addition that's part of the compiler:
 
 * Launch Multi-File Source-Code Programs 
   
 ### JEP 458: Launch Multi-File Source-Code Programs
 
-TODO
+Java is known for being well-suited to build large, complex applications by large teams. But several recent additions to the JDK tend to focus on the early stages of a software project, when it's still unclear of how big it might get - it might not even have a project structure yet! Features like [jshell](https://openjdk.org/jeps/222) and [instance main methods](https://openjdk.org/jeps/463) come to mind, but the ability to run `.java` source files directly without an explicit compilation step ([JEP 330](https://openjdk.org/jeps/330)) is probably the best example of Java's currenty focus on starter projects.
+
+A drawback of running a program like this is that all source code must be placed in a single `.java` file. To work with more than one `.java` file, the separate compilation step is still required, forcing developers to involve a build tool into their project. If the developer is still a beginner the situation is arguably worse: they must pause their learning of the language and must prioritise learning about `javac` or build tools like Maven or Gradle.
+
+This is why Java 22 introduces a `java` launcher that supports running a program consisting of multiple `.java` files. Suppose a directory contains two files, `Prog.java` and `Helper.java`, where each file declares a single class:
+
+```java
+// Prog.java
+class Prog {
+    public static void main(String[] args) { Helper.run(); }
+}
+
+// Helper.java
+class Helper {
+    static void run() { System.out.println("Hello!"); }
+}
+```
+
+Running `java Prog.java` compiles the `Prog` class in memory and executes its `main` method. If `Prog` refers to another class, such as `Helper`, the launcher locates the `Helper.java` file in the filesystem and compiles its class in memory. Furthermore, if `Prog.java` would contain a `Helper` class, than that class would be preferred over the `Helper` class in `Helper.java`; the launcher would not search for the file `Helper.java`.
+
+#### Pre-compiled classes
+
+You can also launch programs that depend on libraries from the command-line. Given the following directory listing...
+
+```
+Prog1.java
+Prog2.java
+Helper.java
+libs/
+├─ library1.jar
+├─ library2.jar
+```
+
+...we can run these programs by passing `--class-path lib/*` to the `java` launcher:
+
+```shell
+$ java --class-path 'lib/*' Prog1.java
+$ java --class-path 'lib/*' Prog2.java
+```
+> The argument to the `--class-path` option is quoted to avoid expansion of the asterisk by the shell.
+
+The programs in this example reside in the unnamed module. If the libraries in `libs/` would be modular, we would run the programs like so:
+
+```shell
+$ java -p lib Prog1.java
+$ java -p lib Prog2.java
+```
 
 #### What's Different From Java 21?
 
-TODO
+Up until Java 21, directly running a program on the command-line without a separate compilation command was supported for single file programs only. Java 22 add support for programs that span multiple files.
 
 #### More Information
 
-For more information on this feature, see [JEP 458](https://openjdk.org/jeps/458).
+For more information on this feature, see [JEP 458](https://openjdk.org/jeps/458). It contains a few more details on launch-time semantics, how the launcher finds source files and how package structure comes into play. 
 
 ## Core Libraries
 
@@ -817,17 +881,91 @@ Java 22 also brings you two additions that are part of the core libraries:
 
 ### JEP 457: Class-File API (Preview)
 
-TODO
+Java's ecosystem relies heavily on the ability to parse, generate and transform class files. Frameworks use on-the-fly bytecode transformation to transparently add functionality, for example. These frameworks typically bundle class-file libraries like [ASM](https://asm.ow2.io/) or [Javassist](https://www.javassist.org/) to handle class file processing. However, these libraries suffer from the fact that the six-month release cadence of the JDK causes the class-file format to evolve more quickly than before, meaning they might encounter class files that are newer than the class-file library that they bundle. 
+
+To solve this problem, JEP 457 proposes a standard class-file API that will assure framework developers that it is up-to-date with the running JDK. This API will evolve together with the class-file format, enabling frameworks to rely solely on this API, rather than on the willingness of third-party developers to update and test their class-file libraries.
+
+#### Elements, Builders and Transforms
+
+The Class-File API, located in the `java.lang.classfile` package, consists of three main components:
+
+*Elements*
+: Immutable descriptions of parts of a class file, such as instructions, attributes, fields, methods, or the entire file.
+
+*Builders* 
+: Corresponding builders for compound elements, offering specific building methods (e.g., `ClassBuilder::withMethod`) and serving as consumers of element types.
+
+*Transforms* 
+: Functions that take an element and a builder, determining if and how the element is transformed into other elements. This allows for flexible modification of class file elements.
+
+#### Example and Comparison To ASM
+
+Suppose we wish to generate the following method in a class file:
+
+```java
+void fooBar(boolean z, int x) {
+    if (z)
+        foo(x);
+    else
+        bar(x);
+}
+```
+
+With ASM we could generate the method as follows:
+
+```java
+ClassWriter classWriter = ...;
+MethodVisitor mv = classWriter.visitMethod(0, "fooBar", "(ZI)V", null, null);
+mv.visitCode();
+mv.visitVarInsn(ILOAD, 1);
+Label label1 = new Label();
+mv.visitJumpInsn(IFEQ, label1);
+mv.visitVarInsn(ALOAD, 0);
+mv.visitVarInsn(ILOAD, 2);
+mv.visitMethodInsn(INVOKEVIRTUAL, "Foo", "foo", "(I)V", false);
+Label label2 = new Label();
+mv.visitJumpInsn(GOTO, label2);
+mv.visitLabel(label1);
+mv.visitVarInsn(ALOAD, 0);
+mv.visitVarInsn(ILOAD, 2);
+mv.visitMethodInsn(INVOKEVIRTUAL, "Foo", "bar", "(I)V", false);
+mv.visitLabel(label2);
+mv.visitInsn(RETURN);
+mv.visitEnd();
+```
+
+Unlike in ASM where clients directly create a `ClassWriter` and then request a `MethodVisitor`, the Class-File API adopts a different approach. Here, instead of clients initiating a builder through a constructor or factory, they supply a lambda function that takes a builder as its parameter:
+
+```java
+ClassBuilder classBuilder = ...;
+classBuilder.withMethod("fooBar", MethodTypeDesc.of(CD_void, CD_boolean, CD_int), flags,
+                        methodBuilder -> methodBuilder.withCode(codeBuilder -> {
+    Label label1 = codeBuilder.newLabel();
+    Label label2 = codeBuilder.newLabel();
+    codeBuilder.iload(1)
+        .ifeq(label1)
+        .aload(0)
+        .iload(2)
+        .invokevirtual(ClassDesc.of("Foo"), "foo", MethodTypeDesc.of(CD_void, CD_int))
+        .goto_(label2)
+        .labelBinding(label1)
+        .aload(0)
+        .iload(2)
+        .invokevirtual(ClassDesc.of("Foo"), "bar", MethodTypeDesc.of(CD_void, CD_int))
+        .labelBinding(label2);
+        .return_();
+});
+```
 
 #### What's Different From Java 21?
 
-TODO
+Starting with Java 22, frameworks will be able to rely solely on the Class-File API, rather than third party libraries like ASM or Javassist. 
 
-Note that the JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to be able to take the feature for a spin.
+Note that the Class-File API is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to be able to take the feature for a spin.
 
 #### More Information
 
-For more information on this feature, see [JEP 457](https://openjdk.org/jeps/457).
+For more information on this feature, including more details on transforming class files, see [JEP 457](https://openjdk.org/jeps/457).
 
 ### JEP 461: Stream Gatherers (Preview)
 
@@ -847,4 +985,5 @@ For more information on this feature, see [JEP 461](https://openjdk.org/jeps/461
 
 TODO: outro
 
-TODO: proofreed the entire thing
+TODO: shorten wherever possible
+TODO: proofread the whole thing
