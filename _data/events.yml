@@ -1,21 +1,37 @@
-- id: devnexus-2024
-  name: Devnexus
+- id: amsterdamjug-2024
+  name: AmsterdamJUG
   year: 2024
   country:
-    flag: us
-    name: USA
-  city: Atlanta
-  venue:
-    name: Georgia World Congress Centre
-    latitude: 33.76042
-    longitude: -84.3980223
-  url: https://devnexus.com
-  dateStart: 2024-04-09
-  dateEnd: 2024-04-11
-  logo: devnexus.png
+    flag: netherlands
+    name: The Netherlands
+  city: Amsterdam
+  url: https://www.meetup.com/amsterdam-java-user-group/
+  dateStart: 2024-06-18
+  logo: amsterdamjug.webp
   appearances:
-    - id: beware-of-survivorship-bias
-      sessionPageUrl: https://devnexus.com/presentations/beware-of-survivorship-bias/
+    - id: javas-concurrency-journey-continues
+
+- id: jcon-europe-2024
+  name: JCON EUROPE
+  year: 2024gi
+  country:
+    flag: de
+    name: Germany
+  city: Köln
+  venue:
+    name: Cinedom
+    latitude: 50.9480818
+    longitude: 6.9441045
+  url: https://www.jcon.one
+  dateStart: 2024-05-13
+  dateEnd: 2024-05-16
+  logo: jcon-2024.png
+  appearances:
+    - id: what-stairway-to-heaven-can-teach-us-about-software-development
+      sessionPageUrl: https://2024.europe.jcon.one/schedule
+      slides:
+        source: google-drive
+        url: https://docs.google.com/presentation/d/e/2PACX-1vRzAq_JsbjJy9B4Li6HI-SF2YM2GwWXQlU-gN8Zm5GLIk8BXKvPuH0BgLnn0AoepxvtAE1bu68xopP4/pub
 
 - id: devoxx-uk-2024
   name: Devoxx UK
@@ -34,24 +50,32 @@
   logo: devoxx-uk.jpeg
   appearances:
     - id: six-things-we-learned-implementing-rockstar-on-quarkus-
+      slideDeckUrl: https://www.devoxx.co.uk/talk/?id=23906
+      slides:
+        source: speaker-deck
+        url: https://speakerdeck.com/hollycummins/six-things-we-learned-implementing-rockstar-on-quarkus
 
-- id: jcon-europe-2024
-  name: JCON EUROPE
+- id: devnexus-2024
+  name: Devnexus
   year: 2024
   country:
-    flag: de
-    name: Germany
-  city: Köln
+    flag: us
+    name: USA
+  city: Atlanta
   venue:
-    name: Cinedom
-    latitude: 50.9480818
-    longitude: 6.9441045
-  url: https://www.jcon.one
-  dateStart: 2024-05-13
-  dateEnd: 2024-05-16
-  logo: jcon-2024.png
+    name: Georgia World Congress Centre
+    latitude: 33.76042
+    longitude: -84.3980223
+  url: https://devnexus.com
+  dateStart: 2024-04-09
+  dateEnd: 2024-04-11
+  logo: devnexus.png
   appearances:
-    - id: what-stairway-to-heaven-can-teach-us-about-software-development
+    - id: beware-of-survivorship-bias
+      sessionPageUrl: https://devnexus.com/presentations/beware-of-survivorship-bias/
+      slides:
+        source: speaker-deck
+        url: https://speakerdeck.com/mthmulders/beware-of-survivorship-bias-devnexus
 
 - id: jfokus-2024
   name: JFokus
@@ -142,6 +166,10 @@
   appearances:
     - id: what-stairway-to-heaven-can-teach-us-about-software-development
       sessionPageUrl: https://www.meetup.com/utrecht-java-user-group/events/291485771
+      slides:
+        source: google-drive
+        url: https://docs.google.com/presentation/d/e/2PACX-1vRzAq_JsbjJy9B4Li6HI-SF2YM2GwWXQlU-gN8Zm5GLIk8BXKvPuH0BgLnn0AoepxvtAE1bu68xopP4/pub
+
 
 - id: joy-of-coding-2023
   name: Joy of Coding
