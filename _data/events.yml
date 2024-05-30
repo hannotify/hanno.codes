@@ -10,6 +10,7 @@
   logo: amsterdamjug.webp
   appearances:
     - id: javas-concurrency-journey-continues
+      sessionPageUrl: https://www.meetup.com/amsterdam-java-user-group/events/301059652
 
 - id: jcon-europe-2024
   name: JCON EUROPE
@@ -51,6 +52,7 @@
   appearances:
     - id: six-things-we-learned-implementing-rockstar-on-quarkus-
       slideDeckUrl: https://www.devoxx.co.uk/talk/?id=23906
+      videoUrl: https://youtu.be/UHAezmsWov8
       slides:
         source: speaker-deck
         url: https://speakerdeck.com/hollycummins/six-things-we-learned-implementing-rockstar-on-quarkus
