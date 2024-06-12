@@ -11,6 +11,21 @@
   appearances:
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://www.meetup.com/amsterdam-java-user-group/events/301059652
+      slides:   
+        source: local
+
+- id: trailblazers-meetup-2024
+  name : Trailblazers Meetup
+  year: 2024
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Weesp
+  url: https://www.meetup.com/nl-NL/trailblazers-meetups/
+  dateStart: 2024-09-19
+  logo: trailblazers.webp
+  appearances:
+    - id: javas-concurrency-journey-continues
 
 - id: jcon-europe-2024
   name: JCON EUROPE

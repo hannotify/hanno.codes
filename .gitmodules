@@ -37,3 +37,6 @@
 [submodule "_slides/javas-concurrency-journey-continues/jcon-2023"]
 	path = _slides/javas-concurrency-journey-continues/jcon-2023
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
+[submodule "_slides/javas-concurrency-journey-continues/amsterdamjug-2024"]
+	path = _slides/javas-concurrency-journey-continues/amsterdamjug-2024
+	url = https://github.com/hannotify/javas-concurrency-journey-continues
