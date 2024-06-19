@@ -11,11 +11,12 @@
   appearances:
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://www.meetup.com/amsterdam-java-user-group/events/301059652
+      githubUrl: https://github.com/hannotify/structured-concurrency-bar
       slides:   
         source: local
 
 - id: trailblazers-meetup-2024
-  name : Trailblazers Meetup
+  name: Trailblazers Meetup
   year: 2024
   country:
     flag: netherlands
@@ -26,6 +27,16 @@
   logo: trailblazers.webp
   appearances:
     - id: javas-concurrency-journey-continues
+
+- id: ns-devops-and-qa-tech-day-2024
+  name: DevOps & QA Tech Day NS
+  year: 2024
+  country: 
+    flag: netherlands
+    name: The Netherlands
+  city: Utrecht
+  dateStart: 2024-10-22
+  logo: todo
 
 - id: jcon-europe-2024
   name: JCON EUROPE
@@ -167,6 +178,7 @@
   appearances:
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://jconworld2023.sched.com/event/1RRXD/javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+      videoUrl: https://youtu.be/4J2r7tC0QUY
       slides: 
         source: local
 
