@@ -37,6 +37,9 @@
   city: Utrecht
   dateStart: 2024-10-22
   logo: ns.webp
+  appearances:
+    - id: what-stairway-to-heaven-can-teach-us-about-software-development
+    - id: will-git-be-around-forever
 
 - id: jcon-europe-2024
   name: JCON EUROPE
