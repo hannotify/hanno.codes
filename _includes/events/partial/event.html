@@ -18,6 +18,12 @@
             <td >{{ event.dateStart | date: "%B %e, %Y" }}</td>
         {% endif %}
     </tr>
+    {% if event.remarks %}
+    <tr>
+        <td><strong>Remarks</strong></td>
+        <td>{{ event.remarks }}</td>
+    </tr>
+    {% endif %}
     {% for appearance in event.appearances %}
         {% assign talk = site.data.talks | where: "id", appearance.id | first %}    
         {% include events/partial/talk.html event=event %}
