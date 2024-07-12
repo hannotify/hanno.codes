@@ -83,11 +83,11 @@
   type: regular
   retired: false
   description: | 
-    At first it seemed to be just a small enhancement: the addition of "Pattern Matching for instanceof" (JEP 305) in Java 14. No more unnecessary casting after an `instanceof`, that ought to save us a few seconds a day! However, upon further investigation you'll quickly discover that pattern matching is not just an enhancement, but rather a vital puzzle piece in the grander scheme of things.
+    At first it seemed to be just a small enhancement: the addition of "Pattern Matching for instanceof" (JEP 305) back in Java 14. No more unnecessary casting after an `instanceof`, that ought to save us a few seconds a day! However, upon further investigation you'll quickly discover that pattern matching is not just an enhancement, but rather a vital puzzle piece in the grander scheme of things.
 
-    Why were switch expressions added to Java, for example? To make them support pattern matching in a later release! And why did Java 14 bring us records and did Java 15 contain sealed types? Because they could work really well with pattern matching in a later release! These new concepts are the foundation upon which advanced pattern matching features will be built.
+    Why were switch expressions added to Java, for example? To make them support pattern matching in a later release! And why have features like records and sealed types been introduced? Because they could work really well with pattern matching in a later release! These new concepts are the foundation upon which advanced pattern matching features will be built.
 
-    So attend this session to get all caught up! You'll hear about type patterns, deconstruction patterns, nested patterns and even how pattern matching could improve serialization in the future. Live coding included, of course!
+    So attend this session to get all caught up, until the very latest release of Java! You'll hear about type patterns, record patterns, pattern composition and even how pattern matching could improve serialization in the future. Live coding included, of course!
 
 - id: jepardy
   title: JEPardy!
@@ -101,14 +101,8 @@
   type: regular
   retired: false
   description: |
-    What source control software did you use in 2010? Possibly Git, if you were an early adopter or a Linux kernel committer. But chances are you were using Subversion, as this was the product of choice for the majority of the software developers. Ten years later, Git is the most popular product. Which makes me wonder&#58; what will we use another ten years from now?
-
-    In this talk we will think about what features we want from our source control software in 2030. More speed? Better collaboration support? No merge conflicts ever?
-
-    I'll also discuss a few products that have been published after Git emerged, including Plastic, Fossil and Pijul. I'll talk about the extent to which they contain the features we so dearly desire and I'll demonstrate a few typical use cases. To conclude, I'll try to predict which one will be 'the top dog' in 2030 (all information is provided "as is", no guarantees etc. etc.).
-
-    So attend this session if you're excited about the future of version control and if you want to have a shot at beating even (!) the early adopters. Now if it turns out I was right, remember that you heard it here first. 😀
-
+    Ten years ago, only early adopters used Git. The majority used Subversion. Ten years later, almost everyone uses Git. Which makes me wonder: will this be different ten years from now? What features would we need in 2034? No history rewrites? Better collaboration? No merge conflicts ever? I'll discuss a few post-Git products, including Fossil, Pijul and Sapling, and the features they contain. I'll also predict whether Git will remain in the top spot or not. So attend this session if you want to have a shot at beating even (!) the early adopters. If it turns out I was right, remember that you heard it here first. 😀
+    
 - id: building-a-spring-boot-application-ask-the-audience
   title: Building a Spring Boot Application&#58; Ask the Audience!
   type: regular
