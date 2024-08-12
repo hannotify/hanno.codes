@@ -10,7 +10,7 @@
   logo: spacerockit-2024.png
   appearances:
     - id: what-stairway-to-heaven-can-teach-us-about-software-development
-      sessionPageUrl: https://spacerockitfestival.nl/schedule/
+      sessionPageUrl: https://spacerockitfestival.nl/sprekers/#HannoEsessie
 
 - id: trailblazers-meetup-2024
   name: Trailblazers Meetup
@@ -24,6 +24,7 @@
   logo: trailblazers.webp
   appearances:
     - id: javas-concurrency-journey-continues
+      sessionPageUrl: https://www.meetup.com/trailblazers-meetups/events/302309276
 
 - id: hbo-student-and-job-event-2024
   name: HBO ICT Student & Job event
@@ -41,9 +42,26 @@
   logo: hboictjobevent.png
   appearances:
     - id: pattern-matching
-      cospeakers:
-        - name: Peter Wessels
-          twitterUrl: https://www.twitter.com/PeterWessels
+
+- id: devoxx-2024
+  name: Devoxx
+  year: 2024
+  country:
+    flag: belgium
+    name: Belgium
+  city: Antwerp
+  venue:
+    name: Kinepolis
+    latitude: 51.2459082
+    longitude: 4.4140204
+  url: https://www.devoxx.be
+  dateStart: 07-10-2024
+  dateEnd: 11-10-2024
+  logo: devoxx.png
+  appearances:
+    - id: javas-concurrency-journey-continues
+      sessionPageUrl: https://devoxx.be/talk/?id=2586
+      githubUrl: https://github.com/hannotify/structured-concurrency-bar
 
 - id: ns-devops-and-qa-tech-day-2024
   name: DevOps & QA Tech Day NS
