@@ -218,6 +218,7 @@
   appearances:
     - id: pijul
       sessionPageUrl: https://jfall.nl/timetable/
+      videoUrl: https://youtu.be/Ev80GGP5VNc
       slides:   
         source: local
 
