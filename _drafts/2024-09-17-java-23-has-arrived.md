@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Make Way for Java 23...TODO
+title: Java 23 Has Arrived, And It Brings a Truckload of Features
 date: 19-09-2024 04:30:00 +0200
 header:
   teaser: /assets/images/blog/TODO.jpg
@@ -11,8 +11,8 @@ tags:
 
 TODO. It's been six months since Java 22 was released, so it's time for another fresh set of Java features. This post takes you on a tour of the JEPs that are part of this release, giving you a brief introduction to each of them. Where applicable the differences with Java 22 are highlighted and a few typical use cases are provided, so that you'll be more than ready to use these features after reading this!
 
-![Java 23 - TODO](/assets/images/blog/TODO.jpg)
-> Image from <a href="https://pxhere.com/en/photo/TODO">PxHere</a>
+![Java 23 brings a truckload of features](/assets/images/blog/road-train.jpg)
+> Image from <a href="https://pxhere.com/en/photo/772190">PxHere</a>
 
 ## From Project Amber
 
@@ -668,21 +668,61 @@ TODO
 
 ## Tools
 
-TODO
+Java 23 contains a single feature that is part of the JavaDoc tool:
 
 * Markdown Documentation Comments
 
 ### JEP 467: Markdown Documentation Comments
 
-TODO
+The JavaDoc documentation standard has been part of Java since its inception in 1995.
+Back then, HTML was the obvious choice when JavaDoc needed a way to support basic markup.
+Nowadays HTML is far less likely to be manually produced by humans, but rather generated from some other markup language that is more suitable for humans.
+Coupled with the fact that inline JavaDoc tags (like `{@link}` and `{@code}`) are not that familiar to developers, it makes perfect sense that Java's documentation tool will start supporting Markdown!
+
+Markdown documentation comments use the `///` prefix instead of the familiar `/**` prefix. This is due to two reasons:
+
+1. Block comments that begin with `/*` cannot contain the `*/` character sequence. This makes it currently very difficult to include code examples that contain embedded `/* ... */` comments. In `//` comments there's no such restriction.
+2. A traditional documentation comment (starting with `/**`) doesn't require the leading whitespace and the asterisk character on each line. In these cases, Markdown constructs that uses asterisks (like emphasis or list items) would clash with the traditional documentation comment syntax.
+
+#### Syntax
+
+Markdown documentation comments are written in the [CommonMark](https://spec.commonmark.org/0.30) variant of Markdown. Simple tables are supported, using the syntax of [GitHub Flavored Markdown](https://github.github.com/gfm/). For example:
+
+```
+/// | Make     | Model      |
+/// |----------|------------|
+/// | Fender   | Telecaster |
+/// | Gibson   | Les Paul   |
+/// | Epiphone | Casino     |
+```
+
+You can create a link to an element declared elsewhere in your API, by simply enclosing a reference to the element in square brackets. 
+For example, to link to `java.util.List`, you can write `[java.util.List]`, or just `[List]`.
+The link is equivalent to using the standard JavaDoc `{@link ...}` tag.
+
+You can link to any kind of program element:
+
+```
+/// - a module [com.hannotify.guitarstore/]
+/// - a package [com.hannotify.guitarstore.products]
+/// - a class [Guitar]
+/// - a field [Guitar#name]
+/// - a method [Guitar#isInTune()]
+```
+
+To create a link with alternative text, you can use the form [text][element]. For example:
+
+```
+/// Please feel free to use our [utility guitar tuning method](Guitar#isInTune())!
+```
 
 #### What's Different From Java 22?
 
-TODO
+In Java 22, it wasn't yet possible to include Markdown in documentation comments. This possibility has been added in Java 23.
 
 #### More Information
 
-TODO
+For more information on this feature, see [JEP 467](https://openjdk.org/jeps/467).
 
 ## Final thoughts
 
