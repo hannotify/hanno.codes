@@ -3,7 +3,7 @@ layout: post
 title: Java 23 Has Arrived, And It Brings a Truckload of Features
 date: 19-09-2024 04:30:00 +0200
 header:
-  teaser: /assets/images/blog/TODO.jpg
+  teaser: /assets/images/blog/road-train.jpg
 excerpt: TODO
 tags: 
 - java
@@ -27,15 +27,66 @@ Java 23 contains 4 features that originated from [Project Amber](https://openjdk
 
 ### JEP 455: Primitive Types in Patterns, instanceof, and switch (Preview)
 
+Support for pattern matching in Java has been increasing since Java 16, but its support for primitives was always limited to nested record patterns. This JEP proposes to support primitive types in all pattern contexts, and to extend `instanceof` and `switch` to work with all primitive types.
+
+#### Pattern Matching for Switch
+
+[Pattern matching for switch](https://openjdk.org/jeps/441) currently doesn't support type patterns that specify a primitive type. This JEP proposes to add support for primitive type patterns in `switch`. This would allow the following code example...
+
+```java
+switch (reverb.roomSize()) {
+    case 1 -> "Toilet";
+    case 2 -> "Bedroom";
+    case 30 -> "Classroom";
+    default -> "Unsupported value: " + reverb.roomSize();
+}
+```
+
+...to be written as follows:
+
+```java
+switch (reverb.roomSize()) {
+    case 1 -> "Toilet";
+    case 2 -> "Bedroom";
+    case 30 -> "Classroom";
+    case int i -> "Unsupported int value: " + i;
+}
+```
+
+This also allows guards to inspect the matched value, like so:
+
+```java
+switch (reverb.roomSize()) {
+    case 1 -> "Toilet";
+    case 2 -> "Bedroom";
+    case 30 -> "Classroom";
+    case int i when i > 100 && i < 1000 -> "Cinema";
+    case int i when i > 5000 -> "Stadium";
+    case int i -> "Unsupported int value: " + i;
+}
+```
+
+#### Record Patterns
+
+TODO
+
+#### Pattern Matching for instanceof
+
+TODO
+
+#### Primitive Types in instanceof and switch
+
 TODO
 
 #### What's Different From Java 22?
 
 TODO
 
+Note that this JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to take the feature for a spin.
+
 #### More Information
 
-TODO
+For more information on this feature, see [JEP 455](https://openjdk.org/jeps/455).
 
 ### JEP 476: Module Import Declarations (Preview)
 
@@ -300,7 +351,7 @@ For more information on this feature, see [JEP 482](https://openjdk.org/jeps/482
 
 Java 22 had a feature called [string templates](https://hanno.codes/2024/03/19/java-22-is-here/#jep-459-string-templates-second-preview), which was in second preview back then. 
 However, the feature is _not_ included in Java 23, which might be surprising, but at the same time it's a valid possibility.
-We have always known that [preview features are impermanent](https://openjdk.org/jeps/12), and might even be removed instead of  promoted to 'final' status.
+We have always known that [preview features are impermanent](https://openjdk.org/jeps/12), and might even be removed instead of promoted to 'final' status.
 
 So what happened? Well, in short: the effort did not meet the needs of the developers.
 Like any preview feature, feedback was received from the developer community, and quite a few issues were raised.
@@ -553,15 +604,41 @@ Java 23 introduces a single change to [HotSpot](https://openjdk.org/groups/hotsp
 
 ### JEP 474: ZGC: Generational Mode by Default
 
-TODO
+The Z Garbage Collector (ZGC) is a scalable, low-latency garbage collector. It has been [available for production use since Java 15](https://openjdk.org/jeps/377) and has been designed to keep pause times consistent and short, even for very large heaps. It uses techniques like region-based memory management and compaction to achieve this.
+
+Java 21 introduced [an extension to ZGC](https://openjdk.org/jeps/439) that maintains separate *generations* for young and old objects, allowing ZGC to collect young objects (which tend to die young) more frequently. This will result in a significant performance gain for applications running with generational ZGC, without sacrificing any of the valuable properties that the Z garbage collector is already known for.
+
+In Java 21, a command-line option was required to enable generational mode. Java 23 makes generational mode the default mode for ZGC, whereas non-generational mode has been deprecated. It will probably be removed in a future Java version.
 
 #### What's Different From Java 22?
 
-TODO
+To run your workload with Generational ZGC in Java 22, the following configuration was needed:
+
+```bash
+$ java -XX:+UseZGC -XX:+ZGenerational ...
+```
+
+In Java 23, this command-line option is no longer needed, it will use generational mode by default:
+
+```bash
+$ java -XX:+UseZGC ...
+```
+
+When you *do* still include it, a warning will be issued that the `ZGenerational` option is deprecated.
+
+To revert back to non-generational ZGC, you would need to run:
+
+```bash
+$ java -XX:+UseZGC -XX:-ZGenerational ...
+```
+
+And you would get two warnings:
+* The `ZGenerational` option is deprecated;
+* Non-generational mode is deprecated.
 
 #### More Information
 
-TODO
+For more information on this feature, see [JEP 474](https://openjdk.org/jeps/474).
   
 ## Core Libraries
 
@@ -679,10 +756,16 @@ Back then, HTML was the obvious choice when JavaDoc needed a way to support basi
 Nowadays HTML is far less likely to be manually produced by humans, but rather generated from some other markup language that is more suitable for humans.
 Coupled with the fact that inline JavaDoc tags (like `{@link}` and `{@code}`) are not that familiar to developers, it makes perfect sense that Java's documentation tool will start supporting Markdown!
 
-Markdown documentation comments use the `///` prefix instead of the familiar `/**` prefix. This is due to two reasons:
+Markdown documentation comments use the `///` prefix instead of the familiar `/**` one. This is due to two reasons:
 
 1. Block comments that begin with `/*` cannot contain the `*/` character sequence. This makes it currently very difficult to include code examples that contain embedded `/* ... */` comments. In `//` comments there's no such restriction.
 2. A traditional documentation comment (starting with `/**`) doesn't require the leading whitespace and the asterisk character on each line. In these cases, Markdown constructs that uses asterisks (like emphasis or list items) would clash with the traditional documentation comment syntax.
+
+#### Example of the Differences
+
+To illustrate how documentation comments can change now that Markdown is supported, here's an example screenshot from the JEP: 
+
+![Differences between regular documentation comment and Markdown documentation comment](https://cr.openjdk.org/~jjg/Object-hashcode-diff-3.png)
 
 #### Syntax
 
