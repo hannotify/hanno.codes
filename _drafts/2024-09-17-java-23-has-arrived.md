@@ -31,7 +31,7 @@ Support for pattern matching in Java has been increasing since Java 16, but its 
 
 #### Pattern Matching for Switch
 
-[Pattern matching for switch](https://openjdk.org/jeps/441) currently doesn't support type patterns that specify a primitive type. This JEP proposes to add support for primitive type patterns in `switch`. This would allow the following code example...
+[Pattern matching for switch](https://openjdk.org/jeps/441) currently doesn't support type patterns that specify a primitive type. This JEP proposes to add support for primitive type patterns in `switch`. This would allow the code example:
 
 ```java
 switch (reverb.roomSize()) {
@@ -68,11 +68,72 @@ switch (reverb.roomSize()) {
 
 #### Record Patterns
 
-TODO
+[Record patterns](https://openjdk.org/jeps/440) currently have limited support for primitive types.
+Recall that a record pattern decomposes a record into its individual components, but when one of them is a primitive type, the record pattern must be precise about its type. To illustrate this point, consider the following code example:
+
+```java
+record Tuner(double pitchInHz) implements Effect {}
+
+var tuner = new Tuner(440); // int argument is widened to double
+
+// Attempt 1: record pattern match on int argument
+if (tuner instanceof Tuner(int p) {} // doesn't compile!
+
+// Attempt 2: record pattern match on double argument
+if (tuner instanceof Tuner(double p)) {}
+    int pitch = p; // doesn't compile! needs a cast to double
+}
+
+// Attempt 3: record pattern match on double argument, cast to int
+if (tuner instanceof Tuner(double p)) {}
+    int pitch = (int) p;
+}
+```
+
+To put it differently, the Java compiler widens the `int` provided to the record to a double, but it doesn't narrow it back to an `int`. This limitation exists because narrowing could lead to data loss: the value of the `double` at runtime might exceed the range of an `int` or have more precision than an `int` can accommodate. However, one significant advantage of pattern matching is its ability to automatically reject invalid values by not matching them at all. If the `double` component of a `Tuner` is either too large or too precise to safely convert back to an `int`, then `instanceof Tuner(int p)` would simply return `false`, allowing the program to manage the large `double` component in a different branch.
+
+This is how pattern matching already works for reference type patterns. For example:
+
+```java
+record SingleEffect(Effect effect) {}
+var singleEffect = new Effect(...);
+
+if (singleEffect instanceof SingleEffect(Delay d)) {
+    // ...
+} else if (singleEffect instanceof SingleEffect(Reverb r)) {
+    // ...
+} else {
+    // ...
+}
+```
+`instanceof` can be used here to try to match a `SingleEffect` with a `Delay` component or a `Reverb` component; it automatically narrows if the pattern matches.
+
+To summarize, this JEP proposes to make primitive type patterns work as smoothly as reference type patterns, allowing `Tuner(int p)` even if the corresponding record component is a numeric primitive type other than int.
 
 #### Pattern Matching for instanceof
 
-TODO
+[Pattern matching for instanceof](https://openjdk.org/jeps/394) currently doesn't support primitive type patterns, but this capability would perfectly align with the purpose of `instanceof`: to test whether a value can be converted safely to a given type. To convert primitives safely, Java developers currently have to deal with lossy casts and range checks to prevent loss of information:
+
+```java
+int roomSize = reverb.roomSize();
+
+if (roomSize >= -128 && roomSize < 127) {
+    byte r = (byte) roomSize;
+    // use r
+}
+```
+
+This JEP proposes the possibility to replace these constructs with simple `instanceof` checks that operate on primitives. Let's rewrite the code example to make use of this feature:
+
+```java
+int roomSize = reverb.roomSize();
+
+if (roomSize instanceof byte r) 
+    // use r
+}
+```
+
+The pattern `roomSize instanceof byte r` will match only if `roomSize` fits into a `byte`, eliminating the need for casts and range checks.
 
 #### Primitive Types in instanceof and switch
 
@@ -721,15 +782,137 @@ For more information on this feature, see [JEP 469](https://openjdk.org/jeps/469
 
 ### JEP 473: Stream Gatherers (Second Preview)
 
-TODO
+The Stream API has been around since Java 8 and it has definitely made its way into the heart of the typical Java developer. It enables a programming style that is both efficient and expressive. Recall that a stream pipeline consists of three parts: a source of elements, any number of intermediate operations, and a terminal operation. For example:
+
+```java
+List<Guitar> guitars = List.of(
+        new Guitar("Cordoba F7 Paco Flamenco", GuitarStyle.CLASSICAL),
+        new Guitar("Taylor GS Mini-e Koa", GuitarStyle.WESTERN),
+        new Guitar("Gibson Les Paul Standard '50s Heritage Cherry Sunburst", GuitarStyle.ELECTRIC),
+        new Guitar("Fender Stratocaster", GuitarStyle.ELECTRIC));
+
+long numberOfNonClassicalGuitars = guitars.stream() // source of elements
+        .filter(g -> GuitarStyle.CLASSICAL != g.guitarStyle()) // intermediate operation
+        .collect(Collectors.counting()); // terminal operation
+```
+
+The Stream API offers a relatively diverse but predetermined range of intermediate and terminal operations, including mapping, filtering, reduction, sorting, and more. Over the years, many new intermediate operations have been suggested for the Stream API. For example, it could be useful to introduce a `distinctBy` intermediate operation. A `distinct` operation *does* exist, trakcing the elements it has already seen by using object equality. But what if we want distinct elements based on something else than object equality?
+
+```java
+var singleGuitarPerStyle = guitars.stream()
+                .distinctBy(Guitar::guitarStyle) // hypothetical
+                .toList();
+```
+
+Over the years, many new intermediate operations have been suggested for the Stream API.
+Most of the suggestions that were made would make sense when considered in isolation, but adding all of them would make the (already large) Stream API more difficult to learn because its operations would be less discoverable. A better alternative would be to introduce the ability to define custom intermediate operations, analogous to how the `Stream::collect` terminal operation currently is extensible, enabling the output of a pipeline to be summarized in a variety of ways. 
+
+So that is why this JEP proposes an API for custom intermediate operations that allows developers to transform finite and infinite streams in their own preferred ways.
+
+#### Gatherers
+
+`Stream::gather(Gatherer)` is a new intermediate stream operation that processes stream elements by applying a user-defined *gatherer*. One could say it is the dual of `Stream::collect(Collector)`, but for intermediate operations. Gatherers transform elements in different ways: one-to-one, one-to-many, many-to-one, or many-to-many. They can track previously seen elements, enable short-circuiting for infinite streams, and support parallel execution. For example, they may start by transforming one input element into one output element but switch to transforming one input element into two output elements based on a certain condition.
+
+A gatherer implements the `java.util.stream.Gatherer` interface and is defined by four functions that work together:
+
+*[initializer](https://cr.openjdk.org/~vklang/gatherers/api/java.base/java/util/stream/Gatherer.html#initializer())* (optional)
+: Provides an object that maintains private state while processing stream elements.
+
+*[integrator](https://cr.openjdk.org/~vklang/gatherers/api/java.base/java/util/stream/Gatherer.Integrator.html)*
+: Integrates a new element from the input stream.
+
+*[combiner](https://cr.openjdk.org/~vklang/gatherers/api/java.base/java/util/stream/Gatherer.html#combiner())* (optional)
+: Evaluates the gatherer in parallel when the input stream is marked as such.
+
+*[finisher](https://cr.openjdk.org/~vklang/gatherers/api/java.base/java/util/stream/Gatherer.html#finisher())* (optional)
+: Is invoked when there are no more input elements to consume.
+
+When `Stream::gather` is called, it roughly performs the following steps:
+
+* Create a [`Downstream`](https://cr.openjdk.org/~vklang/gatherers/api/java.base/java/util/stream/Gatherer.Downstream.html) object which, when given an element of the gatherer’s output type, passes it to the next stage in the pipeline.
+* Obtain the gatherer’s private state object by invoking the `get()` method of its initializer.
+* Obtain the gatherer’s integrator by invoking its [`integrator()`](https://cr.openjdk.org/~vklang/gatherers/api/java.base/java/util/stream/Gatherer.html#integrator()) method.
+* While there are more input elements, invoke the integrator's [`integrate(...)`](https://cr.openjdk.org/~vklang/gatherers/api/java.base/java/util/stream/Gatherer.Integrator.html#integrate(A,T,java.util.stream.Gatherer.Downstream)) method, passing it the state object, the next element, and the downstream object. Terminate if that method returns false.
+* Obtain the gatherer’s finisher and invoke it with the state and downstream objects.
+
+These steps are generic enough to allow every currently existing intermediate stream operation to be expressed in a custom gatherer. For example, the `Stream::map` operation turns each `T` element into a `U` element, so it is simply a stateless one-to-one gatherer. Likewise, the `Stream::filter` operation is a stateless one-to-many gatherer. This makes every stream pipeline conceptually equivalent to:
+
+```java
+stream
+    .gather(...)
+    .gather(...)
+    .gather(...)
+    .collect(...);
+```
+
+#### Built-in gatherers
+
+As part of this JEP a few built-in gatherers are introduced:
+
+[`fold`](https://cr.openjdk.org/~vklang/gatherers/api/java.base/java/util/stream/Gatherers.html#fold(java.util.function.Supplier,java.util.function.BiFunction))
+: A stateful many-to-one gatherer which constructs an aggregate incrementally and emits that aggregate when no more input elements exist.
+
+[`mapConcurrent`](https://cr.openjdk.org/~vklang/gatherers/api/java.base/java/util/stream/Gatherers.html#mapConcurrent(int,java.util.function.Function))
+: A stateful one-to-one gatherer which invokes a supplied function for each input element concurrently, up to a supplied limit.
+
+[`scan`](https://cr.openjdk.org/~vklang/gatherers/api/java.base/java/util/stream/Gatherers.html#scan(java.util.function.Supplier,java.util.function.BiFunction))
+: A stateful one-to-one gatherer which applies a supplied function to the current state and the current element to produce the next element, which it passes downstream.
+
+[`windowFixed`](https://cr.openjdk.org/~vklang/gatherers/api/java.base/java/util/stream/Gatherers.html#windowFixed(int))
+: A stateful many-to-many gatherer which groups input elements into lists of a supplied size, emitting the windows downstream when they are full.
+
+[`windowSliding`](https://cr.openjdk.org/~vklang/gatherers/api/java.base/java/util/stream/Gatherers.html#windowSliding(int))
+: A stateful many-to-many gatherer which groups input elements into lists of a supplied size. After the first window, each subsequent window is created from a copy of its predecessor by dropping the first element and appending the next element from the input stream.
+
+#### Example of a Custom Gatherer
+
+Let's look at a custom gatherer that implements the `distinctBy` operation we referred to earlier.
+
+> This example is based on Karl Heinz Marbaise's [excellent blog post on stream gatherers](https://blog.soebes.io/posts/2024/01/2024-01-07-jdk-gatherer/) - do check it out if you wish to know more!
+
+```java
+static <T, A> Gatherer<T, ?, T> distinctBy(Function<? super T, ? extends A> classifier) {
+    Supplier<Map<A, List<T>>> initializer = HashMap::new;
+    Gatherer.Integrator<Map<A, List<T>>, T, T> integrator = (state, element, _) -> {
+        state.computeIfAbsent(classifier.apply(element), _ -> new ArrayList<>()).add(element);
+        return true; // true, because more elements need to be consumed
+    };
+    BiConsumer<Map<A, List<T>>, Gatherer.Downstream<? super T>> finisher = (state, downstream) -> {
+        state.forEach((_, value) -> downstream.push(value.getLast()));
+    };
+    return Gatherer.ofSequential(initializer, integrator, finisher);
+}
+```
+
+...and this is how you could use it:
+
+```java
+guitars.stream()
+        .gather(distinctBy(Guitar::guitarStyle))
+        .forEach(System.out::println);
+```
+
+...which would yield the following output:
+
+```
+Guitar[name=Taylor GS Mini-e Koa, guitarStyle=WESTERN]
+Guitar[name=Fender Stratocaster, guitarStyle=ELECTRIC]
+Guitar[name=Cordoba F7 Paco Flamenco, guitarStyle=CLASSICAL]
+```
+
+#### No New Intermediate Operations
+
+In conclusion the JEP also states that no new intermediate operations will be added to the `Stream` class to represent the newly-added built-in gatherers. This is because the language designers want the Stream API to remain concise and easy to learn. The JEP does suggest that adding new intermediate operations in a later round of preview could be an option, once they have proven that they are broadly useful.
 
 #### What's Different From Java 22?
 
-TODO
+Compared to the preview version of this feature in Java 22, nothing was changed or added. JEP 473 simply exists to gather more feedback from users.
+
+Note that this JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to take the feature for a spin.
 
 #### More Information
 
-TODO
+For more information on this feature, see [JEP 473](https://openjdk.org/jeps/473).
 
 ### JEP 471: Deprecate the Memory-Access Methods in sun.misc.Unsafe for Removal
 
