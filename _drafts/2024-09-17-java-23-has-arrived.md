@@ -31,7 +31,7 @@ Support for pattern matching in Java has been increasing since Java 16, but its 
 
 #### Pattern Matching for Switch
 
-[Pattern matching for switch](https://openjdk.org/jeps/441) currently doesn't support type patterns that specify a primitive type. This JEP proposes to add support for primitive type patterns in `switch`. This would allow the code example:
+[Pattern matching for switch](https://openjdk.org/jeps/441) currently doesn't support type patterns that specify a primitive type. This JEP proposes to add support for primitive type patterns in `switch`, allowing the following code example:
 
 ```java
 switch (reverb.roomSize()) {
@@ -106,7 +106,7 @@ if (singleEffect instanceof SingleEffect(Delay d)) {
     // ...
 }
 ```
-`instanceof` can be used here to try to match a `SingleEffect` with a `Delay` component or a `Reverb` component; it automatically narrows if the pattern matches.
+`instanceof` can be used here to try to match a `SingleEffect` with a `Delay` or a `Reverb` component; it automatically narrows if the pattern matches.
 
 To summarize, this JEP proposes to make primitive type patterns work as smoothly as reference type patterns, allowing `Tuner(int p)` even if the corresponding record component is a numeric primitive type other than int.
 
@@ -119,7 +119,7 @@ int roomSize = reverb.roomSize();
 
 if (roomSize >= -128 && roomSize < 127) {
     byte r = (byte) roomSize;
-    // use r
+    // safe to use r
 }
 ```
 
@@ -129,21 +129,45 @@ This JEP proposes the possibility to replace these constructs with simple `insta
 int roomSize = reverb.roomSize();
 
 if (roomSize instanceof byte r) 
-    // use r
+    // safe to use r
 }
 ```
 
 The pattern `roomSize instanceof byte r` will match only if `roomSize` fits into a `byte`, eliminating the need for casts and range checks.
 
-#### Primitive Types in instanceof and switch
+#### Primitive Types in switch
 
-TODO
+The `instanceof` keyword used to take a reference type only, and since Java 16 it can also take a type pattern.
+But it would make sense to have `instanceof` take a primitive type also. 
+In that case `instanceof` would check if the conversion is safe but would not actually perform it:
+
+```java
+if (roomSize instanceof byte) { // check if value of roomSize fits in a byte
+    ... (byte)roomSize ...             // yes, it fits! but cast is required
+}
+```
+
+This JEP proposes to support this construct, which makes it easier to change the `instanceof` check to take a type pattern and vice versa.
+
+#### Primitive Types in instanceof
+
+The `switch` statement/expression currently supports `byte`, `short`, `char`, and `int` values.
+This JEP proposes to also add support for `boolean`, `float`, `double` and `long` values.
+A `switch` on a `boolean` value is a good alternative for the ternary operator (`?:`), because its branches can also hold statements instead of just expressions.
+
+```java
+String guitaristResponse = switch (guitar.isInTune()) {
+    case true -> "Ready to play a song.";
+    case false -> {
+        log.warn("Guitar is out of tune!");
+        yield "Let's take five!";
+    }
+}
+```
 
 #### What's Different From Java 22?
 
-TODO
-
-Note that this JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to take the feature for a spin.
+Java 22 didn't support primitive types in patterns, instanceof and switch yet. Note that this JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to take the feature for a spin.
 
 #### More Information
 
@@ -916,15 +940,25 @@ For more information on this feature, see [JEP 473](https://openjdk.org/jeps/473
 
 ### JEP 471: Deprecate the Memory-Access Methods in sun.misc.Unsafe for Removal
 
-TODO
+The `sun.misc.Unsafe` class contains 87 methods to perform low-level operations, such as accessing off-heap memory.
+The class is aptly named: using its methods without performing the necessary safety checks can lead to undefined behavior and to the JVM crashing.
+They were meant exclusively for use within the JDK, but back in 2002 when the class was introduced the [module system](https://openjdk.org/projects/jigsaw/) wasn't around yet and so there was no way to prevent the class from being used outside the JDK.
+And so the memory-access methods in `sun.misc.Unsafe` became a valuable tool for library developers seeking greater power and performance than what standard APIs could provide.
+
+Two standard APIs have emerged in recent years that are far better alternatives to these problematic methods:
+
+* [`java.lang.invoke.VarHandle`](https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/invoke/VarHandle.html), to manipulate on-heap memory safely and efficiently;
+* [`java.lang.foreign.MemorySegment`](https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/foreign/MemorySegment.html), to access off-heap memory safely and efficiently.
+
+Now that these APIs are available, the time has come to deprecate and eventually remove the memory-access methods in `sun.misc.Unsafe`.
 
 #### What's Different From Java 22?
 
-TODO
+All uses of memory-access methods in `sun.misc.Unsafe` will generate compile-time deprecation warnings in JDK 23. In a future release of Java, warnings at run time will be issued, and at an even later stage exceptions will be thrown. Finally, the methods will be removed entirely. According to the JEP text the process won't be completed until the release of JDK 26, giving developers ample time to adjust to the new situation.
 
 #### More Information
 
-TODO
+For more information on this feature, see [JEP 471](https://openjdk.org/jeps/471). It has more details on the targeted methods, their alternatives from `VarHandle` and `MemorySegment` and how to configure the deprecation warnings with the new command-line option `--sun-misc-unsafe-memory-access` (to promote the warnings to `UnsupportedOperationException`s already, for example). It also provides a few migration examples. 
 
 ## Tools
 
