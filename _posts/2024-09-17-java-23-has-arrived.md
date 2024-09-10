@@ -1,15 +1,15 @@
 ---
 layout: post
-title: Java 23 Has Arrived, And It Brings a Truckload of Features
+title: Java 23 Has Arrived, And It Brings a Truckload of Changes
 date: 19-09-2024 04:30:00 +0200
 header:
   teaser: /assets/images/blog/road-train.jpg
-excerpt: TODO
+excerpt: Java 23 has arrived, and it brings a truckload of changes! For example, in JavaDoc, 'Markdown documentation comments' are now supported. On top of that, a lot of features have been repreviewed and there are also two brand-new ones - module import declarations and primitive type patterns. This post has all the info!
 tags: 
 - java
 ---
 
-TODO. It's been six months since Java 22 was released, so it's time for another fresh set of Java features. This post takes you on a tour of the JEPs that are part of this release, giving you a brief introduction to each of them. Where applicable the differences with Java 22 are highlighted and a few typical use cases are provided, so that you'll be more than ready to use these features after reading this!
+Java 23 has arrived! It's been six months since Java 22 was released, so it's time for a fresh truckload of JEPs. This post takes you on a tour of everything that is part of this release, giving you a brief introduction to each of them. Where applicable the differences with Java 22 are highlighted and a few typical use cases are provided, so that you'll be more than ready to start using these features after reading this.
 
 ![Java 23 brings a truckload of features](/assets/images/blog/road-train.jpg)
 > Image from <a href="https://pxhere.com/en/photo/772190">PxHere</a>
@@ -27,7 +27,7 @@ Java 23 contains 4 features that originated from [Project Amber](https://openjdk
 
 ### JEP 455: Primitive Types in Patterns, instanceof, and switch (Preview)
 
-Support for pattern matching in Java has been increasing since Java 16, but its support for primitives was always limited to nested record patterns. This JEP proposes to support primitive types in all pattern contexts, and to extend `instanceof` and `switch` to work with all primitive types.
+Pattern matching has become more prominent in Java since Java 16, but its support for primitives was always limited to nested record patterns. This JEP proposes to support primitive types in all pattern contexts, and to extend `instanceof` and `switch` to work with all primitive types.
 
 #### Pattern Matching for Switch
 
@@ -77,26 +77,26 @@ record Tuner(double pitchInHz) implements Effect {}
 var tuner = new Tuner(440); // int argument is widened to double
 
 // Attempt 1: record pattern match on int argument
-if (tuner instanceof Tuner(int p) {} // doesn't compile!
+if (tuner instanceof Tuner(int p)) {} // doesn't compile!
 
 // Attempt 2: record pattern match on double argument
-if (tuner instanceof Tuner(double p)) {}
-    int pitch = p; // doesn't compile! needs a cast to double
+if (tuner instanceof Tuner(double p)) {
+    int pitch = p; // doesn't compile! needs a cast to int
 }
 
 // Attempt 3: record pattern match on double argument, cast to int
-if (tuner instanceof Tuner(double p)) {}
+if (tuner instanceof Tuner(double p)) {
     int pitch = (int) p;
 }
 ```
 
-To put it differently, the Java compiler widens the `int` provided to the record to a double, but it doesn't narrow it back to an `int`. This limitation exists because narrowing could lead to data loss: the value of the `double` at runtime might exceed the range of an `int` or have more precision than an `int` can accommodate. However, one significant advantage of pattern matching is its ability to automatically reject invalid values by not matching them at all. If the `double` component of a `Tuner` is either too large or too precise to safely convert back to an `int`, then `instanceof Tuner(int p)` would simply return `false`, allowing the program to manage the large `double` component in a different branch.
+To put it differently, the Java compiler widens the provided `int` to a double, but it doesn't narrow it back to an `int`. This limitation exists because narrowing could lead to data loss: the value of the `double` at runtime might exceed the range of an `int` or have more precision than an `int` can accommodate. However, one significant advantage of pattern matching is its ability to automatically reject invalid values by not matching them at all. If the `double` component of a `Tuner` is either too large or too precise to safely convert back to an `int`, then `instanceof Tuner(int p)` would simply return `false`, allowing the program to manage the large `double` component in a different code branch.
 
-This is how pattern matching already works for reference type patterns. For example:
+This is analogous to how pattern matching currently behaves for reference type patterns. For example:
 
 ```java
 record SingleEffect(Effect effect) {}
-var singleEffect = new Effect(...);
+var singleEffect = new SingleEffect(...);
 
 if (singleEffect instanceof SingleEffect(Delay d)) {
     // ...
@@ -108,7 +108,7 @@ if (singleEffect instanceof SingleEffect(Delay d)) {
 ```
 `instanceof` can be used here to try to match a `SingleEffect` with a `Delay` or a `Reverb` component; it automatically narrows if the pattern matches.
 
-To summarize, this JEP proposes to make primitive type patterns work as smoothly as reference type patterns, allowing `Tuner(int p)` even if the corresponding record component is a numeric primitive type other than int.
+To summarize, this JEP proposes to make primitive type patterns work as smoothly as reference type patterns, allowing `Tuner(int p)` even if the corresponding record component is a numeric primitive type other than `int`.
 
 #### Pattern Matching for instanceof
 
@@ -119,7 +119,7 @@ int roomSize = reverb.roomSize();
 
 if (roomSize >= -128 && roomSize < 127) {
     byte r = (byte) roomSize;
-    // safe to use r
+    // now it's safe to use r
 }
 ```
 
@@ -128,8 +128,8 @@ This JEP proposes the possibility to replace these constructs with simple `insta
 ```java
 int roomSize = reverb.roomSize();
 
-if (roomSize instanceof byte r) 
-    // safe to use r
+if (roomSize instanceof byte r) {
+    // now it's safe to use r
 }
 ```
 
@@ -138,12 +138,12 @@ The pattern `roomSize instanceof byte r` will match only if `roomSize` fits into
 #### Primitive Types in switch
 
 The `instanceof` keyword used to take a reference type only, and since Java 16 it can also take a type pattern.
-But it would make sense to have `instanceof` take a primitive type also. 
+But it would make sense to have `instanceof` take a primitive type also.
 In that case `instanceof` would check if the conversion is safe but would not actually perform it:
 
 ```java
 if (roomSize instanceof byte) { // check if value of roomSize fits in a byte
-    ... (byte)roomSize ...             // yes, it fits! but cast is required
+    ... (byte) roomSize ... // yes, it fits! but cast is required
 }
 ```
 
@@ -152,8 +152,8 @@ This JEP proposes to support this construct, which makes it easier to change the
 #### Primitive Types in instanceof
 
 The `switch` statement/expression currently supports `byte`, `short`, `char`, and `int` values.
-This JEP proposes to also add support for `boolean`, `float`, `double` and `long` values.
-A `switch` on a `boolean` value is a good alternative for the ternary operator (`?:`), because its branches can also hold statements instead of just expressions.
+This JEP proposes to also add support for the other primitive types: `boolean`, `float`, `double` and `long`.
+A `switch` on a `boolean` value can be a good alternative for the ternary operator (`?:`), because its branches can also hold statements instead of just expressions.
 
 ```java
 String guitaristResponse = switch (guitar.isInTune()) {
@@ -199,9 +199,9 @@ However, in early-stage situations (when trying out a new feature, or when you'r
 #### Module Import Declarations
 
 This JEP introduces _module import declarations_, and they have the form `import module M;`.
-A module import declarations imports all of the public top-level classes and interfaces in the packages exported by the module `M` to the current module. Any indirect exports by the module `M` will also be made available by a module import declaration.
+A module import declaration imports all of the public top-level classes and interfaces in the packages exported by the module `M` to the current module. Any indirect exports by the module `M` will also be made available by a module import declaration.
 
-For example, if you write `import module java.sql`, it means your class will be able to read classes and interfaces from the packages `java.sql` and `javax.sql` (because they are exported by the module [java.sql](https://docs.oracle.com/en/java/javase/22/docs/api/java.sql/module-summary.html#packages-summary)). On top of that, because java.sql pulls in three other modules transitively, any exported packages from those modules will also be available in your class.
+For example, if you write `import module java.sql`, it means your class will be able to read classes and interfaces from the packages `java.sql` and `javax.sql` (because they are exported by the module [`java.sql`](https://docs.oracle.com/en/java/javase/22/docs/api/java.sql/module-summary.html#packages-summary)). On top of that, because `java.sql` pulls in three other modules transitively, any exported packages from those modules will also be available.
 
 #### Ambiguous Imports
 
@@ -224,18 +224,16 @@ Resolving ambiguities is straightforward: use a single-type-import declaration. 
 import module java.base;      // exports java.util, which has a public Date class
 import module java.sql;       // exports java.sql, which has a public Date class
 
-import java.sql.Date;         // resolve the ambiguity of the simple name Date!
+import java.sql.Date;         // resolve the ambiguity of the simple name Date
 
 ...
-Date d = ...                  // Ok!  Date is resolved to java.sql.Date
+Date d = ...                  // Ok! Date is resolved to java.sql.Date
 ...
 ```
 
 #### What's Different From Java 22?
 
-Up until Java 22, to import all public top-level classes and interfaces from a module, a wildcard-type import was required for each package in the module. In Java 23 the same behavior can be achieved using a single module import declaration.
-
-Note that this JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to take the feature for a spin.
+Up until Java 22, to import all public top-level classes and interfaces from a module, a wildcard-type import was required for each package in the module. In Java 23 the same behaviour can be achieved using a single module import declaration. Note that this JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to take the feature for a spin.
 
 #### More Information
 
@@ -331,9 +329,9 @@ class Main {
 }
 ```
 
-The code may seem familiar to experienced developers, but beginners often find it confusing due to new concepts like `import`, `try`, `catch`, `BufferedReader` vs. `InputStreamReader` and `IOException`. While there are other approaches, none are significantly better for those just starting out.
+The code may seem familiar to experienced developers, but beginners often find it confusing due to new concepts like `import`, `try`, `catch`, `BufferedReader`, `InputStreamReader` and `IOException`. While there are other approaches, none are significantly better for those just starting out.
 
-To make interacting with the console easier for beginners, implicit classes now automatically import all static methods from the new class [`java.io.IO`](https://cr.openjdk.org/~prappo/8305457/java.base/java/io/IO.html):
+To make interacting with the console easier for beginners, implicit classes now automatically import all static methods from the newly added class [`java.io.IO`](https://cr.openjdk.org/~prappo/8305457/java.base/java/io/IO.html):
 
 * `public static void println(Object obj);`
 * `public static void print(Object obj);`
@@ -351,8 +349,8 @@ void main() {
 
 #### Automatic Import of the `java.base` Module
 
-To make writing small programs easier, all public top-level classes and interfaces from the `java.base` module are now automatically available in every implicit class, as if they were imported. 
-This means popular APIs from packages like `java.io`, `java.math`, and `java.util` can be used right away, eliminating the need for explicit import statements that might confuse beginners.
+To make writing small programs even easier, all public top-level classes and interfaces from the `java.base` module are now automatically available in every implicit class, as if they were imported. 
+This means that popular APIs from packages like `java.io`, `java.math`, and `java.util` can be used right away, eliminating the need for explicit import statements that might confuse beginners.
 
 > This implicit behaviour can also be made explicit to make it work in any other class, by using a [module import declaration](#jep-476-module-import-declarations-preview) like `import module java.base`, which can be helpful when converting an implicit class to a top-level class.
 
@@ -360,7 +358,7 @@ This means popular APIs from packages like `java.io`, `java.math`, and `java.uti
 
 Java 23 contains the following changes compared to Java 22:
 
-* Implicitly declared classes automatically import three static methods for simple textual I/O with the console. These methods are declared in the new top-level class [java.io.IO](https://cr.openjdk.org/~prappo/8305457/java.base/java/io/IO.html).
+* Implicitly declared classes automatically import three static methods for simple textual I/O with the console. These methods are declared in the new top-level class [`java.io.IO`](https://cr.openjdk.org/~prappo/8305457/java.base/java/io/IO.html).
 * Implicitly declared classes automatically import, on demand, all of the public top-level classes and interfaces of the packages exported by the `java.base` module.
 
 Note that this JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to take the feature for a spin.
@@ -373,7 +371,7 @@ For more information on this feature, see [JEP 477](https://openjdk.org/jeps/477
 
 Suppose we have a superclass `Orchestra` and a subclass `StringQuartet`. The constructors of these classes must work together to ensure a valid instance. The `StringQuartet` constructor is responsible for any `StringQuartet`-specific fields, while the `Orchestra` constructor is responsible for fields declared in the `Orchestra` class. Since code in the `StringQuartet` constructor might refer to fields initialized by the `Orchestra` constructor, the latter must run first.
 
-This example illustrates that constructors should run from top to bottom. This also means that a superclass constructor must finish initializing its fields before a subclass constructor starts. This ensures proper object state initialization and prevents access to uninitialized fields. Java enforces this by requiring explicit constructor calls (like `super(...)` or `this(...)`) to be the first statement in a constructor body, and constructor arguments cannot access the current object. While these rules ensure that constructors behave predictably, they may restrict the use of common programming patterns in constructor methods. The following code example illustrates this point:
+This example illustrates that constructors should run from top to bottom. This also means that a superclass constructor must finish initializing its fields before a subclass constructor starts, ensuring proper object state initialization and preventing access to uninitialized fields. Java enforces this by requiring explicit constructor calls (like `super(...)` or `this(...)`) to be the first statement in a constructor body, and constructor arguments cannot access the current object. While these rules ensure that constructors behave predictably, they may restrict the use of common programming patterns in constructor methods. The following code example illustrates this point:
 
 ```java
 class StringQuartet extends Orchestra {
@@ -443,7 +441,7 @@ Like any preview feature, feedback was received from the developer community, an
 Some remarks were about syntax, and others were about nested templates.
 But the most relevant feedback was about the co-dependence of _string templates_ and _template processors_.
 To make the feature perform better than `String.format(...)`, it was crucial that the template processor would appear close to the string template it had to process, which is why the special syntax `PROCESSOR."template"` was introduced.
-Based on the feedback, on the [Project Amber mailing list](https://mail.openjdk.org/pipermail/amber-spec-observers/2024-March/thread.html#4230)  a discovery was made: the template and the code processing it didn't _have_ to appear side by side to achieve a performance boost. This meant that the special syntax could also potentially be dropped.
+Based on the feedback, on the [Project Amber mailing list](https://mail.openjdk.org/pipermail/amber-spec-observers/2024-March/thread.html#4230)  a discovery was made: the template and the code processing it didn't _have_ to appear side by side to achieve the performance boost. This meant that the special syntax could also potentially be dropped.
 This realization ultimately sent the feature back to the drawing board! 
 While the new direction was taking shape, the Java 23 deadline was fast approaching and the choice was made to drop the feature entirely, instead of repreviewing it unchanged while everyone knew the design would change drastically in the future.
 
@@ -453,7 +451,7 @@ So, what happens next? Well, a new JEP will probably appear in the future, but i
 But based on the above template processors probably won't have a prominent place.
 And string templates will probably become a new kind of literal (similar to String literals), because there's no need for them to be tied to their template processor any more.
 There's no way for us to know exactly when a new proposal will be ready, so we'll just have to wait and see.
-And in the meantime, if you're interested, [this excellent video](https://inside.java/2024/06/20/newscast-71) by Nicolai Parlog has some more interesting details to keep you occupied.
+And in the meantime, if you're interested, [this excellent video](https://inside.java/2024/06/20/newscast-71) by Nicolai Parlog has a few more interesting details to keep you occupied.
 
 ## From Project Loom
 
@@ -603,9 +601,7 @@ That will allow you to have full control over when the scope will shut down and 
 
 #### What's Different From Java 22?
 
-Compared to the preview version of this feature in Java 22, nothing was changed or added. JEP 480 simply exists to gather more feedback from users.
-
-Note that this JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to take the feature for a spin.
+Compared to the preview version of this feature in Java 22, nothing was changed or added. JEP 480 simply exists to gather more feedback from users. Note that this JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to take the feature for a spin.
 
 #### More Information
 
@@ -718,8 +714,8 @@ $ java -XX:+UseZGC -XX:-ZGenerational ...
 ```
 
 And you would get two warnings:
-* The `ZGenerational` option is deprecated;
-* Non-generational mode is deprecated.
+* `The ZGenerational option is deprecated.`
+* `Non-generational mode is deprecated.`
 
 #### More Information
 
@@ -736,15 +732,96 @@ Java 23 also brings you 4 additions that are part of the core libraries:
 
 ### JEP 466: Class-File API (Second Preview)
 
-TODO
+Java's ecosystem relies heavily on the ability to parse, generate and transform class files. Frameworks use on-the-fly bytecode transformation to transparently add functionality, for example. These frameworks typically bundle class-file libraries like [ASM](https://asm.ow2.io/) or [Javassist](https://www.javassist.org/) to handle class file processing. However, they suffer from the fact that the six-month release cadence of the JDK causes the class-file format to evolve more quickly than before, meaning they might encounter class files that are newer than the class-file library that they bundle. 
+
+To solve this problem, JEP 466 proposes a standard class-file API that can produce class files that will always be up-to-date with the running JDK. This API will evolve together with the class-file format, enabling frameworks to rely solely on this API, rather than on the willingness of third-party developers to update and test their class-file libraries.
+
+#### Elements, Builders and Transforms
+
+The Class-File API, located in the `java.lang.classfile` package, consists of three main components:
+
+*Elements*
+: Immutable descriptions of parts of a class file, such as instructions, attributes, fields, methods, or the entire file.
+
+*Builders* 
+: Corresponding builders for compound elements, offering specific building methods (e.g., `ClassBuilder::withMethod`) and serving as consumers of element types.
+
+*Transforms* 
+: Functions that take an element and a builder, determining if and how the element is transformed into other elements. This allows for flexible modification of class file elements.
+
+#### Example and Comparison To ASM
+
+Suppose we wish to generate the following method in a class file:
+
+```java
+void fooBar(boolean z, int x) {
+    if (z)
+        foo(x);
+    else
+        bar(x);
+}
+```
+
+With ASM we could generate the method like so:
+
+```java
+ClassWriter classWriter = ...;
+MethodVisitor mv = classWriter.visitMethod(0, "fooBar", "(ZI)V", null, null);
+mv.visitCode();
+mv.visitVarInsn(ILOAD, 1);
+Label label1 = new Label();
+mv.visitJumpInsn(IFEQ, label1);
+mv.visitVarInsn(ALOAD, 0);
+mv.visitVarInsn(ILOAD, 2);
+mv.visitMethodInsn(INVOKEVIRTUAL, "Foo", "foo", "(I)V", false);
+Label label2 = new Label();
+mv.visitJumpInsn(GOTO, label2);
+mv.visitLabel(label1);
+mv.visitVarInsn(ALOAD, 0);
+mv.visitVarInsn(ILOAD, 2);
+mv.visitMethodInsn(INVOKEVIRTUAL, "Foo", "bar", "(I)V", false);
+mv.visitLabel(label2);
+mv.visitInsn(RETURN);
+mv.visitEnd();
+```
+
+Unlike in ASM, where clients directly create a `ClassWriter` and then request a `MethodVisitor`, the Class-File API adopts a different approach. Here, instead of clients initiating a builder through a constructor or factory, they supply a lambda function that takes a builder as its parameter:
+
+```java
+ClassBuilder classBuilder = ...;
+classBuilder.withMethod("fooBar", MethodTypeDesc.of(CD_void, CD_boolean, CD_int), flags,
+                        methodBuilder -> methodBuilder.withCode(codeBuilder -> {
+    Label label1 = codeBuilder.newLabel();
+    Label label2 = codeBuilder.newLabel();
+    codeBuilder.iload(1)
+        .ifeq(label1)
+        .aload(0)
+        .iload(2)
+        .invokevirtual(ClassDesc.of("Foo"), "foo", MethodTypeDesc.of(CD_void, CD_int))
+        .goto_(label2)
+        .labelBinding(label1)
+        .aload(0)
+        .iload(2)
+        .invokevirtual(ClassDesc.of("Foo"), "bar", MethodTypeDesc.of(CD_void, CD_int))
+        .labelBinding(label2);
+        .return_();
+});
+```
 
 #### What's Different From Java 22?
 
-TODO
+Some refinements were made based on experience and feedback from the first preview stage; these are the most important ones:
+
+* The `CodeBuilder` class has been streamlined. This class has three kinds of factory methods for bytecode instructions: low-level factories, mid-level factories, and high-level builders for basic blocks. Based on feedback, mid-level methods that duplicated low-level methods or were infrequently used were removed, and the remaining mid-level methods were renamed to improve usability.
+* The `AttributeMapper` instances in `Attributes` have been made accessible via static methods instead of static fields, to allow lazy initialization and reduce startup cost.
+* `Signature.TypeArg` has been remodeled to be an algebraic data type, to ease access to the bound type when the `TypeArg`'s kind is bounded.
+* Type-aware `ClassReader::readEntryOrNull` and `ConstantPool::entryByIndex` methods have been added, which throw `ConstantPoolException` instead of `ClassCastException` if the entry at the index is not of the desired type. This allows class-file processors to indicate that a constant pool entry-type mismatch is a class-file format problem instead of the processor's problem.
+
+Note that the Class-File API is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to take the feature for a spin.
 
 #### More Information
 
-TODO
+For more information on this feature, including the minor refinements and more details on transforming class files, see [JEP 466](https://openjdk.org/jeps/466).
 
 ### JEP 469: Vector API (Eighth Incubator)
 
@@ -797,7 +874,7 @@ The Vector API provides a way to write complex vector algorithms in Java that pe
 #### What's Different From Java 22?
 
 Compared to the seventh incubator version of this feature in Java 22, nothing was changed or added.
-The Vector API will incubate until necessary features of Project Valhalla become available as preview features.
+The Vector API will keep incubating until necessary features of Project Valhalla become available as preview features.
 When that happens, the Vector API will be adapted to use them, and it will be promoted from incubation to preview.
 
 #### More Information
@@ -930,9 +1007,7 @@ In conclusion the JEP also states that no new intermediate operations will be ad
 
 #### What's Different From Java 22?
 
-Compared to the preview version of this feature in Java 22, nothing was changed or added. JEP 473 simply exists to gather more feedback from users.
-
-Note that this JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to take the feature for a spin.
+Compared to the preview version of this feature in Java 22, nothing was changed or added. JEP 473 simply exists to gather more feedback from users. Note that this JEP is in the [preview](https://openjdk.org/jeps/12) stage, so you'll need to add the `--enable-preview` flag to the command-line to take the feature for a spin.
 
 #### More Information
 
@@ -941,7 +1016,7 @@ For more information on this feature, see [JEP 473](https://openjdk.org/jeps/473
 ### JEP 471: Deprecate the Memory-Access Methods in sun.misc.Unsafe for Removal
 
 The `sun.misc.Unsafe` class contains 87 methods to perform low-level operations, such as accessing off-heap memory.
-The class is aptly named: using its methods without performing the necessary safety checks can lead to undefined behavior and to the JVM crashing.
+The class is aptly named: using its methods without performing the necessary safety checks can lead to undefined behaviour and to the JVM crashing.
 They were meant exclusively for use within the JDK, but back in 2002 when the class was introduced the [module system](https://openjdk.org/projects/jigsaw/) wasn't around yet and so there was no way to prevent the class from being used outside the JDK.
 And so the memory-access methods in `sun.misc.Unsafe` became a valuable tool for library developers seeking greater power and performance than what standard APIs could provide.
 
@@ -980,7 +1055,7 @@ Markdown documentation comments use the `///` prefix instead of the familiar `/*
 
 #### Example of the Differences
 
-To illustrate how documentation comments can change now that Markdown is supported, here's an example screenshot from the JEP: 
+To illustrate how documentation comments can change now that Markdown is supported, here's an example diff screenshot from the JEP: 
 
 ![Differences between regular documentation comment and Markdown documentation comment](https://cr.openjdk.org/~jjg/Object-hashcode-diff-3.png)
 
@@ -1013,7 +1088,7 @@ You can link to any kind of program element:
 To create a link with alternative text, you can use the form [text][element]. For example:
 
 ```
-/// Please feel free to use our [utility guitar tuning method](Guitar#isInTune())!
+/// Please feel free to use our [utility guitar tuning method][Guitar#isInTune()]!
 ```
 
 #### What's Different From Java 22?
@@ -1026,4 +1101,4 @@ For more information on this feature, see [JEP 467](https://openjdk.org/jeps/467
 
 ## Final thoughts
 
-It seems clear to me that Java 23 is TODO, with no less than 12 JEPs delivered! And that's not even all that's new: [many other updates](https://jdk.java.net/22/release-notes) were included in this release, including thousands of performance, stability and security updates. TODO
+This release of Java didn't have as many new features as previous versions, but there's still more than enough going on in our favourite language. Project Amber is still going strong, making Java more expressive and elegant. String templates might be missing from this release, but its omission shows that the preview process is working as intended. We can look forward to getting a redesigned version in the future. Also, Java is becoming friendlier towards newcomers now that beginner programs can be shorter than before. And that's not all that's new: [many other updates](https://jdk.java.net/23/release-notes) were included in this release, including thousands of performance, stability and security updates. So what are you waiting for? Time to take this brand-new Java version for a test drive!
