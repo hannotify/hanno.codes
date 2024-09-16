@@ -1,15 +1,15 @@
 ---
 layout: post
 title: Java 23 Has Arrived, And It Brings a Truckload of Changes
-date: 19-09-2024 04:30:00 +0200
+date: 17-09-2024 04:30:00 +0200
 header:
   teaser: /assets/images/blog/road-train.jpg
-excerpt: Java 23 has arrived, and it brings a truckload of changes! For example, in JavaDoc, 'Markdown documentation comments' are now supported. On top of that, a lot of features have been repreviewed and there are also two brand-new ones - module import declarations and primitive type patterns. This post has all the info!
+excerpt: Java 23 has arrived, and it brings a truckload of changes! For example, in JavaDoc, 'Markdown documentation comments' are now supported. On top of that, a lot of features have been re-previewed and there are also two brand-new ones - module import declarations and primitive type patterns. This post has all the info!
 tags: 
 - java
 ---
 
-Java 23 has arrived! It's been six months since Java 22 was released, so it's time for a fresh truckload of JEPs. This post takes you on a tour of everything that is part of this release, giving you a brief introduction to each of them. Where applicable the differences with Java 22 are highlighted and a few typical use cases are provided, so that you'll be more than ready to start using these features after reading this.
+Java 23 has arrived! It's been six months since Java 22 was released, so it's time for a fresh truckload of changes. This post takes you on a tour of everything that is part of this release, giving you a brief introduction to each of them. Where applicable the differences with Java 22 are highlighted and a few typical use cases are provided, so that you'll be more than ready to start using these features after reading this.
 
 ![Java 23 brings a truckload of features](/assets/images/blog/road-train.jpg)
 > Image from <a href="https://pxhere.com/en/photo/772190">PxHere</a>
