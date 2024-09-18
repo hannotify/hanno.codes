@@ -135,7 +135,7 @@ if (roomSize instanceof byte r) {
 
 The pattern `roomSize instanceof byte r` will match only if `roomSize` fits into a `byte`, eliminating the need for casts and range checks.
 
-#### Primitive Types in switch
+#### Primitive Types in instanceof
 
 The `instanceof` keyword used to take a reference type only, and since Java 16 it can also take a type pattern.
 But it would make sense to have `instanceof` take a primitive type also.
@@ -149,7 +149,7 @@ if (roomSize instanceof byte) { // check if value of roomSize fits in a byte
 
 This JEP proposes to support this construct, which makes it easier to change the `instanceof` check to take a type pattern and vice versa.
 
-#### Primitive Types in instanceof
+#### Primitive Types in switch
 
 The `switch` statement/expression currently supports `byte`, `short`, `char`, and `int` values.
 This JEP proposes to also add support for the other primitive types: `boolean`, `float`, `double` and `long`.
