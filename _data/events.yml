@@ -12,6 +12,8 @@
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://www.meetup.com/trailblazers-meetups/events/302309276
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
+      slides:   
+        source: local
 
 - id: hbo-student-and-job-event-2024
   name: HBO ICT Student & Job event
