@@ -40,3 +40,6 @@
 [submodule "_slides/javas-concurrency-journey-continues/amsterdamjug-2024"]
 	path = _slides/javas-concurrency-journey-continues/amsterdamjug-2024
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
+[submodule "_slides/javas-concurrency-journey-continues/trailblazers-meetup-2024"]
+	path = _slides/javas-concurrency-journey-continues/trailblazers-meetup-2024
+	url = https://github.com/hannotify/javas-concurrency-journey-continues
