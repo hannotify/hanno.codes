@@ -1,45 +1,60 @@
 [submodule "assets/lib/reveal.js"]
 	path = _slides/reveal.js
 	url = https://github.com/hakimel/reveal.js
+	shallow = true
 [submodule "_slides/will-git-be-around-forever-a-list-of-possible-successors/devoxx-2022"]
 	path = _slides/will-git-be-around-forever/devoxx-2022
 	url = https://github.com/hannotify/will-git-be-around-forever-a-list-of-possible-successors.git
+	shallow = true
 [submodule "frontmania-2022"]
 	path = _slides/will-git-be-around-forever/frontmania-2022
 	url = https://github.com/hannotify/will-git-be-around-forever-a-list-of-possible-successors
+	shallow = true
 [submodule "_slides/pattern-matching-small-enhancement-or-major-feature/jfall-2022"]
 	path = _slides/pattern-matching/j-fall-2022
 	url = https://github.com/hannotify/pattern-matching-small-enhancement-or-major-feature
+	shallow = true
 [submodule "_slides/pattern-matching-small-enhancement-or-major-feature/developer-week-2022"]
 	path = _slides/pattern-matching/developer-week-2022
 	url = https://github.com/hannotify/pattern-matching-small-enhancement-or-major-feature
+	shallow = true
 [submodule "_slides/spilberg-meetup-2023"]
 	path = _slides/pattern-matching/spilberg-meetup-2023
 	url = https://github.com/hannotify/pattern-matching-small-enhancement-or-major-feature
+	shallow = true
 [submodule "_slides/pattern-matching/javaland-2023"]
 	path = _slides/pattern-matching/javaland-2023
 	url = https://github.com/hannotify/pattern-matching-small-enhancement-or-major-feature.git
+	shallow = true
 [submodule "_slides/pattern-matching/devoxxpl-2023"]
 	path = _slides/pattern-matching/devoxxpl-2023
 	url = https://github.com/hannotify/pattern-matching-small-enhancement-or-major-feature.git
+	shallow = true
 [submodule "_slides/eleven-crazy-java-things/devoxxpl-2023"]
 	path = _slides/eleven-crazy-java-things/devoxxpl-2023
 	url = https://github.com/hannotify/eleven-crazy-java-things
+	shallow = true
 [submodule "_slides/will-git-be-around-forever/devoxxpl-2023"]
 	path = _slides/will-git-be-around-forever/devoxxpl-2023
 	url = https://github.com/hannotify/will-git-be-around-forever-a-list-of-possible-successors
+	shallow = true
 [submodule "_slides/javas-concurrency-journey-continues/arnhemjug-2023"]
 	path = _slides/javas-concurrency-journey-continues/arnhemjug-2023
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
+	shallow = true
 [submodule "_slides/pijul/jfall-2023"]
 	path = _slides/pijul/jfall-2023
 	url = https://github.com/hannotify/a-birds-eye-view-of-version-control-with-pijul
+	shallow = true
 [submodule "_slides/javas-concurrency-journey-continues/jcon-2023"]
 	path = _slides/javas-concurrency-journey-continues/jcon-2023
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
+	shallow = true
 [submodule "_slides/javas-concurrency-journey-continues/amsterdamjug-2024"]
 	path = _slides/javas-concurrency-journey-continues/amsterdamjug-2024
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
+	shallow = true
 [submodule "_slides/javas-concurrency-journey-continues/trailblazers-meetup-2024"]
 	path = _slides/javas-concurrency-journey-continues/trailblazers-meetup-2024
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
+	shallow = true
