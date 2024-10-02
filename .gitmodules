@@ -58,3 +58,7 @@
 	path = _slides/javas-concurrency-journey-continues/trailblazers-meetup-2024
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
 	shallow = true
+[submodule "_slides/pattern-matching/hbo-ict-job-student-event-2024"]
+	path = _slides/pattern-matching/hbo-ict-job-student-event-2024
+	url = https://github.com/hannotify/pattern-matching-small-enhancement-or-major-feature
+	shallow = true
