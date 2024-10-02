@@ -435,6 +435,7 @@
   appearances:
     - id: pattern-matching
       sessionPageUrl: https://jfall.nl/timetable-2022/
+      videoUrl: https://youtu.be/eIcA-IAcfGo
       slides: 
         source: local
       cospeakers:
