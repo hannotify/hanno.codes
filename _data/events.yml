@@ -32,6 +32,8 @@
   appearances:
     - id: pattern-matching
       sessionPageUrl: https://www.hboictjobevent.nl/masterclasses/11937-pattern-matching-in-java-onopvallende-toevoeging-of-cruciale-feature-nl
+      slides:   
+        source: local
 
 - id: devoxx-2024
   name: Devoxx
