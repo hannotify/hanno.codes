@@ -15,8 +15,8 @@
       slides:   
         source: local
 
-- id: hbo-student-and-job-event-2024
-  name: HBO ICT Student & Job event
+- id: hbo-ict-job-student-event-2024
+  name: HBO ICT Job & Student event
   year: 2024
   country:
     flag: netherlands
