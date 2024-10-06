@@ -62,3 +62,6 @@
 	path = _slides/pattern-matching/hbo-ict-job-student-event-2024
 	url = https://github.com/hannotify/pattern-matching-small-enhancement-or-major-feature
 	shallow = true
+[submodule "_slides/javas-concurrency-journey-continues/devoxx-2024"]
+	path = _slides/javas-concurrency-journey-continues/devoxx-2024
+	url = https://github.com/hannotify/javas-concurrency-journey-continues
