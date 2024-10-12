@@ -54,6 +54,7 @@
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://devoxx.be/talk/?id=2586
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
+      videoUrl: https://youtu.be/0siacvqx5UE
       slides: 
         source: local
 
