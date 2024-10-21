@@ -18,23 +18,6 @@
       slides:   
         source: local
 
-- id: trailblazers-meetup-2024
-  name: Trailblazers Meetup
-  year: 2024
-  country:
-    flag: netherlands
-    name: The Netherlands
-  city: Weesp
-  url: https://www.meetup.com/nl-NL/trailblazers-meetups/
-  dateStart: 2024-09-19
-  logo: trailblazers.webp
-  appearances:
-    - id: javas-concurrency-journey-continues
-      sessionPageUrl: https://www.meetup.com/trailblazers-meetups/events/302309276
-      githubUrl: https://github.com/hannotify/structured-concurrency-bar
-      slides:   
-        source: local
-
 - id: devoxx-2024
   name: Devoxx
   year: 2024
@@ -58,6 +41,23 @@
       slides: 
         source: local
 
+- id: trailblazers-meetup-2024
+  name: Trailblazers Meetup
+  year: 2024
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Weesp
+  url: https://www.meetup.com/nl-NL/trailblazers-meetups/
+  dateStart: 2024-09-19
+  logo: trailblazers.webp
+  appearances:
+    - id: javas-concurrency-journey-continues
+      sessionPageUrl: https://www.meetup.com/trailblazers-meetups/events/302309276
+      githubUrl: https://github.com/hannotify/structured-concurrency-bar
+      slides:   
+        source: local
+
 - id: ns-devops-and-qa-tech-day-2024
   name: DevOps & QA Tech Day NS
   year: 2024
@@ -70,7 +70,9 @@
   logo: ns.webp
   appearances:
     - id: what-stairway-to-heaven-can-teach-us-about-software-development
-    - id: will-git-be-around-forever
+      slides:
+        source: google-drive
+        url: https://docs.google.com/presentation/d/e/2PACX-1vS5fObb9KViyrayfKk7Pw8hwxoToSjxkjrHEFjpVTogF3mLH4Vj6eAH_9meMcprLmITqNCihrl3zMN4/pub
 
 - id: jfall-2024
   name: J-Fall
@@ -107,6 +109,24 @@
   logo: snic-sustainabilit.svg
   appearances: 
     - id: will-git-be-around-forever
+
+- id: devworld-2025
+  name: Devworld
+  year: 2025
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Amsterdam
+  venue:
+    name: RAI
+    latitude: 52.3411906
+    longitude: 4.8860353
+  dateStart: 2025-02-27
+  dateEnd: 2025-02-28
+  url: https://devworldconference.com/
+  logo: devworld.png
+  appearances: 
+    - id: public-static-void-main-
 
 - id: spacerockit-2024
   name: SpaceRockIT
@@ -157,6 +177,7 @@
   appearances:
     - id: what-stairway-to-heaven-can-teach-us-about-software-development
       sessionPageUrl: https://2024.europe.jcon.one/schedule
+      videoUrl: https://youtu.be/kWniBaliERE
       slides:
         source: google-drive
         url: https://docs.google.com/presentation/d/e/2PACX-1vRzAq_JsbjJy9B4Li6HI-SF2YM2GwWXQlU-gN8Zm5GLIk8BXKvPuH0BgLnn0AoepxvtAE1bu68xopP4/pub
