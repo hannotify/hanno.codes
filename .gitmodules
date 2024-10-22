@@ -65,3 +65,8 @@
 [submodule "_slides/javas-concurrency-journey-continues/devoxx-2024"]
 	path = _slides/javas-concurrency-journey-continues/devoxx-2024
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
+	shallow = true
+[submodule "_slides/javas-concurrency-journey-continues/jfall-2024"]
+	path = _slides/javas-concurrency-journey-continues/jfall-2024
+	url = https://github.com/hannotify/javas-concurrency-journey-continues
+	shallow = true
