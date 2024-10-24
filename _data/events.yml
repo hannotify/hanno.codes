@@ -91,6 +91,8 @@
   appearances:
     - id: javas-concurrency-journey-continues
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
+      slides:   
+        source: local
     - id: public-static-void-main-
 
 - id: snic-sustainabilit-2024
