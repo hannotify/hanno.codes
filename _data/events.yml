@@ -111,6 +111,7 @@
   logo: snic-sustainabilit.svg
   appearances: 
     - id: will-git-be-around-forever
+      sessionPageUrl: https://sustainabilit.snic.nl/program
 
 - id: devworld-2025
   name: Devworld
