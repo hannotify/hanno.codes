@@ -113,6 +113,13 @@
     - id: will-git-be-around-forever
       sessionPageUrl: https://sustainabilit.snic.nl/program
 
+- id: oracle-ace-virtual-conference-2024
+  name: Oracle ACE Virtual Conference
+  year: 2024
+  dateStart: 2024-12-11
+  appearances:
+    - id: eleven-crazy-java-things
+
 - id: devworld-2025
   name: Devworld
   year: 2025
