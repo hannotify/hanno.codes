@@ -117,6 +117,7 @@
   name: Oracle ACE Virtual Conference
   year: 2024
   dateStart: 2024-12-11
+  logo: ace-pro-spade.png
   appearances:
     - id: eleven-crazy-java-things
 
