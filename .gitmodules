@@ -70,3 +70,6 @@
 	path = _slides/javas-concurrency-journey-continues/jfall-2024
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
 	shallow = true
+[submodule "_slides/will-git-be-around-forever/snic-sustainabilit-2024"]
+	path = _slides/will-git-be-around-forever/snic-sustainabilit-2024
+	url = https://github.com/hannotify/will-git-be-around-forever-a-list-of-possible-successors
