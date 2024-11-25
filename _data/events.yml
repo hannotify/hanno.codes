@@ -1,100 +1,3 @@
-- id: hbo-ict-job-student-event-2024
-  name: HBO ICT Job & Student event
-  year: 2024
-  country:
-    flag: netherlands
-    name: The Netherlands
-  city: Utrecht
-  venue:
-    name: Jaarbeurs
-    latitude: 52.0860406
-    longitude: 5.1014529
-  dateStart: 2024-10-04
-  url: https://hboictjobevent.nl
-  logo: hboictjobevent.png
-  appearances:
-    - id: pattern-matching
-      sessionPageUrl: https://www.hboictjobevent.nl/masterclasses/11937-pattern-matching-in-java-onopvallende-toevoeging-of-cruciale-feature-nl
-      slides:   
-        source: local
-
-- id: devoxx-2024
-  name: Devoxx
-  year: 2024
-  country:
-    flag: belgium
-    name: Belgium
-  city: Antwerp
-  venue:
-    name: Kinepolis
-    latitude: 51.2459082
-    longitude: 4.4140204
-  url: https://www.devoxx.be
-  dateStart: 07-10-2024
-  dateEnd: 11-10-2024
-  logo: devoxx.png
-  appearances:
-    - id: javas-concurrency-journey-continues
-      sessionPageUrl: https://devoxx.be/talk/?id=2586
-      githubUrl: https://github.com/hannotify/structured-concurrency-bar
-      videoUrl: https://youtu.be/0siacvqx5UE
-      slides: 
-        source: local
-
-- id: trailblazers-meetup-2024
-  name: Trailblazers Meetup
-  year: 2024
-  country:
-    flag: netherlands
-    name: The Netherlands
-  city: Weesp
-  url: https://www.meetup.com/nl-NL/trailblazers-meetups/
-  dateStart: 2024-09-19
-  logo: trailblazers.webp
-  appearances:
-    - id: javas-concurrency-journey-continues
-      sessionPageUrl: https://www.meetup.com/trailblazers-meetups/events/302309276
-      githubUrl: https://github.com/hannotify/structured-concurrency-bar
-      slides:   
-        source: local
-
-- id: ns-devops-and-qa-tech-day-2024
-  name: DevOps & QA Tech Day NS
-  year: 2024
-  remarks: Internal conference at Nederlandse Spoorwegen (NS)
-  country: 
-    flag: netherlands
-    name: The Netherlands
-  city: Utrecht
-  dateStart: 2024-10-22
-  logo: ns.webp
-  appearances:
-    - id: what-stairway-to-heaven-can-teach-us-about-software-development
-      slides:
-        source: google-drive
-        url: https://docs.google.com/presentation/d/e/2PACX-1vS5fObb9KViyrayfKk7Pw8hwxoToSjxkjrHEFjpVTogF3mLH4Vj6eAH_9meMcprLmITqNCihrl3zMN4/pub
-
-- id: jfall-2024
-  name: J-Fall
-  year: 2024
-  country:
-    flag: netherlands
-    name: The Netherlands
-  city: Ede
-  venue:
-    name: Pathé
-    latitude: 52.01577007972178
-    longitude: 5.64583211559008
-  url: https://www.jfall.nl
-  dateStart: 2024-11-07
-  logo: jfall.png
-  appearances:
-    - id: javas-concurrency-journey-continues
-      githubUrl: https://github.com/hannotify/structured-concurrency-bar
-      slides:   
-        source: local
-    - id: public-static-void-main-
-
 - id: snic-sustainabilit-2024
   name: SNiC SustainabilIT
   year: 2024
@@ -109,7 +12,7 @@
     longitude: 5.1726545
   url: https://sustainabilit.snic.nl
   logo: snic-sustainabilit.svg
-  appearances: 
+  appearances:
     - id: will-git-be-around-forever
       sessionPageUrl: https://sustainabilit.snic.nl/program
       slides:
@@ -140,8 +43,124 @@
   dateEnd: 2025-02-28
   url: https://devworldconference.com/
   logo: devworld.png
-  appearances: 
+  appearances:
     - id: public-static-void-main-
+
+- id: javaland-2025
+  name: JavaLand
+  year: 2025
+  country:
+    flag: de
+    name: Germany
+  city: Nürburgring
+  venue:
+    name: Phantasialand
+    latitude: 50.3369791
+    longitude: 6.9459201
+  url: https://www.javaland.eu
+  dateStart: 01-04-2025
+  dateEnd: 03-04-2025
+  logo: javaland.png
+  appearances:
+    - id: zero-to-secured-jakarta-ee-microprofile-jwt
+      sessionPageUrl: https://meine.doag.org/events/javaland/2025/agenda/#eventDay.1743458400
+
+- id: jfall-2024
+  name: J-Fall
+  year: 2024
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Ede
+  venue:
+    name: Pathé
+    latitude: 52.01577007972178
+    longitude: 5.64583211559008
+  url: https://www.jfall.nl
+  dateStart: 2024-11-07
+  logo: jfall.png
+  appearances:
+    - id: javas-concurrency-journey-continues
+      githubUrl: https://github.com/hannotify/structured-concurrency-bar
+      slides:
+        source: local
+    - id: public-static-void-main-
+
+- id: ns-devops-and-qa-tech-day-2024
+  name: DevOps & QA Tech Day NS
+  year: 2024
+  remarks: Internal conference at Nederlandse Spoorwegen (NS)
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Utrecht
+  dateStart: 2024-10-22
+  logo: ns.webp
+  appearances:
+    - id: what-stairway-to-heaven-can-teach-us-about-software-development
+      slides:
+        source: google-drive
+        url: https://docs.google.com/presentation/d/e/2PACX-1vS5fObb9KViyrayfKk7Pw8hwxoToSjxkjrHEFjpVTogF3mLH4Vj6eAH_9meMcprLmITqNCihrl3zMN4/pub
+
+- id: devoxx-2024
+  name: Devoxx
+  year: 2024
+  country:
+    flag: belgium
+    name: Belgium
+  city: Antwerp
+  venue:
+    name: Kinepolis
+    latitude: 51.2459082
+    longitude: 4.4140204
+  url: https://www.devoxx.be
+  dateStart: 07-10-2024
+  dateEnd: 11-10-2024
+  logo: devoxx.png
+  appearances:
+    - id: javas-concurrency-journey-continues
+      sessionPageUrl: https://devoxx.be/talk/?id=2586
+      githubUrl: https://github.com/hannotify/structured-concurrency-bar
+      videoUrl: https://youtu.be/0siacvqx5UE
+      slides:
+        source: local
+
+- id: hbo-ict-job-student-event-2024
+  name: HBO ICT Job & Student event
+  year: 2024
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Utrecht
+  venue:
+    name: Jaarbeurs
+    latitude: 52.0860406
+    longitude: 5.1014529
+  dateStart: 2024-10-04
+  url: https://hboictjobevent.nl
+  logo: hboictjobevent.png
+  appearances:
+    - id: pattern-matching
+      sessionPageUrl: https://www.hboictjobevent.nl/masterclasses/11937-pattern-matching-in-java-onopvallende-toevoeging-of-cruciale-feature-nl
+      slides:   
+        source: local
+
+- id: trailblazers-meetup-2024
+  name: Trailblazers Meetup
+  year: 2024
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Weesp
+  url: https://www.meetup.com/nl-NL/trailblazers-meetups/
+  dateStart: 2024-09-19
+  logo: trailblazers.webp
+  appearances:
+    - id: javas-concurrency-journey-continues
+      sessionPageUrl: https://www.meetup.com/trailblazers-meetups/events/302309276
+      githubUrl: https://github.com/hannotify/structured-concurrency-bar
+      slides:   
+        source: local
 
 - id: spacerockit-2024
   name: SpaceRockIT

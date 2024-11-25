@@ -1,3 +1,18 @@
+- id: zero-to-secured-jakarta-ee-microprofile-jwt
+  title: From Zero to Secured&#58; Live-Coding a Full-Stack Jakarta EE REST App with MicroProfile and JWT Authentication
+  type: regular
+  retired: false
+  description: |
+    Join me for a comprehensive session designed to take you through building a secure, full-stack Jakarta EE application from scratch!
+    Over the past year, I've taught a group of junior developers the intricacies of Java and Jakarta EE, and we happened to encounter various challenges in securing a REST application with JWT and connecting it to a frontend. Let's address these challenges together during this talk by:
+    
+    * Live-coding a RESTful app from scratch using the latest versions of JAX-RS, JPA, and MicroProfile.
+    * Implementing JWT-based authentication.
+    * Documenting REST endpoints with OpenAPI.
+    * Connecting an Angular frontend to the REST app.
+    
+    Along the way, you’ll hear about key concepts like stateless EJBs, dependency injection, JPA basics, DTOs, password encryption, and JWT structure & verification. Not the biggest fan of theory? Don’t worry - I'll include as much live-coding as possible, which makes this talk is perfect for developers who want to master practical Jakarta EE application development and security.
+
 - id: pijul
   title: A Bird's-Eye View of Version Control with Pijul
   type: lightning
