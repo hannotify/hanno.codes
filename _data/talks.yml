@@ -101,7 +101,7 @@
   type: regular
   retired: false
   description: |
-    Ten years ago, only early adopters used Git. The majority used Subversion. Ten years later, almost everyone uses Git. Which makes me wonder: will this be different ten years from now? What features would we need in 2034? No history rewrites? Better collaboration? No merge conflicts ever? I'll discuss a few post-Git products, including Fossil, Pijul and Sapling, and the features they contain. I'll also predict whether Git will remain in the top spot or not. So attend this session if you want to have a shot at beating even (!) the early adopters. If it turns out I was right, remember that you heard it here first. 😀
+    In the early 2010s, only early adopters used Git. The majority used Subversion. Ten years later, almost everyone uses Git. So what will we use another ten years from now? And what features would we need? I'll discuss a few post-Git products, their features and I'll predict whether Git will remain in the top spot or not.
     
 - id: building-a-spring-boot-application-ask-the-audience
   title: Building a Spring Boot Application&#58; Ask the Audience!

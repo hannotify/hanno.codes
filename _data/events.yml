@@ -112,14 +112,18 @@
   appearances: 
     - id: will-git-be-around-forever
       sessionPageUrl: https://sustainabilit.snic.nl/program
+      slides:
+        source: local
 
 - id: oracle-ace-virtual-conference-2024
   name: Oracle ACE Virtual Conference
   year: 2024
   dateStart: 2024-12-11
   logo: ace-pro-spade.png
+  url: https://blogs.oracle.com/ace/post/oracle-ace-virtual-conference-december-11-2024
   appearances:
     - id: eleven-crazy-java-things
+      sessionPageUrl: https://apexadb.oracle.com/ords/r/tech/catalog/session-landing-page?p2_event_id=50630387284046870158466092492611300818&p2_join_yn=&session_page=3&clear=2&session=612308783065539
 
 - id: devworld-2025
   name: Devworld
