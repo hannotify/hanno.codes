@@ -10,7 +10,7 @@
     {% endif %}
     
     {% if nowUnix < eventTime or eventTime == '' %}
-        {% assign upcomingEvents = upcomingEvents | push: event %}
+        {% assign upcomingEvents = upcomingEvents | push: event | sort: 'dateStart' %}
     {% endif %}
 {% endfor %}
 
@@ -18,7 +18,7 @@
 # [](#upcoming-events)Upcoming ({{upcomingEvents.size}})
 {% endif %}
 
-{% for event in upcomingEvents | sort: "dateEnd" %}
+{% for event in upcomingEvents %}
     {% if event.dateEnd %}
         {% capture dateString %}{{ event.dateStart | date: "%B %e, %Y" }} - {{ event.dateEnd | date: "%B %e, %Y" }}{% endcapture %}
     {% elsif event.dateStart %}

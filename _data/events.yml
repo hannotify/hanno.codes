@@ -1,32 +1,21 @@
-- id: snic-sustainabilit-2024
-  name: SNiC SustainabilIT
-  year: 2024
+- id: javaland-2025
+  name: JavaLand
+  year: 2025
   country:
-    flag: netherlands
-    name: The Netherlands
-  city: Bussum
-  dateStart: 2024-11-27
+    flag: de
+    name: Germany
+  city: 🏎 Nürburgring
   venue:
-    name: Spant!
-    latitude: 52.2701033
-    longitude: 5.1726545
-  url: https://sustainabilit.snic.nl
-  logo: snic-sustainabilit.svg
+    name: Nürburgring
+    latitude: 50.3369791
+    longitude: 6.9459201
+  url: https://www.javaland.eu
+  dateStart: 2025-04-01
+  dateEnd: 2025-04-03
+  logo: javaland.png
   appearances:
-    - id: will-git-be-around-forever
-      sessionPageUrl: https://sustainabilit.snic.nl/program
-      slides:
-        source: local
-
-- id: oracle-ace-virtual-conference-2024
-  name: Oracle ACE Virtual Conference
-  year: 2024
-  dateStart: 2024-12-11
-  logo: ace-pro-spade.png
-  url: https://blogs.oracle.com/ace/post/oracle-ace-virtual-conference-december-11-2024
-  appearances:
-    - id: eleven-crazy-java-things
-      sessionPageUrl: https://apexadb.oracle.com/ords/r/tech/catalog/session-landing-page?p2_event_id=50630387284046870158466092492611300818&p2_join_yn=&session_page=3&clear=2&session=612308783065539
+    - id: zero-to-secured-jakarta-ee-microprofile-jwt
+      sessionPageUrl: https://meine.doag.org/events/javaland/2025/agenda/#eventDay.1743458400
 
 - id: devworld-2025
   name: Devworld
@@ -46,24 +35,46 @@
   appearances:
     - id: public-static-void-main-
 
-- id: javaland-2025
-  name: JavaLand
+- id: j-champions-conference-2025
+  name: jChampionsConference
   year: 2025
-  country:
-    flag: de
-    name: Germany
-  city: Nürburgring
-  venue:
-    name: Phantasialand
-    latitude: 50.3369791
-    longitude: 6.9459201
-  url: https://www.javaland.eu
-  dateStart: 01-04-2025
-  dateEnd: 03-04-2025
-  logo: javaland.png
+  dateStart: 2025-01-23
+  dateEnd: 2025-01-28
+  logo: j-champions-conference.jpeg
+  url: https://jchampionsconf.com/
   appearances:
-    - id: zero-to-secured-jakarta-ee-microprofile-jwt
-      sessionPageUrl: https://meine.doag.org/events/javaland/2025/agenda/#eventDay.1743458400
+    - id: javas-concurrency-journey-continues
+      githubUrl: https://github.com/hannotify/structured-concurrency-bar
+
+- id: oracle-ace-virtual-conference-2024
+  name: Oracle ACE Virtual Conference
+  year: 2024
+  dateStart: 2024-12-11
+  logo: ace-pro-spade.png
+  url: https://blogs.oracle.com/ace/post/oracle-ace-virtual-conference-december-11-2024
+  appearances:
+    - id: eleven-crazy-java-things
+      sessionPageUrl: https://apexadb.oracle.com/ords/r/tech/catalog/session-landing-page?p2_event_id=50630387284046870158466092492611300818&p2_join_yn=&session_page=3&clear=2&session=612308783065539
+
+- id: snic-sustainabilit-2024
+  name: SNiC SustainabilIT
+  year: 2024
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Bussum
+  dateStart: 2024-11-27
+  venue:
+    name: Spant!
+    latitude: 52.2701033
+    longitude: 5.1726545
+  url: https://sustainabilit.snic.nl
+  logo: snic-sustainabilit.svg
+  appearances:
+    - id: will-git-be-around-forever
+      sessionPageUrl: https://sustainabilit.snic.nl/program
+      slides:
+        source: local
 
 - id: jfall-2024
   name: J-Fall
@@ -114,8 +125,8 @@
     latitude: 51.2459082
     longitude: 4.4140204
   url: https://www.devoxx.be
-  dateStart: 07-10-2024
-  dateEnd: 11-10-2024
+  dateStart: 2024-10-07
+  dateEnd: 2024-10-11
   logo: devoxx.png
   appearances:
     - id: javas-concurrency-journey-continues
@@ -1148,8 +1159,8 @@
     latitude: 52.01577007972178
     longitude: 5.64583211559008
   url: //www.devoxx.be
-  dateStart: 06-11-2017
-  dateEnd: 10-11-2017
+  dateStart: 2017-11-06
+  dateEnd: 2017-11-10
   appearances:
     - id: qwerty-or-dvorak-debunking-the-keyboard-layout-myths
       sessionPageUrl: //cfp.devoxx.be/2017/talk/MLV-7954/QWERTY_or_DVORAK%3F_Debunking_the_Keyboard_Layout_Myths
@@ -1172,7 +1183,7 @@
   name: Luxoft Technology Series
   year: 2017
   url: https://career.luxoft.com/lts-luxoft-technology-series
-  dateStart: 14-11-2017
+  dateStart: 2017-11-14
   appearances:
     - id: building-a-spring-boot-application-ask-the-audience
       sessionPageUrl: https://career.luxoft.com/lts-luxoft-technology-series/building-a-spring-boot-application-ask-the-audience/
@@ -1191,8 +1202,7 @@
     latitude: 51.2452257
     longitude: 4.4156213
   url: //www.jfall.nl
-  dateStart: 02-11-2017
-  dateEnd:
+  dateStart: 2017-11-02
   appearances:
     - id: building-a-spring-boot-application-ask-the-audience
       sessionPageUrl: //jfall.nl/sessions/building-spring-boot-application-ask-audience/
@@ -1220,8 +1230,8 @@
     latitude: 41.3581629
     longitude: 2.1265076
   url: //www.jbcnconf.com
-  dateStart: 19-06-2017
-  dateEnd: 21-06-2017
+  dateStart: 2017-06-19
+  dateEnd: 2017-06-21
   appearances:
     - id: building-a-spring-boot-application-ask-the-audience
       sessionPageUrl: http://www.jbcnconf.com/2017/infoSpeaker.html?ref=hanno-embregts
@@ -1241,8 +1251,8 @@
     latitude: 50.7993531
     longitude: 6.8786675
   url: //www.javaland.eu
-  dateStart: 28-03-2017
-  dateEnd: 30-03-2017
+  dateStart: 2017-03-28
+  dateEnd: 2017-03-30
   appearances:
     - id: building-a-spring-boot-application-ask-the-audience
       sessionPageUrl: //programm.javaland.eu/2017/talk.html#talk?talkId=529558
@@ -1257,7 +1267,7 @@
   name: Luxoft Technology Series
   year: 2016
   url: https://career.luxoft.com/lts-luxoft-technology-series
-  dateStart: 06-10-2016
+  dateStart: 2016-10-06
   appearances:
     - id: migrating-25k-lines-of-ant-scripting-to-gradle
       sessionPageUrl: https://career.luxoft.com/lts-luxoft-technology-series/migrating-25k-lines-of-ant-scripting-to-gradle/
@@ -1276,8 +1286,8 @@
     latitude: 51.5358885
     longitude: -0.1091954
   url: //www.devoxx.co.uk
-  dateStart: 08-06-2016
-  dateEnd: 10-06-2016
+  dateStart: 2016-06-08
+  dateEnd: 2016-06-10
   appearances:
     - id: migrating-25k-lines-of-ant-scripting-to-gradle
       sessionPageUrl:
@@ -1300,8 +1310,8 @@
     latitude: 42.6627755
     longitude: 23.3099296
   url: //www.jprime.io
-  dateStart: 26-05-2016
-  dateEnd: 27-05-2016
+  dateStart: 2016-05-26
+  dateEnd: 2016-05-27
   appearances:
     - id: migrating-25k-lines-of-ant-scripting-to-gradle
       sessionPageUrl: //jprime.io/nav/article/61
