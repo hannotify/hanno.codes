@@ -35,12 +35,12 @@
   appearances:
     - id: public-static-void-main-
 
-- id: j-champions-conference-2025
+- id: jchampionsconf-2025
   name: jChampionsConference
   year: 2025
   dateStart: 2025-01-23
   dateEnd: 2025-01-28
-  logo: j-champions-conference.jpeg
+  logo: jchampionsconf.jpeg
   url: https://jchampionsconf.com/
   appearances:
     - id: javas-concurrency-journey-continues
