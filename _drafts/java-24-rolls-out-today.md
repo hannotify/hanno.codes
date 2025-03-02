@@ -9,17 +9,24 @@ tags:
 - java
 ---
 
-TODO - write intro
-TODO - explain article structure
+TODO - write intro. It should contain:
+- performance improvements like: 
+  - compact object headers, 
+  - GC optimizations, 
+  - Leyden
+  - linking run-time images
+- virtual thread pinning
+- security additions
+- deprecations & restrictions
 
-TODO - replace with a smaller version of this image
+TODO - explain article structure
 
 ![Basketball players hugging during game - one of them wears a jersey with number '24' at the back](/assets/images/blog/basketball-24.jpg)
 > Photo by Royy Nguyen, from <a href="https://www.pexels.com/photo/basketball-players-hugging-during-game-in-gym-5303477/">Pexels</a>
 
-## Overview
+## JEP Overview
 
-Here's an overview of the JEPs that ship with Java 24, along with their preview status, to which project they belong, what kind of features they add and the things that have changed since Java 23.
+To start off the article, let's look at an overview of the JEPs that ship with Java 24. This table contains the preview status for all JEP's, to which project they belong, what kind of features they add and the things that have changed since Java 23.
 
 | **JEP** | **Title**                                                          |      **Status** |   **Project** | **Feature Type** | **Changes since Java 23** |
 | ------: | ------------------------------------------------------------------ | --------------: | ------------: | ---------------: | ------------------------: |
@@ -50,7 +57,7 @@ Here's an overview of the JEPs that ship with Java 24, along with their preview 
 
 ## New features
 
-Let's start with the most exciting part: the brand-new features that made it to Java 24.
+Let's start with the JEP's that add brand-new features to Java 24.
 
 ### HotSpot
 
@@ -68,13 +75,13 @@ Java 24 introduces five new features in [HotSpot](https://openjdk.org/groups/hot
 
 The Shenandoah garbage collector is an ultra-low pause time garbage collector. It has been [available for production use since Java 15](https://openjdk.org/jeps/379) and has been designed to dramatically reduce garbage collection pause times, regardless of the heap size that is used. It can achieve these low pause times because most of the work is done before the GC pause, in a series of preparation steps. Shenandoah marks and compacts any heap objects eligible for garbage collection, while regular Java user threads are still running.
 
-Java 24 introduces an extension to Shenandoah that maintains separate generations for young and old objects, allowing Shenandoah to collect young objects (which tend to die young) more frequently. This will result in a significant performance gain for applications running with generational Shenandoah, without sacrificing any of the valuable properties that the garbage collector is already known for.
+Java 24 introduces an extension to Shenandoah that maintains separate generations for young and old objects, allowing Shenandoah to collect young objects more frequently. This will result in a significant performance gain for applications running with generational Shenandoah, without sacrificing any of the valuable properties that the garbage collector is already known for.
 
 The reason for handling young and old objects separately stems from the [weak generational hypothesis](https://docs.oracle.com/en/java/javase/17/gctuning/garbage-collector-implementation.html#GUID-71D796B3-CBAB-4D80-B5C3-2620E45F6E5D), which states that young objects tend to die young, while old objects tend to stick around. This means that collecting young objects requires fewer resources and yields more memory, while collecting old objects requires more resources and yields less memory. This is the reason we can improve the performance of applications that use Shenandoah by collecting young objects more frequently.
 
 ##### Running a Workload With Generational Shenandoah
 
-Shenandoah used to be able to behave in a non-generational way only. Running it required the following command-line configuration:
+Shenandoah used to behave in a non-generational way only. Running it required the following command-line configuration:
 
 ```bash
 $ java ... -XX:+UseShenandoahGC
@@ -137,7 +144,9 @@ Header (compact):
                               (Valhalla-reserved bits) (Self Forwarded Tag)
 ```
 
-As you can see, the size of the hash code does not change. Four bits are reserved for future use by [Project Valhalla](https://openjdk.org/projects/valhalla/).
+As you can see, the size of the hash code does not change. 
+
+> Note that four bits are reserved for future use by [Project Valhalla](https://openjdk.org/projects/valhalla/).
 
 ##### Future of This Feature
 
@@ -145,7 +154,7 @@ This experimental feature will have a broad impact on real-world applications. T
 
 ##### Enabling Compact Object Headers
 
-Compact object headers is an experimental feature and therefore disabled by default. They can be enabled with: 
+Compact object headers can be enabled as follows: 
 
 ```bash
 $ java ... -XX:+UnlockExperimentalVMOptions -XX:+UseCompactObjectHeaders
@@ -161,39 +170,167 @@ The speed of Java applications has become increasingly important with the growin
 
 ##### G1? C2? Early Barrier Expansion? Help Me Out Here!
 
-*G1* has been Java's [default garbage collector since Java 9](https://openjdk.org/jeps/248). It is a garbage collector designed to provide high performance and low pause times for applications with large heaps. It divides the heap into regions and prioritizes garbage collection in regions with the most garbage, hence the name "Garbage-First." G1 aims to achieve predictable pause times by performing most of its work concurrently with the application threads, minimizing the impact on application performance.
+*G1* has been Java's [default garbage collector since Java 9](https://openjdk.org/jeps/248). It's been designed to provide high performance and low pause times for applications with large heaps. It divides the heap into regions and prioritizes garbage collection in regions with the most garbage, hence the name "Garbage-First." G1 aims to achieve predictable pause times by performing most of its work concurrently with the application threads, minimizing the impact on application performance.
 
 The *C2 compiler*, also known as the "HotSpot Server Compiler," is one of the Just-In-Time (JIT) compilers used by the HotSpot JVM in Java. It is designed to optimize and compile Java bytecode into highly optimized machine code at runtime, improving the performance of Java applications. The C2 compiler performs aggressive optimizations, such as inlining, loop unrolling, and escape analysis, to generate efficient native code for performance-critical parts of the application. It is typically used for long-running server applications where performance is crucial.
 
-*Expanding barriers* refers to the process of inserting or generating additional code ('barriers') that manage memory and ensure the correctness of garbage collection. These barriers are typically inserted at specific points in the byte code, such as before or after memory access, to perform tasks like:
+*Barrier expansion* is the process of inserting or generating additional code ('barriers') that manages memory and ensures the correctness of garbage collection. These barriers are typically inserted at specific points in the byte code, such as before or after memory access, to perform tasks like:
 
-* *remembering writes*: keeping track of changes to objects, which helps the garbage collector identify which parts of the heap need to be scanned.
-* *maintaining consistency*: ensuring that the program's view of memory remains consistent with the garbage collector's view, especially during concurrent garbage collection phases.
+* *remembering writes*: keeping track of changes to objects, which helps the garbage collector identify which parts of the heap need to be scanned;
+* *maintaining consistency*: ensuring that the program's view of memory remains consistent with the garbage collector's view, especially during concurrent garbage collection phases;
 * *handling references*: managing references between objects, particularly when objects are moved during compaction or evacuation phases.
 
-*Early barrier expansion* simply means that these barriers are inserted or generated earlier in the compilation process, whereas doing this *later* in the process (as the JEP proposes) would allow for more optimized placement and potentially reduce the overhead associated with these barriers. This can lead to improved performance and more efficient garbage collection.
-
-TODO: explain in general terms how early barrier expansion actually improves performance.
+*Early barrier expansion* simply means that these barriers are inserted or generated early in the compilation process, whereas doing this *later* in the process (as the JEP proposes) would allow for more optimized placement and potentially reduce the overhead associated with these barriers. This can lead to improved performance and more efficient garbage collection.
 
 ##### More Information
 
-For more information on this feature, read [JEP 475](https://openjdk.org/jeps/475). It has more details on TODO.
+For more information on this feature, read [JEP 475](https://openjdk.org/jeps/475). It has more details on the barrier expansion process, and how barrier expansion in the (early) *bytecode parsing* stage differs from barrier expansion in the (late) *code emission* stage.
 
 #### JEP 483: Ahead-of-Time Class Loading & Linking
 
-TODO
+With features like dynamic class loading, dynamic reflection, dynamic compilation, annotation processing and native code optimization, the Java Platform is a highly dynamic one.
+To be able to support these dynamic features, the JVM is forced to do a lot of work during startup, like:
+
+* Scanning hundreds of JAR files on disk, while reading and parsing thousands of class files into memory;
+* Loading the parsed class data into class objects and linking them together;
+* Executing the static initializers of classes, which can create many objects and even perform I/O operations.
+
+If the application uses a framework like Spring, then the startup-time discovery of `@Bean`, `@Configuration`, and related annotations will trigger yet more work.
+
+The process described is performed on demand and optimized for quick execution, allowing many Java programs to start in milliseconds. 
+However, larger server applications that utilize web frameworks and various libraries can take seconds or even minutes to launch.
+Applications often repeat similar tasks during startup, such as scanning JAR files, loading classes, executing static initializers, and configuring application objects using reflection. 
+To enhance startup speed, it's beneficial to perform some of these tasks proactively rather than waiting until they are needed. 
+This approach aligns with the goals of [Project Leyden](https://openjdk.org/projects/leyden/), which strives to advance certain processes to an earlier stage.
+
+##### Ahead-of-Time Cache
+
+JEP 483, the first JEP out of Project Leyden, proposes to extend the JVM with an *ahead-of-time cache* to store classes after reading, parsing, loading and linking them.
+A created cache for a specific application can be re-used in subsequent runs of that application to improve startup time.
+
+Creating a cache takes two steps. 
+First, you should run the application once in a training run, to record its AOT configuration (in this case into the file `app.aotconf`):
+
+```bash
+$ java -XX:AOTMode=record -XX:AOTConfiguration=app.aotconf -cp app.jar com.example.App ...
+```
+
+> Generally speaking, a production run is a good candidate for the training run, as training runs aim to capture application configuration and execution history. In cases where using a production run is impractical (due to activities or accessing databases), it's recommended to create a synthetic training run that closely resembles production runs, fully configuring itself and testing typical code paths. This can be done by adding a second main class, which invokes the production main class while using a temporary log directory, local network settings, and a mocked database if necessary. You might already have such a main class in the form of an integration test.
+
+Second, use the configuration to create the cache, in the file `app.aot`:
+
+```bash
+$ java -XX:AOTMode=create -XX:AOTConfiguration=app.aotconf -XX:AOTCache=app.aot -cp app.jar
+```
+
+Subsequently, to run the application with the cache:
+
+```bash
+$ java -XX:AOTCache=app.aot -cp app.jar com.example.App ...
+```
+
+The AOT cache moves the tasks of reading, parsing, loading, and linking (typically performed just-in-time during program execution) to an earlier stage when the cache is created. 
+As a result, the program starts up more quickly in the execution phase since its classes are readily accessible from the cache.
+
+##### Performance Improvements of Up To 42%
+
+To illustrate this, let's look at a short pragram that uses the Stream API and thus causes almost 600 JDK classes to be read, parsed, loaded, and linked:
+
+```java
+import java.util.*;
+import java.util.stream.*;
+
+public class HelloStream {
+    public static void main(String[] args) {
+        var words = List.of("hello", "fuzzy", "world");
+        var greeting = words.stream()
+            .filter(w -> !w.contains("z"))
+            .collect(Collectors.joining(", "));
+        System.out.println(greeting);  // hello, world
+    }
+}
+```
+
+This program runs in 0.031 seconds on JDK 23. 
+After doing the small amount of additional work required to create an AOT cache it runs in in 0.018 seconds on JDK 24 — an improvement of 42%. The AOT cache occupies 11.4 megabytes.
+
+For a representative server application, consider [Spring PetClinic](https://github.com/spring-projects/spring-petclinic) (v3.2.0). 
+It loads and links about 21,000 classes at startup. 
+It starts in 4.486 seconds on JDK 23 and in 2.604 seconds on JDK 24 when using an AOT cache — coincidentally also an improvement of 42%. Here the AOT cache occupies 130 megabytes.
 
 ##### More Information
 
-For more information on this feature, read [JEP TODO](https://openjdk.org/jeps/todo).
+For more information on this feature, read [JEP 483](https://openjdk.org/jeps/483).
 
 #### JEP 491: Synchronize Virtual Threads Without Pinning
 
-TODO
+[Virtual threads](https://openjdk.org/jeps/444), available since Java 21, are lightweight threads that are scheduled by the JVM instead of by the operating system. Creating them and disposing of them is fast and cheap, and millions of them can be created within the same JVM.
+
+A virtual thread goes through several stages in its lifetime:
+
+* The virtual thread is *created* and linked to the code it should run during its lifetime.
+* To actually run the code, the virtual thread is *mounted* on a platform thread, making that platform thread the *carrier* of the virtual thread.
+* After running the code, the virtual thread is *unmounted* from its carrier and the platform thread is released, so the JDK's scheduler can mount a different virtual thread on it. Unmounting also happens when a virtual thread performs a blocking operation (such as I/O). When the blocking operation is ready to complete, the virtual thread is submitted back to the JDK's scheduler, which mounts it on a platform thread again to resume running code.
+
+This means that virtual threads are mounted and unmounted frequently, without blocking any platform threads.
+
+##### Pinning
+
+But here's the catch: a virtual thread cannot unmount from its carrier when it runs code inside a `synchronized` block. Consider the class below, which is run by a virtual thread, tracking the number of customers in a store:
+
+```java
+class CustomerCounter {
+    private final StoreRepository storeRepo;
+    private int customerCount;
+
+    CustomerCounter(StoreRepository storeRepo) {
+        this.storeRepo = storeRepo;
+        customerCount = 0;
+    }
+
+    synchronized void customerEnters() {
+        if (customerCount < storeRepo.fetchCapacity()) {
+            customerCount++;
+        }
+    }
+
+    synchronized void customerExits() {
+        customerCount--;
+    }
+}
+```
+
+If the `storeRepo.fetchCapacity()` method call blocks, it would be nice if the running virtual thread would unmount from its carrier, releasing a platform thread for other virtual threads to be mounted. 
+But `customerEnters()` is `synchronized`, and because of this the JVM *pins* the virtual thread to its carrier, preventing it to be unmounted. 
+The result is that both the virtual thread and the underlying OS thread are blocked, until the result from `fetchCapacity()` is available.
+
+##### The Reason For Pinning
+
+`synchronized` blocks and methods in Java rely on [monitors](https://en.wikipedia.org/wiki/Monitor_(synchronization)) to make sure they can be entered by a single thread at the same time. 
+Before a thread can run a `synchronized` block, it has to acquire the monitor associated with the instance.
+The JVM tracks ownership of these monitors on a *platform thread* level, not on a virtual thread.
+Given that information, imagine for a moment that *pinning* didn't exist.
+Then in theory, virtual thread #1 could unmount in the middle of a `synchronized` block, and virtual thread #2 could be mounted on the same platform thread, continuing that same `synchronized` block because the carrier thread is the same and still holds the object's monitor.
+Understandably, the JVM actively prevents this situation!
+
+##### Overcoming Pinning
+
+So pinning *does* have a purpose, but frequent pinning for long durations can harm scalability.
+Because of this, many libraries have switched to using the more flexible [`java.util.concurrent` locks](https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/concurrent/locks/package-summary.html) instead, which do not pin virtual threads.
+But this is a workaround at best, and that's why JEP 491 proposes to overcome virtual thread pinning.
+
+From Java 24 on, virtual threads can acquire, hold and release monitors, regardless of their carriers.
+This also means that switching to different locking mechanisms because of thread pinning is no longer necessary.
+Both approaches will perform equally well with virtual threads from now on.
+
+##### Remaining Pinning Cases
+
+One of the few remaining situations in which a virtual thread will still be pinned, is when it calls native code, which returns to Java code that performs a blocking operation.
+In cases like this, the JDK Flight Recorder will record a [`jdk.VirtualThreadPinned`](https://openjdk.org/jeps/444#JDK-Flight-Recorder-JFR) event, should you want to keep track of these situations.
 
 ##### More Information
 
-For more information on this feature, read [JEP TODO](https://openjdk.org/jeps/todo).
+For more information on this feature, read [JEP 491](https://openjdk.org/jeps/491).
 
 ### Security Libs
 
@@ -205,16 +342,16 @@ Java 24 introduces three new features that are part of the Security Libs:
 
 #### JEP 478: Key Derivation Function API (Preview)
 
-As quantum computing advances, traditional cryptographic algorithms are becoming more susceptible to practical attacks. Thus, it is essential for the Java Platform to incorporate Post-Quantum Cryptography (PQC), which can withstand such threats. Java's long-term goal is to eventually implement Hybrid Public Key Encryption (HPKE), facilitating a seamless transition to quantum-resistant encryption methods. The [KEM API (JEP 452)](/2023/09/19/java-21-release-day/#jep-452-key-encapsulation-mechanism-api), included in JDK 21, serves as one component of HPKE and marks Java's initial move towards HPKE and readiness for post-quantum challenges. This JEP proposes an additional component of HPKE as a next step in this direction: an API for [Key Derivation Functions](https://en.wikipedia.org/wiki/Key_derivation_function) (KDFs). 
+As the field of quantum computing advances, traditional cryptographic algorithms are becoming more susceptible to practical attacks. Thus, it is essential for the Java Platform to incorporate Post-Quantum Cryptography (PQC), which can withstand such threats. Java's long-term goal is to eventually implement Hybrid Public Key Encryption (HPKE), facilitating a seamless transition to quantum-resistant encryption methods. The [KEM API (JEP 452)](https://hanno.codes/2023/09/19/java-21-release-day/#jep-452-key-encapsulation-mechanism-api), included in JDK 21, serves as one component of HPKE and marks Java's initial move towards HPKE and readiness for post-quantum challenges. This JEP proposes an additional component of HPKE as a next step in this direction: an API for [Key Derivation Functions](https://en.wikipedia.org/wiki/Key_derivation_function) (KDFs). 
 
-KDFs are cryptographic algorithms for deriving additional keys from a secret key and other data. A KDF allows keys to be created in a manner that is both secure and reproducible by two parties sharing knowledge of the inputs. Deriving keys is similar to hashing passwords. A KDF employs a keyed hash along with extra entropy from its other inputs to either derive new key material or safely expand existing values into a larger quantity of key material.
+KDF's are cryptographic algorithms for deriving additional keys from a secret key and other data. A KDF allows keys to be created in a manner that is both secure and reproducible by two parties sharing knowledge of the inputs. Deriving keys is similar to hashing passwords. A KDF employs a keyed hash along with extra entropy from its other inputs to either derive new key material or safely expand existing values into a larger quantity of key material.
 
 ##### Operations
 
 A key derivation function has two fundamental operations:
 
-* *Instantiation and initialization*, creating KDF and initializing it with the appropriate parameters;
-* *Derivation*, accepting key material and other optional inputs as well as parameters to describe the output, and generating the derived key or data.
+* *instantiation and initialization*, creating a KDF and initializing it with the appropriate parameters;
+* *derivation*, accepting key material and other optional inputs as well as parameters to describe the output, and generating the derived key or data.
 
 A new class, [`javax.crypto.KDF`](https://cr.openjdk.org/~kdriver/KDF-JEP/javadoc/java.base/javax/crypto/KDF.html) represents key derivation functions.
 
@@ -248,11 +385,11 @@ For more information on this feature, read [JEP 478](https://openjdk.org/jeps/47
 
 #### JEP 496: Quantum-Resistant Module-Lattice-Based Key Encapsulation Mechanism
 
-We mentioned the advancements in quantum computing before in this article, and with good reason. Public-key based algorithms like Rivest-Shamir-Adleman (RSA) and Diffie-Hellman are more and more at risk of practical quantum computing attacks, but they are still in use by the Java Platform (for things like digitally signing JAR files or establishing secure network connections through TLS). To address this issue, [quantum-resistant](https://en.wikipedia.org/wiki/Post-quantum_cryptography) cryptographic algorithms have been invented, and this JEP introduces an implementation of one of those algorithms: the [Module-Lattice-Based Key-Encapsulation Mechanism](https://csrc.nist.gov/pubs/fips/203/final) (ML-KEM).
+We mentioned quantum computing advancements before in this article, and with good reason. Public-key based algorithms like Rivest-Shamir-Adleman (RSA) and Diffie-Hellman are more and more at risk of practical quantum computing attacks, but they are still in use by the Java Platform (for things like digitally signing JAR files or establishing secure network connections through TLS). To address this issue, [quantum-resistant](https://en.wikipedia.org/wiki/Post-quantum_cryptography) cryptographic algorithms have been invented, and this JEP introduces an implementation of one of those algorithms: the [Module-Lattice-Based Key-Encapsulation Mechanism](https://csrc.nist.gov/pubs/fips/203/final) (ML-KEM).
 
 ##### KEM Components
 
-As described in [JEP 452](/2023/09/19/java-21-release-day/#jep-452-key-encapsulation-mechanism-api), any key encapsulation mechanism needs the following components:
+As described in [JEP 452](https://hanno.codes/2023/09/19/java-21-release-day/#jep-452-key-encapsulation-mechanism-api), any key encapsulation mechanism needs the following components:
 
 * a *key pair generation function* that returns a key pair containing a public key and a private key. 
 * a *key encapsulation function*, called by the sender, that takes the receiver's public key and an encryption option; it returns a secret key and a _key encapsulation message_. The sender sends the key encapsulation message to the receiver.
@@ -303,7 +440,7 @@ $ keytool -keystore ks -storepass changeit -genkeypair -alias mlkem2 \
 
 ##### Encapsulating and Decapsulating Keys
 
-You can use the ML-KEM KEM implementation to negotiate a shared secret key.
+You can use the ML-KEM `KEM` implementation to negotiate a shared secret key.
 
 For example, a sender can call the encapsulation function to get a secret key and a key encapsulation message:
 
@@ -409,7 +546,7 @@ For more information on this feature, read [JEP 497](https://openjdk.org/jeps/49
 
 ### Tools
 
-Java 23 contains a single feature that is part of the JLink tool:
+Java 24 contains a single feature that is part of the JLink tool:
 
 * Linking Run-Time Images Without JMODs
 
@@ -424,8 +561,8 @@ This allows users to link a run-time image from modules, regardless of their sou
 
 An installed JDK consists of a *run-time image* and a set of *packaged modules* in the JMOD format, for each module in the run-time image.
 `jlink` uses the JMOD files when creating custom run-time images.
-In fact, the run-time image in the JDK is itself a result from this process.
-So every resource in the JDK's run-time image is also present in one of the JMOD files, which makes an installed JDK suffer from *redundancy*.
+In fact, the run-time image in the JDK is a result from this very process.
+That means that every resource in the JDK's run-time image is also present in one of the JMOD files, which makes an installed JDK suffer from *redundancy*.
 The JMOD files account for about 25% of the JDK's total size.
 If `jlink` could be changed to extract resources from the run-time image itself, we could dramatically reduce the size of the JDK by simply omitting these JMOD files.
 
@@ -454,15 +591,15 @@ Capabilities:
 So this new capability can be enabled only when building a JDK.
 This also means that any `jlink` invocation that wants to make use of it doesn't need any additional options — it can remain exactly the same.
 From Java 24 on, `jlink` will use JMOD files if it can find them on the module path.
-It will consume modules from the run-time image of which it is part only if the module `java.base` is not found on the module path. 
+It will consume modules from the run-time image only if the module `java.base` is not found on the module path. 
 Any other modules must still be specified to `jlink` via the `--module-path` option.
 
 ##### Not enabled by default
 
-This feature is currently not enabled by default, so the default JDKk build configuration will remain as it is today.
-The resulting JDK will contain JMOD files and its `jlink` tool will not be able to operate without them. 
+This feature is currently not enabled by default, so the default JDK build configuration will remain as it is today.
+The resulting JDK will contain JMOD files like before and its `jlink` tool will not be able to operate without them. 
 Whether the JDK build that you get from your preferred vendor contains this feature is up to that vendor.
-The JEP states that the feature may however be enabled by default in a future release.
+Note that the JEP also states that the feature may be enabled by default in a future release.
 
 ##### More Information
 
@@ -482,7 +619,7 @@ A few minor things changed to the API, based on feedback from the second preview
 
 #### More Information
 
-For more information on this feature, read [JEP 484](https://openjdk.org/jeps/484) or the [full feature description](/2024/09/17/java-23-has-arrived/#jep-466-class-file-api-second-preview) from a previous article.
+For more information on this feature, read [JEP 484](https://openjdk.org/jeps/484) or the [full feature description](https://hanno.codes/2024/09/17/java-23-has-arrived/#jep-466-class-file-api-second-preview) from a previous article.
 
 ### JEP 485: Stream Gatherers
 
@@ -494,15 +631,18 @@ Nothing was changed, apart from the fact that the API is now finalized in Java 2
 
 #### More Information
 
-For more information on this feature, read [JEP 485](https://openjdk.org/jeps/485) or the [full feature description](/2024/09/17/java-23-has-arrived/#jep-473-stream-gatherers-second-preview) from a previous article.
+For more information on this feature, read [JEP 485](https://openjdk.org/jeps/485) or the [full feature description](https://hanno.codes/2024/09/17/java-23-has-arrived/#jep-473-stream-gatherers-second-preview) from a previous article.
 
 ### JEP 487: Scoped Values (Fourth Preview)
 
-*Scoped values* enable the sharing of immutable data within and across threads. They are preferred to thread-local variables, especially when using large numbers of virtual threads.
+*Scoped values* enable the sharing of immutable data within and across threads. 
+They are preferred to thread-local variables, especially when using a large number of (virtual) threads.
 
 #### What's Different From Java 23?
 
-TODO
+A single change was made to the API compared to Java 23:
+
+* The `callWhere` and `runWhere` methods were removed from the `ScopedValue` class, which means that the entire API is now fluent. The exact same behavior can be obtained by chaining `ScopedValue.where()` with `run(Runnable)` or `call(Callable)`.
 
 #### Preview Warning
 
@@ -510,15 +650,15 @@ Note that this JEP is in the [preview](https://openjdk.org/jeps/12) stage, so yo
 
 #### More Information
 
-For more information on this feature, read [JEP 487](https://openjdk.org/jeps/487) or the [full feature description](/2024/09/17/java-23-has-arrived/#jep-481-scoped-values-third-preview) from a previous article.
+For more information on this feature, read [JEP 487](https://openjdk.org/jeps/487) or the [full feature description](https://hanno.codes/2024/09/17/java-23-has-arrived/#jep-481-scoped-values-third-preview) from a previous article.
 
 ### JEP 488: Primitive Types in Patterns, instanceof and switch (Second Preview)
 
-TODO
+Pattern matching now supports primitive types in all pattern contexts. On top of that, the `instanceof` and `switch` constructs have been extended to also work with all primitive types.
 
 #### What's Different From Java 23?
 
-TODO
+Compared to the preview version of this feature in Java 22, nothing was changed or added. JEP 488 simply exists to gather more feedback from users.
 
 #### Preview Warning
 
@@ -526,25 +666,32 @@ Note that this JEP is in the [preview](https://openjdk.org/jeps/12) stage, so yo
 
 #### More Information
 
-For more information on this feature, read [JEP 488](https://openjdk.org/jeps/488) or the [full feature description](/2024/09/17/java-23-has-arrived/#jep-455-primitive-types-in-patterns-instanceof-and-switch-preview) from a previous article.
+For more information on this feature, read [JEP 488](https://openjdk.org/jeps/488) or the [full feature description](https://hanno.codes/2024/09/17/java-23-has-arrived/#jep-455-primitive-types-in-patterns-instanceof-and-switch-preview) from a previous article.
 
 ### JEP 489: Vector API (Ninth Incubator)
 
-TODO
+The Vector API makes it possible to express vector computations that reliably compile at runtime to optimal vector instructions. 
+This means that these computations will significantly outperform equivalent scalar computations on the supported CPU architectures (x64 and AArch64).
 
 #### What's Different From Java 23?
 
-TODO
+The following changes were made to the Vector API compared to Java 23:
+
+* A new variation of the `selectFrom` cross-lane operation now accepts two input vectors, which serve as a lookup table;
+* The `selectFrom` and `rearrange` cross-lane operations now wrap indexes rather than check for out-of-bounds indexes, making these operations significantly faster.
+* Transcendental and trigonometric lanewise operations on ARM and RISC-V are now implemented via intrinsics which call out to the [SIMD Library for Evaluating Elementary Functions (SLEEF)](https://sleef.org/).
+* The new value-based class [Float16](https://download.java.net/java/early_access/jdk24/docs/api/jdk.incubator.vector/jdk/incubator/vector/Float16.html) represents 16-bit floating-point numbers in the [IEEE 754 binary16](https://en.wikipedia.org/wiki/Half-precision_floating-point_format) format.
+* The arithmetic integral lanewise operations now include saturating unsigned addition and subtraction, saturating signed addition and subtraction, and unsigned maximum and minimum.
 
 The Vector API will keep incubating until necessary features of Project Valhalla become available as preview features. When that happens, the Vector API will be adapted to use them, and it will be promoted from incubation to preview.
 
 #### More Information
 
-For more information on this feature, read [JEP 489](https://openjdk.org/jeps/489) or the [full feature description](/2024/09/17/java-23-has-arrived/#jep-469-vector-api-eighth-incubator) from a previous article.
+For more information on this feature, read [JEP 489](https://openjdk.org/jeps/489) or the [full feature description](https://hanno.codes/2024/09/17/java-23-has-arrived/#jep-469-vector-api-eighth-incubator) from a previous article.
 
 ### JEP 492: Flexible Constructor Bodies (Third Preview)
 
-TODO
+Flexible constructor bodies allow statements to appear before an explicit constructor invocation, like `super(..)` or `this(..)`. The statements cannot reference the instance under construction, but they can initialize its fields. Initializing fields before invoking another constructor makes a class more reliable when methods are overridden.
 
 #### Preview Warning
 
@@ -552,71 +699,69 @@ Note that this JEP is in the [preview](https://openjdk.org/jeps/12) stage, so yo
 
 #### What's Different From Java 23?
 
-TODO
+Compared to the preview version of this feature in Java 23, no significant changes were made. JEP 492 simply exists to gather more feedback from users.
 
 #### More Information
 
-For more information on this feature, read [JEP 492](https://openjdk.org/jeps/492) or the [full feature description](/2024/09/17/java-23-has-arrived/#jep-482-flexible-constructor-bodies-second-preview) from a previous article.
+For more information on this feature, read [JEP 492](https://openjdk.org/jeps/492) or the [full feature description](https://hanno.codes/2024/09/17/java-23-has-arrived/#jep-482-flexible-constructor-bodies-second-preview) from a previous article.
 
 ### JEP 494: Module Import Declarations (Second Preview)
 
-TODO
+Module import declarations import all of the public top-level classes and interfaces in the packages exported by that module. They are a shorter alternative for listing many imports that originate from the same root package.
 
 #### What's Different From Java 23?
 
-TODO
+This feature is repreviewed in Java 24, with two additions:
+
+* The restriction that no module is able to declare a transitive dependency on the `java.base` module is lifted, and the declaration of the `java.se` module to transitively require the `java.base` module is revised. With these changes, importing the `java.se` module will import the entire Java SE API on demand.
+* Type-import-on-demand declarations to shadow module import declarations are now allowed.
 
 #### More Information
 
-For more information on this feature, read [JEP 494](https://openjdk.org/jeps/494) or the [full feature description](/2024/09/17/java-23-has-arrived/#jep-476-module-import-declarations-preview) from a previous article.
+For more information on this feature, read [JEP 494](https://openjdk.org/jeps/494) or the [full feature description](https://hanno.codes/2024/09/17/java-23-has-arrived/#jep-476-module-import-declarations-preview) from a previous article.
 
 ### JEP 495: Simple Source Files and Instance Main Methods (Fourth Preview)
 
-TODO
+Simple source files allow developers to write Java programs without the need to explicitly declare a class. They can contain 'instance main methods': a shorter form of the classic `main()` method without requiring program arguments or imports. These two features simplify the process of writing small programs and scripts by reducing boilerplate code.
 
 #### What's Different From Java 23?
 
-TODO
+The two features in this JEP didn't change in Java 24; however, the feature that used to be known as 'implicitly declared classes' was renamed to 'simple source files'.
 
 #### More Information
 
-For more information on this feature, read [JEP 495](https://openjdk.org/jeps/495) or the [full feature description](/2024/09/17/java-23-has-arrived/#jep-477-implicitly-declared-classes-and-instance-main-methods-third-preview) from a previous article.
+For more information on this feature, read [JEP 495](https://openjdk.org/jeps/495) or the [full feature description](https://hanno.codes/2024/09/17/java-23-has-arrived/#jep-477-implicitly-declared-classes-and-instance-main-methods-third-preview) from a previous article.
 
 ### JEP 499: Structured Concurrency (Fourth Preview)
 
-TODO
+*Structured concurrency* treats groups of related tasks running in different threads as a single unit of work, thereby streamlining error handling and cancellation, improving reliability, and enhancing observability.
 
 #### What's Different From Java 23?
 
 Nothing was changed, the API is re-previewed in Java 24 to give more time for feedback from real world usage.
 
-TODO: add remark on any upcoming API changes
+However, significant API changes are scheduled to appear in a future Java release.
+A `StructuredTaskScope` will then be opened via static factory methods rather than through public constructors. The zero-parameter `open()` factory method will cover the common case by creating a `StructuredTaskScope` that waits for all subtasks to succeed or any subtask to fail. Other policies and outcomes can be implemented by providing an appropriate [`Joiner`](https://download.java.net/java/early_access/loom/docs/api/java.base/java/util/concurrent/StructuredTaskScope.Joiner.html) to one of the richer `open(Joiner)` factory methods.
+
+If you're interested in the future of this feature, [JEP draft #8340343](https://openjdk.org/jeps/8340343) has more details on these upcoming API changes.
 
 #### More Information
 
-For more information on this feature, read [JEP 499](https://openjdk.org/jeps/499) or the [full feature description](/2024/09/17/java-23-has-arrived/#jep-480-structured-concurrency-third-preview) from a previous article.
+If you prefer to get more information on the current state of this feature, then read [JEP 499](https://openjdk.org/jeps/499) or the [full feature description](https://hanno.codes/2024/09/17/java-23-has-arrived/#jep-480-structured-concurrency-third-preview) from a previous article.
 
 ## Deprecations & Restrictions
 
-Java 24 also deprecates a few older features that weren't used that much and restricts a few other features that come with certain risks. Let's see which ones were involved in this effort to improve stability.
+Java 24 also deprecates a few older features that weren't used that much and restricts a few other features that came with certain risks. Let's see which ones were involved in this effort to improve stability.
 
 ### JEP 472: Prepare to Restrict the Use of JNI
 
-The Java Native Interface has been the factory standard of invoking foreign functions (outside of the JVM but on the same machine) for many years now. In Java 22 a more modern approach became available: the [Foreign Function & Memory API](/2024/03/19/java-22-is-here/#jep-454-foreign-function--memory-api). Although the new FFM API is the preferred alternative to JNI, that doesn't mean that JNI will be phased out. On the contrary, the Java language designers want to make sure that migrating from one to the other can be done easily. To make that happen, this JEP introduces certain warnings to JNI to mirror the warnings that the FFM API already produce. 
+The Java Native Interface has been the factory standard of invoking foreign functions (outside of the JVM but on the same machine) for many years now. In Java 22 a more modern approach became available: the [Foreign Function & Memory API](https://hanno.codes/2024/03/19/java-22-is-here/#jep-454-foreign-function--memory-api). Although the new FFM API is the preferred alternative to JNI, that doesn't mean that JNI will be phased out. On the contrary, the Java language designers want to make sure that migrating from one to the other can be done easily. To make that happen, this JEP introduces certain warnings to JNI to mirror the warnings that the FFM API already produces. 
 
 To be more precise, calling native code via JNI requires you to load a native library first and link a Java construct to a function in that library. JEP 472 will add the [restrictions](https://openjdk.org/jeps/454#Safety) that the FFM API already imposes on these loading and linking steps to JNI also. All warnings of this type aim to prepare developers for a future release that ensures [integrity by default](https://openjdk.org/jeps/8305968) by uniformly restricting JNI and the FFM API.
 
 #### More Information
 
 For more information on this feature, read [JEP 472](https://openjdk.org/jeps/472).
-
-### JEP 479: Remove the Windows 32-bit x86 Port
-
-This JEP removes the Windows 32-bit x86 port, which was to be expected after [its deprecation in Java 21](/2023/09/19/java-21-release-day/#jep-449-deprecate-the-windows-32-bit-x86-port-for-removal). This is due to the fact that Windows 10, the last Windows operating system to support 32-bit operation, [will reach end-of-life in October 2025](https://learn.microsoft.com/lifecycle/products/windows-10-home-and-pro). On top of that, the implementation of virtual threads on Windows 32-bit x86 is rudimentary to say the least: it uses a single platform thread for each virtual thread, effectively rendering the feature useless on this platform. So it's time to say goodbye to this port!
-
-#### More Information
-
-For more information on this removal, read [JEP 479](https://openjdk.org/jeps/479).
 
 ### JEP 486: Permanently Disable the Security Manager
 
@@ -661,12 +806,12 @@ For more information on this feature, read [JEP 490](https://openjdk.org/jeps/49
 The `sun.misc.Unsafe` class contains 87 methods to perform low-level operations, such as accessing off-heap memory.
 The class is aptly named: using its methods without performing the necessary safety checks can lead to undefined behaviour and to the JVM crashing.
 They were meant exclusively for use within the JDK, but back in 2002 when the class was introduced the [module system](https://openjdk.org/projects/jigsaw/) wasn't around yet and so there was no way to prevent the class from being used outside the JDK.
-And so the memory-access methods in `sun.misc.Unsafe` became a valuable tool for library developers seeking greater power and performance than what standard APIs could provide.
+Thus, the memory-access methods in `sun.misc.Unsafe` became a valuable tool for library developers seeking greater power and performance than what standard APIs could provide.
 
 Two standard APIs have emerged in recent years that are far better alternatives to these problematic methods:
 
-* [`java.lang.invoke.VarHandle`](https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/invoke/VarHandle.html), to manipulate on-heap memory safely and efficiently;
-* [`java.lang.foreign.MemorySegment`](https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/foreign/MemorySegment.html), to access off-heap memory safely and efficiently.
+* [`java.lang.invoke.VarHandle`](https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/invoke/VarHandle.html), to manipulate on-heap memory safely and efficiently;
+* [`java.lang.foreign.MemorySegment`](https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/foreign/MemorySegment.html), to access off-heap memory safely and efficiently.
 
 Given the situation, Java 23 already deprecated the memory-access methods, which led to Java generating *compile-time* warnings whenever these methods were used. JEP 490 extends this behavior by also generating *run-time* warnings for any use of these methods.
 
@@ -699,8 +844,14 @@ This means 32-bit users can still use JDK 24; however a future release will actu
 
 For more information on this deprecation, read [JEP 501](https://openjdk.org/jeps/501).
 
+### JEP 479: Remove the Windows 32-bit x86 Port
+
+This JEP removes the Windows 32-bit x86 port, which was to be expected after [its deprecation in Java 21](https://hanno.codes/2023/09/19/java-21-release-day/#jep-449-deprecate-the-windows-32-bit-x86-port-for-removal). This is due to the fact that Windows 10, the last Windows operating system to support 32-bit operation, [will reach end-of-life in October 2025](https://learn.microsoft.com/lifecycle/products/windows-10-home-and-pro). On top of that, the implementation of virtual threads on Windows 32-bit x86 is rudimentary to say the least: it uses a single platform thread for each virtual thread, effectively rendering the feature useless on this platform. So it's time to say goodbye to this port!
+
+#### More Information
+
+For more information on this removal, read [JEP 479](https://openjdk.org/jeps/479).
+
 ## Final thoughts
 
 TODO - write outro that summarizes the article
-TODO - scan article and group JEPs that make more sense to read in quick succession (like the security features KDF and the Quantum stuff)
-TODO - replace all occurrences of `/202` with `https://hanno.codes/202`.
