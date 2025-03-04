@@ -418,7 +418,7 @@ KeyPair keyPair = generator.generateKeyPair(); // an ML-KEM-1024 key pair
 
 ##### keytool
 
-The `keytool` command will support generating ML-KEM key pairs and certificates; 
+The `keytool` command will support generating ML-KEM key pairs and certificates:
 
 ```bash
 $ keytool -keystore ks -storepass changeit -genkeypair -alias ec \
@@ -494,7 +494,7 @@ KeyPair keyPair = generator.generateKeyPair(); // an ML-DSA-87 key pair
 
 ##### keytool
 
-The `keytool` command will support generating ML-DSA key pairs and certificates; 
+The `keytool` command will support generating ML-DSA key pairs and certificates: 
 
 ```bash
 $ keytool -keystore ks -storepass changeit -genkeypair -alias mldsa \
