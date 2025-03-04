@@ -4,29 +4,25 @@ title: Java 24 Rolls Out Today! Find Out Why It's Aptly Named
 date: 18-03-2025 04:30:00 +0200
 header:
   teaser: /assets/images/blog/basketball-24.jpg
-excerpt: Java 24 TODO - excerpt
+excerpt: Java 24 rolls out today, and it brings a diverse set of features. For example, compact object headers bring better performance, and various security features have been added. Or how about the eagerly-awaited solution to virtual thread pinning? This post has all the info!
 tags: 
 - java
 ---
 
-TODO - write intro. It should contain:
-- performance improvements like: 
-  - compact object headers, 
-  - GC optimizations, 
-  - Leyden
-  - linking run-time images
-- virtual thread pinning
-- security additions
-- deprecations & restrictions
+Java 24 rolls out today! It's been six months since Java 23 was released, so it's time for another helping of new features. And this particular release of Java is aptly named, because it contains exactly 24 JEPs. Coincidence? I think not. 🙂
 
-TODO - explain article structure
+Java 24 brings a diverse set of features, delivering performance improvements like compact object headers, garbage collection optimizations and the first JEP to come out of Project Leyden. On top of that, various security features related to the quantum computing field were added, and a solution to virtual thread pinning is now available!
+
+Apart from these, a few new features from older releases have been repreviewed. 
+
+> Short descriptions of the repreviewed features are provided to prevent this article from becoming a bit too lengthy. Each repreviewed feature has a link to a longer description of the feature should you wish to learn more.
 
 ![Basketball players hugging during game - one of them wears a jersey with number '24' at the back](/assets/images/blog/basketball-24.jpg)
 > Photo by Royy Nguyen, from <a href="https://www.pexels.com/photo/basketball-players-hugging-during-game-in-gym-5303477/">Pexels</a>
 
 ## JEP Overview
 
-To start off the article, let's look at an overview of the JEPs that ship with Java 24. This table contains the preview status for all JEP's, to which project they belong, what kind of features they add and the things that have changed since Java 23.
+To start off, let's look at an overview of the JEPs that ship with Java 24. This table contains the preview status for all JEP's, to which project they belong, what kind of features they add and the things that have changed since Java 23.
 
 | **JEP** | **Title**                                                          |      **Status** |   **Project** | **Feature Type** | **Changes since Java 23** |
 | ------: | ------------------------------------------------------------------ | --------------: | ------------: | ---------------: | ------------------------: |
@@ -854,4 +850,4 @@ For more information on this removal, read [JEP 479](https://openjdk.org/jeps/47
 
 ## Final thoughts
 
-TODO - write outro that summarizes the article
+And that concludes our discussion of the 24 JEP's that come with Java 24. But that's not even all that's new: [many other updates](https://jdk.java.net/24/release-notes) were included in this release, including various performance, stability and security updates. So what are you waiting for? Time to take this brand-new Java release for a spin!
