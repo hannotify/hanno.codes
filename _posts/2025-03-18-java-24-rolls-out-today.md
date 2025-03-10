@@ -830,7 +830,7 @@ For more information on this feature, see [JEP 498](https://openjdk.org/jeps/498
 
 Supporting multiple platforms has been the focus of the Java ecosystem since the beginning. 
 But older platforms cannot be supported indefinitely, and that is one of the reasons why the 32-bit x86 (Linux) port is now scheduled for removal.
-The effort that was required to maintain this port exceeded its advantages. Keeping it up-to-date with new features like Loom, the Foreign Function & Memory API (FFM), the Vector API, and late GC barrier expansion represented a significant cost, so it is now deprecated.oe
+The effort that was required to maintain this port exceeded its advantages. Keeping it up-to-date with new features like Loom, the Foreign Function & Memory API (FFM), the Vector API, and late GC barrier expansion represented a significant cost, so it is now deprecated.
 
 Configuring a 32-bit x86 build will now fail on JDK 24.
 This error can be suppressed by using the new build configuration option `--enable-deprecated-ports=yes`.
