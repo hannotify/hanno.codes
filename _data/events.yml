@@ -45,6 +45,10 @@
   appearances:
     - id: javas-concurrency-journey-continues
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
+      sessionPageUrl: https://jchampionsconf.com/sessions.html#embregtsCard
+      videoUrl: https://www.youtube.com/watch?v=w2COJX-1mgU
+      slides:
+        source: local
 
 - id: oracle-ace-virtual-conference-2024
   name: Oracle ACE Virtual Conference
