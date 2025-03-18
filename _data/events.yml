@@ -1,3 +1,24 @@
+- id: jcon-europe-2025
+  name: JCON EUROPE
+  year: 2025
+  country:
+    flag: de
+    name: Germany
+  city: Köln
+  venue:
+    name: Cinedom
+    latitude: 50.9480818
+    longitude: 6.9441045
+  url: https://www.jcon.one
+  dateStart: 2025-05-12
+  dateEnd: 2025-05-15
+  logo: jcon-2025.png
+  appearances:
+    - id: public-static-void-main-
+      sessionPageUrl: https://2025.europe.jcon.one/schedule
+    - id: zero-to-secured-jakarta-ee-microprofile-jwt
+      sessionPageUrl: https://2025.europe.jcon.one/schedule
+
 - id: javaland-2025
   name: JavaLand
   year: 2025
