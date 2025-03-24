@@ -19,6 +19,21 @@
     - id: zero-to-secured-jakarta-ee-microprofile-jwt
       sessionPageUrl: https://2025.europe.jcon.one/schedule
 
+- id: apeldoornjug-2025
+  name: ApeldoornJUG
+  year: 2025
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Apeldoorn
+  url: https://www.meetup.com/apeldoornjug/
+  dateStart: 2025-04-24
+  logo: apeldoornjug.avif
+  appearances:
+    - id: javas-concurrency-journey-continues
+      sessionPageUrl: https://www.meetup.com/apeldoornjug/events/306893636
+      githubUrl: https://github.com/hannotify/structured-concurrency-bar
+
 - id: javaland-2025
   name: JavaLand
   year: 2025
