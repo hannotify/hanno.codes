@@ -34,6 +34,25 @@
       sessionPageUrl: https://www.meetup.com/apeldoornjug/events/306893636
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
 
+- id: voxxed-days-amsterdam-2025
+  name: Voxxed Days Amsterdam
+  year: 2025
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Amsterdam
+  venue:
+    name: Pathé Amsterdam Noord
+    latitude: 52.4007003
+    longitude: 4.9321017
+  url: https://amsterdam.voxxeddays.com/
+  dateStart: 2025-04-03
+  logo: voxxed-days-amsterdam.png
+  appearances:
+    - id: javas-concurrency-journey-continues
+      sessionPageUrl: https://amsterdam.voxxeddays.com/talk/?id=3401
+      githubUrl: https://github.com/hannotify/structured-concurrency-bar
+
 - id: javaland-2025
   name: JavaLand
   year: 2025
