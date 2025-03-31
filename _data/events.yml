@@ -16,7 +16,7 @@
   appearances:
     - id: public-static-void-main-
       sessionPageUrl: https://2025.europe.jcon.one/schedule
-    - id: zero-to-secured-jakarta-ee-microprofile-jwt
+    - id: from-zero-to-secured
       sessionPageUrl: https://2025.europe.jcon.one/schedule
 
 - id: apeldoornjug-2025
@@ -69,8 +69,10 @@
   dateEnd: 2025-04-03
   logo: javaland.png
   appearances:
-    - id: zero-to-secured-jakarta-ee-microprofile-jwt
+    - id: from-zero-to-secured
       sessionPageUrl: https://meine.doag.org/events/javaland/2025/agenda/#eventDay.1743458400
+      slides:
+        source: local
 
 - id: devworld-2025
   name: Devworld
