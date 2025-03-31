@@ -76,3 +76,6 @@
 [submodule "_slides/javas-concurrency-journey-continues/jchampionsconf-2025"]
 	path = _slides/javas-concurrency-journey-continues/jchampionsconf-2025
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
+[submodule "_slides/from-zero-to-secured/javaland-2025"]
+	path = _slides/from-zero-to-secured/javaland-2025
+	url = https://github.com/hannotify/from-zero-to-secured
