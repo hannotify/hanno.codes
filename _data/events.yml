@@ -52,6 +52,8 @@
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://amsterdam.voxxeddays.com/talk/?id=3401
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
+      slides:
+        source: local
 
 - id: javaland-2025
   name: JavaLand
