@@ -34,6 +34,23 @@
       sessionPageUrl: https://www.meetup.com/apeldoornjug/events/306893636
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
 
+- id: jugnoord-2025
+  name: JUG Noord
+  year: 2025
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Groningen
+  url: https://www.meetup.com/jug-noord/
+  dateStart: 2025-04-17
+  logo: jugnoord.avif
+  appearances:
+    - id: what-stairway-to-heaven-can-teach-us-about-software-development
+      sessionPageUrl: https://www.meetup.com/jug-noord/events/306222257
+      slides:
+        source: google-drive
+        url: https://docs.google.com/presentation/d/e/2PACX-1vS5fObb9KViyrayfKk7Pw8hwxoToSjxkjrHEFjpVTogF3mLH4Vj6eAH_9meMcprLmITqNCihrl3zMN4/pub
+
 - id: voxxed-days-amsterdam-2025
   name: Voxxed Days Amsterdam
   year: 2025
@@ -52,6 +69,7 @@
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://amsterdam.voxxeddays.com/talk/?id=3401
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
+      videoUrl: https://youtu.be/bRwVxIn8MKU?si=j2GkoMNwaRkShzIN
       slides:
         source: local
 
