@@ -82,3 +82,6 @@
 [submodule "_slides/javas-concurrency-journey-continues/voxxed-days-amsterdam-2025"]
 	path = _slides/javas-concurrency-journey-continues/voxxed-days-amsterdam-2025
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
+[submodule "_slides/javas-concurrency-journey-continues/apeldoornjug-2025"]
+	path = _slides/javas-concurrency-journey-continues/apeldoornjug-2025
+	url = https://github.com/hannotify/javas-concurrency-journey-continues
