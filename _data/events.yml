@@ -33,6 +33,8 @@
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://www.meetup.com/apeldoornjug/events/306893636
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
+      slides:
+        source: local
 
 - id: jugnoord-2025
   name: JUG Noord
