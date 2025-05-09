@@ -87,3 +87,6 @@
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
 [submodule "_slides/reveal.js/"]
 	branch = 5.0.0
+[submodule "_slides/from-zero-to-secured/jcon-2025"]
+	path = _slides/from-zero-to-secured/jcon-2025
+	url = https://github.com/hannotify/from-zero-to-secured

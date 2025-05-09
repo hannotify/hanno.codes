@@ -1,4 +1,4 @@
-- id: jcon-europe-2025
+- id: jcon-2025
   name: JCON EUROPE
   year: 2025
   country:
@@ -18,6 +18,8 @@
       sessionPageUrl: https://2025.europe.jcon.one/schedule
     - id: from-zero-to-secured
       sessionPageUrl: https://2025.europe.jcon.one/schedule
+      slides:
+        source: local
 
 - id: apeldoornjug-2025
   name: ApeldoornJUG
