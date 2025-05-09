@@ -85,3 +85,5 @@
 [submodule "_slides/javas-concurrency-journey-continues/apeldoornjug-2025"]
 	path = _slides/javas-concurrency-journey-continues/apeldoornjug-2025
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
+[submodule "_slides/reveal.js/"]
+	branch = 5.0.0
