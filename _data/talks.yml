@@ -1,3 +1,10 @@
+- id: http-how-teenagers-talk-to-their-parents
+  title: HTTP&#58; How Teenagers Talk to Their Parents
+  type: lightning
+  retired: false
+  description: |
+    As a parent, I’ve often found that getting a straight answer from a teenager can feel like an exercise in debugging. This realisation led me to discover the surprisingly close parallels between navigating those conversations and understanding HTTP status codes. This talk won’t be about parenting (though there will be anecdotes!), but rather about decoding the language that modern systems use to communicate – success, failure, and everything in between. We’ll explore common HTTP status codes, their implications for developers, testers, architects, and anyone who works with data, and discover how these codes can help us troubleshoot problems, build more resilient applications, and perhaps even understand the often-mysterious responses we receive from the teenagers in our lives.
+
 - id: from-zero-to-secured
   title: From Zero to Secured&#58; Live-Coding a Full-Stack Jakarta EE REST App with MicroProfile and JWT Authentication
   type: regular

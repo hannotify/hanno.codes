@@ -1,3 +1,19 @@
+- id: spacerockit-2025
+  name: SpaceRockIT
+  year: 2025
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Huissen
+  url: https://spacerockitfestival.nl/
+  dateStart: 2025-09-05
+  logo: spacerockit-2025.png
+  appearances:
+    - id: when-music-and-software-come-together
+      sessionPageUrl: https://spacerockitfestival.nl/sprekers
+    - id: http-how-teenagers-talk-to-their-parents
+      sessionPageUrl: https://spacerockitfestival.nl/sprekers
+
 - id: jcon-2025
   name: JCON EUROPE
   year: 2025
