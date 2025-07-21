@@ -1,3 +1,22 @@
+- id: baselone-2025
+  name: BaselOne
+  year: 2025
+  country:
+    flag: switzerland
+    name: Switzerland
+  city: Basel
+  venue:
+    name: Markthalle Basel
+    latitude: 47.5595981
+    longitude: 7.5885762
+  url: https://baselone.org/
+  dateStart: 2025-10-15
+  dateEnd: 2025-10-16
+  logo: baselone.png
+  appearances:
+    - id: from-zero-to-secured-live-coding-a-full-stack-jakarta-ee-rest-app-with-microprofile-and-jwt-authentication
+      sessionPageUrl: https://baselone.org/#programm/
+
 - id: spacerockit-2025
   name: SpaceRockIT
   year: 2025
@@ -32,7 +51,7 @@
   appearances:
     - id: public-static-void-main-
       sessionPageUrl: https://2025.europe.jcon.one/schedule
-    - id: from-zero-to-secured
+    - id: from-zero-to-secured-live-coding-a-full-stack-jakarta-ee-rest-app-with-microprofile-and-jwt-authentication
       sessionPageUrl: https://2025.europe.jcon.one/schedule
       slides:
         source: local
@@ -109,7 +128,7 @@
   dateEnd: 2025-04-03
   logo: javaland.png
   appearances:
-    - id: from-zero-to-secured
+    - id: from-zero-to-secured-live-coding-a-full-stack-jakarta-ee-rest-app-with-microprofile-and-jwt-authentication
       sessionPageUrl: https://meine.doag.org/events/javaland/2025/agenda/#eventDay.1743458400
       slides:
         source: local
