@@ -1,62 +1,100 @@
 ---
 layout: post
-title: New Java Version, Oh So Shiny...TODO
-date: 19-09-2024 04:30:00 +0200
+title: TODO
+date: 16-09-2025 04:30:00 +0200
 header:
-  teaser: /assets/images/blog/TODO.jpg
+  teaser: /assets/images/blog/todo.jpg
 excerpt: TODO
 tags: 
 - java
 ---
 
-TODO. It's been six months since Java 22 was released, so it's time for another fresh set of Java features. This post takes you on a tour of the JEPs that are part of this release, giving you a brief introduction to each of them. Where applicable the differences with Java 22 are highlighted and a few typical use cases are provided, so that you'll be more than ready to use these features after reading this!
+Java 25 ... TODO
 
-![Java 23 - TODO](/assets/images/blog/TODO.jpg)
-> Image from <a href="https://pxhere.com/en/photo/TODO">PxHere</a>
+![TODO](/assets/images/blog/todo.jpg)
+> Photo by TODO, from <a href="https://www.pexels.com/photo/basketball-players-hugging-during-game-in-gym-5303477/">TODO</a>
 
-## From Project Amber
+## JEP Overview
 
-Java 23 contains TODO features that originated from [Project Amber](https://openjdk.org/projects/amber/):
+To start off, let's look at an overview of the JEPs that ship with Java 25. This table contains the preview status for all JEP's, to which project they belong, what kind of features they add and the things that have changed since Java 24.
 
-* TODO
+TODO
 
-> The goal of Project Amber is to explore and incubate smaller, productivity-oriented Java language features.
+## New features
 
-## From Project Loom
+Let's start with the JEP's that add brand-new features to Java 25.
 
-Java 23 contains TODO features that originated from [Project Loom](http://openjdk.java.net/projects/loom/):
+### HotSpot
 
-* TODO
-
-> Project Loom strives to simplify maintaining concurrent applications in Java by introducing *virtual threads* and an API for *structured concurrency*, among other things.
-
-## From Project Panama
-
-Java 23 contains TODO features that originated from [Project Panama](http://openjdk.java.net/projects/panama/):
-
-* TODO
-
-> Project Panama aims to improve the connection between the JVM and foreign (non-Java) libraries.
-
-## HotSpot
-
-Java 23 introduces TODO changes to [HotSpot](https://openjdk.org/groups/hotspot/):
+Java 25 introduces TODO new features in [HotSpot](https://openjdk.org/groups/hotspot/):
 
 * TODO
 
 > The HotSpot JVM is the runtime engine that is developed by Oracle. It translates Java bytecode into machine code for the host operating system's processor architecture.
 
-## Compiler
+#### JEP TODO: TODO 
 
-Java 23 also brings us TODO additions that are part of the compiler:
+TODO
+
+##### More Information
+
+For more information on this feature, read [JEP TODO](https://openjdk.org/jeps/todo).
+
+### Security Libs
+
+Java 25 introduces TODO new features that are part of the Security Libs:
 
 * TODO
-  
-## Core Libraries
 
-Java 23 also brings you TODO additions that are part of the core libraries:
+#### JEP TODO: TODO 
+
+TODO
+
+##### More Information
+
+For more information on this feature, read [JEP TODO](https://openjdk.org/jeps/todo).
+
+### Tools
+
+Java 25 contains TODO new features that are part of the TODO tool:
 
 * TODO
+
+#### JEP TODO: TODO 
+
+TODO
+
+##### More Information
+
+For more information on this feature, read [JEP TODO](https://openjdk.org/jeps/todo).
+
+## Repreviews and finalizations
+
+Now it's time to take a look at a few features that might already be familiar to you, because they were introduced in a previous version of Java. They have been repreviewed (or finalized) in Java 25, with only minor changes compared to Java 24 in most cases. Therefore, to avoid a very lengthy article, we'll outline these changes and link to a previous article for a full feature description, should you wish to refresh your memory.
+
+### JEP TODO: TODO
+
+TODO
+
+#### What's Different From Java 24?
+
+TODO
+
+#### More Information
+
+For more information on this feature, read [JEP TODO](https://openjdk.org/jeps/todo) or the [full feature description](https://hanno.codes/todo) from a previous article.
+
+## Deprecations & Restrictions
+
+Java 25 also deprecates a few older features that weren't used that much and restricts a few other features that came with certain risks. Let's see which ones were involved in this effort to improve stability.
+
+### JEP TODO: TODO 
+
+TODO
+
+#### More Information
+
+For more information on this TODO:removal/restriction, read [JEP TODO](https://openjdk.org/jeps/todo).
 
 ## Final thoughts
 
