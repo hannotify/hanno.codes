@@ -90,3 +90,6 @@
 [submodule "_slides/from-zero-to-secured/jcon-2025"]
 	path = _slides/from-zero-to-secured/jcon-2025
 	url = https://github.com/hannotify/from-zero-to-secured
+[submodule "_slides/http/spacerockit-2025"]
+	path = _slides/http/spacerockit-2025
+	url = https://github.com/hannotify/http-how-teenagers-talk-to-their-parents.git
