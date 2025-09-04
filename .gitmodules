@@ -93,3 +93,6 @@
 [submodule "_slides/http/spacerockit-2025"]
 	path = _slides/http/spacerockit-2025
 	url = https://github.com/hannotify/http-how-teenagers-talk-to-their-parents.git
+[submodule "_slides/http-how-teenagers-talk-to-their-parents/spacerockit-2025"]
+	path = _slides/http-how-teenagers-talk-to-their-parents/spacerockit-2025
+	url = https://github.com/hannotify/http-how-teenagers-talk-to-their-parents.git

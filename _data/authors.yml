@@ -87,6 +87,14 @@ Maarten Mulders:
       icon: "fab fa-fw fa-mastodon"
       url: "https://mastodon.online/@mthmulders"
 
+Pim Tegelaar:
+  name: "Pim Tegelaar"
+  firstName: "Pim"
+  links:
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/PimTegelaar"
+
 Marit van Dijk:
   name: "Marit van Dijk"
   firstName: "Marit"

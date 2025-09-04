@@ -1,3 +1,21 @@
+- id: teachers-bof
+  title: Teachers BOF
+  type: unconference
+  retired: false
+  cospeakers:
+    - name: Pim Tegelaar
+  description: |
+    Are you involved in teaching Java (or software development in general) to your co-workers and/or the next generation? Then let’s share our experiences in order to learn from them! Hanno & Pim (both professional teachers) will host this BOF session to provide an opportunity to learn from both their experiences and those of the attendees. You don't have to be a super experienced teacher to gain something from this session. In fact, just bring your own teaching questions and Hanno & Pim will make sure everyone learns from them.
+    
+    Possible topics&#58;
+    * How to break the ice at the start of the course?
+    * How to teach hybrid courses? (half of class remote, half in-person)
+    * How to keep everyone equally involved?
+    * How to deal with very different learning needs in the same class?
+    * What is a good balance between theory and practice?
+    * How important is it to keep everyone in your class happy?
+    * ...your own!
+  
 - id: http-how-teenagers-talk-to-their-parents
   title: HTTP&#58; How Teenagers Talk to Their Parents
   type: lightning

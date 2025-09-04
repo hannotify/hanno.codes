@@ -17,6 +17,25 @@
     - id: from-zero-to-secured-live-coding-a-full-stack-jakarta-ee-rest-app-with-microprofile-and-jwt-authentication
       sessionPageUrl: https://baselone.org/#programm/
 
+- id: devoxx-2025
+  name: Devoxx
+  year: 2025
+  country:
+    flag: belgium
+    name: Belgium
+  city: Antwerp
+  venue:
+    name: Kinepolis
+    latitude: 51.2459082
+    longitude: 4.4140204
+  url: https://www.devoxx.be
+  dateStart: 2025-10-06
+  dateEnd: 2025-10-10
+  logo: devoxx.png
+  appearances:
+    - id: teachers-bof
+      sessionPageUrl: https://devoxx.be/app/talk/20653/teachers-bof/
+
 - id: spacerockit-2025
   name: SpaceRockIT
   year: 2025
@@ -30,8 +49,13 @@
   appearances:
     - id: when-music-and-software-come-together
       sessionPageUrl: https://spacerockitfestival.nl/sprekers
+      slides:
+        source: google-drive
+        url: https://docs.google.com/presentation/d/e/2PACX-1vRNHtmP0c9GygUW6_bB01_1G8RwVGFdU6y00--Uk9qFXVZnw0BAZyBjQffHLyEAnu340vly6X-Heycz/pub
     - id: http-how-teenagers-talk-to-their-parents
       sessionPageUrl: https://spacerockitfestival.nl/sprekers
+      slides:
+        source: local
 
 - id: jcon-2025
   name: JCON EUROPE
@@ -364,7 +388,7 @@
   logo: devoxx-uk.jpeg
   appearances:
     - id: six-things-we-learned-implementing-rockstar-on-quarkus-
-      slideDeckUrl: https://www.devoxx.co.uk/talk/?id=23906
+      sessionPageUrl: https://www.devoxx.co.uk/talk/?id=23906
       videoUrl: https://youtu.be/UHAezmsWov8
       slides:
         source: speaker-deck
