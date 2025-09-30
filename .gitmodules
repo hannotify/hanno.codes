@@ -96,3 +96,6 @@
 [submodule "_slides/http-how-teenagers-talk-to-their-parents/spacerockit-2025"]
 	path = _slides/http-how-teenagers-talk-to-their-parents/spacerockit-2025
 	url = https://github.com/hannotify/http-how-teenagers-talk-to-their-parents.git
+[submodule "_slides/javas-concurrency-journey-continues/hbo-i-2025"]
+	path = _slides/javas-concurrency-journey-continues/hbo-i-2025
+	url = https://github.com/hannotify/javas-concurrency-journey-continues

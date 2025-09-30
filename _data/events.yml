@@ -23,7 +23,7 @@
   dateEnd: 2025-11-14
   logo: devoxx-ma.png
   appearances:
-    - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+    - id: javas-concurrency-journey-continues
       sessionPageUrl: https://devoxx.ma/talk/?id=3016
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
 
@@ -61,7 +61,7 @@
   dateEnd: 2025-10-16
   logo: baselone.png
   appearances:
-    - id: from-zero-to-secured-live-coding-a-full-stack-jakarta-ee-rest-app-with-microprofile-and-jwt-authentication
+    - id: from-zero-to-secured
       sessionPageUrl: https://baselone.org/#programm/
 
 - id: devoxx-2025
@@ -98,9 +98,11 @@
   url: https://hboictjobevent.nl
   logo: hbo-i.webp
   appearances:
-    - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+    - id: javas-concurrency-journey-continues
       sessionPageUrl: https://hboictjobevent.nl/programma/javas-concurrency-reis-gaat-verder-ontdek-structured-concurrency-en-scoped-values/
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
+      slides: 
+        source: local
 
 - id: spacerockit-2025
   name: SpaceRockIT
@@ -141,7 +143,7 @@
   appearances:
     - id: public-static-void-main-
       sessionPageUrl: https://2025.europe.jcon.one/schedule
-    - id: from-zero-to-secured-live-coding-a-full-stack-jakarta-ee-rest-app-with-microprofile-and-jwt-authentication
+    - id: from-zero-to-secured
       sessionPageUrl: https://2025.europe.jcon.one/schedule
       slides:
         source: local
@@ -157,7 +159,7 @@
   dateStart: 2025-04-24
   logo: apeldoornjug.avif
   appearances:
-    - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+    - id: javas-concurrency-journey-continues
       sessionPageUrl: https://www.meetup.com/apeldoornjug/events/306893636
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
       slides:
@@ -195,7 +197,7 @@
   dateStart: 2025-04-03
   logo: voxxed-days-amsterdam.png
   appearances:
-    - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+    - id: javas-concurrency-journey-continues
       sessionPageUrl: https://amsterdam.voxxeddays.com/talk/?id=3401
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
       videoUrl: https://youtu.be/bRwVxIn8MKU?si=j2GkoMNwaRkShzIN
@@ -218,7 +220,7 @@
   dateEnd: 2025-04-03
   logo: javaland.png
   appearances:
-    - id: from-zero-to-secured-live-coding-a-full-stack-jakarta-ee-rest-app-with-microprofile-and-jwt-authentication
+    - id: from-zero-to-secured
       sessionPageUrl: https://meine.doag.org/events/javaland/2025/agenda/#eventDay.1743458400
       slides:
         source: local
@@ -249,7 +251,7 @@
   logo: jchampionsconf.jpeg
   url: https://jchampionsconf.com/
   appearances:
-    - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+    - id: javas-concurrency-journey-continues
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
       sessionPageUrl: https://jchampionsconf.com/sessions.html#embregtsCard
       videoUrl: https://www.youtube.com/watch?v=w2COJX-1mgU
@@ -301,7 +303,7 @@
   dateStart: 2024-11-07
   logo: jfall.png
   appearances:
-    - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+    - id: javas-concurrency-journey-continues
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
       slides:
         source: local
@@ -339,7 +341,7 @@
   dateEnd: 2024-10-11
   logo: devoxx.png
   appearances:
-    - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+    - id: javas-concurrency-journey-continues
       sessionPageUrl: https://devoxx.be/talk/?id=2586
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
       videoUrl: https://youtu.be/0siacvqx5UE
@@ -377,7 +379,7 @@
   dateStart: 2024-09-19
   logo: trailblazers.webp
   appearances:
-    - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+    - id: javas-concurrency-journey-continues
       sessionPageUrl: https://www.meetup.com/trailblazers-meetups/events/302309276
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
       slides:   
@@ -408,7 +410,7 @@
   dateStart: 2024-06-18
   logo: amsterdamjug.webp
   appearances:
-    - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+    - id: javas-concurrency-journey-continues
       sessionPageUrl: https://www.meetup.com/amsterdam-java-user-group/events/301059652
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
       slides:   
@@ -541,7 +543,7 @@
   dateStart: 2023-10-31
   logo: arnhemjug.jpeg
   appearances:
-    - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+    - id: javas-concurrency-journey-continues
       sessionPageUrl: https://www.meetup.com/arnhemjug/events/296251934/
       slides:   
         source: local
@@ -554,8 +556,8 @@
   dateEnd: 2023-11-22
   logo: jcon-world-2023.png
   appearances:
-    - id: javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
-      sessionPageUrl: https://jconworld2023.sched.com/event/1RRXD/javas-concurrency-journey-continues-exploring-structured-concurrency-and-scoped-values
+    - id: javas-concurrency-journey-continues
+      sessionPageUrl: https://jconworld2023.sched.com/event/1RRXD/javas-concurrency-journey-continues
       videoUrl: https://youtu.be/4J2r7tC0QUY
       slides: 
         source: local
