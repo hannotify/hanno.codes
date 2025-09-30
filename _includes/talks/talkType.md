@@ -10,7 +10,7 @@
 <div class="notice" markdown="1">
 {% endif %}
 
-## [](#{{ talk.id }}){{ talk.title }}
+## {{ talk.title }} {#{{talk.id}}}
 
 {{ talk.description }}
 
