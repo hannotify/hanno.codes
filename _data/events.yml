@@ -19,8 +19,8 @@
     latitude: 59.3299581
     longitude: 18.0534562
   url: https://www.jfokus.se
-  dateStart: 2024-02-02
-  dateEnd: 2024-02-04
+  dateStart: 2026-02-02
+  dateEnd: 2026-02-04
   logo: jfokus-2026.svg
   appearances:
     - id: javas-concurrency-journey-continues
@@ -48,7 +48,7 @@
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
       slides: 
         source: local
-        
+
 - id: jfall-2025
   name: J-Fall
   year: 2025
