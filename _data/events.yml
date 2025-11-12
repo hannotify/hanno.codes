@@ -7,6 +7,26 @@
 #   city: Utrecht
 #   url: https://execut.nl
 
+- id: jfokus-2026
+  name: JFokus
+  year: 2026
+  country:
+    flag: sweden
+    name: Sweden
+  city: Stockholm
+  venue:
+    name: Waterfront Congress Centre
+    latitude: 59.3299581
+    longitude: 18.0534562
+  url: https://www.jfokus.se
+  dateStart: 2024-02-02
+  dateEnd: 2024-02-04
+  logo: jfokus-2026.svg
+  appearances:
+    - id: javas-concurrency-journey-continues
+      sessionPageUrl: https://jfokus.se/schedule.html
+      githubUrl: https://github.com/hannotify/structured-concurrency-bar
+
 - id: devoxx-ma-2025
   name: Devoxx Morocco
   year: 2025
@@ -26,7 +46,9 @@
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://devoxx.ma/talk/?id=3016
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
-
+      slides: 
+        source: local
+        
 - id: jfall-2025
   name: J-Fall
   year: 2025
