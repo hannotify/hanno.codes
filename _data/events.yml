@@ -1,11 +1,71 @@
-# - id: exec-ut-2026
-#   name: exec(ut)
-#   year: 2026
-#   country:
-#     flag: netherlands
-#     name: The Netherlands
-#   city: Utrecht
-#   url: https://execut.nl
+- id: voxxed-days-amsterdam-2026
+  name: Voxxed Days Amsterdam
+  year: 2026
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Amsterdam
+  venue:
+    name: Pathé Amsterdam Noord
+    latitude: 52.4007003
+    longitude: 4.9321017
+  url: https://amsterdam.voxxeddays.com/
+  dateStart: 2026-04-01
+  dateEnd: 2026-04-02
+  logo: voxxed-days-amsterdam.png
+  appearances:
+    - id: when-music-and-software-come-together
+
+- id: exec-ut-2026
+  name: exec(ut)
+  year: 2026
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Utrecht
+  venue: 
+    name: TivoliVredenburg
+    latitude: 52.0907374
+    longitude: 5.1214201
+  url: https://execut.nl
+  dateStart: 2026-03-26
+  logo: execut.png
+  appearances: 
+    - id: todo
+      sessionPageUrl: https://execut.nl/programme
+
+- id: brabantjug-2026
+  name: BrabantJUG
+  year: 2026
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: >
+    's Hertogenbosch
+  url: https://www.meetup.com/brabantjug/
+  dateStart: 2026-03-18
+  logo: brabantjug.avif
+  appearances:
+    - id: todo
+
+- id: javaland-2026
+  name: JavaLand
+  year: 2026
+  country:
+    flag: de
+    name: Germany
+  city: Rust
+  venue:
+    name: Europa-Park
+    latitude: 48.2673305
+    longitude: 7.7215143
+  url: https://www.javaland.eu
+  dateStart: 2026-03-11
+  dateEnd: 2026-03-13
+  logo: javaland.png
+  appearances:
+    - id: javas-concurrency-journey-continues
+      sessionPageUrl: https://meine.doag.org/events/javaland/2026/agenda/#eventDay.1773183600
 
 - id: jfokus-2026
   name: JFokus
@@ -151,7 +211,7 @@
       slides:
         source: local
 
-- id: apeldoornjug-2025
+- id: apeldoorn-2025
   name: ApeldoornJUG
   year: 2025
   country:

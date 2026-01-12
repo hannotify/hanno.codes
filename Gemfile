@@ -20,3 +20,4 @@ group :jekyll_plugins do
 end
 
 gem "webrick", "~> 1.7"
+gem "mutex_m", "~> 0.3.0"
