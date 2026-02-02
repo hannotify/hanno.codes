@@ -86,6 +86,8 @@
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://jfokus.se/schedule.html
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
+      slides:
+        source: local
     - id: these-songs-would-make-some-great-code-comments
       sessionPageUrl: https://jfokus.se/schedule.html
 

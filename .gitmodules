@@ -102,3 +102,6 @@
 [submodule "_slides/javas-concurrency-journey-continues/devoxx-ma-2025"]
 	path = _slides/javas-concurrency-journey-continues/devoxx-ma-2025
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
+[submodule "_slides/javas-concurrency-journey-continues/jfokus-2026"]
+	path = _slides/javas-concurrency-journey-continues/jfokus-2026
+	url = https://github.com/hannotify/javas-concurrency-journey-continues
