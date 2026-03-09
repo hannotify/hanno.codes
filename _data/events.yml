@@ -66,6 +66,8 @@
   appearances:
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://meine.doag.org/events/javaland/2026/agenda/#eventDay.1773183600
+      slides:
+        source: local
 
 - id: jfokus-2026
   name: JFokus
