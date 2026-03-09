@@ -90,6 +90,7 @@
         source: local
     - id: these-songs-would-make-some-great-code-comments
       sessionPageUrl: https://jfokus.se/schedule.html
+      videoUrl: https://youtu.be/D9sEBqY67qg
 
 - id: devoxx-ma-2025
   name: Devoxx Morocco
