@@ -113,7 +113,65 @@ Java 26 introduces a single new feature that is part of the Core Libs:
 
 #### JEP 517: HTTP 3 for the HTTP Client API
 
-TODO
+Since Java 11, a modern HTTP client API is part of the Java Platform. It supports both HTTP/1.1 and HTTP/2 and was designed to potentially support future versions as well. In its current form, the API assumes HTTP/2 by default, but it can revert to HTTP/1.1 should the target server not support a newer HTTP version.
+
+The code example below demonstrates the ease of use and protocol agnosticity of the API:
+
+```java
+import java.net.http.*;
+
+...
+var client = HttpClient.newHttpClient();
+var request = HttpRequest.newBuilder(URI.create("https://hanno.codes")).GET().build();
+var response = client.send(request, HttpResponse.BodyHandlers.ofString());
+assert response.statusCode() == 200;
+String htmlText = response.body();
+assert htmlText.contains("Java");
+```
+
+As you can see, we didn't specify any HTTP version in this code example–the API assumes HTTP/2 by default.
+
+##### HTTP/3: HTTP's Next Version
+
+HTTP/3 was standardized in 2022 by the [IETF](https://www.ietf.org/), using the [QUIC](https://en.wikipedia.org/wiki/QUIC) transport-layer protocol over TCP. Applications that use the HTTP/3 protocol can benefit from multiplexing, faster handshakes, avoidance of network congestion issues and more reliable transport, among others. Most web browsers [already support HTTP/3](https://caniuse.com/http3) and [about a third of all web sites](https://w3techs.com/technologies/details/ce-http3) currently benefit from its features. So this seems like a good time to start supporting it in the HTTP client API, which is exactly what JEP 517 is proposing.
+
+##### Using HTTP/3 In Java Code
+
+In Java 26, the HTTP client API requires you to opt-in to HTTP/3 by configuring an instance of either `HttpClient` or `HttpRequest` with the `HTTP_3` version. For example:
+
+```java
+// for reuse with multiple requests
+var http3Client = HttpClient.newBuilder().version(HttpClient.Version.HTTP_3).build();
+
+// just for a single request
+var http3Request = HttpRequest.newBuilder(URI.create("https://hanno.codes"))
+    .version(HttpClient.Version.HTTP_3)
+    .GET().build();
+```
+
+Once HTTP/3 has been chosen—either in the request itself or in the client—you transmit the request just as you normally would. If the destination server lacks HTTP/3 support, the request is automatically and transparently rolled back to HTTP/2 or, if necessary, to HTTP/1.1.
+
+##### Negotiating Protocol Versions
+
+The HTTP client API can't know for sure if a target server will support HTTP/3. Moreover, existing HTTP/1.1 and HTTP/2 connections cannot be upgraded to HTTP/3, since HTTP/1.1 and HTTP/2 are built on top of TCP, while HTTP/3's QUIC is based on UDP datagrams. So the API needs a way to negotiate protocol versions–in order to do that it's been equipped with four separate approaches:
+
+1. **Try HTTP/3 first, fall back if it times‑out** – Initiate the request with HTTP/3; if a connection cannot be established within a reasonable timeout, automatically downgrade to HTTP/2 or HTTP/1.1. *(Matches a `HttpRequest` whose preferred version is set to `HTTP_3`.)*
+
+2. **Race HTTP/3 against an older protocol** – Open both an HTTP/3 connection and an HTTP/2 or HTTP/1.1 connection simultaneously and use whichever succeeds first. *(Occurs when the `HttpClient` prefers `HTTP_3` but the `HttpRequest` does not specify a preferred version.)*
+
+3. **Start with HTTP/2 or 1.1 and switch on discovery** – Send the initial request over HTTP/2 or HTTP/1.1. If the server’s response indicates that HTTP/3 is available, switch to HTTP/3 for all following requests. *(Triggered by setting `Http3DiscoveryMode.ALT_SVC` for the `H3_DISCOVERY` option, with at least one of the clients or requests preferring `HTTP_3`.)*
+
+4. **Force HTTP/3 only** – Send every request exclusively over HTTP/3; if the server cannot reply with HTTP/3, treat it as a failure and do not fall back to earlier protocols. *(Enabled by `Http3DiscoveryMode.HTTP_3_URI_ONLY` for the `H3_DISCOVERY` option, with at least one client or request preferring `HTTP_3`.)*
+
+The four methods each come with their own drawbacks:
+
+- Option 1 incurs a timeout delay before falling back.  
+- Option 2 may waste resources by establishing an HTTP/3 connection that is never reused.  
+- Option 3 requires an initial HTTP/2 or 1.1 round‑trip before any HTTP/3 benefits are realized.  
+- Option 4 only works when you already know that the target server supports HTTP/3.
+
+HTTP/3 is not as widely deployed as its older counterparts, which is why no single approach can work in all circumstances.
+This is also the main reason why HTTP/3 can't be made the default protocol version at this time, though this may be change in the future when HTTP/3 is more widely adopted.
 
 ##### More Information
 
