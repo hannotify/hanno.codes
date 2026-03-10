@@ -78,6 +78,10 @@
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
       slides:
         source: local
+    - id: will-git-be-around-forever
+      sessionPageUrl: https://meine.doag.org/events/javaland/2026/agenda/#eventDay.1773097200
+      slides:
+        source: local
 
 - id: jfokus-2026
   name: JFokus
