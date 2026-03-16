@@ -1,21 +1,22 @@
-
 ---
 layout: post
-title: TODO
+title: Java 26 Is Here, And With It a Solid Foundation for the Future
 date: 17-03-2026 04:30:00 +0200
 header:
-  teaser: /assets/images/blog/TODO.jpg
-excerpt: TODO
+  teaser: /assets/images/blog/foundation.jpg
+excerpt: Java 26 is here, and its main purpose seems to be to provide a solid foundation for future things to come. It comes with a few new features, some performance improvements and multiple enhancements that mention Project Valhalla as the inspiration for their existence. This post has all the info!
 tags: 
 - java
 ---
 
 TODO: proofread the entire thing.
 
-Java 26 ... TODO
+Java 26 is here! Six months ago, we welcomed Java 25 into our hearts, which means it's time for another fresh helping of Java features. This time, the set of features is a bit smaller compared to some of the previous releases, which can only mean one thing: the focus for this release was to provide a solid foundation for something big to be released soon™️! My hope is that the first JEPs out of Project Valhalla will be announced later this year. That hope is fueled by some of Java 26's changes as they feel like appropriate preparation steps for the first Valhalla features (this is especially true for JEPs [500](#jep-500-prepare-to-make-final-mean-final) and [529](#jep-529-vector-api-eleventh-incubator)).
 
-![TODO](/assets/images/blog/todo.jpg)
-> Photo by TODO, from <a href="https://www.pexels.com/photo/basketball-players-hugging-during-game-in-gym-5303477/">TODO</a>
+Regardless of any future plans, this post focuses on everything that has been added in this release, giving you a brief introduction to each of the features. Where applicable the differences with Java 25 are highlighted and a few typical use cases are provided, so that you'll be more than ready to start using these features after reading this.
+
+![Foundation](/assets/images/blog/foundation.jpg)
+> Photo by Rodolfo Quirós, from <a href="https://www.pexels.com/photo/selective-focus-photography-cement-2219024/">Pexels</a>
 
 ## JEP Overview
 
@@ -26,13 +27,13 @@ To start off, let's look at an overview of the JEPs that ship with Java 26. This
 | **[500](#jep-500-prepare-to-make-final-mean-final)** | Prepare to Make Final Mean Final                     |                    | Core Libs     | Deprecation  | Warnings                            |
 | **[504](#jep-504-remove-the-applet-api)** | Remove the Applet API                                |                    | Client Libs   | Deprecation  | Deprecation                         |
 | **[516](#jep-516-ahead-of-time-object-caching-with-any-gc)** | Ahead-of-Time Object Caching with Any GC             |                    | HotSpot       | Performance  | New feature                         |
-| **[517](#jep-517-http-3-for-the-http-client-api)** | HTTP 3 for the HTTP Client API                       |                    | Core Libs     | Extension    | New feature                         |
+| **[517](#jep-517-http3-for-the-http-client-api)** | HTTP/3 for the HTTP Client API                       |                    | Core Libs     | Extension    | New feature                         |
 | **[522](#jep-522-g1-gc-improve-throughput-by-reducing-synchronization)** | G1 GC: Improve Throughput by Reducing Synchronization |                    | HotSpot       | Performance  | New feature                         |
-| **[524](#jep-524-pem-encodings-of-cryptographic-objects)** | PEM Encodings of Cryptographic Objects               | Second Preview     | Security Libs | Security     | Minor                               |
-| **[525](#jep-525-structured-concurrency)** | Structured Concurrency                               | Sixth Preview      | Loom          | Concurrency  | Minor                               |
-| **[526](#jep-526-lazy-constants)** | Lazy Constants                                       | Second Preview     | Core Libs     | New API      | Major                               |
-| **[529](#jep-529-vector-api)** | Vector API                                           | Eleventh Incubator | Panama        | New API      | None                                |
-| **[530](#jep-530-primitive-types-in-patterns-instanceof-and-switch)** | Primitive Types in Patterns, instanceof, and switch  | Fourth Preview     | Amber         | Language     | Minor                               |
+| **[524](#jep-524-pem-encodings-of-cryptographic-objects-second-preview)** | PEM Encodings of Cryptographic Objects               | Second Preview     | Security Libs | Security     | Minor                               |
+| **[525](#jep-525-structured-concurrency-sixth-preview)** | Structured Concurrency                               | Sixth Preview      | Loom          | Concurrency  | Minor                               |
+| **[526](#jep-526-lazy-constants-second-preview)** | Lazy Constants                                       | Second Preview     | Core Libs     | New API      | Major                               |
+| **[529](#jep-529-vector-api-eleventh-incubator)** | Vector API                                           | Eleventh Incubator | Panama        | New API      | None                                |
+| **[530](#jep-530-primitive-types-in-patterns-instanceof-and-switch-fourth-preview)** | Primitive Types in Patterns, instanceof, and switch  | Fourth Preview     | Amber         | Language     | Minor                               |
 
 ## New features
 
@@ -43,7 +44,7 @@ Let's start with the JEPs that add brand-new features to Java 26.
 Java 26 introduces two new features in [HotSpot](https://openjdk.org/groups/hotspot/):
 
 * JEP 516: Ahead-of-Time Object Caching with Any GC
-* JEP 522: G1 GC Improve Throughput by Reducing Synchronization
+* JEP 522: G1 GC: Improve Throughput by Reducing Synchronization
 
 > The HotSpot JVM is the runtime engine that is developed by Oracle. It translates Java bytecode into machine code for the host operating system's processor architecture.
 
@@ -109,9 +110,9 @@ For more information on this feature, read [JEP 522](https://openjdk.org/jeps/52
 
 Java 26 introduces a single new feature that is part of the Core Libs:
 
-* JEP 517: HTTP 3 for the HTTP Client API
+* JEP 517: HTTP/3 for the HTTP Client API
 
-#### JEP 517: HTTP 3 for the HTTP Client API
+#### JEP 517: HTTP/3 for the HTTP Client API
 
 Since Java 11, a modern HTTP client API is part of the Java Platform. It supports both HTTP/1.1 and HTTP/2 and was designed to potentially support future versions as well. In its current form, the API assumes HTTP/2 by default, but it can revert to HTTP/1.1 should the target server not support a newer HTTP version.
 
@@ -159,7 +160,7 @@ The HTTP client API can't know for sure if a target server will support HTTP/3. 
 
 2. **Race HTTP/3 against an older protocol** – Open both an HTTP/3 connection and an HTTP/2 or HTTP/1.1 connection simultaneously and use whichever succeeds first. *(Occurs when the `HttpClient` prefers `HTTP_3` but the `HttpRequest` does not specify a preferred version.)*
 
-3. **Start with HTTP/2 or 1.1 and switch on discovery** – Send the initial request over HTTP/2 or HTTP/1.1. If the server’s response indicates that HTTP/3 is available, switch to HTTP/3 for all following requests. *(Triggered by setting `Http3DiscoveryMode.ALT_SVC` for the `H3_DISCOVERY` option, with at least one of the clients or requests preferring `HTTP_3`.)*
+3. **Start with HTTP/2 or 1.1 and switch on discovery** – Send the initial request over HTTP/2 or HTTP/1.1. If the server's response indicates that HTTP/3 is available, switch to HTTP/3 for all following requests. *(Triggered by setting `Http3DiscoveryMode.ALT_SVC` for the `H3_DISCOVERY` option, with at least one of the clients or requests preferring `HTTP_3`.)*
 
 4. **Force HTTP/3 only** – Send every request exclusively over HTTP/3; if the server cannot reply with HTTP/3, treat it as a failure and do not fall back to earlier protocols. *(Enabled by `Http3DiscoveryMode.HTTP_3_URI_ONLY` for the `H3_DISCOVERY` option, with at least one client or request preferring `HTTP_3`.)*
 
@@ -350,7 +351,7 @@ public class StructuredConcurrencyRestaurant implements Restaurant {
 }
 ```
 
-The scope’s purpose is to keep the threads together. At `1`, we wait (`join`) until all threads are done with their work. If one of the threads is interrupted, an `InterruptedException` is thrown. A `RuntimeException` can also be thrown here, if an exception occurs in one of the spawned threads. Once we reach `2`, we can be sure everything has gone well, and we can retrieve and process the results.
+The scope's purpose is to keep the threads together. At `1`, we wait (`join`) until all threads are done with their work. If one of the threads is interrupted, an `InterruptedException` is thrown. A `RuntimeException` can also be thrown here, if an exception occurs in one of the spawned threads. Once we reach `2`, we can be sure everything has gone well, and we can retrieve and process the results.
 
 Actually, the main difference with the code we had before is the fact that we create threads (`fork`) within a new `scope`. Now we can be certain that the lifetimes of the three threads are confined to this scope, which coincides with the body of the try-with-resources statement.
 
@@ -360,7 +361,7 @@ Furthermore, we've gained _short-circuiting behaviour_. When one of the `announc
 
 The factory method that gave us the scope (`StructuredTaskScope.open()`) implements a shutdown-on-failure policy by default, which cancels any remaining tasks in the scope if one of the tasks has failed. A shutdown-on-success policy is also available: it cancels any remaining tasks in the scope if one of the tasks has succeeded. It can be used to avoid doing unnecessary work when a successful result has already been achieved. Which would actually be a perfect way to solve the problems that our patient waiter from the article introduction was experiencing!
 
-We can use a shutdown-on-success policy by calling an overload of the `StructuredTaskScope.open()` method that takes a `Joiner` as its parameter. Let’s see what that would look like:
+We can use a shutdown-on-success policy by calling an overload of the `StructuredTaskScope.open()` method that takes a `Joiner` as its parameter. Let's see what that would look like:
 
 ```java
 record DrinkOrder(Guest guest, Drink drink) {}
@@ -389,7 +390,7 @@ The `join()` method at `1` will either return a valid `DrinkOrder` object, or th
 
 #### More Shutdown Policies
 
-We’ve seen examples of two shutdown policies so far, but four more are provided out-of-the-box through the static factory methods in the `StructuredTaskScope.Joiner` interface. For example, `Joiner.allSuccessfulOrThrow()` will keep the scope alive until all subtasks have completed successfully, and cancels it if any subtasks fails. And `Joiner.awaitAll()` will wait for all subtasks to complete, whether they complete successfully or not. It’s also possible to create your own shutdown policies by implementing the `Joiner` interface. That will allow you to have full control over when the scope will be shut down and what results will be collected.
+We've seen examples of two shutdown policies so far, but four more are provided out-of-the-box through the static factory methods in the `StructuredTaskScope.Joiner` interface. For example, `Joiner.allSuccessfulOrThrow()` will keep the scope alive until all subtasks have completed successfully, and cancels it if any subtasks fails. And `Joiner.awaitAll()` will wait for all subtasks to complete, whether they complete successfully or not. It's also possible to create your own shutdown policies by implementing the `Joiner` interface. That will allow you to have full control over when the scope will be shut down and what results will be collected.
 
 #### What's Different From Java 25?
 
@@ -605,27 +606,205 @@ Other changes have a similar purpose–they include:
 The Vector API makes it possible to express vector computations that reliably compile at runtime to optimal vector instructions. 
 This means that these computations will significantly outperform equivalent scalar computations on the supported CPU architectures (x64 and AArch64).
 
+#### Vector Computations? Help Me Out Here!
+
+A *vector computation* is a mathematical operation on one or more one-dimensional matrices of an arbitrary length. Think of a vector as an array with a dynamic length. Furthermore, the elements in the vector can be accessed in constant time via indices, just like with an array. 
+
+In the past, Java programmers could only program such computations at the assembly-code level. But now that modern CPUs support advanced [SIMD](https://en.wikipedia.org/wiki/Single_instruction,_multiple_data) features (Single Instruction, Multiple Data), it becomes more important to take advantage of the performance gains that SIMD instructions and multiple lanes operating in parallel can bring. The Vector API brings that possibility closer to the Java programmer.
+
+#### Code Example
+
+Here is a code example (taken from the JEP) that compares a simple scalar computation over elements of arrays with its equivalent using the Vector API:
+
+```java
+void scalarComputation(float[] a, float[] b, float[] c) {
+   for (int i = 0; i < a.length; i++) {
+        c[i] = (a[i] * a[i] + b[i] * b[i]) * -1.0f;
+   }
+}
+
+static final VectorSpecies<Float> SPECIES = FloatVector.SPECIES_PREFERRED;
+
+void vectorComputation(float[] a, float[] b, float[] c) {
+    int i = 0;
+    int upperBound = SPECIES.loopBound(a.length);
+    for (; i < upperBound; i += SPECIES.length()) {
+        // FloatVector va, vb, vc;
+        var va = FloatVector.fromArray(SPECIES, a, i);
+        var vb = FloatVector.fromArray(SPECIES, b, i);
+        var vc = va.mul(va)
+                   .add(vb.mul(vb))
+                   .neg();
+        vc.intoArray(c, i);
+    }
+    for (; i < a.length; i++) {
+        c[i] = (a[i] * a[i] + b[i] * b[i]) * -1.0f;
+    }
+}
+```
+
+From the perspective of the Java developer, this is just another way of expressing scalar computations. It might come across as being more verbose, but on the other hand it can bring spectacular performance gains. 
+
+#### Typical Use Cases
+
+The Vector API provides a way to write complex vector algorithms in Java that perform extremely well, such as vectorized `hashCode` implementations or specialized array comparisons. Numerous domains can benefit from this, including machine learning, linear algebra, encryption, text processing, finance, and code within the JDK itself.
+
 #### What's Different From Java 25?
 
-The following changes were made to the Vector API compared to Java 24:
-
-TODO
+Compared to the tenth incubator version of this feature in Java 25, nothing was changed or added.
 
 The Vector API will keep incubating until necessary features of Project Valhalla become available as preview features. When that happens, the Vector API will be adapted to use them, and it will be promoted from incubation to preview.
 
 #### More Information
 
-For more information on this feature, read [JEP 529](https://openjdk.org/jeps/529) or the [full feature description](https://hanno.codes/2024/09/17/java-23-has-arrived/#jep-469-vector-api-eighth-incubator) from a previous article.
+For more information on this feature, read [JEP 529](https://openjdk.org/jeps/529).
 
 ### JEP 530: Primitive Types in Patterns, instanceof, and switch (Fourth Preview)
 
-Pattern matching now supports primitive types in all pattern contexts. On top of that, the `instanceof` and `switch` constructs have been extended to also work with all primitive types.
+Since Java 23, pattern matching supports primitive types in all pattern contexts, and in the `instanceof` and `switch` constructs. The feature has been in three consecutive preview statuses, and will be previewd for a fourth time in Java 26. Let's first go through the differences with Java 22 before we highlight the changes in the fourth preview.
 
-TODO: potentially include the full feature description here (from a previous article) with updated code examples. In that case: remove the link to the previous article in the "More Information" section.
+#### Pattern Matching for Switch
+
+Java 22's version of [pattern matching for switch](https://openjdk.org/jeps/441) didn't support type patterns that specify a primitive type. In Java 23 support was added for primitive type patterns in `switch`, allowing the following code example:
+
+```java
+switch (reverb.roomSize()) {
+    case 1 -> "Toilet";
+    case 2 -> "Bedroom";
+    case 30 -> "Classroom";
+    default -> "Unsupported value: " + reverb.roomSize();
+}
+```
+
+...to be written as follows:
+
+```java
+switch (reverb.roomSize()) {
+    case 1 -> "Toilet";
+    case 2 -> "Bedroom";
+    case 30 -> "Classroom";
+    case int i -> "Unsupported int value: " + i;
+}
+```
+
+This also allows guards to inspect the matched value, like so:
+
+```java
+switch (reverb.roomSize()) {
+    case 1 -> "Toilet";
+    case 2 -> "Bedroom";
+    case 30 -> "Classroom";
+    case int i when i > 100 && i < 1000 -> "Cinema";
+    case int i when i > 5000 -> "Stadium";
+    case int i -> "Unsupported int value: " + i;
+}
+```
+
+#### Record Patterns
+
+[Record patterns](https://openjdk.org/jeps/440) currently have limited support for primitive types.
+Recall that a record pattern decomposes a record into its individual components, but when one of them is a primitive type, the record pattern must be precise about its type. To illustrate this point, consider the following code example:
+
+```java
+record Tuner(double pitchInHz) implements Effect {}
+
+var tuner = new Tuner(440); // int argument is widened to double
+
+// Attempt 1: record pattern match on int argument
+if (tuner instanceof Tuner(int p)) {} // doesn't compile!
+
+// Attempt 2: record pattern match on double argument
+if (tuner instanceof Tuner(double p)) {
+    int pitch = p; // doesn't compile! needs a cast to int
+}
+
+// Attempt 3: record pattern match on double argument, cast to int
+if (tuner instanceof Tuner(double p)) {
+    int pitch = (int) p;
+}
+```
+
+To put it differently, the Java compiler widens the provided `int` to a `double`, but it doesn't narrow it back to an `int`. This limitation exists because narrowing could lead to data loss: the value of the `double` at runtime might exceed the range of an `int` or have more precision than an `int` can accommodate. However, one significant advantage of pattern matching is its ability to automatically reject invalid values by not matching them at all. If the `double` component of a `Tuner` is either too large or too precise to safely convert back to an `int`, then `instanceof Tuner(int p)` would simply return `false`, allowing the program to manage the large `double` component in a different code branch.
+
+This is analogous to how pattern matching currently behaves for reference type patterns. For example:
+
+```java
+record SingleEffect(Effect effect) {}
+var singleEffect = new SingleEffect(...);
+
+if (singleEffect instanceof SingleEffect(Delay d)) {
+    // ...
+} else if (singleEffect instanceof SingleEffect(Reverb r)) {
+    // ...
+} else {
+    // ...
+}
+```
+`instanceof` can be used here to try to match a `SingleEffect` with a `Delay` or a `Reverb` component; it automatically narrows if the pattern matches.
+
+To summarize, the JEP proposes to make primitive type patterns work as smoothly as reference type patterns, allowing `Tuner(int p)` even if the corresponding record component is a numeric primitive type other than `int`.
+
+#### Pattern Matching for instanceof
+
+The Java 22 version of [pattern matching for instanceof](https://openjdk.org/jeps/394) didn't support primitive type patterns, but this capability would perfectly align with the purpose of `instanceof`: to test whether a value can be converted safely to a given type. To convert primitives safely, Java developers had to deal with lossy casts and range checks to prevent loss of information:
+
+```java
+int roomSize = reverb.roomSize();
+
+if (roomSize >= -128 && roomSize < 127) {
+    byte r = (byte) roomSize;
+    // now it's safe to use r
+}
+```
+
+The JEP proposes the possibility to replace these constructs with simple `instanceof` checks that operate on primitives. Let's rewrite the code example to make use of this feature:
+
+```java
+int roomSize = reverb.roomSize();
+
+if (roomSize instanceof byte r) {
+    // now it's safe to use r
+}
+```
+
+The pattern `roomSize instanceof byte r` will match only if `roomSize` fits into a `byte`, eliminating the need for casts and range checks.
+
+#### Primitive Types in instanceof
+
+The `instanceof` keyword used to take a reference type only, and since Java 16 it can also take a type pattern.
+But it would make sense to have `instanceof` take a primitive type also.
+In that case `instanceof` would check if the conversion is safe but would not actually perform it:
+
+```java
+if (roomSize instanceof byte) { // check if value of roomSize fits in a byte
+    ... (byte) roomSize ... // yes, it fits! but cast is required
+}
+```
+
+The JEP proposes to support this construct, which makes it easier to change the `instanceof` check to take a type pattern and vice versa.
+
+#### Primitive Types in switch
+
+The Java 22-version of `switch` statement/expression supported `byte`, `short`, `char`, and `int` values.
+The JEP proposes to also add support for the other primitive types: `boolean`, `float`, `double` and `long`.
+A `switch` on a `boolean` value can be a good alternative for the ternary operator (`?:`), because its branches can also hold statements instead of just expressions.
+
+```java
+String guitaristResponse = switch (guitar.isInTune()) {
+    case true -> "Ready to play a song.";
+    case false -> {
+        log.warn("Guitar is out of tune!");
+        yield "Let's take five!";
+    }
+}
+```
 
 #### What's Different From Java 25?
 
-TODO
+One minor change was made compared to Java 25: tighter dominance checks in `switch` constructs were applied.
+One pattern is said to _dominate_ another pattern if it matches all the values that the other pattern matches.
+The definition of [dominance](https://openjdk.org/jeps/441#Dominance-of-case-labels) used to be applicable to reference types only; this JEP broadens that definition so that primitive types are included as well.
+As a result, e.g., the type pattern `long q` is now said to dominate the type pattern `int i`.
 
 #### Preview Warning
 
@@ -633,7 +812,7 @@ Note that this JEP is in the [preview](https://openjdk.org/jeps/12) stage, so yo
 
 #### More Information
 
-For more information on this feature, read [JEP 530](https://openjdk.org/jeps/530) or the [full feature description](https://hanno.codes/2024/09/17/java-23-has-arrived/#jep-455-primitive-types-in-patterns-instanceof-and-switch-preview) from a previous article.
+For more information on this feature, read [JEP 530](https://openjdk.org/jeps/530).
 
 ## Deprecations
 
@@ -641,23 +820,116 @@ Java 26 also deprecates a few older features that weren't used that much. Let's 
 
 ### JEP 500: Prepare to Make Final Mean Final
 
-TODO: paraphrase
-- future versions of Java will disallow the mutation of final fields by deep reflection.
-- final fields are important when reasoning about correctness and for performance reasions (more optimizations possible, like constant folding)
-- Unfortunately, the expectation that a final field cannot be reassigned is false. Several APIs allow final fields to be reassigned at any time by any code in a program, undermining all reasoning about correctness and invalidating important optimizations. 
-- The deep reflection API is the most notorious, embodied in the `Field.setAccessible` and `Field.set` methods.
-- <code example>
-- The possibility was added so that serialization libraries could mutate final fields when initializing objects during deserialization.
-- In retrospect, offering such unconstrained functionality was a poor choice because it sacrificed integrity.
-- Mutating final fields is currently not allowed in hidden classes and in records, and now it's time to extend this behavior to regular classes.
+Final fields in Java represent immutable state. Once assigned in a constructor or in a class initializer, a final field cannot be reassigned. This behaviour is important when reasoning about correctness, and for performance reasons. The more constraints there are on the behaviour of a class, the more optimizations the JVM can apply (like [constant folding](https://en.wikipedia.org/wiki/Constant_folding)). Moreover, the immutability we can expect from final fields plays an important role in the [safe initialization of objects](https://www.cs.umd.edu/~pugh/java/memoryModel/jsr-133-faq.html#finalWrong) in multi-threaded code.
+
+Unfortunately, the expectation that a final field cannot be reassigned is false. [Several APIs](https://openjdk.org/jeps/8305968#Undermining-integrity) allow final fields to be reassigned at any time by any code in a program, undermining all reasoning about correctness and invalidating important optimizations. The _deep reflection API_ is the most notorious of them, through its `Field.setAccessible` and `Field.set` methods. These methods allow you to mutate final fields at will, for example:
+
+```java
+// A normal class with a final field
+static class Guitar {
+    final int numberOfStrings;
+
+    Guitar() {
+        numberOfStrings = 6;
+    }
+}
+
+void main() throws ReflectiveOperationException {
+    // 1. Perform deep reflection over the final field in Guitar
+    java.lang.reflect.Field numberOfStrings = Guitar.class.getDeclaredField("numberOfStrings");
+    numberOfStrings.setAccessible(true);      // Make Guitar's final field mutable
+
+    // 2. Create an instance of Guitar
+    Guitar guitar = new Guitar();
+    IO.println(guitar.numberOfStrings);  // Prints 6
+
+    // 3. Mutate the final field in the object
+    numberOfStrings.set(guitar, 12);
+    IO.println(guitar.numberOfStrings);  // Prints 12
+    numberOfStrings.set(guitar, 4);
+    IO.println(guitar.numberOfStrings);  // Prints 4
+}
+```
+
+This example shows that, in practice, final fields are as mutable as non-final fields.
+
+##### Reasons For Mutating a Final Field
+
+So why was the possibility added in the first place? The answer has to do with (you guessed it!) _serialization_. Serialization libraries need the ability to mutate final fields when initializing objects during deserialization. The problem is that relative little code mutates final fields for the right reasons, yet the mere existence of APIs for doing so makes it impossible to trust the value of any final field. Looking back, offering this functionality was a poor choice because it sacrifices integrity.
+
+Recent additions like [hidden classes](https://openjdk.org/jeps/371) and [records](https://openjdk.org/jeps/395) don't allow mutating final fields, and now it's time to extend this behavior to regular classes. 
+
+##### Final Field Restrictions
+
+JEP 500 proposes to issue warnings when deep reflection is used to mutate final fields. These warnings will prepare developers for a future release that ensures integrity by default by restricting final field mutation, making Java programs safer and potentially faster. One exception to this rule will remain supported, namely serialization libraries that need to mutate final fields during deserialization, via a limited-purpose API.
+
+The effects of these _final field restrictions_ will be strengthened over time. Rather than issue warnings, a future JDK release will, by default, throw exceptions when Java code uses deep reflection to mutate final fields. 
+
+##### Enabling Final Field Mutation
+
+Application developers can avoid these warning and expections by opting-in to final field mutation via the command-line. To achieve this, specify the `--enable-final-field-mutation` command-line option and pass it a comma-separated list of module names:
+
+```bash
+$ java --enable-final-field-mutation=module1,module2
+```
+
+Additional techniques are also available, such as setting environment variables, adding it to a JAR's manifest or configuring it in a custom runtime using `jlink`. Refer to [JEP 500](https://openjdk.org/jeps/500) for more details on these techniques.
+
+##### Behaviour of Field::set
+
+In JDK 26 the rules for `Field::set` on a `final` field change. The field will be mutated only if:
+
+1. `f.setAccessible(true)` has already succeeded,  
+2. the field's declaring class is in a package **open** to the caller's module, and  
+3. final‑field mutation is enabled for that module.
+
+The last two conditions are new. Consequently:
+
+* If a module doesn't have final‑field mutation enabled, any attempt to change a `final` field via deep reflection throws `IllegalAccessException` (unless the JVM is started with `--illegal-final-field-mutation`). `f.setAccessible(true)` may still succeed, but `f.set(...)` is illegal.
+
+* If final‑field mutation is enabled but the field's package isn't open to the module, the same exception is thrown. This can happen when module A (with an open package) calls `f.setAccessible(true)` and passes the `Field` to module B, which has mutation enabled but no access to the package; module B's `f.set(...)` is illegal.
+
+##### Effects On Serialization Libraries
+
+When future JDK releases tighten final‑field restrictions, serialization libraries won't be able to rely on deep reflection automatically. Instead of asking users to turn on final‑field mutation via command‑line flags, library maintainers should use the `sun.reflect.ReflectionFactory` API, which is intended for this purpose. This API lets a serialization library acquire a method handle to special JDK‑generated code that can initialize an object by directly writing to its instance fields, even if they're declared `final`. The generated code gives the library the same capabilities as the JDK's built‑in serialization mechanisms, eliminating the need to enable final‑field mutation for the library's module. 
+
+> Note that `sun.reflect.ReflectionFactory` only works for deserializing classes that implement `java.io.Serializable`.
+
+##### Libraries and Frameworks Should Not Use Deep Reflection to Mutate Final Fields
+
+Some dependency‑injection, testing, and mocking libraries rely on deep reflection to tamper with objects, even changing final fields. Their maintainers should treat enabling final‑field mutation via command‑line switches as a fallback only. Preferably, they should adopt designs that eliminate the need to alter final or private fields. For instance, most DI frameworks prohibit injecting final fields already and encourage constructor injection instead.
 
 #### More Information
 
-For more information on this removal, read [JEP 500](https://openjdk.org/jeps/500).
+For more information on this feature, read [JEP 500](https://openjdk.org/jeps/500).
 
 ### JEP 504: Remove the Applet API
 
-TODO
+When the Java Platform rose to fame in the late 1990s and early 2000s, one of its main katalysts were Java applets and the Applet API. Java applets were small Java programs that could be embedded in web pages and run in a web browser, allowing developers to create interactive web applications. They were widely used for things like games, animations, and other interactive content on the web. People who weren't Java programmers at all at least knew the name 'Java' from their browser because of applets! (in roughly the same way as kids these days know about Java's existence because of a game called Minecraft.)
+
+![Hello! I am an applet!](/assets/images/blog/java-applet.png)
+
+However, over time, Java applets became less popular due to security concerns and the rise of alternative technologies such as JavaScript and HTML5. As a result, many browser vendors have removed support for them. This is why the Applet API [was deprecated in Java 9](https://openjdk.org/jeps/289), [deprecated for removal in Java 17](https://openjdk.org/jeps/398) and it's one of the reasons why it will be removed in its entirety in Java 26. On top of that, a necessary foundation for running applets by sandboxing untrusted code, the Security Manager, [was permanently disabled in Java 24](https://openjdk.org/jeps/486), providing another reason to finally sunset the Applet API.
+
+##### Removals
+
+The following elements will be removed:
+
+* The entire `java.applet` package, consisting of:
+  * `java.applet.Applet`
+  * `java.applet.AppletContext`
+  * `java.applet.AppletStub`
+  * `java.applet.AudioClip`
+* These additional classes:
+  * `java.beans.AppletInitializer`
+  * `javax.swing.JApplet`
+* Any remaining API elements that reference the above classes and interfaces, including methods and fields in:
+  * `java.beans.Beans`
+  * `javax.swing.RepaintManager`
+
+##### Risks & Migration
+
+Given that the Applet API in its current form is largely unusable, there is no substantial risk to user applications in removing the API. Applications that still use the Applet API will either stay on older releases or will migrate to some other API, like the AWT API or the [`javax.sound.SoundClip`](https://docs.oracle.com/en/java/javase/25/docs/api/java.desktop/javax/sound/SoundClip.html) class for audio playback.
 
 #### More Information
 
@@ -665,4 +937,4 @@ For more information on this removal, read [JEP 504](https://openjdk.org/jeps/50
 
 ## Final thoughts
 
-TODO
+And that concludes our discussion of the 10 JEP's that come with Java 26. But that's not even all that's new: [many other updates](https://jdk.java.net/26/release-notes) were included in this release, including various performance, stability and security updates. One thing is for sure: this version of Java is primed and ready for more additions later this year. So what are you waiting for? It's time to take this brand-new Java release for a spin!
