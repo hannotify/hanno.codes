@@ -1,15 +1,13 @@
 ---
 layout: post
 title: Java 26 Is Here, And With It a Solid Foundation for the Future
-date: 17-03-2026 04:30:00 +0200
+date: 17-03-2026 04:30:00 +0200 
 header:
   teaser: /assets/images/blog/foundation.jpg
 excerpt: Java 26 is here, and its main purpose seems to be to provide a solid foundation for future things to come. It comes with a few new features, some performance improvements and multiple enhancements that mention Project Valhalla as the inspiration for their existence. This post has all the info!
 tags: 
 - java
 ---
-
-TODO: proofread the entire thing.
 
 Java 26 is here! Six months ago, we welcomed Java 25 into our hearts, which means it's time for another fresh helping of Java features. This time, the set of features is a bit smaller compared to some of the previous releases, which can only mean one thing: the focus for this release was to provide a solid foundation for something big to be released soon™️! My hope is that the first JEPs out of Project Valhalla will be announced later this year. That hope is fueled by some of Java 26's changes as they feel like appropriate preparation steps for the first Valhalla features (this is especially true for JEPs [500](#jep-500-prepare-to-make-final-mean-final) and [529](#jep-529-vector-api-eleventh-incubator)).
 
@@ -20,11 +18,11 @@ Regardless of any future plans, this post focuses on everything that has been ad
 
 ## JEP Overview
 
-To start off, let's look at an overview of the JEPs that ship with Java 26. This table contains the preview status for all JEP's, to which project they belong, what kind of features they add and the things that have changed since Java 25.
+To start off, let's see an overview of the JEPs that ship with Java 26. This table contains their preview status, to which project they belong, what kind of features they add and the things that have changed since Java 25.
 
 | JEP | Title                                                | Status             | Project       | Feature Type | Changes since previous Java version |
 |-----|------------------------------------------------------|--------------------|---------------|--------------|-------------------------------------|
-| **[500](#jep-500-prepare-to-make-final-mean-final)** | Prepare to Make Final Mean Final                     |                    | Core Libs     | Deprecation  | Warnings                            |
+| **[500](#jep-500-prepare-to-make-final-mean-final)** | Prepare to Make Final Mean Final                     |                    | Core Libs     | Deprecation  | Warnings                           |
 | **[504](#jep-504-remove-the-applet-api)** | Remove the Applet API                                |                    | Client Libs   | Deprecation  | Deprecation                         |
 | **[516](#jep-516-ahead-of-time-object-caching-with-any-gc)** | Ahead-of-Time Object Caching with Any GC             |                    | HotSpot       | Performance  | New feature                         |
 | **[517](#jep-517-http3-for-the-http-client-api)** | HTTP/3 for the HTTP Client API                       |                    | Core Libs     | Extension    | New feature                         |
@@ -52,12 +50,11 @@ Java 26 introduces two new features in [HotSpot](https://openjdk.org/groups/hots
 
 An important metric for applications that require a fast response time, such as web servers or real-time systems, is [tail latency](https://brooker.co.za/blog/2021/04/19/latency.html) (the time it takes for a request to be processed).
 It can be caused by either garbage collection pauses, or requests that are sent to a new, not-yet-warmed-up JVM instance.
-The first cause can be mitigated by using a low-latency garbage collector, such as ZGC, while the second can be mitigated by using the [ahead-of-time cache](https://hanno.codes/2025/03/18/java-24-rolls-out-today/#jep-483-ahead-of-time-class-loading--linking), which allows JVM instances to start up faster.
+The first cause can be mitigated by using a low-latency garbage collector, such as the Z Garbage Collector (ZGC), while the second can be mitigated by using the [ahead-of-time cache](https://hanno.codes/2025/03/18/java-24-rolls-out-today/#jep-483-ahead-of-time-class-loading--linking), which allows JVM instances to start up faster.
 
 Java 24 introduced this ahead-of-time cache, storing classes in memory after reading, parsing, loading and linking them as a result of an initial *training run*.
 Then, it could be re-used in subsequent runs of the application to improve startup time.
-However, back then the use of the cache was somewhat limited, as cached Java objects were stored in a GC-specific format, making it incompatible with other garbage collectors like the Z Garbage Collector (ZGC).
-JEP 516 extends support for the ahead-of-time cache to ZGC (and to any other garbage collector for that matter) by caching Java objects in a GC-agnostic format.
+However, back then the use of the cache was somewhat limited, as cached Java objects were stored in a GC-specific format, making it incompatible with other garbage collectors like ZGC. JEP 516 extends support for the ahead-of-time cache to ZGC (and to any other garbage collector for that matter) by caching Java objects in a GC-agnostic format.
 
 ##### What Makes the New Cache Format GC-Agnostic?
 
@@ -88,19 +85,19 @@ JEP 522 proposes to improve both throughput and latency by reducing the amount o
 
 ##### Why Is Synchronization Currently Necessary?
 
-When G1 reclaims memory, live objects in the heap are copied to new memory regions, freeing up the space they leave behind. References to those objects must be updated to point to their new location. To prevent having to scan the entire heap for existing references to these objects, G1 maintains a data structure called the *card table*, which is updated every time an object reference is stored in a field. These updates are performed by pieces of code called *write barriers*, which G1 injects into the application in cooperation with the JIT.
+When G1 reclaims memory, live objects in the heap are copied to new memory regions, freeing up the space they leave behind. References to those objects must be updated to point to their new location. To prevent having to scan the entire heap for existing references to these objects, G1 maintains a data structure called the *card table*, which is updated every time an object reference is stored in a field. These updates are performed by pieces of code called *write barriers*, which G1 injects into the application in cooperation with the Just-In-Time (JIT) compiler.
 
-Scanning the card table is an efficient operation and will typically fit within a GC pause's time window. However, in  environments where objects are allocated very frequently the card table may grow too large to be scanned within the timespan of G1's pause time goal. To avoid that, G1 optimizes the card table in the background via separate optimizer threads. This approach can only work if the card table is updated in a thread-safe way, which is currently achieved by synchronizing the optimizer threads with the application threads. Arguably this can lead to more complicated and slower write-barrier code.
+Scanning the card table is an efficient operation and will typically fit within a GC pause's time window. However, in  environments where objects are allocated very frequently the card table may grow too large to be scanned within the timespan of G1's pause time goal. To avoid that, G1 optimizes the card table in the background via separate optimizer threads. This approach can only work if the card table is updated in a thread-safe way, which is currently achieved by synchronizing the optimizer threads with the application threads. Arguably, this leads to more complicated and slower write-barrier code.
 
 ##### Towards A Second Card Table
 
-JEP 522 proposes to introduce a *second card table*, to make sure that the optimizer threads and applications threads no longer interfere. The write barriers in the application threads will update the first card table without any synchronization, while the optimizer threads will update the second, initially empty, card table.
+JEP 522 proposes to introduce a *second card table*, to make sure the optimizer threads and application threads no longer interfere. The write barriers in the application threads will update the first card table without any synchronization, while the optimizer threads will update the second, initially empty, card table.
 
 When G1 determines that scanning the current card table during a pause would likely breach the pause‑time target, it atomically switches the two card tables. Application threads then continue to write to the now‑empty table (the former “second” table), while dedicated optimizer threads process the previously‑filled table (the former “first” table) without any additional synchronization. G1 repeats this swapping as needed so that the work required on the active card table stays within the desired limits.
 
 This approach reduces the amount of synchronization required between application and optimizer threads. In applications that heavily modify object-reference fields, throughput gains of 5-15% can be expected. On top of that, because the write barrier code can be a lot simpler, additional throughput gains of up to 5% have been observed in x64 architectures, even in applications that don't heavily modify object-reference fields.
 
-The two card tables are identical in size, each consuming the same extra native memory. Together they occupy roughly 0.2% of the Java heap, which translates to about 2MB of native memory for every gigabyte of heap space. This modest overhead is well worth the sizable performance gains—especially when you consider that, before Java 20, G1 needed more than eight times the memory that the second card table now requires.
+The two card tables are identical in size, each consuming the same extra native memory. Together they occupy roughly 0.2% of the Java heap, which translates to about 2MB of native memory for every gigabyte of heap space. This modest overhead is well worth the sizable performance gains—especially when you consider that, before Java 20, G1 needed more than eight times the memory that the second card table now requires.
 
 ##### More Information
 
@@ -114,7 +111,7 @@ Java 26 introduces a single new feature that is part of the Core Libs:
 
 #### JEP 517: HTTP/3 for the HTTP Client API
 
-Since Java 11, a modern HTTP client API is part of the Java Platform. It supports both HTTP/1.1 and HTTP/2 and was designed to potentially support future versions as well. In its current form, the API assumes HTTP/2 by default, but it can revert to HTTP/1.1 should the target server not support a newer HTTP version.
+Since Java 11, a modern HTTP client API is available within the Java Platform. It supports both HTTP/1.1 and HTTP/2 and was designed to potentially support future versions as well. In its current form, the API assumes HTTP/2 by default, but it can revert to HTTP/1.1 should the target server not support a newer HTTP version.
 
 The code example below demonstrates the ease of use and protocol agnosticity of the API:
 
@@ -154,25 +151,24 @@ Once HTTP/3 has been chosen—either in the request itself or in the client—yo
 
 ##### Negotiating Protocol Versions
 
-The HTTP client API can't know for sure if a target server will support HTTP/3. Moreover, existing HTTP/1.1 and HTTP/2 connections cannot be upgraded to HTTP/3, since HTTP/1.1 and HTTP/2 are built on top of TCP, while HTTP/3's QUIC is based on UDP datagrams. So the API needs a way to negotiate protocol versions–in order to do that it's been equipped with four separate approaches:
+The HTTP client API can't know for sure if a target server will support HTTP/3. Moreover, existing HTTP/1.1 and HTTP/2 connections cannot be upgraded to HTTP/3, since HTTP/1.1 and HTTP/2 are built on top of TCP, while HTTP/3's QUIC is based on UDP datagrams. So the API needs a way to negotiate protocol versions–in order to do that, it's been equipped with four separate approaches:
 
-1. **Try HTTP/3 first, fall back if it times‑out** – Initiate the request with HTTP/3; if a connection cannot be established within a reasonable timeout, automatically downgrade to HTTP/2 or HTTP/1.1. *(Matches a `HttpRequest` whose preferred version is set to `HTTP_3`.)*
+1. **Try HTTP/3 first, fall back if it times‑out** – Initiate the request with HTTP/3; if a connection cannot be established within a reasonable timeout, automatically downgrade to HTTP/2 or HTTP/1.1. *(matches a `HttpRequest` whose preferred version is set to `HTTP_3`)*
 
-2. **Race HTTP/3 against an older protocol** – Open both an HTTP/3 connection and an HTTP/2 or HTTP/1.1 connection simultaneously and use whichever succeeds first. *(Occurs when the `HttpClient` prefers `HTTP_3` but the `HttpRequest` does not specify a preferred version.)*
+2. **Race HTTP/3 against an older protocol** – Open both an HTTP/3 connection and an HTTP/2 or HTTP/1.1 connection simultaneously and use whichever succeeds first. *(occurs when the `HttpClient` prefers `HTTP_3` but the `HttpRequest` does not specify a preferred version)*
 
-3. **Start with HTTP/2 or 1.1 and switch on discovery** – Send the initial request over HTTP/2 or HTTP/1.1. If the server's response indicates that HTTP/3 is available, switch to HTTP/3 for all following requests. *(Triggered by setting `Http3DiscoveryMode.ALT_SVC` for the `H3_DISCOVERY` option, with at least one of the clients or requests preferring `HTTP_3`.)*
+3. **Start with HTTP/2 or 1.1 and switch on discovery** – Send the initial request over HTTP/2 or HTTP/1.1. If the server's response indicates that HTTP/3 is available, switch to HTTP/3 for all following requests. *(triggered by setting `Http3DiscoveryMode.ALT_SVC` for the `H3_DISCOVERY` option, with at least one of the clients or requests preferring `HTTP_3`)*
 
-4. **Force HTTP/3 only** – Send every request exclusively over HTTP/3; if the server cannot reply with HTTP/3, treat it as a failure and do not fall back to earlier protocols. *(Enabled by `Http3DiscoveryMode.HTTP_3_URI_ONLY` for the `H3_DISCOVERY` option, with at least one client or request preferring `HTTP_3`.)*
+4. **Force HTTP/3 only** – Send every request exclusively over HTTP/3; if the server cannot reply with HTTP/3, treat it as a failure and do not fall back to earlier protocols. *(enabled by `Http3DiscoveryMode.HTTP_3_URI_ONLY` for the `H3_DISCOVERY` option, with at least one client or request preferring `HTTP_3`)*
 
 The four methods each come with their own drawbacks:
 
-- Option 1 incurs a timeout delay before falling back.  
-- Option 2 may waste resources by establishing an HTTP/3 connection that is never reused.  
-- Option 3 requires an initial HTTP/2 or 1.1 round‑trip before any HTTP/3 benefits are realized.  
-- Option 4 only works when you already know that the target server supports HTTP/3.
+- Option 1 incurs a timeout delay before falling back.  
+- Option 2 may waste resources by establishing an HTTP/3 connection that is never reused.  
+- Option 3 requires an initial HTTP/2 or HTTP/1.1 round‑trip before any HTTP/3 benefits are realized.  
+- Option 4 only works when you already know that the target server supports HTTP/3.
 
-HTTP/3 is not as widely deployed as its older counterparts, which is why no single approach can work in all circumstances.
-This is also the main reason why HTTP/3 can't be made the default protocol version at this time, though this may be change in the future when HTTP/3 is more widely adopted.
+HTTP/3 is not as widely deployed as its older counterparts, which is why no single approach can work in all circumstances. This is also the main reason why HTTP/3 can't be made the default protocol version at this time, though this may be change in the future when HTTP/3 is more widely adopted.
 
 ##### More Information
 
@@ -180,7 +176,7 @@ For more information on this feature, read [JEP 517](https://openjdk.org/jeps/51
 
 ## Repreviews
 
-Now it's time to take a look at a few features that might already be familiar to you, because they were introduced in a previous version of Java. They have been repreviewed in Java 26, with only minor changes compared to Java 25 in most cases. Therefore, to avoid a very lengthy article, we'll outline these changes and link to a previous article for a full feature description, should you wish to refresh your memory.
+Now it's time to take a look at a few features that might already be familiar to you, because they were introduced in a previous version of Java. They have been repreviewed in Java 26, with only minor changes compared to Java 25 in most cases.
 
 ### JEP 524: PEM Encodings of Cryptographic Objects (Second Preview)
 
@@ -255,7 +251,7 @@ Note that this JEP is in the [preview](https://openjdk.org/jeps/12) stage, so yo
 
 A few minor changes were made to the API compared to Java 25:
 
-* `PEMRecord` was renamed to `PEM`, and includes a decode() method that returns decoded Base64 content;
+* `PEMRecord` was renamed to `PEM`, and includes a `decode()` method that returns decoded Base64 content;
 * The `PEMEncoder` and `PEMDecoder` classes now support the encryption and decryption of `KeyPair` and `PKCS8EncodedKeySpec` objects;
 * Finally, a few changes were made to the `EncryptedPrivateKeyInfo` class:
   * The `encryptKey` methods are now named `encrypt`, and they now accept `DEREncodable` objects rather than `PrivateKey` objects, enabling the encryption of `KeyPair` and `PKCS8EncodedKeySpec` objects.
@@ -359,7 +355,7 @@ Furthermore, we've gained _short-circuiting behaviour_. When one of the `announc
 
 #### Shutdown on Success
 
-The factory method that gave us the scope (`StructuredTaskScope.open()`) implements a shutdown-on-failure policy by default, which cancels any remaining tasks in the scope if one of the tasks has failed. A shutdown-on-success policy is also available: it cancels any remaining tasks in the scope if one of the tasks has succeeded. It can be used to avoid doing unnecessary work when a successful result has already been achieved. Which would actually be a perfect way to solve the problems that our patient waiter from the article introduction was experiencing!
+The factory method that gave us the scope (`StructuredTaskScope.open()`) implements a shutdown-on-failure policy by default, which cancels any remaining tasks in the scope if one of the tasks has failed. A shutdown-on-success policy is also available: it cancels any remaining tasks in the scope if one of the tasks has succeeded. It can be used to avoid doing unnecessary work when a successful result has already been achieved.
 
 We can use a shutdown-on-success policy by calling an overload of the `StructuredTaskScope.open()` method that takes a `Joiner` as its parameter. Let's see what that would look like:
 
@@ -481,8 +477,8 @@ This improves application startup, but comes with a few drawbacks of its own:
 
 What we need is a solution that has the best of both worlds: 
 
-* a way to promise that a field will be initialized by the time it is used,
-* with a value that is computed at most once, and
+* a way to promise that a field will be initialized by the time it is used;
+* with a value that is computed at most once, and;
 * safely with respect to concurrency.
 
 In other words, we want to *defer immutability*, and have first-class support for it in the Java runtime.
@@ -491,7 +487,7 @@ In other words, we want to *defer immutability*, and have first-class support fo
 
 JEP 526 introduces that first-class support in the form of *lazy constants*.
 A lazy constant is an object of type `LazyConstant`, that holds a single data value.
-It must be initialized some time before its content is first retrieved, and it is immutable thereafter.
+It must be initialized some time before its content is first retrieved, and is immutable thereafter.
 
 Let's rewrite the `OrderController` class to use a lazy constant for its logger:
 
@@ -567,7 +563,7 @@ class GuitarStore {
 ```
 
 Here, `ORDERS` is no longer a lazy constant, but a lazy list, in which each element is stored in a lazy constant.
-To access the content, clients call `ORDERS.get(...)`, passing it an index, of which the first invocation will invoke the lamdba function that ignores the index and invokes the `OrderController()` constructor.
+To access the content, clients call `ORDERS.get(...)`, passing it an index, of which the first invocation will invoke the lambda function that ignores the index and invokes the `OrderController()` constructor.
 Subsequent invocations of `ORDERS.get(...)` with the same index will return the element's content immediately.
 
 ##### Lazy Maps
@@ -595,7 +591,7 @@ Other changes have a similar purpose–they include:
 * Moving the factory methods for lazy lists (`StableValue.list`) and maps (`StableValue.map`) into the `List` and `Map` interfaces, respectively, to enhance discoverability;
 * Incorporating the ideas behind 'stable suppliers' into the new `LazyConstant.get()` method;
 * Removing the `function` and `intFunction` factory methods to further simplify the API;
-* Disallowing `null` as a computed value in order to improve performance and better align lazy constants with constructs such as unmodifiable collections and `ScopedValue`s.
+* Disallowing `null` as a computed value in order to improve performance and better align lazy constants with constructs such as unmodifiable collections and scoped values.
 
 #### More Information
 
@@ -661,7 +657,7 @@ For more information on this feature, read [JEP 529](https://openjdk.org/jeps/52
 
 ### JEP 530: Primitive Types in Patterns, instanceof, and switch (Fourth Preview)
 
-Since Java 23, pattern matching supports primitive types in all pattern contexts, and in the `instanceof` and `switch` constructs. The feature has been in three consecutive preview statuses, and will be previewd for a fourth time in Java 26. Let's first go through the differences with Java 22 before we highlight the changes in the fourth preview.
+Since Java 23, pattern matching supports primitive types in all pattern contexts, and in the `instanceof` and `switch` constructs. The feature has been in three consecutive preview statuses, and will be previewed for a fourth time in Java 26. Let's first go through the differences with Java 22 before we highlight the changes in the fourth preview.
 
 #### Pattern Matching for Switch
 
@@ -702,7 +698,7 @@ switch (reverb.roomSize()) {
 
 #### Record Patterns
 
-[Record patterns](https://openjdk.org/jeps/440) currently have limited support for primitive types.
+[Record patterns](https://openjdk.org/jeps/440) used to have limited support for primitive types.
 Recall that a record pattern decomposes a record into its individual components, but when one of them is a primitive type, the record pattern must be precise about its type. To illustrate this point, consider the following code example:
 
 ```java
@@ -746,7 +742,7 @@ To summarize, the JEP proposes to make primitive type patterns work as smoothly 
 
 #### Pattern Matching for instanceof
 
-The Java 22 version of [pattern matching for instanceof](https://openjdk.org/jeps/394) didn't support primitive type patterns, but this capability would perfectly align with the purpose of `instanceof`: to test whether a value can be converted safely to a given type. To convert primitives safely, Java developers had to deal with lossy casts and range checks to prevent loss of information:
+The Java 22-version of [pattern matching for instanceof](https://openjdk.org/jeps/394) didn't support primitive type patterns, but this capability would perfectly align with the purpose of `instanceof`: to test whether a value can be converted safely to a given type. To convert primitives safely, Java developers had to deal with lossy casts and range checks to prevent loss of information:
 
 ```java
 int roomSize = reverb.roomSize();
@@ -785,7 +781,7 @@ The JEP proposes to support this construct, which makes it easier to change the 
 
 #### Primitive Types in switch
 
-The Java 22-version of `switch` statement/expression supported `byte`, `short`, `char`, and `int` values.
+The Java 22-version of the `switch` statement/expression supported `byte`, `short`, `char`, and `int` values.
 The JEP proposes to also add support for the other primitive types: `boolean`, `float`, `double` and `long`.
 A `switch` on a `boolean` value can be a good alternative for the ternary operator (`?:`), because its branches can also hold statements instead of just expressions.
 
@@ -816,7 +812,7 @@ For more information on this feature, read [JEP 530](https://openjdk.org/jeps/53
 
 ## Deprecations
 
-Java 26 also deprecates a few older features that weren't used that much. Let's see which ones were involved in this effort to improve stability.
+Java 26 also deprecates a few older features. Let's see which ones were involved in this effort to improve stability and clarity.
 
 ### JEP 500: Prepare to Make Final Mean Final
 
@@ -851,13 +847,13 @@ void main() throws ReflectiveOperationException {
 }
 ```
 
-This example shows that, in practice, final fields are as mutable as non-final fields.
+This example shows that, in practice, final fields can be as mutable as non-final fields.
 
 ##### Reasons For Mutating a Final Field
 
 So why was the possibility added in the first place? The answer has to do with (you guessed it!) _serialization_. Serialization libraries need the ability to mutate final fields when initializing objects during deserialization. The problem is that relative little code mutates final fields for the right reasons, yet the mere existence of APIs for doing so makes it impossible to trust the value of any final field. Looking back, offering this functionality was a poor choice because it sacrifices integrity.
 
-Recent additions like [hidden classes](https://openjdk.org/jeps/371) and [records](https://openjdk.org/jeps/395) don't allow mutating final fields, and now it's time to extend this behavior to regular classes. 
+Recent additions like [hidden classes](https://openjdk.org/jeps/371) and [records](https://openjdk.org/jeps/395) don't allow mutating final fields, and now it's time to extend this behaviour to regular classes. 
 
 ##### Final Field Restrictions
 
@@ -867,7 +863,7 @@ The effects of these _final field restrictions_ will be strengthened over time. 
 
 ##### Enabling Final Field Mutation
 
-Application developers can avoid these warning and expections by opting-in to final field mutation via the command-line. To achieve this, specify the `--enable-final-field-mutation` command-line option and pass it a comma-separated list of module names:
+Application developers can avoid these warnings and expections by opting-in to final field mutation via the command-line. To achieve this, specify the `--enable-final-field-mutation` command-line option and pass it a comma-separated list of module names:
 
 ```bash
 $ java --enable-final-field-mutation=module1,module2
@@ -885,9 +881,9 @@ In JDK 26 the rules for `Field::set` on a `final` field change. The field will b
 
 The last two conditions are new. Consequently:
 
-* If a module doesn't have final‑field mutation enabled, any attempt to change a `final` field via deep reflection throws `IllegalAccessException` (unless the JVM is started with `--illegal-final-field-mutation`). `f.setAccessible(true)` may still succeed, but `f.set(...)` is illegal.
+* If a module doesn't have final‑field mutation enabled, any attempt to change a `final` field via deep reflection throws an `IllegalAccessException` (unless the JVM is started with `--illegal-final-field-mutation`). `f.setAccessible(true)` may still succeed, but `f.set(...)` is illegal.
 
-* If final‑field mutation is enabled but the field's package isn't open to the module, the same exception is thrown. This can happen when module A (with an open package) calls `f.setAccessible(true)` and passes the `Field` to module B, which has mutation enabled but no access to the package; module B's `f.set(...)` is illegal.
+* If final‑field mutation is enabled but the field's package isn't open to the module, the same exception is thrown. This can happen when module A (with an open package) calls `f.setAccessible(true)` and passes the `Field` to module B, which has mutation enabled but no access to the package; module B's `f.set(...)` is illegal.
 
 ##### Effects On Serialization Libraries
 
@@ -905,7 +901,7 @@ For more information on this feature, read [JEP 500](https://openjdk.org/jeps/50
 
 ### JEP 504: Remove the Applet API
 
-When the Java Platform rose to fame in the late 1990s and early 2000s, one of its main katalysts were Java applets and the Applet API. Java applets were small Java programs that could be embedded in web pages and run in a web browser, allowing developers to create interactive web applications. They were widely used for things like games, animations, and other interactive content on the web. People who weren't Java programmers at all at least knew the name 'Java' from their browser because of applets! (in roughly the same way as kids these days know about Java's existence because of a game called Minecraft.)
+When the Java Platform rose to fame in the late 1990s and early 2000s, one of its main catalysts were Java applets and the Applet API. Java applets were small Java programs that could be embedded in web pages and run in a web browser, allowing developers to create interactive web applications. They were widely used for things like games, animations, and other interactive content on the web. People who weren't Java programmers at all at least knew the name 'Java' from their browser because of applets! (in roughly the same way as kids these days know about Java's existence because of a game called Minecraft.)
 
 ![Hello! I am an applet!](/assets/images/blog/java-applet.png)
 
