@@ -1,3 +1,19 @@
+- id: jug-muenster-2026
+  name: JUG Münster
+  year: 2026
+  country:
+    flag: de
+    name: Germany
+  city: Münster
+  venue:
+    name: (to be announced)
+  url: https://www.meetup.com/de-de/java-usergroup-munster/
+  dateStart: 2026-10-13
+  logo: jug-munster.avif
+  appearances:
+    - id: javas-concurrency-journey-continues
+      githubUrl: https://github.com/hannotify/structured-concurrency-bar
+
 - id: voxxed-days-amsterdam-2026
   name: Voxxed Days Amsterdam
   year: 2026
