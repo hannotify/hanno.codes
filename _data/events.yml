@@ -14,6 +14,19 @@
     - id: javas-concurrency-journey-continues
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
 
+- id: spacerockit-2026
+  name: SpaceRockIT
+  year: 2026
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Huissen
+  url: https://spacerockitfestival.nl/
+  dateStart: 2026-09-04
+  logo: spacerockit-2025.png
+  appearances:
+    - id: will-git-be-around-forever
+
 - id: voxxed-days-amsterdam-2026
   name: Voxxed Days Amsterdam
   year: 2026
@@ -72,6 +85,8 @@
   appearances:
     - id: will-git-be-around-forever
       sessionPageUrl: https://www.meetup.com/brabant-jug/events/313380952/
+      slides:
+        source: local
 
 - id: javaland-2026
   name: JavaLand
