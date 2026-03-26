@@ -1,3 +1,14 @@
+- id: lets-introduce-value-types-in-a-ddd-project
+  title: Let's Introduce Valhalla's Value Types in an Existing DDD Project
+  type: regular
+  retired: false
+  description: | 
+    When modeling a domain concept, Domain-Driven Design (DDD) advocates for the use of value objects over entities whenever possible. Their immutability and lack of state make value objects a far simpler concept, and their strong typing moves an entire class of potential bugs from runtime to compile-time. However, this approach risks 'type explosion,' where types with just a single String are wrapped in yet another type, drastically increasing the number of types in a project and, with it, memory consumption.
+
+    JEP 401—from Project Valhalla—proposes value classes, whose instances have only final fields and lack object identity. This allows the JVM to store them in a flattened layout on the stack, making their memory consumption (and performance) very similar to primitives. When Project Valhalla delivers value classes, we can represent DDD's value objects more efficiently due to the extra memory efficiency and performance benefits, potentially solving the memory consumption problem.
+
+    In this talk, we'll put that to the test by introducing value classes in an existing DDD project using a fun domain and a Valhalla early-access build. We'll cover benchmarking results, the pros and cons of this approach, plenty of value class characteristics, and the status of Valhalla's other features. You'll walk away with a good understanding of value classes, their related features, and when (not) to use them.
+
 - id: teachers-bof
   title: Teachers BOF
   type: unconference
