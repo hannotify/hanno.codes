@@ -83,7 +83,7 @@
 - id: public-static-void-main-
   title: public static void main 🎶
   type: lightning
-  retired: false
+  retired: true
   cospeakers:
   - name: Marit van Dijk
   description: |
@@ -92,7 +92,7 @@
 - id: panel-exploring-sustainability-in-tech-without-the-guilt-trips
   title: Panel&#58; Exploring Sustainability in Tech Without the Guilt-Trips
   type: unconference
-  retired: false
+  retired: true
   cospeakers:
   - name: Julien Lengrand-Lambert
     twitterUrl: https://www.twitter.com/jlengrand
@@ -252,7 +252,7 @@
 - id: beware-of-survivorship-bias
   title: Beware Of Survivorship Bias!
   type: regular
-  retired: false
+  retired: true
   cospeakers:
     - name: Maarten Mulders
       twitterUrl: https://www.twitter.com/mthmulders
