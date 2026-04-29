@@ -27,6 +27,16 @@
   appearances:
     - id: will-git-be-around-forever
 
+- id: tunisia-jug-2026
+  name: Tunisia JUG
+  year: 2026
+  url: https://tunisia-jug-site.vercel.app/
+  dateStart: 2026-05-08
+  logo: tunisia-jug.png
+  appearances:
+    - id: javas-concurrency-journey-continues
+      githubUrl: https://github.com/hannotify/structured-concurrency-bar
+
 - id: voxxed-days-amsterdam-2026
   name: Voxxed Days Amsterdam
   year: 2026
