@@ -6,12 +6,15 @@
     name: Germany
   city: Münster
   venue:
-    name: (to be announced)
+    name: LVM Verschicherung
+    latitude: 51.949040
+    longitude: 7.614980
   url: https://www.meetup.com/de-de/java-usergroup-munster/
   dateStart: 2026-10-13
   logo: jug-munster.avif
   appearances:
     - id: javas-concurrency-journey-continues
+      sessionPageUrl: https://www.meetup.com/de-de/java-usergroup-munster/events/314228145
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
 
 - id: spacerockit-2026
@@ -36,6 +39,8 @@
   appearances:
     - id: javas-concurrency-journey-continues
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
+      slides:
+        source: local
 
 - id: voxxed-days-amsterdam-2026
   name: Voxxed Days Amsterdam
