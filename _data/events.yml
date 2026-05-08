@@ -30,6 +30,27 @@
   appearances:
     - id: will-git-be-around-forever
 
+- id: software-architecture-summit-2026
+  name: Bucharest Tech Week / Software Architecture Summit
+  year: 2026
+  country:
+    flag: romania
+    name: Romania
+  city: Bucharest
+  venue:
+    name: Nord Events Center
+    latitude: 44.4802498
+    longitude: 26.1177759
+  url: https://www.techweek.ro/software-architecture-summit2026
+  dateStart: 2026-06-19
+  logo: bucharest-tech-week.avif
+  appearances:
+    - id: what-stairway-to-heaven-can-teach-us-about-software-development
+      sessionPageUrl: https://www.techweek.ro/software-architecture-summit2026
+      slides:
+        source: google-drive
+        url: https://docs.google.com/presentation/d/e/2PACX-1vS5fObb9KViyrayfKk7Pw8hwxoToSjxkjrHEFjpVTogF3mLH4Vj6eAH_9meMcprLmITqNCihrl3zMN4/pub
+
 - id: tunisia-jug-2026
   name: Tunisia JUG
   year: 2026
