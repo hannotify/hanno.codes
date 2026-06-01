@@ -1,3 +1,22 @@
+- id: baselone-2026
+  name: BaselOne
+  year: 2026
+  country:
+    flag: switzerland
+    name: Switzerland
+  city: Basel
+  venue:
+    name: Markthalle
+    latitude: 47.5493227
+    longitude: 7.5845455
+  url: https://www.baselone.org
+  dateStart: 2026-10-14
+  dateEnd: 2026-10-15
+  logo: baselone.png
+  appearances:
+    - id: from-zero-to-secured
+      sessionPageUrl: https://www.baselone.org
+
 - id: jug-muenster-2026
   name: JUG Münster
   year: 2026
