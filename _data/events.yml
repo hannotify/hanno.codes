@@ -1,9 +1,23 @@
+- id: amsterdamjug-2024
+  name: AmsterdamJUG
+  year: 2026
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Amsterdam
+  url: https://www.meetup.com/amsterdam-java-user-group/
+  dateStart: 2026-10-05
+  logo: amsterdamjug.webp
+  appearances:
+    - id: http-how-teenagers-talk-to-their-parents
+
 - id: baselone-2026
   name: BaselOne
   year: 2026
   country:
     flag: switzerland
     name: Switzerland
+
   city: Basel
   venue:
     name: Markthalle
@@ -48,6 +62,8 @@
   logo: spacerockit-2025.png
   appearances:
     - id: will-git-be-around-forever
+      slides:
+        source: local
 
 - id: software-architecture-summit-2026
   name: Bucharest Tech Week / Software Architecture Summit

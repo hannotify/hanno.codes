@@ -117,3 +117,6 @@
 [submodule "_slides/javas-concurrency-journey-continues/tunisia-jug-2026"]
 	path = _slides/javas-concurrency-journey-continues/tunisia-jug-2026
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
+[submodule "_slides/will-git-be-around-forever/spacerockit-2026"]
+	path = _slides/will-git-be-around-forever/spacerockit-2026
+	url = https://github.com/hannotify/will-git-be-around-forever-a-list-of-possible-successors
