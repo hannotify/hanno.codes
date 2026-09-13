@@ -1,13 +1,46 @@
-- id: lets-introduce-value-types-in-a-ddd-project
-  title: Let's Introduce Valhalla's Value Types in an Existing DDD Project
+- id: all-the-junit-features
+  title: All the JUnit Features!
+  type: regular
+  retired: false
+  description: |
+    Imagine you meet a large group of Java & Kotlin developers, each with their own unique experience. Chances are the one library they all know and use is JUnit: *the* industry standard in test automation for the JVM. You'd expect such a popular library to be well-known and thoroughly understood, but that is not necessarily the case.
+
+    Every time I teach a test automation course to a group of (both junior and senior) developers I'm surprised by how many JUnit features are still new to them. This has led me to believe that 80% of the time, we tend to use only 20% of JUnit's features, revealing a 'JUnit feature gap' that is probably worth knowing about. Your ability to master these features is what makes you stand out from other developers.
+
+    So it's about time we bridge that gap! Join this talk if you want to find out how big your JUnit feature gap is, or if you simply want a chance to hear about All The JUnit Features! I'll make sure to cover parameterized tests, how to make your tests more descriptive, how to deal with flaky tests, the best ways to use extensions, what is new in JUnit 6 and how to get the most out of JUnit in Kotlin environments. I'll conclude the talk by writing The Ultimate Unit Test live on stage, using a fun domain and as many of JUnit's features as possible.
+
+- id: dont-let-agentic-ai-take-your-joy-of-coding
+  title: Don't Let Agentic AI Take Your Joy of Coding
+  type: keynote
+  retired: false
+  description: |
+    What do you enjoy more in software development? The act of creating something, or the feeling you get when your creation is appreciated? If you're in the second category, this current age of agentic AI will probably fit you like a glove. You can produce more software than before and get more praise for it. If you're in the first, at the very least you'll have mixed feelings towards the agentic AI movement. Because how will you make sure AI doesn't take away the thing you love doing the most?
+
+    If you feel like this, you're certainly not alone. Across the globe, people who work in creative industries such as art, music or movies are standing up against AI. It's not just because AI is threatening their job security, it's threatening their joy of doing it. And the absence of joy in the workplace can be a dangerous thing.
+
+    So if you've ever been bereft of joy after a particularly intense day of babysitting AI agents, this talk is for you. What are signs that AI is taking (part of) your joy? Should you simply accept your fate, or can something be done about it? And how can you regain your joy in the workplace without having to give up the benefits that agentic AI brings? Join this session to get the answers to these questions, and the chance to walk away with a newfound appreciation of the current state of our field.
+    
+- id: software-changes-the-world-for-the-worse
+  title: Software Changes the World for the Worse (If We Let It)
+  type: keynote
+  retired: false
+  description: |
+    "Software can change the world for the better" they said to me at 18, and it's why I got into Computer Science in the first place. Because I believed it. Just like the way software developers can turn caffeine into code, I strongly felt that any piece of software should be turning CPU cycles into better lives and greener pastures.
+
+    But when your hopes are that high, you're bound to get discouraged along the way. The hours wasted in planning meetings, Big Tech selling your personal data, social media challenges that needlessly threaten the lives of young people, poor diversity and inclusion, feature bloat, technical enshittification, mass layoffs because of AI, data leaks, cyber war... need I go on? It seems that the software field is actually changing the world for the *worse*.
+
+    That is, if we let it. Because I believe we can make a change. Software still has the potential to create social impact, and to make our world more sustainable. It just needs people like us choosing to use it for good. Join this talk for a bit of a therapy session and lots of hopeful ideas. You'll leave with a fresh perspective on the IT industry as a whole and how you can do some good in the areas of your influence.    
+
+- id: lets-introduce-value-classes-into-an-existing-ddd-project
+  title: Let's Introduce Value Classes into an Existing DDD Project
   type: regular
   retired: false
   description: | 
-    When modeling a domain concept, Domain-Driven Design (DDD) advocates for the use of value objects over entities whenever possible. Their immutability and lack of state make value objects a far simpler concept, and their strong typing moves an entire class of potential bugs from runtime to compile-time. However, this approach risks 'type explosion,' where types with just a single String are wrapped in yet another type, drastically increasing the number of types in a project and, with it, memory consumption.
+    When modeling a domain concept, Domain-Driven Design (DDD) advocates for the use of value objects over entities whenever possible. Their immutability and lack of state make value objects a far simpler concept, and their strong typing moves an entire class of potential bugs from runtime to compile-time. However, this approach is at risk of 'type explosion,' where types with just a single `String` are wrapped in yet another type, drastically increasing the number of types in a project and, with it, memory consumption.
 
-    JEP 401—from Project Valhalla—proposes value classes, whose instances have only final fields and lack object identity. This allows the JVM to store them in a flattened layout on the stack, making their memory consumption (and performance) very similar to primitives. When Project Valhalla delivers value classes, we can represent DDD's value objects more efficiently due to the extra memory efficiency and performance benefits, potentially solving the memory consumption problem.
+    JEP 401 (from Project Valhalla) proposes _value classes_, whose instances lack object identity and can contain final fields only. This allows the JVM to store them in a flattened layout on the stack, making their memory consumption (and performance) very similar to primitives. Now that JEP 401 is targeted for JDK 28, we can look forward to representing DDD's value objects more efficiently very soon, due to the extra memory efficiency and performance benefits, potentially solving the memory consumption problem.
 
-    In this talk, we'll put that to the test by introducing value classes in an existing DDD project using a fun domain and a Valhalla early-access build. We'll cover benchmarking results, the pros and cons of this approach, plenty of value class characteristics, and the status of Valhalla's other features. You'll walk away with a good understanding of value classes, their related features, and when (not) to use them.
+    Let's put that to the test in this talk, by introducing value classes in an existing DDD project using a fun domain and a JDK 28 early-access build. We'll cover benchmarking results, the pros and cons of this approach, plenty of value class characteristics, and the status of Valhalla's other features. You'll walk away with a good understanding of value classes, their related features, and when (not) to use them.
 
 - id: teachers-bof
   title: Teachers BOF
@@ -59,7 +92,7 @@
 - id: six-things-we-learned-implementing-rockstar-on-quarkus-
   title: Six things we learned implementing Rockstar on Quarkus 🎸  
   type: regular
-  retired: false
+  retired: true
   cospeakers:
   - name: Holly Cummins
   description: |
@@ -110,7 +143,7 @@
 - id: eleven-crazy-java-things
   title: 11 Crazy Things I Didn't Know You Could Do With Java Until I Got Java Certified
   type: lightning
-  retired: false
+  retired: true
   description: |
     This summer, I got my Java 11 certification. I expected it to be a breeze, because I've been a Java developer for 14 years now and surely I should have seen it all by now. Boy, was I wrong! I came across lots of things that I didn't even know were possible with Java.
 

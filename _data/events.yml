@@ -10,6 +10,7 @@
   logo: amsterdamjug.webp
   appearances:
     - id: http-how-teenagers-talk-to-their-parents
+      sessionPageUrl: https://www.meetup.com/amsterdam-java-user-group/events/316510908/
 
 - id: baselone-2026
   name: BaselOne
