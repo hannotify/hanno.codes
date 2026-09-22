@@ -1,4 +1,19 @@
-- id: amsterdamjug-2024
+- id: bitbash-2027
+  name: Bitbash
+  year: 2027
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Veenendaal
+  url: https://www.bitbash.nl
+  dateStart: 2027-01-23
+  dateEnd: 2027-01-24
+  logo: bitbash.png
+  appearances:
+    - id: dont-let-agentic-ai-take-your-joy-of-coding
+      sessionPageUrl: https://www.bitbash.nl/agenda
+
+- id: amsterdamjug-2026
   name: AmsterdamJUG
   year: 2026
   country:
@@ -12,13 +27,39 @@
     - id: http-how-teenagers-talk-to-their-parents
       sessionPageUrl: https://www.meetup.com/amsterdam-java-user-group/events/316510908/
 
+- id: sojava-2026
+  name: SoJava
+  year: 2026
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Groningen
+  url: https://www.sogeti.nl/events/sojava/
+  dateStart: 2026-10-28
+  logo: java-champion.png
+  appearances:
+    - id: dont-let-agentic-ai-take-your-joy-of-coding
+
+- id: wawtech-2026
+  name: WAWTech
+  year: 2026
+  country:
+    flag: poland
+    name: Poland
+  city: Warsaw
+  url: https://wawtech.io
+  dateStart: 2026-11-26
+  dateEnd: 2026-11-27
+  logo: wawtech.png
+  appearances:
+    - id: these-songs-would-make-some-great-code-comments
+
 - id: baselone-2026
   name: BaselOne
   year: 2026
   country:
     flag: switzerland
     name: Switzerland
-
   city: Basel
   venue:
     name: Markthalle
@@ -121,7 +162,6 @@
         source: google-drive
         url: https://docs.google.com/presentation/d/e/2PACX-1vRNHtmP0c9GygUW6_bB01_1G8RwVGFdU6y00--Uk9qFXVZnw0BAZyBjQffHLyEAnu340vly6X-Heycz/pub
 
-
 - id: exec-ut-2026
   name: exec(ut)
   year: 2026
@@ -129,14 +169,14 @@
     flag: netherlands
     name: The Netherlands
   city: Utrecht
-  venue: 
+  venue:
     name: TivoliVredenburg
     latitude: 52.0907374
     longitude: 5.1214201
   url: https://execut.nl
   dateStart: 2026-03-26
   logo: execut.png
-  appearances: 
+  appearances:
     - id: what-stairway-to-heaven-can-teach-us-about-software-development
       sessionPageUrl: https://execut.nl/programme
       slides:
@@ -230,7 +270,7 @@
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://devoxx.ma/talk/?id=3016
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
-      slides: 
+      slides:
         source: local
 
 - id: jfall-2025
@@ -288,7 +328,7 @@
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://hboictjobevent.nl/programma/javas-concurrency-reis-gaat-verder-ontdek-structured-concurrency-en-scoped-values/
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
-      slides: 
+      slides:
         source: local
 
 - id: spacerockit-2025
@@ -552,7 +592,7 @@
   appearances:
     - id: pattern-matching
       sessionPageUrl: https://www.hboictjobevent.nl/masterclasses/11937-pattern-matching-in-java-onopvallende-toevoeging-of-cruciale-feature-nl
-      slides:   
+      slides:
         source: local
 
 - id: trailblazers-meetup-2024
@@ -569,7 +609,7 @@
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://www.meetup.com/trailblazers-meetups/events/302309276
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
-      slides:   
+      slides:
         source: local
 
 - id: spacerockit-2024
@@ -600,7 +640,7 @@
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://www.meetup.com/amsterdam-java-user-group/events/301059652
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
-      slides:   
+      slides:
         source: local
 
 - id: jcon-europe-2024
@@ -690,7 +730,7 @@
     - id: six-things-we-learned-implementing-rockstar-on-quarkus-
       sessionPageUrl: https://www.jfokus.se/talks/1643
       videoUrl: https://youtu.be/qG9M1YrrmoE?si=r5hB5avqe_R11gCN
-      slides: 
+      slides:
         source: speaker-deck
         url: https://speakerdeck.com/hollycummins/six-things-we-learned-implementing-rockstar-on-quarkus
 
@@ -712,7 +752,7 @@
     - id: pijul
       sessionPageUrl: https://jfall.nl/timetable/
       videoUrl: https://youtu.be/Ev80GGP5VNc
-      slides:   
+      slides:
         source: local
 
 - id: arnhemjug-2023
@@ -732,7 +772,7 @@
   appearances:
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://www.meetup.com/arnhemjug/events/296251934/
-      slides:   
+      slides:
         source: local
 
 - id: jcon-2023
@@ -746,7 +786,7 @@
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://jconworld2023.sched.com/event/1RRXD/javas-concurrency-journey-continues
       videoUrl: https://youtu.be/4J2r7tC0QUY
-      slides: 
+      slides:
         source: local
 
 - id: utrechtjug-2023
@@ -765,7 +805,6 @@
       slides:
         source: google-drive
         url: https://docs.google.com/presentation/d/e/2PACX-1vRzAq_JsbjJy9B4Li6HI-SF2YM2GwWXQlU-gN8Zm5GLIk8BXKvPuH0BgLnn0AoepxvtAE1bu68xopP4/pub
-
 
 - id: joy-of-coding-2023
   name: Joy of Coding
@@ -804,7 +843,7 @@
   appearances:
     - id: beware-of-survivorship-bias
       sessionPageUrl: https://jconeurope2023.sched.com/event/1K3y1
-      slides: 
+      slides:
         source: speaker-deck
         url: https://speakerdeck.com/mthmulders/beware-of-survivorship-bias-jcon
 
@@ -826,14 +865,14 @@
   appearances:
     - id: pattern-matching
       sessionPageUrl: https://devoxx.pl/talk-details/?id=4256
-      slides: 
+      slides:
         source: local
       githubUrl: https://github.com/hannotify/pattern-matching-music-store
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
     - id: will-git-be-around-forever
-      slides: 
+      slides:
         source: local
       sessionPageUrl: https://devoxx.pl/talk-details/?id=3486
     - id: eleven-crazy-java-things
@@ -858,7 +897,7 @@
   appearances:
     - id: pattern-matching
       sessionPageUrl: https://shop.doag.org/events/javaland/2023/agenda/#eventDay.1679439600
-      slides: 
+      slides:
         source: local
       cospeakers:
         - name: Peter Wessels
@@ -881,7 +920,7 @@
   appearances:
     - id: pattern-matching
       sessionPageUrl: https://www.spilberg.nl/en/events/power-up-your-jvm-language-skills-1?source=linkedin.com
-      slides: 
+      slides:
         source: local
       githubUrl: https://github.com/hannotify/pattern-matching-music-store
       cospeakers:
@@ -906,14 +945,14 @@
     - id: pattern-matching
       sessionPageUrl: https://jfall.nl/timetable-2022/
       videoUrl: https://youtu.be/eIcA-IAcfGo
-      slides: 
+      slides:
         source: local
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
     - id: panel-exploring-sustainability-in-tech-without-the-guilt-trips
       sessionPageUrl: https://jfall.nl/timetable-2022/
-      slides: 
+      slides:
         source: google-drive
         url: https://docs.google.com/presentation/d/e/2PACX-1vTQdPhE9_uJwxFHz5kp3gMImFkhwqurL94h8Nbo5UOElV0X9CxLe3sKcBZEQ5N2Cg_-2Pelvst3wNOR/pub?start=false&loop=false&delayms=3000
 
@@ -939,7 +978,7 @@
         source: local
     - id: panel-exploring-sustainability-in-tech-without-the-guilt-trips
       sessionPageUrl: https://devoxx.be/talk/?id=19434
-      slides: 
+      slides:
         source: google-drive
         url: https://docs.google.com/presentation/d/e/2PACX-1vTQdPhE9_uJwxFHz5kp3gMImFkhwqurL94h8Nbo5UOElV0X9CxLe3sKcBZEQ5N2Cg_-2Pelvst3wNOR/pub?start=false&loop=false&delayms=3000
 
@@ -960,7 +999,7 @@
     - id: will-git-be-around-forever
       sessionPageUrl: https://frontmania.com/programme/
       videoUrl: https://www.youtube.com/watch?v=xZw7ysUXH8A
-      slides: 
+      slides:
         source: local
 
 - id: developer-week-2022
@@ -976,8 +1015,8 @@
   appearances:
     - id: pattern-matching
       sessionPageUrl: https://www.developer-week.de/en/prram/#/talk/pattern-matching
-      slides: 
-          source: local
+      slides:
+        source: local
       cospeakers:
         - name: Peter Wessels
           twitterUrl: https://www.twitter.com/PeterWessels
@@ -991,7 +1030,7 @@
   year: 2022
   url: https://futuretech.nl
   dateStart: 21-06-2022
-  dateEnd: 
+  dateEnd:
   country:
     flag: netherlands
     name: The Netherlands
@@ -1005,7 +1044,7 @@
       sessionPageUrl: https://2022.futuretech.nl/timetable/
       videoUrl:
       slides:
-          source: local
+        source: local
       githubUrl:
       photos:
 
@@ -1014,7 +1053,7 @@
   year: 2022
   url: https://joyofcoding.org
   dateStart: 17-06-2022
-  dateEnd: 
+  dateEnd:
   country:
     flag: netherlands
     name: The Netherlands
@@ -1058,20 +1097,19 @@
 - id: zoetermeer-tech-night-2022
   name: Zoetermeer Tech Night
   year: 2022
-  country: 
+  country:
     flag: netherlands
     name: Netherlands
   city: Zoetermeer
   venue:
-   name: Dutch Innovation Centre
-   latitude:
-   longitude:
+    name: Dutch Innovation Centre
+    latitude:
+    longitude:
   url: https://www.meetup.com/Zoetermeer-Tech-Night/events/284176869/
   dateStart: 05-04-2022
   appearances:
     - id: when-music-and-software-come-together
       sessionPageUrl: https://www.meetup.com/Zoetermeer-Tech-Night/events/284176869/
-
 
 - id: voxxed-days-bucharest-2019
   name: Voxxed Days Bucharest
@@ -1139,7 +1177,7 @@
       sessionPageUrl: https://2021.jfall.nl/timetable-2021/
       videoUrl: https://youtu.be/0gj0RhbL-dk
       githubUrl: https://github.com/hannotify/eleven-crazy-java-things
-      photos: 
+      photos:
 
 - id: jcon-2021
   name: JCON
@@ -1171,9 +1209,9 @@
     - id: will-git-be-around-forever
       sessionPageUrl: https://www.meetup.com/nl-NL/Utrecht-Java-User-Group/events/280570879/
       videoUrl:
-      slides: 
-          source: slideshare
-          url: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-at-utrechtjug
+      slides:
+        source: slideshare
+        url: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever-at-utrechtjug
       githubUrl:
       photos:
 
@@ -1187,9 +1225,9 @@
     - id: pattern-matching
       sessionPageUrl: https://web.archive.org/web/20210625214431/https://emamo.com/event/jlove-2021
       videoUrl:
-      slides: 
-          source: slideshare
-          url: https://www.slideshare.net/HannoEmbregts/pattern-matching-talk-from-jlove-2021
+      slides:
+        source: slideshare
+        url: https://www.slideshare.net/HannoEmbregts/pattern-matching-talk-from-jlove-2021
       githubUrl:
       photos:
 
@@ -1229,9 +1267,9 @@
     - id: pattern-matching
       sessionPageUrl: https://programm.javaland.eu/2021/#/scheduledEvent/606394
       videoUrl:
-      slides: 
-          source: slideshare
-          url: https://www.slideshare.net/HannoEmbregts/pattern-matching-from-small-enhancement-to-major-feature-talk-from-javaland-2021
+      slides:
+        source: slideshare
+        url: https://www.slideshare.net/HannoEmbregts/pattern-matching-from-small-enhancement-to-major-feature-talk-from-javaland-2021
       githubUrl: https://github.com/hannotify/pattern-matching-music-store
       photos:
 
@@ -1306,7 +1344,7 @@
   appearances:
     - id: the-soft-side-of-software-development
       sessionPageUrl: https://devoxx.be/talk/?id=19709
-      videoUrl: 
+      videoUrl:
       githubUrl:
     - id: these-songs-would-make-some-great-code-comments
       sessionPageUrl: https://devoxx.be/talk/?id=19708
@@ -1331,9 +1369,9 @@
     - id: beware-of-survivorship-bias
       sessionPageUrl: https://jfall.nl/sessions/beware-of-survivorship-bias/
       videoUrl: https://youtu.be/1G1NvRKEwVY
-      slides: 
-          source: slideshare
-          url: https://www.slideshare.net/HannoEmbregts/beware-of-survivorship-bias-conference-talk-at-jfall-2019
+      slides:
+        source: slideshare
+        url: https://www.slideshare.net/HannoEmbregts/beware-of-survivorship-bias-conference-talk-at-jfall-2019
       githubUrl:
       photos:
 
@@ -1355,9 +1393,9 @@
     - id: will-git-be-around-forever
       sessionPageUrl: https://voxxeddays.com/athens/will-git-be-around-forever/
       videoUrl: https://youtu.be/yBAWZD-Cxcs
-      slides: 
-          source: slideshare
-          url: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever
+      slides:
+        source: slideshare
+        url: https://www.slideshare.net/HannoEmbregts/will-git-be-around-forever
       githubUrl:
       photos: https://www.flickr.com/photos/voxxedathens/albums/72157709060546536
 
@@ -1380,9 +1418,9 @@
     - id: these-songs-would-make-some-great-code-comments
       sessionPageUrl: https://www.meetup.com/010DEV/events/259440243/
       videoUrl:
-      slides: 
-          source: google-drive
-          url: https://docs.google.com/presentation/d/e/2PACX-1vQR31q9KQ2XdUg4gV451jZXfVXJa822mPIor25SavdyC1NJm-sA-BrM6a2fi6JQRvN3fefD5_y1h3k7/pub?start=false&loop=false&delayms=30000#slide=id.p
+      slides:
+        source: google-drive
+        url: https://docs.google.com/presentation/d/e/2PACX-1vQR31q9KQ2XdUg4gV451jZXfVXJa822mPIor25SavdyC1NJm-sA-BrM6a2fi6JQRvN3fefD5_y1h3k7/pub?start=false&loop=false&delayms=30000#slide=id.p
       githubUrl:
       photos:
 
@@ -1404,9 +1442,9 @@
     - id: entering-the-fourth-dimension-of-ocr-with-tesseract
       sessionPageUrl: https://romania.voxxeddays.com/2019/01/27/entering-the-fourth-dimension-of-ocr-with-tesseract/
       videoUrl: https://youtu.be/THgFc9pwyJ0
-      slides: 
-          source: slideshare
-          url: https://www.slideshare.net/HannoEmbregts/entering-the-fourth-dimension-of-ocr-with-tesseract-talk-from-voxxed-days-bucharest-2019
+      slides:
+        source: slideshare
+        url: https://www.slideshare.net/HannoEmbregts/entering-the-fourth-dimension-of-ocr-with-tesseract-talk-from-voxxed-days-bucharest-2019
       githubUrl: https://github.com/hannotify/tesseract-tess4j-quickstart
       photos:
 
@@ -1476,9 +1514,9 @@
     - id: qwerty-or-dvorak-debunking-the-keyboard-layout-myths
       sessionPageUrl: https://2018.geecon.org/speakers/info.html?id=393
       videoUrl: https://youtu.be/7lVVkasTQz4
-      slides: 
-          source: slideshare
-          url: https://www.slideshare.net/HannoEmbregts/qwerty-or-dvorak-debunking-the-keyboard-layout-myths-from-geecon-2018
+      slides:
+        source: slideshare
+        url: https://www.slideshare.net/HannoEmbregts/qwerty-or-dvorak-debunking-the-keyboard-layout-myths-from-geecon-2018
 
 - id: teqnation-2018
   name: TEQNation
@@ -1516,9 +1554,9 @@
     - id: building-a-spring-boot-application-ask-the-audience
       sessionPageUrl: https://voxxeddaysvienna2018.sched.com/event/DkzY/building-a-spring-boot-2-application-ask-the-audience
       videoUrl: https://youtu.be/GLuOr-5bXG0
-      slides: 
-          source: slideshare
-          url: https://www.slideshare.net/HannoEmbregts/building-a-spring-boot-2-application-ask-the-audience-from-voxxed-days-vienna-2018-90505063
+      slides:
+        source: slideshare
+        url: https://www.slideshare.net/HannoEmbregts/building-a-spring-boot-2-application-ask-the-audience-from-voxxed-days-vienna-2018-90505063
       githubUrl: https://github.com/hannotify/spring-boot-2-beer-voxxed-vienna-2018
       photos:
 
@@ -1541,8 +1579,8 @@
       sessionPageUrl: //www.jvmcon.com/#/sessions
       videoUrl:
       slides:
-          source: slideshare
-          url: //www.slideshare.net/HannoEmbregts/building-a-spring-boot-application-ask-the-audience-from-jvmcon-2018
+        source: slideshare
+        url: //www.slideshare.net/HannoEmbregts/building-a-spring-boot-application-ask-the-audience-from-jvmcon-2018
       githubUrl: //github.com/hannotify/spring-boot-beer-jvmcon-2018
       photos:
 
@@ -1564,17 +1602,17 @@
     - id: qwerty-or-dvorak-debunking-the-keyboard-layout-myths
       sessionPageUrl: //cfp.devoxx.be/2017/talk/MLV-7954/QWERTY_or_DVORAK%3F_Debunking_the_Keyboard_Layout_Myths
       videoUrl: //youtu.be/blRn9U9Fapg
-      slides: 
-          source: slideshare
-          url: //www.slideshare.net/HannoEmbregts/qwerty-or-dvorak-debunking-the-keyboard-layout-myths
+      slides:
+        source: slideshare
+        url: //www.slideshare.net/HannoEmbregts/qwerty-or-dvorak-debunking-the-keyboard-layout-myths
       githubUrl:
       photos:
     - id: slide-deck-version-management-the-good-the-bad-and-the-ugly
       sessionPageUrl: //cfp.devoxx.be/2017/talk/KTK-2683/Slide_Deck_Version_Management:_The_Good,_The_Bad_and_The_Ugly
       videoUrl:
       slides:
-          source: google-drive
-          url: //docs.google.com/presentation/d/e/2PACX-1vTxe6reiny3WofqmNVUfZXs6T5U9ordw6o7kgDWURYMK5SJYZ9p45SyYug7vrIqKNRcskKD4IRj-GtA/pub?start=false&loop=false&delayms=3000
+        source: google-drive
+        url: //docs.google.com/presentation/d/e/2PACX-1vTxe6reiny3WofqmNVUfZXs6T5U9ordw6o7kgDWURYMK5SJYZ9p45SyYug7vrIqKNRcskKD4IRj-GtA/pub?start=false&loop=false&delayms=3000
       githubUrl:
       photos:
 
@@ -1612,8 +1650,8 @@
       sessionPageUrl: //jfall.nl/sessions/slide-deck-version-management-good-bad-ugly/
       videoUrl:
       slides:
-          source: google-drive
-          url: //docs.google.com/presentation/d/e/2PACX-1vTxe6reiny3WofqmNVUfZXs6T5U9ordw6o7kgDWURYMK5SJYZ9p45SyYug7vrIqKNRcskKD4IRj-GtA/pub?start=false&loop=false&delayms=3000
+        source: google-drive
+        url: //docs.google.com/presentation/d/e/2PACX-1vTxe6reiny3WofqmNVUfZXs6T5U9ordw6o7kgDWURYMK5SJYZ9p45SyYug7vrIqKNRcskKD4IRj-GtA/pub?start=false&loop=false&delayms=3000
       githubUrl:
       photos:
 
@@ -1657,8 +1695,8 @@
       sessionPageUrl: //programm.javaland.eu/2017/talk.html#talk?talkId=529558
       videoUrl:
       slides:
-          source: slideshare
-          url: //www.slideshare.net/HannoEmbregts/building-a-spring-boot-application-ask-the-audience-from-javaland-2017
+        source: slideshare
+        url: //www.slideshare.net/HannoEmbregts/building-a-spring-boot-application-ask-the-audience-from-javaland-2017
       githubUrl:
       photos:
 
@@ -1692,8 +1730,8 @@
       sessionPageUrl:
       videoUrl: //youtu.be/7U1n5Sp0eS4
       slides:
-          source: slideshare
-          url: //www.slideshare.net/HannoEmbregts/migrating-25k-lines-of-ant-scripting-to-gradle-62891474
+        source: slideshare
+        url: //www.slideshare.net/HannoEmbregts/migrating-25k-lines-of-ant-scripting-to-gradle-62891474
       githubUrl:
       photos:
 
@@ -1715,8 +1753,8 @@
     - id: migrating-25k-lines-of-ant-scripting-to-gradle
       sessionPageUrl: //jprime.io/nav/article/61
       videoUrl: //youtu.be/FEEiuyrAa6Q
-      slides: 
-          source: slideshare
-          url: //www.slideshare.net/HannoEmbregts/migrating-25k-lines-of-ant-scripting-to-gradle
+      slides:
+        source: slideshare
+        url: //www.slideshare.net/HannoEmbregts/migrating-25k-lines-of-ant-scripting-to-gradle
       githubUrl:
       photos:
