@@ -120,3 +120,6 @@
 [submodule "_slides/will-git-be-around-forever/spacerockit-2026"]
 	path = _slides/will-git-be-around-forever/spacerockit-2026
 	url = https://github.com/hannotify/will-git-be-around-forever-a-list-of-possible-successors
+[submodule "_slides/http-how-teenagers-talk-to-their-parents/amsterdamjug-2026"]
+	path = _slides/http-how-teenagers-talk-to-their-parents/amsterdamjug-2026
+	url = https://github.com/hannotify/http-how-teenagers-talk-to-their-parents.git

@@ -10,7 +10,7 @@
   dateEnd: 2027-01-24
   logo: bitbash.png
   appearances:
-    - id: dont-let-agentic-ai-take-your-joy-of-coding
+    - id: dont-let-agentic-ai-steal-your-joy-of-coding
       sessionPageUrl: https://www.bitbash.nl/agenda
 
 - id: amsterdamjug-2026
@@ -26,6 +26,8 @@
   appearances:
     - id: http-how-teenagers-talk-to-their-parents
       sessionPageUrl: https://www.meetup.com/amsterdam-java-user-group/events/316510908/
+      slides:
+        source: local
 
 - id: sojava-2026
   name: SoJava
@@ -38,7 +40,7 @@
   dateStart: 2026-10-28
   logo: java-champion.png
   appearances:
-    - id: dont-let-agentic-ai-take-your-joy-of-coding
+    - id: dont-let-agentic-ai-steal-your-joy-of-coding
 
 - id: wawtech-2026
   name: WAWTech

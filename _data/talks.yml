@@ -9,8 +9,8 @@
 
     So it's about time we bridge that gap! Join this talk if you want to find out how big your JUnit feature gap is, or if you simply want a chance to hear about All The JUnit Features! I'll make sure to cover parameterized tests, how to make your tests more descriptive, how to deal with flaky tests, the best ways to use extensions, what is new in JUnit 6 and how to get the most out of JUnit in Kotlin environments. I'll conclude the talk by writing The Ultimate Unit Test live on stage, using a fun domain and as many of JUnit's features as possible.
 
-- id: dont-let-agentic-ai-take-your-joy-of-coding
-  title: Don't Let Agentic AI Take Your Joy of Coding
+- id: dont-let-agentic-ai-steal-your-joy-of-coding
+  title: Don't Let Agentic AI Steal Your Joy of Coding
   type: keynote
   retired: false
   description: |
