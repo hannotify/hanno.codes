@@ -123,3 +123,6 @@
 [submodule "_slides/http-how-teenagers-talk-to-their-parents/amsterdamjug-2026"]
 	path = _slides/http-how-teenagers-talk-to-their-parents/amsterdamjug-2026
 	url = https://github.com/hannotify/http-how-teenagers-talk-to-their-parents.git
+[submodule "_slides/javas-concurrency-journey-continues/datev-coding-festival-2026"]
+	path = _slides/javas-concurrency-journey-continues/datev-coding-festival-2026
+	url = https://github.com/hannotify/javas-concurrency-journey-continues
