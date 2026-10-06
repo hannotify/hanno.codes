@@ -126,3 +126,6 @@
 [submodule "_slides/javas-concurrency-journey-continues/datev-coding-festival-2026"]
 	path = _slides/javas-concurrency-journey-continues/datev-coding-festival-2026
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
+[submodule "_slides/javas-concurrency-journey-continues/jugmunster-2026"]
+	path = _slides/javas-concurrency-journey-continues/jug-muenster-2026
+	url = https://github.com/hannotify/javas-concurrency-journey-continues

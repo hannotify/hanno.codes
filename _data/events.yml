@@ -93,6 +93,8 @@
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://www.meetup.com/de-de/java-usergroup-munster/events/314228145
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
+      slides:
+        source: local
 
 - id: spacerockit-2026
   name: SpaceRockIT
