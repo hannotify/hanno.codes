@@ -129,3 +129,6 @@
 [submodule "_slides/javas-concurrency-journey-continues/jugmunster-2026"]
 	path = _slides/javas-concurrency-journey-continues/jug-muenster-2026
 	url = https://github.com/hannotify/javas-concurrency-journey-continues
+[submodule "_slides/from-zero-to-secured/baselone-2026"]
+	path = _slides/from-zero-to-secured/baselone-2026
+	url = https://github.com/hannotify/from-zero-to-secured

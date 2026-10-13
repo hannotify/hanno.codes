@@ -13,22 +13,6 @@
     - id: dont-let-agentic-ai-steal-your-joy-of-coding
       sessionPageUrl: https://www.bitbash.nl/agenda
 
-- id: amsterdamjug-2026
-  name: AmsterdamJUG
-  year: 2026
-  country:
-    flag: netherlands
-    name: The Netherlands
-  city: Amsterdam
-  url: https://www.meetup.com/amsterdam-java-user-group/
-  dateStart: 2026-10-05
-  logo: amsterdamjug.webp
-  appearances:
-    - id: http-how-teenagers-talk-to-their-parents
-      sessionPageUrl: https://www.meetup.com/amsterdam-java-user-group/events/316510908/
-      slides:
-        source: local
-
 - id: sojava-2026
   name: SoJava
   year: 2026
@@ -74,6 +58,8 @@
   appearances:
     - id: from-zero-to-secured
       sessionPageUrl: https://www.baselone.org
+      slides:
+        source: local
 
 - id: jug-muenster-2026
   name: JUG Münster
@@ -93,6 +79,22 @@
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://www.meetup.com/de-de/java-usergroup-munster/events/314228145
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
+      slides:
+        source: local
+
+- id: amsterdamjug-2026
+  name: AmsterdamJUG
+  year: 2026
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Amsterdam
+  url: https://www.meetup.com/amsterdam-java-user-group/
+  dateStart: 2026-10-05
+  logo: amsterdamjug.webp
+  appearances:
+    - id: http-how-teenagers-talk-to-their-parents
+      sessionPageUrl: https://www.meetup.com/amsterdam-java-user-group/events/316510908/
       slides:
         source: local
 
