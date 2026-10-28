@@ -132,3 +132,6 @@
 [submodule "_slides/from-zero-to-secured/baselone-2026"]
 	path = _slides/from-zero-to-secured/baselone-2026
 	url = https://github.com/hannotify/from-zero-to-secured
+[submodule "_slides/dont-let-agentic-ai-steal-your-joy-of-coding/sojava-2026"]
+	path = _slides/dont-let-agentic-ai-steal-your-joy-of-coding/sojava-2026
+	url = https://github.com/hannotify/dont-let-agentic-ai-steal-your-joy-of-coding

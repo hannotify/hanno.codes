@@ -25,6 +25,8 @@
   logo: java-champion.png
   appearances:
     - id: dont-let-agentic-ai-steal-your-joy-of-coding
+      slides:
+        source: local
 
 - id: wawtech-2026
   name: WAWTech
