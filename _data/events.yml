@@ -1,3 +1,22 @@
+- id: jfokus-2027
+  name: Jfokus
+  year: 2027
+  country:
+    flag: sweden
+    name: Sweden
+  city: Stockholm
+  venue:
+    name: Waterfront Congress Centre
+    latitude: 59.3299581
+    longitude: 18.0534562
+  url: https://www.jfokus.se
+  dateStart: 2027-02-08
+  dateEnd: 2027-02-10
+  logo: jfokus-2027.svg
+  appearances:
+    - id: all-the-junit-features
+      sessionPageUrl: https://jfokus.se/speakers.html
+
 - id: bitbash-2027
   name: Bitbash
   year: 2027
@@ -12,6 +31,22 @@
   appearances:
     - id: dont-let-agentic-ai-steal-your-joy-of-coding
       sessionPageUrl: https://www.bitbash.nl/agenda
+
+- id: amsterdamjug-2026
+  name: AmsterdamJUG
+  year: 2026
+  country:
+    flag: netherlands
+    name: The Netherlands
+  city: Amsterdam
+  url: https://www.meetup.com/amsterdam-java-user-group/
+  dateStart: 2026-12-09
+  logo: amsterdamjug.webp
+  appearances:
+    - id: http-how-teenagers-talk-to-their-parents
+      sessionPageUrl: https://www.meetup.com/amsterdam-java-user-group/events/316510908/
+      slides:
+        source: local
 
 - id: sojava-2026
   name: SoJava
@@ -41,6 +76,7 @@
   logo: wawtech.png
   appearances:
     - id: these-songs-would-make-some-great-code-comments
+      sessionPageUrl: https://wawtech.io/2026/agenda
 
 - id: baselone-2026
   name: BaselOne
@@ -81,22 +117,6 @@
     - id: javas-concurrency-journey-continues
       sessionPageUrl: https://www.meetup.com/de-de/java-usergroup-munster/events/314228145
       githubUrl: https://github.com/hannotify/structured-concurrency-bar
-      slides:
-        source: local
-
-- id: amsterdamjug-2026
-  name: AmsterdamJUG
-  year: 2026
-  country:
-    flag: netherlands
-    name: The Netherlands
-  city: Amsterdam
-  url: https://www.meetup.com/amsterdam-java-user-group/
-  dateStart: 2026-10-05
-  logo: amsterdamjug.webp
-  appearances:
-    - id: http-how-teenagers-talk-to-their-parents
-      sessionPageUrl: https://www.meetup.com/amsterdam-java-user-group/events/316510908/
       slides:
         source: local
 
@@ -235,7 +255,7 @@
         source: local
 
 - id: jfokus-2026
-  name: JFokus
+  name: Jfokus
   year: 2026
   country:
     flag: sweden
@@ -380,6 +400,7 @@
       sessionPageUrl: https://2025.europe.jcon.one/schedule
     - id: from-zero-to-secured
       sessionPageUrl: https://2025.europe.jcon.one/schedule
+      videoUrl: https://youtu.be/m8SWcuNKyVQ
       slides:
         source: local
 
@@ -720,7 +741,7 @@
         url: https://speakerdeck.com/mthmulders/beware-of-survivorship-bias-devnexus
 
 - id: jfokus-2024
-  name: JFokus
+  name: Jfokus
   year: 2024
   country:
     flag: sweden
