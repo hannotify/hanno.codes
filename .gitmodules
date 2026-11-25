@@ -138,3 +138,6 @@
 [submodule "_slides/dont-let-agentic-ai-steal-your-joy-of-coding/hu-2026"]
 	path = _slides/dont-let-agentic-ai-steal-your-joy-of-coding/hu-2026
 	url = https://github.com/hannotify/dont-let-agentic-ai-steal-your-joy-of-coding
+[submodule "_slides/http-how-teenagers-talk-to-their-parents/wawtech-2026"]
+	path = _slides/http-how-teenagers-talk-to-their-parents/wawtech-2026
+	url = https://github.com/hannotify/http-how-teenagers-talk-to-their-parents.git
